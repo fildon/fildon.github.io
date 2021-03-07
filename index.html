@@ -1,19 +1,24 @@
-<head>
-  <meta content="text/html;charset=utf-8" http-equiv="Content-Type" />
-  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
-  <link rel="stylesheet" href="styles.css" />
-</head>
-<body>
-  <header>
-    <div class="header-content">
-      <img src="headshot.jpeg" alt="Headshot" class="headshot" />
-      <h1>Rupert McKay</h1>
-      <a href="http://www.linkedin.com/in/rupert-mckay"
-        ><img src="LI-In-Bug.png" alt="LinkedIn"
-      /></a>
-    </div>
-  </header>
-  <article>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type" />
+    <title>Rupert McKay</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+  </head>
+  <body>
+    <header class="banner">
+      <div class="banner-container">
+        <img src="headshot.jpeg" alt="Headshot" class="headshot" />
+        <h1>Rupert McKay</h1>
+        <a href="http://www.linkedin.com/in/rupert-mckay"
+          ><img src="LI-In-Bug.png" alt="LinkedIn"
+        /></a>
+        <a href="https://github.com/fildon/"
+          ><img src="GitHub-Mark-120px-plus.png" alt="Github"
+        /></a>
+      </div>
+    </header>
     <section>
       <h2>About this page</h2>
       <p>
@@ -24,75 +29,94 @@
         screen readers.
       </p>
     </section>
-    <h2>Side projects</h2>
-    <section>
-      <a href="./boids"><h3>🐦 Boids</h3></a>
-      <p>
-        An implementation of an artificial life program, first developed in the
-        1980s. In brief, just three simple rules lead to intelligent flocking
-        behaviour. Implemented all my own tooling from the groundup, including
-        vector algebra and dynamic frame loop adjustments. I am currently
-        working on adding neural-net powered hunters to the simulation.
-      </p>
+    <section class="section-main">
+      <h2>Side projects</h2>
+      <article>
+        <header>
+          <a href="./boids"><h3>🐦 Boids</h3></a>
+        </header>
+        <p>
+          An implementation of an artificial life program, first developed in
+          the 1980s. In brief, just three simple rules lead to intelligent
+          flocking behaviour. Implemented all my own tooling from the groundup,
+          including vector algebra and dynamic frame loop adjustments. I am
+          currently working on adding neural-net powered hunters to the
+          simulation.
+        </p>
+      </article>
+      <article>
+        <header>
+          <a href="./ceramic"><h3>🥣 Ceramic</h3></a>
+        </header>
+        <p>
+          A reusable React component library. Complete with 100% test coverage,
+          extensive documentation and publically available Storybook. Living
+          documentation is generated dynamically by JSDocs coming directly from
+          the source code itself.
+        </p>
+      </article>
+      <article>
+        <header>
+          <a href="./lindenmayer"><h3>🌳 Lindenmayer</h3></a>
+        </header>
+        <p>
+          A Lindenmayer fractal generator. Creates a random branch structure and
+          recursively reapplies it to itself. Written solely in Vanilla JS and
+          HTML5 Canvas. Dynamically computes ideal depth generation based on
+          browser performance.
+        </p>
+      </article>
+      <article>
+        <header>
+          <a href="./voronoi"><h3>🐝 Voronoi</h3></a>
+        </header>
+        <p>
+          A little experiment with voronoi cells. A cloud of points travel
+          randomly across the world space, while every frame the space is
+          divided by Voronoi cells. Most of the heavy lifting is done by
+          <a href="https://github.com/d3/d3-delaunay">d3-delaunay</a>
+        </p>
+      </article>
+      <article>
+        <header>
+          <a href="./convection"><h3>☕ Convection</h3></a>
+        </header>
+        <p>
+          A one-day hack to build a physics simulation, which aims to
+          demonstrate that temperature mixing is an emergent property of thermal
+          expansion. Got the idea for this while watching a pot of water boil.
+        </p>
+      </article>
+      <article>
+        <header>
+          <a href="./webgltest"><h3>🎲 WebGLTest</h3></a>
+        </header>
+        <p>
+          A little test of three.js, which itself uses WebGL. Renders a rotating
+          cube and some point lights in real time. A great example of how
+          JavaScript can be used to leverage graphics hardware.
+        </p>
+      </article>
+      <article>
+        <header>
+          <a href="./phong"><h3>💡 Phong</h3></a>
+        </header>
+        <p>
+          Hand made raytracer using only Typescript. A fun experiment in the
+          mathematics of perspective geometry. Performance is very much
+          bottlenecked by the browser.
+        </p>
+      </article>
     </section>
-    <section>
-      <a href="./ceramic"><h3>🥣 Ceramic</h3></a>
-      <p>
-        A reusable React component library. Complete with 100% test coverage,
-        extensive documentation and publically available Storybook. Living
-        documentation is generated dynamically by JSDocs coming directly from
-        the source code itself.
-      </p>
-    </section>
-    <section>
-      <a href="./lindenmayer"><h3>🌳 Lindenmayer</h3></a>
-      <p>
-        A Lindenmayer fractal generator. Creates a random branch structure and
-        recursively reapplies it to itself. Written solely in Vanilla JS and
-        HTML5 Canvas. Dynamically computes ideal depth generation based on
-        browser performance.
-      </p>
-    </section>
-    <section>
-      <a href="./voronoi"><h3>🐝 Voronoi</h3></a>
-      <p>
-        A little experiment with voronoi cells. A cloud of points travel
-        randomly across the world space, while every frame the space is divided
-        by Voronoi cells. Most of the heavy lifting is done by
-        <a href="https://github.com/d3/d3-delaunay">d3-delaunay</a>
-      </p>
-    </section>
-    <section>
-      <a href="./convection"><h3>☕ Convection</h3></a>
-      <p>
-        A one-day hack to build a physics simulation, which aims to demonstrate
-        that temperature mixing is an emergent property of thermal expansion.
-        Got the idea for this while watching a pot of water boil.
-      </p>
-    </section>
-    <section>
-      <a href="./webgltest"><h3>🎲 WebGLTest</h3></a>
-      <p>
-        A little test of three.js, which itself uses WebGL. Renders a rotating
-        cube and some point lights in real time. A great example of how
-        JavaScript can be used to leverage graphics hardware.
-      </p>
-    </section>
-    <section>
-      <a href="./phong"><h3>💡 Phong</h3></a>
-      <p>
-        Hand made raytracer using only Typescript. A fun experiment in the
-        mathematics of perspective geometry. Performance is very much
-        bottlenecked by the browser.
-      </p>
-    </section>
-  </article>
-  <footer>
-    <div class="footer-container">
-      <p class="footer-content">
-        All source code available at my Github account:
-        <a href="https://github.com/fildon">Fildon</a>
-      </p>
-    </div>
-  </footer>
-</body>
+    <footer>
+      <div class="footer-container">
+        <a href="http://www.linkedin.com/in/rupert-mckay"
+          ><img src="LI-In-Bug.png" alt="LinkedIn"
+        /></a>
+        <a href="https://github.com/fildon/"
+          ><img src="GitHub-Mark-120px-plus.png" alt="Github"
+        /></a>
+      </div>
+    </footer>
+  </body>
+</html>
