@@ -4,20 +4,32 @@
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type" />
     <title>Rupert McKay</title>
     <link rel="stylesheet" href="styles.css" />
-    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+    <link
+      rel="shortcut icon"
+      type="image/x-icon"
+      href="images/favicon-16x16.png"
+    />
   </head>
   <body>
-    <header class="banner">
-      <div class="banner-container">
-        <img src="headshot.jpeg" alt="Headshot" class="headshot" />
-        <h1>Rupert McKay</h1>
-        <a href="http://www.linkedin.com/in/rupert-mckay"
-          ><img src="LI-In-Bug.png" alt="LinkedIn"
-        /></a>
-        <a href="https://github.com/fildon/"
-          ><img src="GitHub-Mark-120px-plus.png" alt="Github"
-        /></a>
-      </div>
+    <header class="horizontal-spread">
+      <img
+        src="images/headshot.jpeg"
+        alt="Headshot of Rupert"
+        class="rounded height-4 wonky"
+      />
+      <h1>Rupert McKay</h1>
+      <a href="https://github.com/fildon/"
+        ><img
+          class="height-3 theme-sensitive-color"
+          src="images/github.png"
+          alt="Github logo"
+      /></a>
+      <a href="https://twitter.com/maxfmckay/"
+        ><img
+          class="height-3 theme-sensitive-color"
+          src="images/twitter.png"
+          alt="Twitter logo"
+      /></a>
     </header>
     <section>
       <h2>About this page</h2>
@@ -33,7 +45,10 @@
       <h2>Side projects</h2>
       <article>
         <header>
-          <a href="./boids"><h3>🐦 Boids</h3></a>
+          <h3>
+            <a id="boids" href="./boids">🐦 Boids</a>
+            <a class="hash-link" href="#boids">#</a>
+          </h3>
         </header>
         <p>
           An implementation of an artificial life program, first developed in
@@ -46,18 +61,10 @@
       </article>
       <article>
         <header>
-          <a href="./ceramic"><h3>🥣 Ceramic</h3></a>
-        </header>
-        <p>
-          A reusable React component library. Complete with 100% test coverage,
-          extensive documentation and publically available Storybook. Living
-          documentation is generated dynamically by JSDocs coming directly from
-          the source code itself.
-        </p>
-      </article>
-      <article>
-        <header>
-          <a href="./lindenmayer"><h3>🌳 Lindenmayer</h3></a>
+          <h3>
+            <a id="lindenmayer" href="./lindenmayer">🌳 Lindenmayer</a>
+            <a class="hash-link" href="#lindenmayer">#</a>
+          </h3>
         </header>
         <p>
           A Lindenmayer fractal generator. Creates a random branch structure and
@@ -68,13 +75,23 @@
       </article>
       <article>
         <header>
-          <a href="./Beads"><h3>4️⃣ Beads</h3></a>
+          <h3>
+            <a id="beads" href="./Beads">4️⃣ Beads</a>
+            <a class="hash-link" href="#beads">#</a>
+          </h3>
         </header>
-        <p>A little Connect4 implementation. Can you beat the AI?</p>
+        <p>
+          A little Connect4 implementation. Can you beat the AI? Uses minimax
+          over a limited depth, falling back to a heuristic value heatmap when
+          that depth is exceeded.
+        </p>
       </article>
       <article>
         <header>
-          <a href="./voronoi"><h3>🐝 Voronoi</h3></a>
+          <h3>
+            <a id="voronoi" href="./voronoi">🐝 Voronoi</a>
+            <a class="hash-link" href="#voronoi">#</a>
+          </h3>
         </header>
         <p>
           A little experiment with voronoi cells. A cloud of points travel
@@ -85,7 +102,10 @@
       </article>
       <article>
         <header>
-          <a href="./convection"><h3>☕ Convection</h3></a>
+          <h3>
+            <a id="convection" href="./convection">☕ Convection</a>
+            <a class="hash-link" href="#convection">#</a>
+          </h3>
         </header>
         <p>
           A one-day hack to build a physics simulation, which aims to
@@ -95,7 +115,10 @@
       </article>
       <article>
         <header>
-          <a href="./webgltest"><h3>🎲 WebGLTest</h3></a>
+          <h3>
+            <a id="webgltest" href="./webgltest">🎲 WebGLTest</a>
+            <a class="hash-link" href="#webgltest">#</a>
+          </h3>
         </header>
         <p>
           A little test of three.js, which itself uses WebGL. Renders a rotating
@@ -105,24 +128,32 @@
       </article>
       <article>
         <header>
-          <a href="./phong"><h3>💡 Phong</h3></a>
+          <h3>
+            <a id="phong" href="./phong">💡 Phong</a>
+            <a class="hash-link" href="#phong">#</a>
+          </h3>
         </header>
         <p>
           Hand made raytracer using only Typescript. A fun experiment in the
           mathematics of perspective geometry. Performance is very much
-          bottlenecked by the browser.
+          bottlenecked by the browser. But becomes fully memoized after 100
+          frames.
+        </p>
+      </article>
+      <article>
+        <header>
+          <h3>
+            <a id="ceramic" href="./ceramic">🥣 Ceramic</a>
+            <a class="hash-link" href="#ceramic">#</a>
+          </h3>
+        </header>
+        <p>
+          A reusable React component library. Complete with 100% test coverage,
+          extensive documentation and publically available Storybook. Living
+          documentation is generated dynamically by JSDocs coming directly from
+          the source code itself.
         </p>
       </article>
     </section>
-    <footer>
-      <div class="footer-container">
-        <a href="http://www.linkedin.com/in/rupert-mckay"
-          ><img src="LI-In-Bug.png" alt="LinkedIn"
-        /></a>
-        <a href="https://github.com/fildon/"
-          ><img src="GitHub-Mark-120px-plus.png" alt="Github"
-        /></a>
-      </div>
-    </footer>
   </body>
 </html>
