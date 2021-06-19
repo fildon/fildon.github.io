@@ -9,6 +9,7 @@
       href="images/favicon-16x16.png"
     />
     <style type="text/css">
+      /* Global */
       :root {
         /* Light Theme */
         --main-bg-color: snow;
@@ -27,7 +28,6 @@
         }
       }
 
-      /* Composition */
       html {
         padding: 0;
       }
@@ -42,14 +42,36 @@
         color: var(--main-text-color);
       }
 
+      h1 {
+        font-size: 200%;
+        text-align: center;
+      }
+
+      h2 {
+        margin: 8rem auto 2rem;
+        font-size: 150%;
+        text-align: center;
+        text-decoration: underline;
+      }
+
+      h3 {
+        margin: 2rem auto 1rem;
+        font-size: 120%;
+      }
+
+      a {
+        color: var(--link-color);
+      }
+
+      /* Composition */
       .horizontal-spread {
         display: flex;
         align-items: center;
-        justify-content: space-between;
+        justify-content: flex-start;
+        flex-wrap: wrap;
       }
-      .horizontal-spread > * {
-        display: inline-block;
-        margin: 1em;
+      .horizontal-spread > * + * {
+        margin-left: 1em;
       }
 
       section + section {
@@ -77,10 +99,6 @@
       }
 
       /* Block */
-      a {
-        color: var(--link-color);
-      }
-
       .hash-link {
         opacity: 0;
         transition: opacity 0.2s;
@@ -92,21 +110,6 @@
       }
 
       /* Exception */
-      h1 {
-        font-size: 200%;
-      }
-
-      h2 {
-        margin: 8rem auto 2rem;
-        font-size: 150%;
-        text-align: center;
-        text-decoration: underline;
-      }
-
-      h3 {
-        margin: 2rem auto 1rem;
-        font-size: 120%;
-      }
     </style>
   </head>
   <body>
@@ -119,40 +122,50 @@
         width="64"
       />
       <h1>Rupert McKay</h1>
-      <a href="https://github.com/fildon/"
-        ><img
-          src="images/github.png"
-          alt="Github logo"
-          class="theme-sensitive-color"
-          height="48"
-          width="48"
-      /></a>
-      <a href="https://fildon.hashnode.dev/"
-        ><img
-          src="images/hashnode.png"
-          alt="Hashnode logo"
-          class="theme-sensitive-color"
-          height="48"
-          width="48"
-      /></a>
-      <a href="https://twitter.com/fildon_dev/"
-        ><img
-          src="images/twitter.png"
-          alt="Twitter logo"
-          class="theme-sensitive-color"
-          height="48"
-          width="58"
-      /></a>
+      <address class="horizontal-spread">
+        <a href="https://github.com/fildon/"
+          ><img
+            src="images/github.png"
+            alt="Github logo"
+            class="theme-sensitive-color"
+            height="48"
+            width="48"
+        /></a>
+        <a href="https://fildon.hashnode.dev/"
+          ><img
+            src="images/hashnode.png"
+            alt="Hashnode logo"
+            class="theme-sensitive-color"
+            height="48"
+            width="48"
+        /></a>
+        <a href="https://twitter.com/fildon_dev/"
+          ><img
+            src="images/twitter.png"
+            alt="Twitter logo"
+            class="theme-sensitive-color"
+            height="48"
+            width="58"
+        /></a>
+        <a href="https://www.linkedin.com/in/rupert-mckay/">
+          <img
+            src="images/linkedin.png"
+            alt="LinkedIn logo"
+            class="theme-sensitive-color"
+            height="48"
+            width="56"
+        /></a>
+      </address>
     </header>
     <section>
       <h2>About</h2>
       <p>
-        I am Rupert Foggo McKay. Born in New Zealand, raised in England, now
-        living in the Netherlands. I work at Adidas.com as a Senior Software
-        Engineer. I love teaching and learning. This is a webpage to display
-        some of my side projects. It is simple by design, developed to support
-        any device or browser. It conforms to ARIA best practices such as
-        semantic HTML and support for screen readers.
+        I am Rupert Foggo McKay. Born in New Zealand, raised in the United
+        Kingom, now living in the Netherlands. I work at Adidas.com as a Senior
+        Software Engineer. I love teaching and learning. This is a webpage to
+        display some of my side projects. It is simple by design, developed to
+        support any device or browser. It conforms to ARIA best practices such
+        as semantic HTML and support for screen readers.
       </p>
     </section>
     <section class="section-main">
