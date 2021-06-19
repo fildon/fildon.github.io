@@ -3,42 +3,156 @@
   <head>
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type" />
     <title>Rupert McKay</title>
-    <link rel="stylesheet" href="styles.css" />
     <link
       rel="shortcut icon"
       type="image/x-icon"
       href="images/favicon-16x16.png"
     />
+    <style type="text/css">
+      :root {
+        /* Light Theme */
+        --main-bg-color: snow;
+        --main-text-color: #272822;
+        --link-color: mediumblue;
+        --invert: 0;
+      }
+
+      @media (prefers-color-scheme: dark) {
+        :root {
+          /* Dark Theme */
+          --main-bg-color: #272822;
+          --main-text-color: mintcream;
+          --link-color: mediumaquamarine;
+          --invert: 100%;
+        }
+      }
+
+      /* Composition */
+      html {
+        padding: 0;
+      }
+
+      body {
+        line-height: 1.6;
+        max-width: 40rem;
+        margin: 1rem auto;
+        font-size: 100%;
+        font-family: Arial, Helvetica, sans-serif;
+        background-color: var(--main-bg-color);
+        color: var(--main-text-color);
+      }
+
+      .horizontal-spread {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .horizontal-spread > * {
+        display: inline-block;
+        margin: 1em;
+      }
+
+      section + section {
+        margin: 8rem auto 2rem;
+      }
+
+      article + article {
+        margin: 8rem auto 2rem;
+      }
+
+      /* Utility */
+      .rounded {
+        border-radius: 50%;
+      }
+
+      .theme-sensitive-color {
+        filter: invert(var(--invert));
+      }
+
+      .wonky {
+        transition: transform 0.5s;
+      }
+      .wonky:hover {
+        transform: rotate(60deg);
+      }
+
+      /* Block */
+      a {
+        color: var(--link-color);
+      }
+
+      .hash-link {
+        opacity: 0;
+        transition: opacity 0.2s;
+        color: var(--main-text-color);
+        text-decoration: unset;
+      }
+      *:hover > .hash-link {
+        opacity: 1;
+      }
+
+      /* Exception */
+      h1 {
+        font-size: 200%;
+      }
+
+      h2 {
+        margin: 8rem auto 2rem;
+        font-size: 150%;
+        text-align: center;
+        text-decoration: underline;
+      }
+
+      h3 {
+        margin: 2rem auto 1rem;
+        font-size: 120%;
+      }
+    </style>
   </head>
   <body>
     <header class="horizontal-spread">
       <img
         src="images/headshot.jpeg"
         alt="Headshot of Rupert"
-        class="rounded height-4 wonky"
+        class="rounded wonky"
+        height="64"
+        width="64"
       />
       <h1>Rupert McKay</h1>
       <a href="https://github.com/fildon/"
         ><img
-          class="height-3 theme-sensitive-color"
           src="images/github.png"
           alt="Github logo"
+          class="theme-sensitive-color"
+          height="48"
+          width="48"
+      /></a>
+      <a href="https://fildon.hashnode.dev/"
+        ><img
+          src="images/hashnode.png"
+          alt="Hashnode logo"
+          class="theme-sensitive-color"
+          height="48"
+          width="48"
       /></a>
       <a href="https://twitter.com/fildon_dev/"
         ><img
-          class="height-3 theme-sensitive-color"
           src="images/twitter.png"
           alt="Twitter logo"
+          class="theme-sensitive-color"
+          height="48"
+          width="58"
       /></a>
     </header>
     <section>
-      <h2>About this page</h2>
+      <h2>About</h2>
       <p>
-        This is a webpage to display some of my side projects. It is simple by
-        design, developed to support any device or browser, in accordance with
-        the graceful degradation and progressive enhancement philosophies. It
-        conforms to ARIA best practices such as semantic HTML and support for
-        screen readers.
+        I am Rupert Foggo McKay. Born in New Zealand, raised in England, now
+        living in the Netherlands. I work at Adidas.com as a Senior Software
+        Engineer. I love teaching and learning. This is a webpage to display
+        some of my side projects. It is simple by design, developed to support
+        any device or browser. It conforms to ARIA best practices such as
+        semantic HTML and support for screen readers.
       </p>
     </section>
     <section class="section-main">
@@ -54,9 +168,7 @@
           An implementation of an artificial life program, first developed in
           the 1980s. In brief, just three simple rules lead to intelligent
           flocking behaviour. Implemented all my own tooling from the groundup,
-          including vector algebra and dynamic frame loop adjustments. I am
-          currently working on adding neural-net powered hunters to the
-          simulation.
+          including vector algebra and dynamic frame loop adjustments.
         </p>
       </article>
       <article>
@@ -96,7 +208,7 @@
         <p>
           A little experiment with voronoi cells. A cloud of points travel
           randomly across the world space, while every frame the space is
-          divided by Voronoi cells. Most of the heavy lifting is done by
+          divided by Voronoi cells. The heavy lifting is done by
           <a href="https://github.com/d3/d3-delaunay">d3-delaunay</a>
         </p>
       </article>
