@@ -12,56 +12,67 @@
     <style type="text/css">
       /* Global */
       :root {
-        /* Light Theme */
-        --main-bg-color: snow;
-        --main-text-color: #272822;
-        --link-color: mediumblue;
-        --invert: 0;
+        /* Palette */
+        --primary: #f9f7f7;
+        --secondary: #dbe2ef;
+        --tertiary: #3f72af;
+        --quaternary: #112d4e;
+
+        /* spacing */
+        --measure: 60ch;
+        --ratio: 1.5;
+        --s-5: calc(var(--s-4) / var(--ratio));
+        --s-4: calc(var(--s-3) / var(--ratio));
+        --s-3: calc(var(--s-2) / var(--ratio));
+        --s-2: calc(var(--s-1) / var(--ratio));
+        --s-1: calc(var(--s0) / var(--ratio));
+        --s0: 1rem;
+        --s1: calc(var(--s0) * var(--ratio));
+        --s2: calc(var(--s1) * var(--ratio));
+        --s3: calc(var(--s2) * var(--ratio));
+        --s4: calc(var(--s3) * var(--ratio));
+        --s5: calc(var(--s4) * var(--ratio));
       }
 
-      @media (prefers-color-scheme: dark) {
-        :root {
-          /* Dark Theme */
-          --main-bg-color: #272822;
-          --main-text-color: mintcream;
-          --link-color: mediumaquamarine;
-          --invert: 100%;
-        }
-      }
-
-      html {
+      * {
+        box-sizing: border-box;
+        max-width: var(--measure);
         padding: 0;
+      }
+      html,
+      body,
+      header {
+        max-width: none;
+        line-height: var(--s1);
       }
 
       body {
-        line-height: 1.6;
-        max-width: 40rem;
-        margin: 1rem auto;
+        margin: var(--s0) auto;
         font-size: 100%;
         font-family: Arial, Helvetica, sans-serif;
-        background-color: var(--main-bg-color);
-        color: var(--main-text-color);
+        background-color: var(--primary);
+        color: var(--quaternary);
       }
 
       h1 {
-        font-size: 200%;
+        font-size: var(--s3);
+        line-height: var(--s3);
         text-align: center;
       }
 
       h2 {
-        margin: 8rem auto 2rem;
-        font-size: 150%;
-        text-align: center;
+        font-size: var(--s2);
+        line-height: var(--s2);
         text-decoration: underline;
       }
 
       h3 {
-        margin: 2rem auto 1rem;
-        font-size: 120%;
+        font-size: var(--s1);
+        margin: var(--s0) auto var(--s0);
       }
 
       a {
-        color: var(--link-color);
+        color: var(--tertiary);
       }
 
       /* Composition */
@@ -71,20 +82,23 @@
         justify-content: flex-start;
         flex-wrap: wrap;
       }
+      .horizontal-spread > * {
+        margin: 0 auto 0;
+      }
       .horizontal-spread > * + * {
-        margin-left: 1em;
+        margin-left: var(--s0);
       }
 
-      section + section {
-        margin: 8rem auto 2rem;
+      .stack {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
       }
-
-      article + article {
-        margin: 8rem auto 2rem;
+      .stack > * {
+        margin: 0 auto 0;
       }
-
-      h3 > a {
-        padding: 1em;
+      .stack > * + * {
+        margin-top: var(--space, 1.5rem);
       }
 
       /* Utility */
@@ -92,92 +106,100 @@
         border-radius: 50%;
       }
 
-      .theme-sensitive-color {
-        filter: invert(var(--invert));
-      }
-
       .wonky {
         transition: transform 0.5s;
       }
       .wonky:hover {
-        transform: rotate(60deg);
+        transform: rotate(-60deg);
       }
 
-      /* Block */
+      .full-width {
+        min-width: 100vw;
+      }
+
       .hash-link {
         opacity: 0;
         transition: opacity 0.2s;
-        color: var(--main-text-color);
+        color: var(--tertiary);
         text-decoration: unset;
       }
       *:hover > .hash-link {
         opacity: 1;
       }
 
+      /* Block */
+      article {
+        background-color: var(--secondary);
+        border-radius: var(--s-5);
+        color: var(--quaternary);
+        padding: var(--s0);
+      }
+
+      h3 > a {
+        padding: var(--s0);
+      }
+      a {
+        font-weight: bold;
+      }
+      a:hover {
+        color: var(--quaternary);
+      }
+
+      .banner {
+        background-color: var(--secondary);
+        padding: var(--s0);
+      }
+
+      address {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-column-gap: var(--s-1);
+      }
+      address > a {
+        background-color: var(--tertiary);
+        color: var(--secondary);
+        padding: var(--s0);
+        font-weight: bold;
+        text-align: center;
+        border-radius: var(--s-5);
+      }
+      address > a:focus,
+      address > a:hover {
+        background-color: var(--quaternary);
+        color: var(--secondary);
+      }
+
       /* Exception */
     </style>
   </head>
-  <body>
+  <body class="stack">
     <header class="horizontal-spread">
       <img
-        src="images/headshot.jpeg"
+        src="./headshot.jpeg"
         alt="Headshot of Rupert"
         class="rounded wonky"
         height="64"
         width="64"
       />
       <h1>Rupert McKay</h1>
-      <address class="horizontal-spread">
-        <a href="https://github.com/fildon/"
-          ><img
-            src="images/github.png"
-            alt="Github logo"
-            class="theme-sensitive-color"
-            height="48"
-            width="48"
-        /></a>
-        <a href="https://blog.fildon.me/"
-          ><img
-            src="images/hashnode.png"
-            alt="Hashnode logo"
-            class="theme-sensitive-color"
-            height="48"
-            width="48"
-        /></a>
-        <a href="https://twitter.com/fildon_dev/"
-          ><img
-            src="images/twitter.png"
-            alt="Twitter logo"
-            class="theme-sensitive-color"
-            height="48"
-            width="58"
-        /></a>
-        <a href="https://www.linkedin.com/in/rupert-mckay/">
-          <img
-            src="images/linkedin.png"
-            alt="LinkedIn logo"
-            class="theme-sensitive-color"
-            height="48"
-            width="56"
-        /></a>
-      </address>
     </header>
-    <section>
+    <address>
+      <a href="https://twitter.com/fildon_dev/">Twitter</a>
+      <a href="https://www.linkedin.com/in/rupert-mckay/"> LinkedIn</a>
+      <a href="https://blog.fildon.me/">Blog</a>
+      <a href="https://github.com/fildon/">Github</a>
+    </address>
+    <section class="stack full-width banner">
       <h2>About</h2>
       <p>
         I am Rupert Foggo McKay. Born in New Zealand, grew up in the United
         Kingom, now living in the Netherlands. I work at Adidas.com as a Senior
         Software Engineer. I love teaching and learning. This is a webpage to
         display some of my side projects. It is simple by design, developed to
-        support any device or browser. It conforms to ARIA best practices such
-        as semantic HTML and support for screen readers.
-      </p>
-      <p>
-        I maintain a blog over here:
-        <a href="https://blog.fildon.me/">Rupert McKay's Blog</a>.
+        support any device or browser. You won't find a single div 🙂
       </p>
     </section>
-    <section class="section-main">
+    <section class="section-main stack">
       <h2>Side projects</h2>
       <article>
         <header>
