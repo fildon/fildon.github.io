@@ -40,12 +40,6 @@
     <style type="text/css">
       /* Global */
       :root {
-        /* Palette */
-        --primary: #f9f7f7;
-        --secondary: #dbe2ef;
-        --tertiary: #3f72af;
-        --quaternary: #112d4e;
-
         /* spacing */
         --measure: 60ch;
         --ratio: 1.5;
@@ -60,6 +54,22 @@
         --s3: calc(var(--s2) * var(--ratio));
         --s4: calc(var(--s3) * var(--ratio));
         --s5: calc(var(--s4) * var(--ratio));
+
+        /* Default Palette */
+        --primary: #f9f7f7;
+        --secondary: #dbe2ef;
+        --tertiary: #3f72af;
+        --quaternary: #112d4e;
+      }
+
+      @media (prefers-color-scheme: dark) {
+        :root {
+          /* Dark Theme Palette */
+          --primary: #151515;
+          --secondary: #301b3f;
+          --tertiary: #3c415c;
+          --quaternary: #b4a5a5;
+        }
       }
 
       * {
