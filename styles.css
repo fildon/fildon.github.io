@@ -108,7 +108,7 @@ p {
   transition: transform 0.5s;
 }
 .wonky:hover {
-  transform: rotate(-60deg);
+  transform: rotate(10deg);
 }
 
 .full-width {
