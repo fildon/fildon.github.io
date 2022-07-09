@@ -1,0 +1,4 @@
+# 11ty build output
+_site
+
+node_modules
