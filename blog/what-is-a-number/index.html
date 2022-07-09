@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>What is a number?</title>
+    <meta name="description" content="Rounding errors are inevitable.">
+
+    <link rel="shortcut icon" type="image/x-icon" href="/static/favicon.ico">
+    <link rel="stylesheet" href="/static/styles.css">
+    <link rel="stylesheet" href="/static/prism.css">
+  </head>
+  <body>
+    <header>
+      <h1 class="home"><a href="/">Rupert &#39;fildon&#39; McKay</a></h1>
+    </header>
+
+    <main class="tmpl-post">
+      <h2>What is a number?</h2>
+
+<p>TL;DR:</p>
+<ul>
+<li>No datatype will ever be able to represent all numeric values perfectly</li>
+<li>Rounding errors will always exist</li>
+<li>JavaScript uses floating-point numbers which are sufficient for many use cases</li>
+<li>If this is not sufficient for your use case... JavaScript might be the wrong choice!</li>
+</ul>
+<h2>Demonstration of the Problem</h2>
+<p>What do you get if you multiply <code>0.1</code> by <code>0.2</code>? If you got <code>0.02</code>, you are correct! Here is a gold star ⭐️ If you didn't... see me after class.</p>
+<p>But what about in JavaScript?</p>
+<p><code>0.1 * 0.2 = 0.020000000000000004</code></p>
+<p>Go ahead and try this in your browser console if you don't believe me.</p>
+<p>So clearly something fishy is going on 🤨</p>
+<h2>What is a number?</h2>
+<p>To fully understand this problem, we are going to begin by defining what we mean by &quot;a number&quot;, and later we'll demonstrate how this is fundamentally incompatible with computation.</p>
+<h3>The Naturals</h3>
+<p>Let's start with the easiest type of numbers: <strong>The Naturals</strong>. These are more plainly understood as &quot;the counting numbers&quot;. When we count &quot;1, 2, 3, 4...&quot; we are counting <code>Naturals</code>.</p>
+<p>Near the end of the 19th century <a href="https://en.wikipedia.org/wiki/Giuseppe_Peano">Giuseppe Peano</a> provided a formal definition of the <code>Naturals</code> using 9 axioms. I won't bore you with all of them now, instead, I'll give you the severely abbreviated version. There are two claims:</p>
+<ul>
+<li>Zero is a natural number</li>
+<li>... and then there are the others</li>
+</ul>
+<p>No really, that's pretty much it. Most of Peano's axioms deal with narrowing in very precisely on what we mean by <em>the others</em>. But if you have learned to count, then you have learned <code>The Naturals</code>.</p>
+<h3>The Integers</h3>
+<blockquote>
+<p>God invented the integers, the rest is the work of man</p>
+<p>— Leopold Kronecker</p>
+</blockquote>
+<p>So far we only have positive numbers. If we want to include negative numbers (we do) then we need to define <code>The Integers</code>. We can summarize their definition as:</p>
+<ul>
+<li>Zero is an integer</li>
+<li>Positive naturals (defined above) are integers</li>
+<li>For every positive natural <code>n</code>, there exists <code>-n</code></li>
+</ul>
+<p>Simple! Note that every <code>Natural</code> is also an <code>Integer</code>, but the reverse is not true.</p>
+<h3>The Rationals</h3>
+<p>If all we ever wanted to do was addition, subtraction, and multiplication, the above would be sufficient. However, as soon as we include division, we will need fractions. Consider for example what is the result of <code>3 divided by 2</code>? Can you express that result in terms of a <code>Natural</code> or an <code>Integer</code>? Nope! So we devise a larger set of numbers like so:</p>
+<p>For every integer <code>a</code> and every non-zero integer <code>b</code> then <code>a / b</code> is a <em>Rational</em>.</p>
+<blockquote>
+<p>Note the specific callout to prohibit division by zero.</p>
+</blockquote>
+<p>We can now happily work with addition, subtraction, multiplication, and division (except division by zero) ... and nothing will ever go wrong I'm sure... certainly the Ancient Greeks believed this, and based all of their mathematics on rational numbers. But they encountered a problem, which cannot be solved with rational numbers. Namely &quot;What is the square root of 2?&quot; Equivalently: <em>What number, which when multiplied by itself equals 2?</em> Although such a number exists, it cannot be represented as a <code>Natural</code>, or <code>Integer</code> or even <code>Rational</code>. It is something entirely different.</p>
+<p>There's a probably apocryphal story that when Hippasus first proved that root 2 cannot be represented as a fraction, he was on a boat at the time, and his fellow mathematicians were so offended by this proof that they threw him overboard.</p>
+<h3>The Irrationals</h3>
+<p>The square root of 2 is <code>Irrational</code> but it's not the only <code>Irrational</code>, here are some other examples that come up pretty often in mathematics:</p>
+<ul>
+<li>The square root of any <code>Integer</code> that is not a perfect square</li>
+<li>π (The ratio of a circle's circumference to its radius)</li>
+<li>ϕ (The Golden Ratio)</li>
+<li>e (The base of the natural logarithm)</li>
+</ul>
+<p>You can think of <code>Irrationals</code> as anything that is, <em>not a rational number</em> i.e. anything that can't be represented as a fraction.</p>
+<h2>Countability</h2>
+<p>Before we consider how to represent numbers on computers, we first need to consider one very important property of sets: <a href="https://en.wikipedia.org/wiki/Countable_set"><code>Countability</code></a>. A set is <code>Countable</code> if and only if there exists some way to enumerate the whole set. Intuitively most sets are countable exactly because we can <em>count</em> them (hence the name). But not every set is countable. The set of all colors for example is not <em>countable</em>. There is no way for me to <em>count</em> the set of all colors unless I narrow it to some finite collection.</p>
+<p>Consider the sets of numbers we have seen so far:</p>
+<p>The <code>Naturals</code> are countable, as demonstrated by how we literally learn to count them.</p>
+<p>The <code>Integers</code> are countable, but it takes a little trick. If we only count upwards from zero (or one) we will never count the negatives, but if instead, we count by alternating between positive and negative:</p>
+<p>0, 1, -1, 2, -2, 3, -3,...</p>
+<p>Then we will <em>count</em> every <code>Integer</code>. Note how the <em>order</em> of countability is not important, only that some sequence can be defined that visits every member of the set.</p>
+<p>The <code>Rationals</code> are countable, but it takes an especially smart trick. Every <code>Rational</code> is equivalent to some pair of <code>Integers</code>: <code>a / b</code>. We could construct a 2D grid therefore of every <code>Integer</code> <code>a</code> on the x-axis and every <code>Integer</code> <code>b</code> on the y-axis. Then the set of <code>Rationals</code> is equivalent to the set of all grid points in this 2D plane. We can <em>count</em> all the points on the plane by spiraling outwards from the center along diagonal lines. In this way, we demonstrate that the <code>Rationals</code> are countable.</p>
+<p>Unfortunately, the <code>Irrationals</code> are not countable. It is not that we haven't yet found a way to count them... but rather it has been proven that no method of counting <code>Irrationals</code> can ever exist. The proof is particularly tricky, but was proved in at least two different ways by <a href="https://en.wikipedia.org/wiki/Cantor%27s_diagonal_argument#Real_numbers">Georg Cantor</a> in the 19th century.</p>
+<p>We now know everything we will need to know about numbers before talking about <em>computation</em>.</p>
+<h2>How do we represent numbers?</h2>
+<h3>How do we represent <em>anything</em>?</h3>
+<blockquote>
+<p>Ceci n'est pas une pipe</p>
+<p>— <a href="https://en.wikipedia.org/wiki/The_Treachery_of_Images">&quot;The Treachery of Images&quot;</a> by Magritte</p>
+</blockquote>
+<p>Defining a number is not the same as representing a number. &quot;0&quot; is not zero. It is a <em>symbol</em>. As programmers, we are concerned with the representation of numbers <em>on computers</em>. When we perform computation on numbers we take as input some symbols e.g. <code>1 + 2</code>, manipulate those symbols, and then return or display some symbols corresponding to the result of our computation e.g. <code>3</code>. But ultimately it's symbols all the way down. This distinction between <em>symbol</em> and <em>mathematical number</em> is not usually important and we can put it out of our mind, but today we'll be digging into that distinction to reveal a fundamental limitation of computation.</p>
+<h3>How do we represent data on a Turing machine?</h3>
+<p>Why should we care about Turing machines? I could hypothetically explain everything about how numbers are represented on <em>my exact computer's hardware</em> and in turn how <em>exactly</em> this is handled by my operating system and any other software. But this might not say anything meaningful about the representation of numbers on your hardware and software. This is why Turing Machines are a useful device for reasoning about the principles of computation. Turing Machines are an abstraction for reasoning about computation <em>in general</em> without reference to any specific hardware or software <em>in particular</em>. Additionally, any claim or proof we can make in terms of a Turing machine will never age or become outdated.</p>
+<p>So let's remind ourselves of the basics of a Turing Machine. Turing Machines have an <em>alphabet</em> (a finite set of symbols), which can be read from and written to an infinite tape of memory. Whatever data I choose to store on that tape must therefore be represented in terms of combinations of symbols from our chosen alphabet. I could for example represent <code>Naturals</code> as combinations of the following <em>symbols</em>:</p>
+<p>&quot;9&quot;, &quot;8&quot;, &quot;7&quot;, &quot;6&quot;, &quot;5&quot;, &quot;4&quot;, &quot;3&quot;, &quot;2&quot;, &quot;1&quot;, &quot;0&quot;.</p>
+<p>And indeed this is exactly what we do when we do &quot;computation&quot; by hand with pencil and paper. If we include the symbol &quot;-&quot; then we can also represent <code>Integers</code>. But regardless of our specific choice of scheme for representing numbers, we want our representations of numbers to be expressed in terms of finitely long combinations of symbols from a finite set of different symbols. Every finite set is <em>countable</em> and every finite combination of members from a finite set is also <em>countable</em>, i.e. the set of all things we can ever represent on a Turing Machine is <em>countable</em>.</p>
+<p>You will recall from earlier that although the <code>Naturals</code>, <code>Integers</code> and <code>Rationals</code> are countable, the <code>Irrationals</code> <em>are not countable</em>. It follows therefore that the set of all <code>Irrationals</code> can never be represented with absolute precision on a Turing Machine <em>no matter what symbolic scheme we use</em>. Any attempt to represent the <code>Irrationals</code> on a Turing Machine requires some approximation, effectively reducing the size of the set of <code>Irrationals</code> to something <em>countable</em> but in a way that neglects some values, and yields rounding errors.</p>
+<h2>Floating Point</h2>
+<p>JavaScript uses a double-precision (64-bit) binary floating-point format for its default <code>number</code> type. It is known as a &quot;double&quot; for historic reasons since early implementations of floating-point numbers in other programming languages used just 32-bits, but the essence of the format remains the same. There are two key insights to understanding the floating-point representation of a number.</p>
+<ul>
+<li>Everything is represented in binary, i.e. we use only the symbols <code>0</code> and <code>1</code></li>
+<li>Every value can be represented as some leading digits multiplied by a power of 2</li>
+</ul>
+<p>We call the leading bits the &quot;Mantissa&quot; and the power of 2 the &quot;Exponent&quot;.</p>
+<p>To demonstrate this, consider the following numbers:</p>
+<p>5 in binary is 101:</p>
+<ul>
+<li>Mantissa: 1.01</li>
+<li>Exponent: 10</li>
+</ul>
+<blockquote>
+<p>Note that the exponent is <em>also</em> in binary so &quot;10&quot; here is not &quot;ten&quot; but rather &quot;two&quot;.</p>
+</blockquote>
+<p>9 in binary is 1001:</p>
+<ul>
+<li>Mantissa: 1.001</li>
+<li>Exponent: 11</li>
+</ul>
+<p>7/32 in binary is 0.00111:</p>
+<ul>
+<li>Mantissa: 1.11</li>
+<li>Exponent: -11</li>
+</ul>
+<p>This format has the advantage of being very flexible in accomodating both very large and very small numbers. It is called <code>Floating Point</code> because the <em>point</em> in the number can <em>float</em> up or down to wherever the first leading bit will be, e.g. in the last example we <em>float</em> the point down by three places by using a -3 exponent. Now let's consider what happens when we try to evaluate the expression:</p>
+<p><code>0.1 * 0.2</code></p>
+<p>First, we convert the numbers to their floating-point representations:</p>
+<p>0.1 in binary is 0.00011001100...:</p>
+<ul>
+<li>Mantissa: 1.1001100...</li>
+<li>Exponent: -100</li>
+</ul>
+<p>0.2 in binary is 0.0011001100...:</p>
+<ul>
+<li>Mantissa: 1.1001100...</li>
+<li>Exponent: -11</li>
+</ul>
+<p>You might already see a problem, that our numeric representations have become an infinite sequence of symbols. In general for any base number system, a <code>Rational</code> will expand to an infinite sequence if the denominator is not a divisor of any power of that base. In this case, 0.1 &quot;one-tenth&quot; is not a divisor of any power of 2, so in binary it expands to an infinite sequence. If you are interested in this little bit of number theory, you'll notice bases with more factors require infinite expansions less often. <a href="https://youtu.be/qID2B4MK7Y0">Six is especially good</a>.</p>
+<p>Then to complete our computation, we multiply the mantissas together and combine the exponents, which leaves us with:</p>
+<p>0.0000010100011110101...</p>
+<ul>
+<li>Mantissa: 1.0100011110101...</li>
+<li>Exponent: -110</li>
+</ul>
+<p>Unfortunately, we had to truncate our infinite expansions before performing the multiplication, and then also the result must be truncated. This is how rounding errors sneak into our computation.</p>
+<h2>Critiques of JavaScript</h2>
+<p>There are valid critiques to make of JavaScript... but rounding errors isn't one of them. The rounding errors follow <em>inevitably</em> from a fundamental limitation of computation.</p>
+<p>On the other hand, JavaScript <em>could</em> have included alternative numeric data types. Many other programming languages offer a variety of numeric types, to better support different use cases. I would especially like a <code>Rational</code> number type which perfectly represents all <code>Rationals</code> as tuples of integers with perfect accuracy and no rounding errors. I could of course implement this for myself (and have done in the past!) but this loses out on a lot of speed optimizations for existing primitive number types; there's a reason computer speed is often measured in floating-point operations per second, the industry is in love with floating-point numbers and optimizing for them, despite their glaring weaknesses.</p>
+<p>JavaScript <em>did</em> add the <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt">BigInt</a> a couple of years ago, but it is primarily intended for supporting especially <em>big integers</em> (unsurprisingly). This does not save us from our multiplication rounding problem.</p>
+<p>So long as we must work with floating-point numbers, we will suffer from rounding errors. I'm a firm believer that we shouldn't forget JavaScript was only ever intended to be a simple browser scripting language, and we shouldn't treat it as the solution to every problem. If your project needs more precision than you can get from a float, consider doing your primary computation in a different language (perhaps on a server) and treating JavaScript only as a means to retrieve and display human-readable values in a frontend.</p>
+<p>Choose the right tool for the job.</p>
+<p>Take care,</p>
+<p>Rupert</p>
+
+
+    </main>
+
+    <footer></footer>
+
+    <!-- Current page: /blog/what-is-a-number/ -->
+  </body>
+</html>
