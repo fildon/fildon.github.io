@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="{{ metadata.language }}">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title or metadata.title }}</title>
+    <meta name="description" content="{{ description or metadata.description }}">
+
+    {#- Uncomment this if you’d like folks to know that you used Eleventy to build your site!  #}
+    {#- <meta name="generator" content="{{ eleventy.generator }}"> #}
+
+    <link rel="shortcut icon" type="image/x-icon" href="{{ '/static/favicon.ico' | url }}">
+    <link rel="stylesheet" href="{{ '/static/styles.css' | url }}">
+    <link rel="stylesheet" href="{{ '/static/prism.css' | url }}">
+  </head>
+  <body>
+    <header>
+      <h1 class="home"><a href="{{ '/' | url }}">{{ metadata.title }}</a></h1>
+    </header>
+
+    <main{% if templateClass %} class="{{ templateClass }}"{% endif %}>
+      {{ content | safe }}
+    </main>
+
+    <footer></footer>
+
+    <!-- Current page: {{ page.url | url }} -->
+  </body>
+</html>

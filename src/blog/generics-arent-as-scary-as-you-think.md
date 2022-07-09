@@ -1,7 +1,9 @@
-# Generics aren't as scary as you think
-
-> Photo by [Pierre Bamin](https://www.pierrebamin.com/)
-
+---
+title: Generics aren't as scary as you think.
+description: You already understand generics... you just don't know you do.
+date: 2021-05-23
+layout: layouts/post.njk
+---
 I'll be demonstrating generics using TypeScript, but the core principles of generics are the same in any programming language.
 
 ## First things first

@@ -4,6 +4,7 @@
     "serve": "npx @11ty/eleventy --input=./src --serve"
   },
   "devDependencies": {
-    "@11ty/eleventy": "^1.0.1"
+    "@11ty/eleventy": "^1.0.1",
+    "@11ty/eleventy-plugin-syntaxhighlight": "^4.1.0"
   }
 }
