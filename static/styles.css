@@ -69,6 +69,12 @@ p {
   text-align: justify;
 }
 
+table {
+  width: 100%;
+  border-spacing: 0;
+  border-collapse: collapse;
+}
+
 /* Composition */
 .horizontal-spread {
   align-items: center;
@@ -97,6 +103,11 @@ p {
 }
 .stack > * + * {
   margin-left: var(--s-3);
+}
+
+td {
+  border-top: 1px solid var(--hard);
+  margin: var(--s-1);
 }
 
 /* Utility */

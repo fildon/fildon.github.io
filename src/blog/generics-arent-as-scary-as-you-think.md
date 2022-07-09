@@ -32,7 +32,7 @@ Here's a simple example in which we want to get only the big numbers in an array
 ```ts
 const numbers = [1, 31, 12, 40];
 const bigNumbers = numbers.filter((n) => n > 20);
-console.log(evenNumbers); // prints [31, 40]
+console.log(bigNumbers); // prints [31, 40]
 ```
 
 Now let's pretend `filter` didn't already exist, and we wanted to make our own function from scratch. What type should our new filter function be? It will need to take an array to work on, and some sort of callback to use on each element in the array. Let's make a simplifying assumption here and say we only want this new filter to work on arrays of numbers. Then the array we take is of type `Array<number>` and the callback is of type `(num: number) => boolean`. That should be enough to get us started:
