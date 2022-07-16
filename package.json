@@ -5,6 +5,8 @@
   },
   "devDependencies": {
     "@11ty/eleventy": "^1.0.1",
-    "@11ty/eleventy-plugin-syntaxhighlight": "^4.1.0"
+    "@11ty/eleventy-navigation": "^0.3.3",
+    "@11ty/eleventy-plugin-syntaxhighlight": "^4.1.0",
+    "luxon": "^2.4.0"
   }
 }
