@@ -110,6 +110,10 @@ td {
   margin: var(--s-1);
 }
 
+article > pre {
+  width: 100%;
+}
+
 /* Utility */
 .rounded {
   border-radius: 50%;
