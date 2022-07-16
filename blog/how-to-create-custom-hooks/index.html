@@ -14,9 +14,9 @@
       <h1 class="home"><a href="/">Rupert &#39;fildon&#39; McKay</a></h1>
     </header>
     <main>
-      <h2>How to Create Custom Hooks.</h2>
-
-<p>React hooks are a powerful tool for managing state in your React components. In this post I'll be demonstrating how we can compose existing React hooks to make custom hooks that encapsulate reusable functionality.</p>
+      <article class="stack">
+  <h2>How to Create Custom Hooks.</h2>
+  <p>React hooks are a powerful tool for managing state in your React components. In this post I'll be demonstrating how we can compose existing React hooks to make custom hooks that encapsulate reusable functionality.</p>
 <p>React's built-in hooks provide a great deal of power and flexibility, between <code>useState</code>, <code>useEffect</code> and <code>useCallback</code> we can cover very many use cases. But often times we'll find ourselves repeating a pattern of hooks over and over again, or maybe we'd simply prefer to pull out a custom hook to keep our component definitions short and expressive.</p>
 <p>Let's start with some small examples and work our way up to something bigger.</p>
 <h2>useOnMount</h2>
@@ -54,6 +54,7 @@
 <p>For sufficiently simple components, this might be a premature optimisation and in general we should <a href="https://kentcdodds.com/blog/aha-programming">Avoid Hasty Abstractions</a>, but under the right conditions this separation between rendering and state management can leave us with code which is easier to read and maintain.</p>
 <p>In this post we have walked through the process of creating custom hooks. Now get out there and simplify your components!</p>
 
+</article>
 
     </main>
   </body>

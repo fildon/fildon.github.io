@@ -14,9 +14,9 @@
       <h1 class="home"><a href="/">Rupert &#39;fildon&#39; McKay</a></h1>
     </header>
     <main>
-      <h2>TypeScript 4.4 - useUnknownInCatchVariables.</h2>
-
-<p>Key takeaways:</p>
+      <article class="stack">
+  <h2>TypeScript 4.4 - useUnknownInCatchVariables.</h2>
+  <p>Key takeaways:</p>
 <ul>
 <li>The <code>unknown</code> type allows nothing. The <code>any</code> type allows everything</li>
 <li>JavaScript allows throwing any expression</li>
@@ -54,6 +54,7 @@
 <p>So TypeScript should have always treated it as <code>unknown</code> because it really is! Literally, any expression can be thrown by JavaScript, so TypeScript ought to be very defensive. It's surprising this only got introduced in v4.4 and not earlier. But hey ho, here we are.</p>
 <p>Reminder: Whenever TypeScript feels inconvenient, it's just because it's trying to stop you from shooting yourself in the foot. JavaScript is full of foot guns, but when you stop shooting yourself in the foot, TypeScript will be easy 😀</p>
 
+</article>
 
     </main>
   </body>

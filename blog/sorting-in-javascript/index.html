@@ -14,9 +14,9 @@
       <h1 class="home"><a href="/">Rupert &#39;fildon&#39; McKay</a></h1>
     </header>
     <main>
-      <h2>Sorting in JavaScript.</h2>
-
-<p>JavaScript arrays have a builtin <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort">sort</a> method, which mostly does what you expect:</p>
+      <article class="stack">
+  <h2>Sorting in JavaScript.</h2>
+  <p>JavaScript arrays have a builtin <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort">sort</a> method, which mostly does what you expect:</p>
 <pre class="language-javascript"><code class="language-javascript"><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">sort</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// [1, 2, 3, 4]</span><br><span class="token punctuation">[</span><span class="token string">"d"</span><span class="token punctuation">,</span> <span class="token string">"a"</span><span class="token punctuation">,</span> <span class="token string">"b"</span><span class="token punctuation">,</span> <span class="token string">"c"</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">sort</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// ['a', 'b', 'c', 'd']</span></code></pre>
 <p>But it has some quirks. For examples numbers are sorting <em>as though they were strings</em>, which is fine as long as all your numbers are the same length, but leads to unexpected behavior for numbers of different lengths:</p>
 <pre class="language-javascript"><code class="language-javascript"><span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">sort</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// [1, 10, 2] Not what we wanted!</span></code></pre>
@@ -90,6 +90,7 @@
 <p>Take care,</p>
 <p>Rupert</p>
 
+</article>
 
     </main>
   </body>
