@@ -3,12 +3,21 @@ layout: layouts/base.njk
 permalink: /blog/
 ---
 <section class="stack">
-  <ul>
   {%- for blogpost in collections.blog | reverse -%}
-    <li>
-      <time class="postlist-date" datetime="{{ blogpost.date | htmlDateString }}">{{ blogpost.date | readableDate }}</time>
-      <a href="{{ blogpost.url | url }}">{% if blogpost.data.title %}{{ blogpost.data.title }}{% else %}<code>{{ blogpost.url }}</code>{% endif %}</a>
-    </li>
+    <article class="full-width">
+      <header>
+        <h3>
+          <a href="{{ blogpost.url | url }}">
+            {% if blogpost.data.title %}{{ blogpost.data.title }}
+            {% else %}
+              <code>{{ blogpost.url }}</code>
+            {% endif %}
+          </a>
+        </h3>
+      </header>
+      <p>
+        <time class="postlist-date" datetime="{{ blogpost.date | htmlDateString }}">{{ blogpost.date | readableDate }}</time>
+      </p>
+    </article>
   {%- endfor -%}
-  </ul>
 </section>
