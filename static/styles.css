@@ -104,6 +104,9 @@ table {
 .stack > * + * {
   margin-left: var(--s-3);
 }
+.stack > article {
+  min-width: var(--measure);
+}
 
 td {
   border-top: 1px solid var(--hard);
