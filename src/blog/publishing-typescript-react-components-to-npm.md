@@ -4,6 +4,7 @@ description: Publishing to NPM can be daunting at first. In this guide we'll mak
 date: 2021-07-17
 layout: layouts/post.njk
 ---
+
 Key takeaways:
 
 - compile to a `dist` directory
@@ -68,7 +69,7 @@ export function Counter() {
 }
 ```
 
-> If you would like more guidance on writing React components in TypeScript you can see my post: [Seeing through JSX to understand React component Types](https://fildon.hashnode.dev/seeing-through-jsx-to-understand-react-component-types)
+> If you would like more guidance on writing React components in TypeScript you can see my post: [Seeing through JSX to understand React component Types](https://fildon.me/blog/seeing-through-jsx-to-understand-react-component-types/)
 
 Lets also create an `index.ts`:
 

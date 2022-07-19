@@ -139,7 +139,7 @@ export const CurrentTemperature = () => {
 
 For this test suite, we first want to mock out the API dependency so that we can simulate different situations.
 
-> I've written about mocking in Jest before, so if you'd like a little refresher you can read [Mocking in Jest with TypeScript and React](https://blog.fildon.me/mocking-in-jest-with-typescript-and-react). I'll be following the mocking strategy described in that post.
+> I've written about mocking in Jest before, so if you'd like a little refresher you can read [Mocking in Jest with TypeScript and React](https://fildon.me/blog/mocking-in-jest-with-typescript-and-react). I'll be following the mocking strategy described in that post.
 
 ```ts
 import * as React from "react";
