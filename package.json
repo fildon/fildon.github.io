@@ -1,12 +1,15 @@
 {
   "scripts": {
-    "build": "npx @11ty/eleventy --input=./src",
+    "clean": "shx rm -rf _site",
+    "build": "node buildmermaid.js && npx @11ty/eleventy --input=./src",
     "serve": "npx @11ty/eleventy --input=./src --serve"
   },
   "devDependencies": {
     "@11ty/eleventy": "^1.0.1",
     "@11ty/eleventy-navigation": "^0.3.3",
     "@11ty/eleventy-plugin-syntaxhighlight": "^4.1.0",
-    "luxon": "^2.4.0"
+    "@mermaid-js/mermaid-cli": "^9.1.4",
+    "luxon": "^2.4.0",
+    "shx": "^0.3.4"
   }
 }
