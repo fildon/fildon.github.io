@@ -81,7 +81,7 @@ table {
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
-  transform: rotate(-10deg);
+  transform: rotate(-5deg);
 }
 .horizontal-spread > * {
   margin: 0 auto 0;
@@ -135,7 +135,7 @@ p > img {
   transition: transform 0.5s;
 }
 .wonky:hover {
-  transform: rotate(10deg);
+  transform: rotate(5deg);
 }
 
 .full-width {
@@ -195,7 +195,8 @@ a:hover {
   margin-top: var(--s1);
   padding: var(--s0);
   position: relative;
-  transform: rotate(-10deg);
+  transform: rotate(-5deg);
+  max-width: var(--measure);
 }
 .banner > * {
   display: flex;
@@ -203,6 +204,9 @@ a:hover {
 }
 .banner h2 {
   writing-mode: vertical-rl;
+}
+.banner > address {
+  flex-wrap: wrap;
 }
 .banner:before {
   background: var(--hard);
@@ -224,6 +228,7 @@ a:hover {
 
 address > * {
   margin-left: var(--s0);
+  margin-top: var(--s0);
 }
 address > a {
   border: var(--s-2) solid var(--accent);
