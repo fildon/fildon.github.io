@@ -104,8 +104,12 @@ table {
 .stack > * + * {
   margin-left: var(--s-3);
 }
-.stack > article {
-  min-width: var(--measure);
+
+.col-stack {
+  display: flex;
+  flex: 1 1 0;
+  flex-direction: column;
+  align-items: center;
 }
 
 td {
