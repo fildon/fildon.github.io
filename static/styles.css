@@ -110,6 +110,7 @@ table {
   flex: 1 1 0;
   flex-direction: column;
   align-items: center;
+  max-width: 100%;
 }
 
 td {
@@ -119,6 +120,10 @@ td {
 
 article > pre {
   width: 100%;
+}
+
+p > img {
+  max-width: 100%;
 }
 
 /* Utility */
@@ -164,6 +169,7 @@ body > * + * {
 article {
   padding: var(--s0);
   position: relative;
+  max-width: 100%;
 }
 article:after {
   background: var(--hard);
