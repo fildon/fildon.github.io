@@ -55,41 +55,68 @@ For each of the following diagrams the canonical starting state `1, 1` is circle
 
 This is equivalent to inspecting the least siginificant digit, when using base 2.
 
-![Diagram of fibonacci graph under modulo 2](../../static/fibmod02.svg)
+<details>
+  <summary><strong>[Click to expand]</strong> Fibonacci numbers under mod 2</summary>
+  <img src="../../static/fibmod02.svg" alt="Diagram of fibonacci graph under modulo 2" />
+</details>
 
 ### Modulo 3
 
-![Diagram of fibonacci graph under modulo 3](../../static/fibmod03.svg)
+<details>
+  <summary><strong>[Click to expand]</strong> Fibonacci numbers under mod 3</summary>
+  <img src="../../static/fibmod03.svg" alt="Diagram of fibonacci graph under modulo 3" />
+</details>
 
 ### Modulo 4
 
 This is the first one for which the canonical cycle is not strictly the longest.
 
-![Diagram of fibonacci graph under modulo 4](../../static/fibmod04.svg)
+<details>
+  <summary><strong>[Click to expand]</strong> Fibonacci numbers under mod 4</summary>
+  <img src="../../static/fibmod04.svg" alt="Diagram of fibonacci graph under modulo 4" />
+</details>
 
 ### Modulo 5
 
-![Diagram of fibonacci graph under modulo 5](../../static/fibmod05.svg)
+<details>
+  <summary><strong>[Click to expand]</strong> Fibonacci numbers under mod 5</summary>
+  <img src="../../static/fibmod05.svg" alt="Diagram of fibonacci graph under modulo 5" />
+</details>
 
 ### Modulo 6
 
-![Diagram of fibonacci graph under modulo 6](../../static/fibmod06.svg)
+<details>
+  <summary><strong>[Click to expand]</strong> Fibonacci numbers under mod 6</summary>
+  <img src="../../static/fibmod06.svg" alt="Diagram of fibonacci graph under modulo 6" />
+</details>
 
 ### Modulo 7
 
-![Diagram of fibonacci graph under modulo 7](../../static/fibmod07.svg)
+<details>
+  <summary><strong>[Click to expand]</strong> Fibonacci numbers under mod 7</summary>
+  <img src="../../static/fibmod07.svg" alt="Diagram of fibonacci graph under modulo 7" />
+</details>
 
 ### Modulo 8
 
-![Diagram of fibonacci graph under modulo 8](../../static/fibmod08.svg)
+<details>
+  <summary><strong>[Click to expand]</strong> Fibonacci numbers under mod 8</summary>
+  <img src="../../static/fibmod08.svg" alt="Diagram of fibonacci graph under modulo 8" />
+</details>
 
 ### Modulo 9
 
-![Diagram of fibonacci graph under modulo 9](../../static/fibmod09.svg)
+<details>
+  <summary><strong>[Click to expand]</strong> Fibonacci numbers under mod 9</summary>
+  <img src="../../static/fibmod09.svg" alt="Diagram of fibonacci graph under modulo 9" />
+</details>
 
 ### Modulo 10
 
-![Diagram of fibonacci graph under modulo 10](../../static/fibmod10.svg)
+<details>
+  <summary><strong>[Click to expand]</strong> Fibonacci numbers under mod 10</summary>
+  <img src="../../static/fibmod10.svg" alt="Diagram of fibonacci graph under modulo 10" />
+</details>
 
 ## Other Sequences
 
@@ -105,31 +132,35 @@ However I do not know of a systematic way to produce the diagram for any modulo 
 
 I can automate this somewhat using the following code:
 
+<details>
+  <summary><strong>[Click to expand]</strong> Code for generating prime mod edges</summary>
+
 ```ts
 /**
- * @returns an array of all primes from 2 up to and including `bound`
+ * @returns an array of all primes from 2 up to
+ * and including `bound`
  */
 const generatePrimesUpTo = (bound: number) => {
   // Sieve of Eratosthenes
 
-  // Produce an array of integers from 2 to bound inclusive
+  // An array of integers from 2 to bound inclusive
   const primeCandidates = new Array(bound - 1)
     .fill(null)
     .map((_, i) => ({ value: i + 2, isPrime: true }));
 
   // Little hack to 'pretend' our indexes start at 2
-  const getCandidate = (n: number) => primeCandidates[n - 2];
+  const get = (n: number) => primeCandidates[n - 2];
 
-  // Any divisor larger than this will fail to exclude any non-primes
-  const largestRelevantDivisor = Math.sqrt(bound);
+  // Any divisor larger than this is irrelevant
+  const largestDivisor = Math.sqrt(bound);
 
-  for (let divisor = 2; divisor <= largestRelevantDivisor; divisor++) {
+  for (let divisor = 2; divisor <= largestDivisor; divisor++) {
     // We don't care about non-prime divisors
-    if (!getCandidate(divisor).isPrime) continue;
+    if (!get(divisor).isPrime) continue;
 
     // Mark all multiples of this divisor as not prime
     for (let multiple = divisor ** 2; multiple <= bound; multiple += divisor) {
-      getCandidate(multiple).isPrime = false;
+      get(multiple).isPrime = false;
     }
   }
 
@@ -139,14 +170,16 @@ const generatePrimesUpTo = (bound: number) => {
 };
 
 /**
- * Modulo helper, curried to make passing into `Array.prototype.map` neat
+ * Modulo helper, curried to make a neat pipeline
  */
 const mod = (modulo: number) => (value: number) => value % modulo;
 
 /**
- * Given an array of values, return the set of edges defined by adjacent values
+ * Given an array of values,
+ * return the set of edges defined by adjacent values
  *
- * Edges are formatted as a string compatible with Mermaid syntax
+ * Edges are formatted as a string
+ * compatible with Mermaid syntax
  */
 const extractEdges = (values: Array<number>) => {
   const edges = new Set<`${number}-->${number};`>();
@@ -171,6 +204,8 @@ const allTogether = [...edges].join("\n");
 console.log(allTogether);
 ```
 
+</details>
+
 [TypeScript playground for generating primary number modulo edges](https://www.typescriptlang.org/play?#code/PQKhCgAIUgBAnApgFwK7wHYGdIEMN7zy4CekA9gGZ4A2NkADvAJYC2iOl85rkATJFQNIycngwATSMwwBjGqgkyA5pAAGAI3KpJaqCGDhZ5bMkjLEGRMWSIACi3ZYAqgwAqYgLyQAFFp0SAFyQGKisGtYAlJCeAHyQAN5QkMDAkADKzIgAbogU1ACiNuRYyAAWlhzgyamQDuQSqLJ5+ITEZFTSGLYW8JzcvAKikP6SXfKoWMy5ycamjI6IAML4ShK4tjjeVgDukACCRKR+2mMAtJAAjJEAdJTMdD6hdLesuAw+PgD6ADTS0XFfAlINlcApEMFmJAANT8P7MLAONgQkTwVCIAC+kUiAG5qpAUmkADLMZDIGh5Mq4WQAaxEYgA5EwUJYJAyKOguhJEAAPDiQUq4eBmDb8WYmUrmFArSTMda2GK+DDBULhKIxeJMZEytYbDgAbQIFz4AF08TU0vsMGQlNkEeR4JAaELeiIqQRygjIDsHvRKLgHvTILyJtzxGQMCYzlqnOL5s74BZSgAlRAU0HdAAi03tju8AFkNmUblgAI7Ck4BXH4yCUB2+ClmW25xV8HGQZtYesAHm8CaTyFT6fwyGzdq78HbnYd0Oh0SSBIJtQA6nkJCYGWZZEKWv4zJGMNHFh2cxOsMkCcxqD4AIQWZA6uV6nzT+C3BFI9jRObIGTo82LoSkCFvAdJgvQrCoDQv4MBSOCdJ6OCvngOCRmYMaIBetb1j4jaQJB0HMLBeTeMhYD8O2BEwRSkC9iMpwSJRUHUXk0KkaeDrzlhBL3o+8qID4VFERS76Ise3j+jQWCIHigEYsk8nJEgaCYAs2qrE+mxYXcDy2PAnzAh+x5Yhq0hicikTaW8Hw+MCoLgpAJmAvZ6LVhi5qgBA0DAQ0UFiBUNAMNYfyyOgLCIFIwxvDSeQMLgWBTBgqgyMMaiHO0NxMOQojICQQU3NZajBvFJD6IYcySqwDSKoJvk0OQKphBEb6mT4LkoqqzUAvE7WQAApPhdXkB5YD6JAADi0yWOIbSkPkIJguiWB-Mp6AehUAooPNEVJh2iD3FYUgaGQuASAAVtSlhmO157eWNBQSLtO7YfAbxkhFKF4AKyAsElkDGKwcW-hoNE+uUwHWG8coCiQ3S4DyZVGBKZi8j91LIA9u3eG1i0cME6WkN2nXWLE3WJHGko7fy2yIHs6QoN2agACQJMT8AYmcZyxCzbPuWosQ+NWyR1o6uFbVC3iXO2ULdgt4JYDcFJJeU0uzlxgFUwrp0SD4zMJDd+pQhclwmhzXMswbzCmziajVgSikEqtqma3iikVehixbFKVg2PYnuuB4PiXAADKHofVrUFXkBSivkMoPgYVgQvu4NEjchIn7U2pTgFe8tU6wAzNieKRxK0eILH8dVWnEWZ0n5op5riqo8QsgY49HD5+ndcR2kUcx-V8ea8nyO0DQHj3hUeaQPqNxz5rJo3Gd5AyD4DIADoYAy1b9xXg8+OBE8oFP1ZAA)
 
 We can use this to generate diagrams... however I can't emphasise enough that I cannot prove these diagrams are complete.
@@ -189,7 +224,7 @@ This one might also be provable complete. The `2` node is visited only once by t
 
 ### Primes under modulo 5
 
-And no I have no idea what the hell is going on.
+And now I have no idea what the hell is going on.
 
 ![Diagram of primary numbers under modulo 5](../../static/primemod05.svg)
 
