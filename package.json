@@ -1,7 +1,9 @@
 {
   "scripts": {
     "clean": "shx rm -rf _site",
-    "build": "node buildmermaid.js && npx @11ty/eleventy --input=./src",
+    "build:mermaid": "node buildmermaid.js",
+    "build:11ty": "npx @11ty/eleventy --input=./src",
+    "build": "npm run build:mermaid && npm run build:11ty",
     "serve": "npx @11ty/eleventy --input=./src --serve"
   },
   "devDependencies": {
