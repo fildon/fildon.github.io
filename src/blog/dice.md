@@ -271,7 +271,7 @@ console.log(test);
 
 ## Comparisons
 
-Both approaches could theoretically _never halt_. In the first approach, we might always hit a DISCARD result. In the second approach we might always narrow in an a segment that straddles the boundary between two possible output values. However in practice the probability of this happening for either approach tends to zero for sufficiently many rolls of the input die.
+Both approaches could theoretically _never halt_. In the first approach, we might always hit a DISCARD result. In the second approach we might always narrow in on a segment that straddles the boundary between two possible output values. However in practice the probability of this happening for either approach tends to zero for sufficiently many rolls of the input die.
 
 One might also consider the practicality of either approach. In the presence of a computer there are much more convenient methods for simulating a die. However in the absence, the first approach can be somewhat pre-computed by drawing up lookup tables for a given input die (such as the ubiquitous d6) and a selection of output die.
 
