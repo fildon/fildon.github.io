@@ -1,7 +1,7 @@
 ---
 title: Simulating Dice
 description: Mapping from one die size to another.
-date: 2022-08-13 TODO
+date: 2022-08-13
 layout: layouts/post.njk
 ---
 
