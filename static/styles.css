@@ -6,7 +6,7 @@
 /* Global */
 :root {
   /* spacing */
-  --measure: 60ch;
+  --measure: 100ch;
   --ratio: 1.5;
   --s-3: calc(var(--s-2) / var(--ratio));
   --s-2: calc(var(--s-1) / var(--ratio));
@@ -100,6 +100,7 @@ table {
 }
 .stack > * {
   margin: 0 var(--s0) var(--s0);
+  width: var(--measure);
 }
 .stack > * + * {
   margin-left: var(--s-3);
@@ -124,6 +125,10 @@ article > pre {
 
 p > img {
   max-width: 100%;
+}
+
+body > article {
+  max-width: var(--measure);
 }
 
 /* Utility */
