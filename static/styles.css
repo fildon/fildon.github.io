@@ -75,6 +75,11 @@ table {
   border-collapse: collapse;
 }
 
+summary {
+  border: dashed var(--hard);
+  padding: var(--s0);
+}
+
 /* Composition */
 .horizontal-spread {
   align-items: center;
