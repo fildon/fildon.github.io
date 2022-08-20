@@ -76,7 +76,7 @@ table {
 }
 
 article > details {
-  max-width: calc(100vw - 2 * var(--measure));
+  max-width: calc(100vw - 2 * var(--s0));
 }
 
 summary {
