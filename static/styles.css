@@ -75,6 +75,10 @@ table {
   border-collapse: collapse;
 }
 
+article > details {
+  max-width: calc(100vw - 2 * var(--s0));
+}
+
 summary {
   border: dashed var(--hard);
   padding: var(--s0);
