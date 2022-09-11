@@ -177,7 +177,7 @@ body > * {
   margin: 0 auto 0;
 }
 body > * + * {
-  margin-top: var(--s4);
+  margin-top: var(--s3);
 }
 
 article {
@@ -240,11 +240,9 @@ a:hover {
   width: min(70%, 200ch);
 }
 
-address > * {
+address > a {
   margin-left: var(--s0);
   margin-top: var(--s0);
-}
-address > a {
   border: var(--s-2) solid var(--accent);
   color: var(--accent);
   font-style: normal;
@@ -252,6 +250,7 @@ address > a {
   min-width: 10ch;
   padding: var(--s0);
   text-align: center;
+  flex-grow: 1;
 }
 address > a:focus,
 address > a:hover {
