@@ -1,6 +1,6 @@
 ---
 title: Default Options Pattern in TypeScript
-description: I convenient pattern for
+description: A simple approach to default options
 date: 2022-10-24
 layout: layouts/post.njk
 ---
