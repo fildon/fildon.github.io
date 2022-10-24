@@ -17,7 +17,7 @@ const format = (
   message: string,
   { color = "black", fontWeight = "medium" }: Partial<FormatOptions> = {}
 ) => {
-  // Implementation skipped
+  // Implementation not important for this blog post
 };
 ```
 
@@ -27,7 +27,7 @@ Imagine you have a function which can display some text formatted in a particula
 
 ```ts
 const format = (message: string, color: string) => {
-  // implementation not important for this blog post
+  //
 };
 
 format("My message", "red"); // Format the text to be displayed in red
@@ -108,7 +108,7 @@ const format = (
   message: string,
   { color = "black", fontWeight = "medium" }: Partial<FormatOptions> = {}
 ) => {
-  // Implementation skipped
+  //
 };
 ```
 
