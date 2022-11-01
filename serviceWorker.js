@@ -68,20 +68,24 @@ self.addEventListener("install", (installEvent) => {
 });
 
 /**
- * Stale While Validate strategy
+ * Network first strategy
  *
- * @see: https://developer.chrome.com/docs/workbox/caching-strategies-overview/#stale-while-revalidate
+ * @see: https://developer.chrome.com/docs/workbox/caching-strategies-overview/#network-first-falling-back-to-cache
  */
 self.addEventListener("fetch", (event) => {
   event.respondWith(
-    caches.open(CACHE_NAME).then((cache) =>
-      cache.match(event.request).then((cachedResponse) => {
-        const fetchedResponse = fetch(event.request).then((networkResponse) => {
-          cache.put(event.request, networkResponse.clone());
-          return networkResponse;
+    caches.open(CACHE_NAME).then((cache) => {
+      // Go to the network first
+      return fetch(event.request.url)
+        .then((fetchedResponse) => {
+          cache.put(event.request, fetchedResponse.clone());
+
+          return fetchedResponse;
+        })
+        .catch(() => {
+          // If the network is unavailable, get
+          return cache.match(event.request.url);
         });
-        return cachedResponse || fetchedResponse;
-      })
-    )
+    })
   );
 });
