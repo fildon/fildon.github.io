@@ -669,4 +669,14 @@
       </article>
     </section>
   </body>
+  <script>
+    if (
+      "serviceWorker" in
+      navigator
+    ) {
+      navigator.serviceWorker.register(
+        "./static/serviceWorker.js"
+      );
+    }
+  </script>
 </html>
