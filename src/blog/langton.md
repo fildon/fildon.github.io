@@ -9,7 +9,7 @@ layout: layouts/post.njk
 
 <img src="../../static/LangtonsAntAnimated.gif" alt="Animation of first 200 steps of Langton's ant" />
 
-The "ant" exists on an infinite grid. Each "step" it moves according to the following rules:
+The "Ant" exists on an infinite grid. Each cell of the grid can be either white or black, but initially all are white. Each "generation" the Ant moves according to the following rules:
 
 - Turn left if the current cell is white, else turn right
 - Change the colour of the current cell
@@ -37,9 +37,9 @@ We might have guessed that this chaos would proceed forever. But then at around 
 
 The Ant has begun to build a structure known as the highway. The highway is an infinitely repeating pattern. It takes the ant 104 steps for each iteration of the highway, and each iteration extends the pattern along a diagonal trajectory.
 
-So far I have discussed Langton's Ant as though it were a system taking no inputs. It starts from an infinite blank grid and will proceed deterministically the same way every time we run it. But what happens if we permit an input to modify the initial state the ant starts from?
+But we can change things. Instead of starting with a blank grid, we could set some cells to black at the begginning. If we then run the Ant it will generate different patterns. When people try this, they find that the highway _always seems to emerge sooner or later_. It is widely believed that the highway is inevitable, and yet this conjecture has never been proven nor disproven, despite many years of effort.
 
-If we start the ant from a different state and run it for sufficiently long, the highway will seem to _always emerge sooner or later_. But can we prove that it will always emerge? Apparently not! The conjecture that the highway will always emerge for any possible starting state has never been proven nor disproven, despite many years of effort. And yet for every input ever tried, the highway has emerged.
+Such a simple system to define, and yet we are unable to answer the question "Does the highway always appear, no matter the starting state?"
 
 ## Rice's Theorem
 
@@ -53,11 +53,9 @@ _Semantic_ properties are about the behaviour of the program, rather than _synta
 
 A property is _undecidable_ if it is not possible for there to exist an algorithm which correctly identifies the property for all possible inputs.
 
-Taken all together, we could reexpress the above as:
+A famous example of such a non-trivial semantic property is: "Does this program halt?". We know from the [Halting Problem](https://en.wikipedia.org/wiki/Halting_problem) that there can never exist a systematic way to identify whether any program halts or not.
 
-> For any non-trivial semantic property, we cannot create an algorithm which will always correctly identify the presence of that property.
-
-A famous example of this is the [Halting Problem](https://en.wikipedia.org/wiki/Halting_problem). Whether a program halts or not is a non-trivial semantic property of that program. There cannot exist a program to solve the Halting Problem.
+Once again, we find that such a simple question cannot be answered.
 
 ## Rationalism and Empiricism
 
