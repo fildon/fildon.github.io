@@ -23,21 +23,25 @@
   <h2>Langton&#39;s Ant and Unanswerable Questions</h2>
   <p><a href="https://en.wikipedia.org/wiki/Langton%27s_ant">Langton's Ant</a> is a <a href="https://en.wikipedia.org/wiki/Cellular_automaton">cellular automaton</a> first described by <a href="https://en.wikipedia.org/wiki/Christopher_Langton">Christopher Gale Langton</a> in 1986. It looks like this:</p>
 <img src="../../static/LangtonsAntAnimated.gif" alt="Animation of first 200 steps of Langton's ant" />
-<p>The &quot;ant&quot; exists on an infinite grid. Each &quot;step&quot; it moves according to the following rules:</p>
+<p>The &quot;Ant&quot; exists on an infinite grid. Each cell of the grid can be either white or black, but initially all are white. Each &quot;generation&quot; the Ant moves according to the following rules:</p>
 <ul>
 <li>Turn left if the current cell is white, else turn right</li>
 <li>Change the colour of the current cell</li>
 <li>Step forwards</li>
 </ul>
-<p>If we allow the ant to run for some time, it initially produces some very beautiful symmetries.</p>
-<p>TODO examples</p>
+<p>If we allow the ant to run for some time, it initially produces some very beautiful symmetries. For example:</p>
+<p>Generation 96 displays an &quot;S&quot;-like pattern:</p>
+<p><a href="https://fildon.me/langton/?generation=96"><img src="../../static/langton96.png" alt="Langton's Ant at generation 96" /></a></p>
+<p>Generation 184 looks like a pokeball about to open:</p>
+<p><a href="https://fildon.me/langton/?generation=184"><img src="../../static/langton184.png" alt="Langton's Ant at generation 184" /></a></p>
+<p>Generation 368 is like a four tentacled monster:</p>
+<p><a href="https://fildon.me/langton/?generation=368"><img src="../../static/langton368.png" alt="Langton's Ant at generation 368" /></a></p>
 <p>But then it produces chaotic patterns for many thousands of steps.</p>
-<p>TODO examples?</p>
-<p>We might have guessed that this chaos would proceed forever. But then at around 10,000 steps, something magical emerges.</p>
-<img src="../../static/LangtonsAnt.png" alt="A repeating pattern emerges from a chaotic mess." />
-<p>This structure is called the highway. The highway is an infinitely repeating pattern. It takes the ant 104 steps for each iteration of the highway, and each iteration extends the pattern along a diagonal trajectory.</p>
-<p>So far I have discussed Langton's Ant as though it were a system taking no inputs. It starts from an infinite blank grid and will proceed deterministically the same way every time we run it. But what happens if we permit an input to modify the initial state the ant starts from?</p>
-<p>If we start the ant from a different state and run it for sufficiently long, the highway will seem to <em>always emerge sooner or later</em>. But can we prove that it will always emerge? Apparently not! The conjecture that the highway will always emerge for any possible starting state has never been proven nor disproven, despite many years of effort. And yet for every input ever tried, the highway has emerged.</p>
+<p>We might have guessed that this chaos would proceed forever. But then at around 10,000 steps, something magical emerges:</p>
+<p><a href="https://fildon.me/langton/?generation=10500"><img src="../../static/langton10500.png" alt="Langton's Ant at generation 10500" /></a></p>
+<p>The Ant has begun to build a structure known as the highway. The highway is an infinitely repeating pattern. It takes the ant 104 steps for each iteration of the highway, and each iteration extends the pattern along a diagonal trajectory.</p>
+<p>But we can change things. Instead of starting with a blank grid, we could set some cells to black at the begginning. If we then run the Ant it will generate different patterns. When people try this, they find that the highway <em>always seems to emerge sooner or later</em>. It is widely believed that the highway is inevitable, and yet this conjecture has never been proven nor disproven, despite many years of effort.</p>
+<p>Such a simple system to define, and yet we are unable to answer the question &quot;Does the highway always appear, no matter the starting state?&quot;</p>
 <h2>Rice's Theorem</h2>
 <p><a href="https://en.wikipedia.org/wiki/Henry_Gordon_Rice">Henry Gordon Rice</a> proved the following theorem in 1951:</p>
 <blockquote>
@@ -46,11 +50,8 @@
 <p>A <em>trivial</em> property of a program is one which is either always true or always false for every possible program.</p>
 <p><em>Semantic</em> properties are about the behaviour of the program, rather than <em>syntactic</em> properties which are about the source code.</p>
 <p>A property is <em>undecidable</em> if it is not possible for there to exist an algorithm which correctly identifies the property for all possible inputs.</p>
-<p>Taken all together, we could reexpress the above as:</p>
-<blockquote>
-<p>For any non-trivial semantic property, we cannot create an algorithm which will always correctly identify the presence of that property.</p>
-</blockquote>
-<p>A famous example of this is the <a href="https://en.wikipedia.org/wiki/Halting_problem">Halting Problem</a>. Whether a program halts or not is a non-trivial semantic property of that program. There cannot exist a program to solve the Halting Problem.</p>
+<p>A famous example of such a non-trivial semantic property is: &quot;Does this program halt?&quot;. We know from the <a href="https://en.wikipedia.org/wiki/Halting_problem">Halting Problem</a> that there can never exist a systematic way to identify whether any program halts or not.</p>
+<p>Once again, we find that such a simple question cannot be answered.</p>
 <h2>Rationalism and Empiricism</h2>
 <p><em>Rationalism</em> and <em>Empiricism</em> are two different philosophical stances on how best to pursue knowledge.</p>
 <ul>
