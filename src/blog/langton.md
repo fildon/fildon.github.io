@@ -15,19 +15,27 @@ The "ant" exists on an infinite grid. Each "step" it moves according to the foll
 - Change the colour of the current cell
 - Step forwards
 
-If we allow the ant to run for some time, it initially produces some very beautiful symmetries.
+If we allow the ant to run for some time, it initially produces some very beautiful symmetries. For example:
 
-TODO examples
+Generation 96 displays an "S"-like pattern:
+
+<a href="https://fildon.me/langton/?generation=96"><img src="../../static/langton96.png" alt="Langton's Ant at generation 96" /></a>
+
+Generation 184 looks like a pokeball about to open:
+
+<a href="https://fildon.me/langton/?generation=184"><img src="../../static/langton184.png" alt="Langton's Ant at generation 184" /></a>
+
+Generation 368 is like a four tentacled monster:
+
+<a href="https://fildon.me/langton/?generation=368"><img src="../../static/langton368.png" alt="Langton's Ant at generation 368" /></a>
 
 But then it produces chaotic patterns for many thousands of steps.
 
-TODO examples?
+We might have guessed that this chaos would proceed forever. But then at around 10,000 steps, something magical emerges:
 
-We might have guessed that this chaos would proceed forever. But then at around 10,000 steps, something magical emerges.
+<a href="https://fildon.me/langton/?generation=10500"><img src="../../static/langton10500.png" alt="Langton's Ant at generation 10500" /></a>
 
-<img src="../../static/LangtonsAnt.png" alt="A repeating pattern emerges from a chaotic mess." />
-
-This structure is called the highway. The highway is an infinitely repeating pattern. It takes the ant 104 steps for each iteration of the highway, and each iteration extends the pattern along a diagonal trajectory.
+The Ant has begun to build a structure known as the highway. The highway is an infinitely repeating pattern. It takes the ant 104 steps for each iteration of the highway, and each iteration extends the pattern along a diagonal trajectory.
 
 So far I have discussed Langton's Ant as though it were a system taking no inputs. It starts from an infinite blank grid and will proceed deterministically the same way every time we run it. But what happens if we permit an input to modify the initial state the ant starts from?
 
