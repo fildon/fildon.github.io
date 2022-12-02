@@ -22,26 +22,26 @@
     <article>
   <h2>ESLint vs Prettier.</h2>
   <p>TL;DR: <code>ESLint</code> should identify <em>semantic</em> errors <em>which require programmer intervention to fix</em>, while <code>prettier</code> should identify <em>text formatting errors</em> which do not require programmer intervention to fix.</p>
-<h2>The problem with Static Analysis</h2>
+<h2 id="the-problem-with-static-analysis" tabindex="-1"><a class="direct-link" href="#the-problem-with-static-analysis" aria-hidden="true">#</a> The problem with Static Analysis</h2>
 <p>So there's this guy &quot;Rice&quot; and he said, &quot;We literally can't know anything interesting about any program&quot; <a href="https://en.wikipedia.org/wiki/Rice%27s_theorem">Rice's theorem</a>. Well dang.</p>
 <p>That's a really big problem since we really want to know <em>is this code any good?</em></p>
 <p>Rice's theorem doesn't completely prevent static analysis, but it does tell us that <em>literally every attempt at static analysis</em> will be flawed in some way. This is a fundamental problem with computation, not <code>ESLint</code> or <code>Prettier</code> in particular.</p>
 <p>So I really want everyone reading this to understand <em>automated tools will never be able to fix your code</em>.</p>
 <p>But automated tools do still provide value.</p>
-<h2>The Good News</h2>
+<h2 id="the-good-news" tabindex="-1"><a class="direct-link" href="#the-good-news" aria-hidden="true">#</a> The Good News</h2>
 <p>Rice's Theorem makes a distinction between <em>syntatic</em> and <em>semantic</em> properties of programs. Roughly speaking <em>syntactic</em> is &quot;how it is written&quot;, whereas <em>semantic</em> is &quot;how it behaves&quot;.</p>
 <p>Most syntactic problems can be trivially identified and fixed. The most well-known of these are things like indentation and linebreaks. These things do not affect the <em>behavior</em> of the program, but do create a consistent <em>syntactic</em> standard for programmers.</p>
 <p>It's the <em>semantic</em> properties that are the tricky ones.</p>
-<h2>A Clear Separation</h2>
+<h2 id="a-clear-separation" tabindex="-1"><a class="direct-link" href="#a-clear-separation" aria-hidden="true">#</a> A Clear Separation</h2>
 <p>We as fleshy non-automated humans therefore should be very happy with anything that can automate <em>syntactic</em> standards for us.</p>
 <p>On the other hand, any automated tool intended to address <em>semantic</em> problems should be treated with suspicion. That is not to say we shouldn't use such tools but Rice's Theorem tells us that automation will never find every problem and even for the problems it does finds <em>it will be wrong some of the time</em>. So as far as I'm concerned human participation is required in the resolution of every <em>semantic</em> problem.</p>
-<h2>The Past</h2>
+<h2 id="the-past" tabindex="-1"><a class="direct-link" href="#the-past" aria-hidden="true">#</a> The Past</h2>
 <p>It used to be that <code>ESLint</code> was the go-to tool for both <em>syntactic</em> and <em>semantic</em> problems. And in many codebases it still is. But with the rise of <code>Prettier</code>, more and more of the <em>syntactic</em> stuff gets handled by <code>Prettier</code>. <em>I strongly feel that this is a useful separation of responsibilities</em>.</p>
-<h2>The Weakness in my position</h2>
+<h2 id="the-weakness-in-my-position" tabindex="-1"><a class="direct-link" href="#the-weakness-in-my-position" aria-hidden="true">#</a> The Weakness in my position</h2>
 <p>Every system is legacy. <code>ESLint</code> did not design their API with <code>Prettier</code> in mind. But they <em>did</em> design their API with a very customizable plugin system in mind and included a 'fix' option that plugins could implement to provide automated corrections to problems. But as discussed above, I believe such automated fixes should only be permitted for <em>syntactic</em> problems. I have taken the position that <em>syntactic</em> problems should be the sole responsibility of <code>Prettier</code> to fix, but there certainly exist many <code>ESLint</code> plugins with 'fixable' rules which <code>Prettier</code> does not handle.</p>
 <p><em>I'm ok with that</em>.</p>
 <p>The weakness of my position is that programmers might need to check more problems than strictly theoretically necessary. But I would much rather have that situation than the alternative.</p>
-<h2>A Closing Thought</h2>
+<h2 id="a-closing-thought" tabindex="-1"><a class="direct-link" href="#a-closing-thought" aria-hidden="true">#</a> A Closing Thought</h2>
 <p><em>If everyone swept leaves it would be easy to keep the gardens clean.</em></p>
 <p>I think as tech nerds we all get very excited about being flashy and coming up with grand schemes to solve all our problems. But there is a quiet humility to faithfully carrying out even the tedious parts of our job. It is tempting to believe that the next piece of code we write will be the one that finally solves all our problems. Unfortunately, there will always be leaves falling on the grass. The sooner we accept that, the sooner we can stop being continually disappointed by automated tools. The best codebases I have seen, have been maintained by teams who don't try to show off but care deeply about every line of code. <em>If everyone swept leaves...</em> The job is never done, but thankfully I enjoy it 😄</p>
 <p>The only problem is I need everyone to enjoy sweeping leaves as much as I do.</p>

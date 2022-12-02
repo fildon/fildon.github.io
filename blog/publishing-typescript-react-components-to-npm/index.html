@@ -28,7 +28,7 @@
 <li>publish the <code>dist</code> directory</li>
 </ul>
 <p>If you get stuck or lost at any point during this guide, you can check out my demo repo here: <a href="https://github.com/fildon/typescript-components-by-rupert">TypeScript Components by Rupert</a></p>
-<h2>Project setup</h2>
+<h2 id="project-setup" tabindex="-1"><a class="direct-link" href="#project-setup" aria-hidden="true">#</a> Project setup</h2>
 <blockquote>
 <p>If you already have a project that you just want to publish, feel free to skip this section, and scroll down to the next heading.</p>
 </blockquote>
@@ -58,7 +58,7 @@
 <p>Lets also create an <code>index.ts</code>:</p>
 <pre class="language-ts"><code class="language-ts"><span class="token keyword">export</span> <span class="token punctuation">{</span> Counter <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"./counter"</span><span class="token punctuation">;</span></code></pre>
 <p>This might not seem important right now when we only have one component, but if we want this repo to grow, having an index file acts as a kind of point of entry for all our exported components. It also streamlines how our components are imported by projects that depend on this repo, but we'll see that later.</p>
-<h2>Build process</h2>
+<h2 id="build-process" tabindex="-1"><a class="direct-link" href="#build-process" aria-hidden="true">#</a> Build process</h2>
 <p>At this point your file structure should look like this:</p>
 <pre class="language-md"><code class="language-md">typescript-components-by-rupert/<br>├─ node_modules/<br>├─ src/<br>│  ├─ counter.tsx<br>│  └─ index.ts<br>├─ .gitignore<br>├─ package-lock.json<br>├─ package.json<br>└─ README.md</code></pre>
 <p>Since we are working with TypeScript we need to use <code>tsc</code> to compile our code. To do that we'll create a <code>tsconfig.json</code> at the root of the project:</p>
@@ -81,7 +81,7 @@
 <pre class="language-shell"><code class="language-shell"><span class="token function">npm</span> run build</code></pre>
 <p>This will create a 'dist' directory, with all the build output in it. This is another thing we'll want git to ignore. So go ahead and add another line to the <code>.gitignore</code> file, so that it now contains:</p>
 <pre class="language-shell"><code class="language-shell">node_modules<br>dist</code></pre>
-<h2>Publishing</h2>
+<h2 id="publishing" tabindex="-1"><a class="direct-link" href="#publishing" aria-hidden="true">#</a> Publishing</h2>
 <p>At this point your file structure should look like this:</p>
 <pre class="language-md"><code class="language-md">typescript-components-by-rupert/<br>├─ dist/<br>│  ├─ counter.d.ts<br>│  ├─ counter.js<br>│  ├─ index.d.ts<br>│  ├─ index.js<br>│  ├─ package.json<br>│  └─ README.md<br>├─ node_modules/<br>├─ src/<br>│  ├─ counter.tsx<br>│  └─ index.ts<br>├─ .gitignore<br>├─ tsconfig.json<br>├─ package-lock.json<br>├─ package.json<br>└─ README.md</code></pre>
 <p>We now have some lovely source code and a painless build process. But we haven't published anything yet!</p>
@@ -93,14 +93,14 @@
 <p>Now we are ready to publish. This is your last chance to double-check that everything is the way you want it. <em>Once a version is published it can never be changed</em>. When you are ready:</p>
 <pre class="language-shell"><code class="language-shell"><span class="token function">npm</span> publish ./dist</code></pre>
 <p>🎉 Hooray, you did it! 🎊</p>
-<h2>Checking it works</h2>
+<h2 id="checking-it-works" tabindex="-1"><a class="direct-link" href="#checking-it-works" aria-hidden="true">#</a> Checking it works</h2>
 <p>Ok, but did it work? 😅</p>
 <p>We can check quickly by going to the npm page for your package. For me that is at <a href="https://www.npmjs.com/package/typescript-components-by-rupert">https://www.npmjs.com/package/typescript-components-by-rupert</a>. Just change the last part of the URL to your package name to see if it is there already.</p>
 <p>The ultimate test though is importing your package into another repository. If you have one available you should be able to run:</p>
 <pre class="language-shell"><code class="language-shell"><span class="token function">npm</span> <span class="token function">add</span> typescript-components-by-rupert</code></pre>
 <p>And then in any JS or TS file import your component:</p>
 <pre class="language-ts"><code class="language-ts"><span class="token keyword">import</span> <span class="token punctuation">{</span> Counter <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"typescript-components-by-rupert"</span><span class="token punctuation">;</span></code></pre>
-<h2>The Future</h2>
+<h2 id="the-future" tabindex="-1"><a class="direct-link" href="#the-future" aria-hidden="true">#</a> The Future</h2>
 <p>This is just the start. Now that you have a build and publishing process, you can go ahead and add all sorts of new components and features to your library. Each time you want to publish your new work, you need to do so as a new version. The current version is listed in your <code>package.json</code>. Ideally, you should stick to <a href="https://semver.org/">semantic versioning</a>, although not everyone does. TypeScript for example doesn't use semantic versioning!</p>
 <p>If you are looking for inspiration on what to add next, I highly recommend each and all of the following:</p>
 <ul>
@@ -109,7 +109,7 @@
 <li><a href="https://eslint.org/">ESLint</a> for linting</li>
 <li><a href="https://storybook.js.org/">Storybook</a> for running components in isolation</li>
 </ul>
-<h2>Summary</h2>
+<h2 id="summary" tabindex="-1"><a class="direct-link" href="#summary" aria-hidden="true">#</a> Summary</h2>
 <ul>
 <li>compile to a <code>dist</code> directory</li>
 <li>copy over <code>package.json</code> and <code>README.md</code> files to the <code>dist</code> directory</li>

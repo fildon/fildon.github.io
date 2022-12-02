@@ -5,318 +5,295 @@
 
 /* Global */
 :root {
-  /* spacing */
-  --measure: 100ch;
-  --ratio: 1.5;
-  --s-3: calc(
-    var(--s-2) / var(--ratio)
-  );
-  --s-2: calc(
-    var(--s-1) / var(--ratio)
-  );
-  --s-1: calc(
-    var(--s0) / var(--ratio)
-  );
-  --s0: 1rem;
-  --s1: calc(
-    var(--s0) * var(--ratio)
-  );
-  --s2: calc(
-    var(--s1) * var(--ratio)
-  );
-  --s3: calc(
-    var(--s2) * var(--ratio)
-  );
-  --s4: calc(
-    var(--s3) * var(--ratio)
-  );
+	/* spacing */
+	--measure: 100ch;
+	--ratio: 1.5;
+	--s-3: calc(var(--s-2) / var(--ratio));
+	--s-2: calc(var(--s-1) / var(--ratio));
+	--s-1: calc(var(--s0) / var(--ratio));
+	--s0: 1rem;
+	--s1: calc(var(--s0) * var(--ratio));
+	--s2: calc(var(--s1) * var(--ratio));
+	--s3: calc(var(--s2) * var(--ratio));
+	--s4: calc(var(--s3) * var(--ratio));
 
-  --accent: #e92438;
-  --soft: #f8efde;
-  --hard: #231f1e;
+	--accent: #e92438;
+	--soft: #f8efde;
+	--hard: #231f1e;
 }
 
 * {
-  box-sizing: border-box;
-  max-width: var(--measure);
-  padding: 0;
+	box-sizing: border-box;
+	max-width: var(--measure);
+	padding: 0;
 }
 html,
 body,
 header {
-  line-height: var(--s1);
-  margin: 0;
-  max-width: none;
-  padding: 0;
+	line-height: var(--s1);
+	margin: 0;
+	max-width: none;
+	padding: 0;
 }
 
 body {
-  background-color: var(
-    --soft
-  );
-  color: var(--hard);
-  font-family: Arial,
-    Helvetica, sans-serif;
-  font-size: 100%;
-  margin: var(--s3) auto;
+	background-color: var(--soft);
+	color: var(--hard);
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 100%;
+	margin: var(--s3) auto;
 }
 
 h1 {
-  font-size: var(--s3);
-  line-height: var(--s3);
-  text-align: center;
+	font-size: var(--s3);
+	line-height: var(--s3);
+	text-align: center;
 }
 
 h2 {
-  font-size: var(--s2);
-  line-height: var(--s2);
-  text-decoration: underline;
+	font-size: var(--s2);
+	line-height: var(--s2);
+	text-decoration: underline;
 }
 
 h3 {
-  font-size: var(--s1);
-  margin: var(--s0) auto
-    var(--s0);
+	font-size: var(--s1);
+	margin: var(--s0) auto var(--s0);
 }
 
 a {
-  color: var(--accent);
+	color: var(--accent);
 }
 
 p {
-  text-align: justify;
+	text-align: justify;
 }
 
 table {
-  width: 100%;
-  border-spacing: 0;
-  border-collapse: collapse;
+	width: 100%;
+	border-spacing: 0;
+	border-collapse: collapse;
 }
 
 article > details {
-  max-width: calc(
-    100vw - 2 * var(--s0)
-  );
+	max-width: calc(100vw - 2 * var(--s0));
 }
 
 summary {
-  border: dashed var(--hard);
-  padding: var(--s0);
+	border: dashed var(--hard);
+	padding: var(--s0);
 }
 
 code {
-  color: var(--soft);
-  background-color: var(
-    --hard
-  );
-  padding: var(--s-3);
-  border-radius: var(--s-3);
+	color: var(--soft);
+	background-color: var(--hard);
+	padding: var(--s-3);
+	border-radius: var(--s-3);
 }
 
 blockquote > p {
-  position: relative;
+	position: relative;
 }
 
 blockquote > p:before {
-  background: var(--hard);
-  left: calc(-1 * var(--s0));
-  width: var(--s-3);
-  height: 100%;
-  position: absolute;
-  content: "";
+	background: var(--hard);
+	left: calc(-1 * var(--s0));
+	width: var(--s-3);
+	height: 100%;
+	position: absolute;
+	content: "";
 }
 
 /* Composition */
 .horizontal-spread {
-  align-items: center;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-  transform: rotate(-5deg);
+	align-items: center;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: flex-start;
+	transform: rotate(-5deg);
 }
 .horizontal-spread > * {
-  margin: 0 auto 0;
+	margin: 0 auto 0;
 }
 .horizontal-spread > * + * {
-  margin-left: var(--s0);
+	margin-left: var(--s0);
 }
 
 .stack {
-  display: flex;
-  flex: 1 1 0;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
-  max-width: min(
-    95vw,
-    calc(var(--measure) * 5)
-  );
+	display: flex;
+	flex: 1 1 0;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: center;
+	max-width: min(95vw, calc(var(--measure) * 5));
 }
 .stack > * {
-  margin: 0 var(--s0)
-    var(--s0);
-  width: var(--measure);
+	margin: 0 var(--s0) var(--s0);
+	width: var(--measure);
 }
 .stack > * + * {
-  margin-left: var(--s-3);
+	margin-left: var(--s-3);
 }
 
 .col-stack {
-  display: flex;
-  flex: 1 1 0;
-  flex-direction: column;
-  align-items: center;
-  max-width: 100%;
+	display: flex;
+	flex: 1 1 0;
+	flex-direction: column;
+	align-items: center;
+	max-width: 100%;
 }
 
 td {
-  border-top: 1px solid
-    var(--hard);
-  margin: var(--s-1);
+	border-top: 1px solid var(--hard);
+	margin: var(--s-1);
 }
 
 article > pre {
-  width: 100%;
+	width: 100%;
 }
 
 p > img {
-  max-width: 100%;
+	max-width: 100%;
 }
 
 body > article {
-  max-width: var(--measure);
+	max-width: var(--measure);
 }
 
 ul,
 ol {
-  margin-left: var(--s0);
+	margin-left: var(--s0);
 }
 
 /* Utility */
 .rounded {
-  border-radius: 50%;
+	border-radius: 50%;
 }
 
 .wonky {
-  transition: transform 0.5s;
+	transition: transform 0.5s;
 }
 .wonky:hover {
-  transform: rotate(5deg);
+	transform: rotate(5deg);
 }
 
 .full-width {
-  min-width: 100%;
+	min-width: 100%;
 }
 
 .hash-link {
-  color: var(--accent);
-  opacity: 0;
-  text-decoration: unset;
-  transition: opacity 0.2s;
+	color: var(--accent);
+	opacity: 0;
+	text-decoration: unset;
+	transition: opacity 0.2s;
 }
 *:hover > .hash-link {
-  opacity: 1;
+	opacity: 1;
 }
 
 /* Block */
 body {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  overflow-x: hidden;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	overflow-x: hidden;
 }
 body > * {
-  margin: 0 auto 0;
+	margin: 0 auto 0;
 }
 body > * + * {
-  margin-top: var(--s3);
+	margin-top: var(--s3);
 }
 
 article {
-  padding: var(--s0);
-  position: relative;
-  max-width: 100%;
+	padding: var(--s0);
+	position: relative;
+	max-width: 100%;
 }
 article:after {
-  background: var(--hard);
-  bottom: 0;
-  content: "";
-  height: var(--s-3);
-  position: absolute;
-  width: 80%;
+	background: var(--hard);
+	bottom: 0;
+	content: "";
+	height: var(--s-3);
+	position: absolute;
+	width: 80%;
 }
 
 a {
-  font-weight: bold;
+	font-weight: bold;
 }
 a:hover {
-  color: var(--hard);
-  transform: scale(1.05);
+	color: var(--hard);
+	transform: scale(1.05);
+}
+a.direct-link {
+	color: var(--hard);
+}
+a.direct-link:hover {
+	color: var(--accent);
+	transform: scale(1.05);
 }
 
 .banner {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin-top: var(--s1);
-  padding: var(--s0);
-  position: relative;
-  transform: rotate(-5deg);
-  max-width: var(--measure);
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	margin-top: var(--s1);
+	padding: var(--s0);
+	position: relative;
+	transform: rotate(-5deg);
+	max-width: var(--measure);
 }
 .banner > * {
-  display: flex;
-  flex-direction: row;
+	display: flex;
+	flex-direction: row;
 }
 .banner h2 {
-  writing-mode: vertical-rl;
+	writing-mode: vertical-rl;
 }
 .banner > address {
-  flex-wrap: wrap;
+	flex-wrap: wrap;
 }
 .banner:before {
-  background: var(--hard);
-  content: "";
-  height: var(--s-3);
-  position: absolute;
-  top: 0;
-  width: 80%;
+	background: var(--hard);
+	content: "";
+	height: var(--s-3);
+	position: absolute;
+	top: 0;
+	width: 80%;
 }
 .banner:after {
-  background: var(--accent);
-  bottom: calc(
-    -1 * var(--s0)
-  );
-  content: "";
-  height: var(--s0);
-  position: absolute;
-  right: 10%;
-  width: min(70%, 200ch);
+	background: var(--accent);
+	bottom: calc(-1 * var(--s0));
+	content: "";
+	height: var(--s0);
+	position: absolute;
+	right: 10%;
+	width: min(70%, 200ch);
 }
 
 address > a {
-  margin-left: var(--s0);
-  margin-top: var(--s0);
-  border: var(--s-2) solid
-    var(--accent);
-  color: var(--accent);
-  font-style: normal;
-  font-weight: bold;
-  min-width: 10ch;
-  padding: var(--s0);
-  text-align: center;
-  flex-grow: 1;
+	margin-left: var(--s0);
+	margin-top: var(--s0);
+	border: var(--s-2) solid var(--accent);
+	color: var(--accent);
+	font-style: normal;
+	font-weight: bold;
+	min-width: 10ch;
+	padding: var(--s0);
+	text-align: center;
+	flex-grow: 1;
 }
 address > a:focus,
 address > a:hover {
-  border-color: var(--hard);
-  color: var(--hard);
+	border-color: var(--hard);
+	color: var(--hard);
 }
 
 /* Exception */
 .stack > h2 {
-  margin-bottom: var(--s0);
-  max-width: 100vw;
-  text-align: center;
-  width: 100vw;
+	margin-bottom: var(--s0);
+	max-width: 100vw;
+	text-align: center;
+	width: 100vw;
 }
