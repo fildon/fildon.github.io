@@ -42,7 +42,7 @@ To parse our input data into this model, I use a reducer. On each line:
 [currentInventory + parseInt(line), ...otherInventories];
 ```
 
-Once we have the data is this format, both parts are trivial.
+Once we have the data in this format, both parts are trivial.
 
 Part 1 wants the largest single value, so I use another reducer to scan the array and hold onto the largest value as it goes.
 
