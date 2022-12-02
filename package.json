@@ -13,6 +13,8 @@
     "@11ty/eleventy-plugin-syntaxhighlight": "^4.1.0",
     "@mermaid-js/mermaid-cli": "^9.1.4",
     "luxon": "^2.4.0",
+    "markdown-it": "^13.0.1",
+    "markdown-it-anchor": "^8.6.5",
     "shx": "^0.3.4"
   }
 }
