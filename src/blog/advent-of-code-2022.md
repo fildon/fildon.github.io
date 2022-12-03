@@ -160,3 +160,71 @@ const decryptRound = (line: string): Round => {
 [Full Day 02 Source Code](https://github.com/fildon/AdventOfCode2022/blob/main/src/02-rock-paper-scissors/solutions.ts)
 
 </details>
+
+## Day 03: Rucksack Reorganization
+
+[Day 03 Puzzle Text](https://adventofcode.com/2022/day/3)
+
+The elves have loaded up their rucksacks for the journey ahead, but they've made a mistake! Your task is to find the mistakes.
+
+<details>
+  <summary><strong>[Click to expand]</strong> my approach and solution</summary>
+
+In part one, we are looking for the letter that appears in the first and last half of each input line. To assist with this I implemented a general purpose duplicate finder. Finding duplicates is equivalent to repeated set intersection.
+
+I implement this by mapping all the containers to sets and then using the intersect function to reduce them all to one set. I then map the result back into an array for convenience.
+
+```ts
+/**
+ * Given sets A and B, return the set of their intersection
+ */
+const intersect = <Element>(a: Set<Element>, b: Set<Element>) =>
+	new Set([...a.values()].filter((value) => b.has(value)));
+
+/**
+ * Find all elements that appear in all provided containers
+ */
+const findDuplicates = <Element>(containers: Element[][]) =>
+	Array.from(
+		containers.map((container) => new Set(container)).reduce(intersect)
+	);
+```
+
+Other than that we need some boiler plate code to parse the input into "Containers" (arrays of characters) and scoring the duplicates we find according to the elves' system.
+
+Once put together the part 1 solution is a simple pipeline:
+
+```ts
+export const solvePart1 = (filePath: string) =>
+	getInputStrings(filePath)
+		.map(toContainers)
+		.map(getRucksackPriority)
+		.reduce((a, b) => a + b);
+```
+
+For part two we are now looking for duplicates in each group of three input lines. So the only new code we will need is a way to group in batches of three. A reduce will come in handy here. The trick here is treating the head of our accumulator as our "working group" which we push containers into. Once the "working group" has three containers, we start a new group at the head of the accumulator.
+
+```ts
+/**
+ * Group containers in batches of three
+ */
+const group = ([currentGroup, ...otherGroups]: Group[], rucksack: Container) =>
+	currentGroup.length < 3
+		? [[rucksack, ...currentGroup], ...otherGroups]
+		: [[rucksack], currentGroup, ...otherGroups];
+```
+
+Once again, our solution is now a simple pipeline:
+
+```ts
+export const solvePart2 = (filePath: string) =>
+	getInputStrings(filePath)
+		.map(toContainers)
+		.reduce(group, [[]]) // Second arg is the initially empty group
+		.map(getGroupPriority)
+		.reduce((a, b) => a + b);
+```
+
+[Full Day 03 Source Code](https://github.com/fildon/AdventOfCode2022/blob/main/src/03-rucksack-reorganization/solutions.ts)
+
+</details>
