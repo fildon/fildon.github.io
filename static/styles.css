@@ -90,6 +90,10 @@ code {
 	padding: var(--s-3);
 	border-radius: var(--s-3);
 }
+code[class*="language-"] {
+	/* This is a little fix to prevent padding affecting Prism code blocks */
+	padding: 0;
+}
 
 blockquote > p {
 	position: relative;
