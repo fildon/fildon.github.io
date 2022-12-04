@@ -1,6 +1,6 @@
 ---
 title: Advent of Code 2022
-description: My guide to solutions.
+description: A friendly guide to AoC puzzles.
 date: 2022-12-01
 layout: layouts/post.njk
 ---
@@ -24,7 +24,7 @@ The elves want to assess how much food they are carrying. To figure this out we 
 <details>
   <summary><strong>[Click to expand]</strong> my approach and solution</summary>
 
-So generally we want to add up numbers, but start a new count each time we encounter a blank line.
+So generally I want to add up numbers, but start a new count each time I encounter a blank line.
 
 I chose to model this as an array of numbers, each representing the total calories held by one elf. Rather than append new entries to the end, I push them on to the front since this means the "current" inventory is always the one at the front. This way I avoid needing to fiddle around with array lengths to get the last element in an arary.
 
@@ -42,7 +42,7 @@ To parse our input data into this model, I use a reducer. On each line:
 [currentInventory + parseInt(line), ...otherInventories];
 ```
 
-Once we have the data in this format, both parts are trivial.
+Once I have the data in this format, both parts are trivial.
 
 Part 1 wants the largest single value, so I use another reducer to scan the array and hold onto the largest value as it goes.
 
@@ -226,5 +226,91 @@ export const solvePart2 = (filePath: string) =>
 ```
 
 [Full Day 03 Source Code](https://github.com/fildon/AdventOfCode2022/blob/main/src/03-rucksack-reorganization/solutions.ts)
+
+</details>
+
+## Day 04: Camp Cleanup
+
+[Day 04 Puzzle Text](https://adventofcode.com/2022/day/4)
+
+The elves are cleaning up camp by assigning sections of the camp to clean. However some of the assignments overlap with others. Our task is to find these overlaps so they can avoid duplicating work.
+
+<details>
+  <summary><strong>[Click to expand]</strong> my approach and solution</summary>
+
+There's very little logic to do in this puzzle. Most of the work is parsing the input. I chose to parse each line into a pair of pair of numbers. Here's my data type:
+
+```ts
+type Range = [number, number];
+type RangePair = [Range, Range];
+```
+
+To parse each line we first split by `,` and then by `-`. Since splitting a string returns an array, I also created a type predicate to narrow from an array to a 2-tuple:
+
+```ts
+/**
+ * A little utility to narrow from an array to a tuple of length 2
+ */
+const isPair = <T>(elements: T[]): elements is [T, T] => elements.length === 2;
+```
+
+This means I now get a little validation on each parsing step:
+
+```ts
+/**
+ * Parse strings of the form "3-42" to Range
+ */
+const toRange = (instruction: string): Range => {
+	const bounds = instruction.split("-").map((str) => parseInt(str));
+	if (isPair(bounds)) return bounds;
+	throw new Error(`Unrecognised instruction: ${instruction}`);
+};
+
+/**
+ * Parse strings of the form "1-12,3-42" to RangePair
+ */
+const toRangePair = (line: string): RangePair => {
+	const nums = line.split(",").map(toRange);
+	if (isPair(nums)) return nums;
+	throw new Error(`Unrecognised line: ${line}`);
+};
+```
+
+The only thing remaining is to identify which pairs overlap. This can be done with a oneliner:
+
+```ts
+/**
+ * Returns true if either range fully overlaps the other
+ */
+const fullyOverlaps = ([[aStart, aEnd], [bStart, bEnd]]: RangePair): boolean =>
+	(aStart <= bStart && aEnd >= bEnd) || (bStart <= aStart && bEnd >= aEnd);
+```
+
+The left half of that expression handles the case in which `a` fully overlaps `b`, and the right half handles the case in which `b` fully overlaps `a`.
+
+We now assemble the solution to part 1 as a pipeline:
+
+```ts
+export const solvePart1 = (filePath: string) =>
+	getInputStrings(filePath).map(toRangePair).filter(fullyOverlaps).length;
+```
+
+Part 2 changes only one thing. We are now asked to count any kind of overlap. This requires only a slight modification to our overlapping check. Here's all I had to add for part 2:
+
+```ts
+/**
+ * Returns true if there is any overlap at all between the two ranges
+ */
+const partiallyOverlaps = ([
+	[aStart, aEnd],
+	[bStart, bEnd],
+]: RangePair): boolean =>
+	(aStart <= bEnd && aEnd >= bStart) || (bStart <= aEnd && bEnd >= aStart);
+
+export const solvePart2 = (filePath: string) =>
+	getInputStrings(filePath).map(toRangePair).filter(partiallyOverlaps).length;
+```
+
+[Full Day 04 Source Code](https://github.com/fildon/AdventOfCode2022/blob/main/src/04-camp-cleanup/solutions.ts)
 
 </details>
