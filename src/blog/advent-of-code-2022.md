@@ -314,3 +314,124 @@ export const solvePart2 = (filePath: string) =>
 [Full Day 04 Source Code](https://github.com/fildon/AdventOfCode2022/blob/main/src/04-camp-cleanup/solutions.ts)
 
 </details>
+
+## Day 05: Supply Stacks
+
+[Day 05 Puzzle Text](https://adventofcode.com/2022/day/5)
+
+The elves are unloading shipping crates with a giant cargo crane. Given the current stacks of crates and a list of crane instructions, our task is to find the end state of the stacks.
+
+<details>
+  <summary><strong>[Click to expand]</strong> my approach and solution</summary>
+
+This task has three interesting stages:
+
+- Decide on an appropriate data structure
+- Parse the input into our data structure
+- Execute the crane instructions
+
+Our chosen data structure will need a way to represent a collection of stacks, where each stack is itself a collection of crates. Crates are distinguished only by a single letter. An array of arrays of strings will fit the requirements nicely.
+
+We'll also need to represent all the crane instructions. The instructions are a list, where each item has three interesting pieces of information: the quantity, the source stack and the target stack. To me, this screams "array of objects".
+
+Put together, my data structure is:
+
+```ts
+type Stacks = Array<Array<string>>;
+type Instruction = {
+	qty: number;
+	from: number;
+	to: number;
+};
+type CraneJob = { stacks: Stacks; instructions: Instruction[] };
+```
+
+The next stage of this task is parsing our input into this structure. _This was very tedious and error prone_. There are lots of potential foot guns here.
+
+- The stacks are "columns" in the input but we would much rather they were in "rows".
+- There are many symbols we don't want.
+- The instructions are 1-indexed, but we would rather have 0-indexing.
+
+The neatest way I found to do the stacks was as follows:
+
+```ts
+stackLines.forEach((line) =>
+	line
+		.split("")
+		// Fetch only the relevant input columns
+		.filter((_, i) => i % 4 === 1)
+		// Push only the non-empty items to their columns
+		.forEach((char, i) => char !== " " && stacks[i].push(char))
+);
+```
+
+Note in particular the modulo: `i % 4 === 1`. This retrieves the value in the input column at index 1 and then ever 4th column after that. This lines up exactly with the character labels for the crates. Some positions are empty however, and so we also need to skip those rather than push empty symbols onto our internal stacks data structure.
+
+I use a similar code pattern for the instruction parsing:
+
+```ts
+const instructions = instructionLines
+	.map((line) =>
+		line
+			.split(" ")
+			.filter((_, i) => i % 2 === 1)
+			.map((val) => parseInt(val))
+	)
+	// -1 to transform from 1-index to 0-index
+	.map(([qty, from, to]) => ({ qty, from: from - 1, to: to - 1 }));
+```
+
+Seriously... that's the hard stuff done 😅, everything after this point was straight forward.
+
+In order to execute an instruction we need a way to apply an instruction to a given stacks state and produce a new stacks state. The gist of which is this:
+
+```ts
+const movingSlice = stacks[from].slice(0, qty).reverse();
+
+return stacks.map((stack, i) =>
+	i === from
+		? stack.slice(qty) // Remove the moving slice from the from column
+		: i === to
+		? [...movingSlice, ...stack] // Push moving slice on top of the stack
+		: stack
+);
+```
+
+Then producing the final stacks state is a matter of applying a reduce over the instructions list and the starting state:
+
+```ts
+return instructions
+	.reduce(executeInstruction, stacks)
+	.map(([top]) => top)
+	.join("");
+```
+
+The map and join calls there handle reading the answer off the top of each stack.
+
+And that's part 1!
+
+Part 2 is an easy change with a copy+paste of the part 1 solution, and a one line alteration of the `executeInstruction` implementation. But for neatness I chose to pull out this behaviour difference by way of a curried function.
+
+```ts
+const solve =
+	({ withMultiMove }: { withMultiMove: boolean }) =>
+	(filePath: string) => {
+		const { stacks, instructions } = parseFile(filePath);
+
+		return instructions
+			.reduce(executeInstruction({ withMultiMove }), stacks)
+			.map(([top]) => top)
+			.join("");
+	};
+```
+
+This then gives me the power to create my part 1 solver and part 2 solver using this same curried function:
+
+```ts
+export const solvePart1 = solve({ withMultiMove: false });
+export const solvePart2 = solve({ withMultiMove: true });
+```
+
+[Full Day 05 Source Code](https://github.com/fildon/AdventOfCode2022/blob/main/src/05-supply-stacks/solutions.ts)
+
+</details>
