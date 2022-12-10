@@ -435,3 +435,74 @@ export const solvePart2 = solve({ withMultiMove: true });
 [Full Day 05 Source Code](https://github.com/fildon/AdventOfCode2022/blob/main/src/05-supply-stacks/solutions.ts)
 
 </details>
+
+## Day 06: Tuning Trouble
+
+[Day 06 Puzzle Text](https://adventofcode.com/2022/day/6)
+
+The Elves have given us a handheld communication device. It is receiving a stream of data, but we need to identify start-of-packet markers in the stream.
+
+<details>
+  <summary><strong>[Click to expand]</strong> my approach and solution</summary>
+
+Part 1 requires us to find the first occurance of 4 adjacent unique symbols. Actually counting and tracking uniqueness among four symbols would be tedious, but there is a quick trick for this: put them all in a Set and confirm that the Set has four members. If any were duplicates then the Set's size will be less than four. Now all we have to do is scan over the input with this approach, and return the first match:
+
+```ts
+export const solvePart1 = (filePath: string): number => {
+	const datastream = getInput(filePath);
+
+	for (let i = 3; i < datastream.length; i++) {
+		if (
+			new Set([
+				datastream[i - 3],
+				datastream[i - 2],
+				datastream[i - 1],
+				datastream[i],
+			]).size === 4
+		) {
+			return i + 1;
+		}
+	}
+
+	throw new Error("No marker found");
+};
+```
+
+When I wrote this, I recognised that hard-coding it for a window size of 4 could be a problem, and I assumed that part 2 would force me to drastically rethink this approach. But no! The only change for part 2 is that the window is now length 14. Out of some dumb stubbornness I copied my part 1 approach but just hardcoded a longer window 🙈
+
+```ts
+export const solvePart2 = (filePath: string): number => {
+	const datastream = getInput(filePath);
+
+	for (let i = 13; i < datastream.length; i++) {
+		if (
+			new Set([
+				datastream[i - 13],
+				datastream[i - 12],
+				datastream[i - 11],
+				datastream[i - 10],
+				datastream[i - 9],
+				datastream[i - 8],
+				datastream[i - 7],
+				datastream[i - 6],
+				datastream[i - 5],
+				datastream[i - 4],
+				datastream[i - 3],
+				datastream[i - 2],
+				datastream[i - 1],
+				datastream[i],
+			]).size === 14
+		) {
+			return i + 1;
+		}
+	}
+
+	throw new Error("No marker found");
+};
+```
+
+It ain't pretty or elegant, but it works 😅
+
+[Full Day 06 Source Code](https://github.com/fildon/AdventOfCode2022/blob/main/src/06-tuning-trouble/solutions.ts)
+
+</details>
