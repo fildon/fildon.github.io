@@ -506,3 +506,69 @@ It ain't pretty or elegant, but it works 😅
 [Full Day 06 Source Code](https://github.com/fildon/AdventOfCode2022/blob/main/src/06-tuning-trouble/solutions.ts)
 
 </details>
+
+## Day 07: No Space Left On Device
+
+[Day 07 Puzzle Text](https://adventofcode.com/2022/day/7)
+
+Our handheld device is running out of space! We'll need to inspect the file system to identify where storage is getting used up.
+
+<details>
+  <summary><strong>[Click to expand]</strong> my approach and solution</summary>
+
+A traditional file system is best modelled as a Tree datastructure. The fundamental property of a Tree is that it contains a root "Node" and any given Node can contain child Nodes. We can state this up front in our type declarations:
+
+```ts
+type FileMeta = {
+	name: string;
+	size: number;
+};
+type Directory = {
+	name: string;
+	parent?: Directory;
+	files: Array<FileMeta>;
+	subDirectories: Array<Directory>;
+};
+```
+
+Note I also include an _optional_ parent property on each `Directory`. Every directory has a parent except for the Root which has no parent. An alternative approach to this would be for the Root node's parent to be itself, although I found implementing it that way to be more hassle than it is worth.
+
+Now that we have this datastructure, we must populate it with our input data. For this we can run a reducer over our input instructions. Our starting state is an initially empty Root directory. The only additional trick I used was to include a reference to the current working directory in the state a pass through the reducer. So whereas 'file' and 'dir' inputs insert new information to our growing file system, 'cd' inputs modify our current working directory.
+
+Next we require a measure of the size of each directory. The size of a directory is the size of its files plus the sizes of its subdirectories. Since this is a property that depends on children of the same type, this is a natural fit for recursion:
+
+```ts
+/**
+ * Given a directory annotates it with a size.
+ *
+ * Runs recursively down through all children.
+ */
+const measureDirectory = (dir: Directory): SizedDirectory => {
+	const measuredSubDirectories = dir.subDirectories.map(measureDirectory);
+	return {
+		...dir,
+		subDirectories: measuredSubDirectories,
+		size:
+			dir.files.reduce((acc, { size }) => acc + size, 0) +
+			measuredSubDirectories.reduce((acc, { size }) => acc + size, 0),
+	};
+};
+```
+
+The only other utility I needed was a way to enumerate all directories anywhere in the tree. This is equivalent to asking for a [tree traversal](https://en.wikipedia.org/wiki/Tree_traversal). I implemented a depth-first preorder traversal like so:
+
+```ts
+/**
+ * Recursively flatten the directory hierarchy to a simple list
+ */
+const flattenDirectories = (dir: SizedDirectory): Array<SizedDirectory> => [
+	dir,
+	...dir.subDirectories.flatMap(flattenDirectories),
+];
+```
+
+With our data structure built and these utilities in hand, the answers to both part 1 and part 2 are easy to query.
+
+[Full Day 07 Source Code](https://github.com/fildon/AdventOfCode2022/blob/main/src/07-no-space-left-on-device/solutions.ts)
+
+</details>
