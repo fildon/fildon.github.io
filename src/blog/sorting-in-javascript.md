@@ -12,7 +12,7 @@ JavaScript arrays have a builtin [sort](https://developer.mozilla.org/en-US/docs
 ["d", "a", "b", "c"].sort(); // ['a', 'b', 'c', 'd']
 ```
 
-But it has some quirks. For examples numbers are sorting _as though they were strings_, which is fine as long as all your numbers are the same length, but leads to unexpected behavior for numbers of different lengths:
+But it has some quirks. For example: numbers are sorted _as though they were strings_, which is fine as long as all your numbers are the same length, but leads to unexpected behavior for numbers of different lengths:
 
 ```javascript
 [2, 1, 10].sort(); // [1, 10, 2] Not what we wanted!
@@ -98,7 +98,7 @@ One way to do this is by relying on the short-circuiting behavior of the `||` (O
 
 ```javascript
 const sortedBooks = books.sort((a, b) => {
-  return a.author.localeCompare(b.author) || a.title.localeCompare(b.title);
+	return a.author.localeCompare(b.author) || a.title.localeCompare(b.title);
 });
 ```
 
@@ -109,11 +109,11 @@ This pattern is perfectly fine for a single fallback, and could even be extended
 ```javascript
 // Compare by author first, then by title, and finally by edition number
 const sortedBooks = books.sort((a, b) => {
-  return (
-    a.author.localeCompare(b.author) ||
-    a.title.localeCompare(b.title) ||
-    a.edition - b.edition
-  );
+	return (
+		a.author.localeCompare(b.author) ||
+		a.title.localeCompare(b.title) ||
+		a.edition - b.edition
+	);
 });
 ```
 
@@ -121,28 +121,28 @@ But you might also like to abstract this out to a reusable utility that takes a 
 
 ```typescript
 const multiSort =
-  <Item>(...comparators: Array<(a: Item, b: Item) => number>) =>
-  (a: Item, b: Item) => {
-    // Try each comparator in turn
-    for (let comparator of comparators) {
-      // Get its result
-      const comparatorResult = comparator(a, b);
-      // Return that result only if it is non-zero
-      if (comparatorResult !== 0) return comparatorResult;
-    }
-    // All comparators returned zero, so these items cannot be distinguished
-    return 0;
-  };
+	<Item>(...comparators: Array<(a: Item, b: Item) => number>) =>
+	(a: Item, b: Item) => {
+		// Try each comparator in turn
+		for (let comparator of comparators) {
+			// Get its result
+			const comparatorResult = comparator(a, b);
+			// Return that result only if it is non-zero
+			if (comparatorResult !== 0) return comparatorResult;
+		}
+		// All comparators returned zero, so these items cannot be distinguished
+		return 0;
+	};
 ```
 
 We can then use this like so:
 
 ```javascript
 const sortedBooks = books.sort(
-  multiSort(
-    (a, b) => a.title.localeCompare(b.title),
-    (a, b) => a.published - b.published
-  )
+	multiSort(
+		(a, b) => a.title.localeCompare(b.title),
+		(a, b) => a.published - b.published
+	)
 );
 ```
 
@@ -155,12 +155,12 @@ One time at a previous company I had a failing test on my machine, but no one el
 ```javascript
 // Sort users by name, but put all nameless users at the end.
 users.sort((a, b) => {
-  // If a doesn't have a name...
-  if (!a.name) return 1; // ...then a should go after b
-  // If b doesn't have a name...
-  if (!b.name) return -1; // ...then b should go after a
-  // Otherwise compare by name
-  return a.name.localeCompare(b.name);
+	// If a doesn't have a name...
+	if (!a.name) return 1; // ...then a should go after b
+	// If b doesn't have a name...
+	if (!b.name) return -1; // ...then b should go after a
+	// Otherwise compare by name
+	return a.name.localeCompare(b.name);
 });
 ```
 
@@ -181,12 +181,12 @@ Violating the _transitive_ rule is a little harder but can happen under rare cir
 
 ```javascript
 const sortByWinner = (a, b) => {
-  // If a beats b, then a should go first
-  if (a.beats(b)) return -1;
-  // If b beats a, then b should go first
-  if (b.beats(a)) return 1;
-  // Neither beats the other, so these two are equal
-  return 0;
+	// If a beats b, then a should go first
+	if (a.beats(b)) return -1;
+	// If b beats a, then b should go first
+	if (b.beats(a)) return 1;
+	// Neither beats the other, so these two are equal
+	return 0;
 };
 ```
 
@@ -199,12 +199,12 @@ We've seen how the example above got it wrong by treating `a` preferentially, bu
 ```javascript
 // Sort users by name, but nameless users should go at the end
 users.sort((a, b) => {
-  // Both users have a name, so compare directly
-  if (a.name && b.name) return a.name.localeCompare(b.name);
+	// Both users have a name, so compare directly
+	if (a.name && b.name) return a.name.localeCompare(b.name);
 
-  // Otherwise we sort by having a name or not
-  return !!b.name - !!a.name;
-  // b goes first because we want names first, non-names second
+	// Otherwise we sort by having a name or not
+	return !!b.name - !!a.name;
+	// b goes first because we want names first, non-names second
 });
 ```
 
