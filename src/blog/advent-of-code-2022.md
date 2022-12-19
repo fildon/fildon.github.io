@@ -572,3 +572,76 @@ With our data structure built and these utilities in hand, the answers to both p
 [Full Day 07 Source Code](https://github.com/fildon/AdventOfCode2022/blob/main/src/07-no-space-left-on-device/solutions.ts)
 
 </details>
+
+## Day 08: Treetop Tree House
+
+[Day 08 Puzzle Text](https://adventofcode.com/2022/day/8)
+
+The elves would like to build a tree-house, but we'll need to find the best tree.
+
+<details>
+  <summary><strong>[Click to expand]</strong> my approach and solution</summary>
+
+Our primary data structure will be a 2D array. Part 1 requires us to identify which trees (cells of the grid) are visible from the outside of the grid.
+
+There's no particular trick to this. For each row we need to visit cells from left to right and right to left. For each column we need to visit cells from top to bottom and bottom to top. In all four cases we want to track the heighest tree we've seen so far, and mark each tree as visible if and only if it is heigher than the highest seen in that sequence.
+
+As is often the case, a reducer works well here:
+
+```ts
+const visibilityReducer = (heighest: number, tree: Tree) => {
+	if (tree.height > heighest) {
+		tree.visible = true;
+		return tree.height;
+	}
+	return heighest;
+};
+```
+
+The only other code required is the rather tedious work of enumerate all the possible directions.
+
+Part 2 requires us to find the tree with the best view. For this we must assess every position in the grid, by walking outwards from each point in every direction. I found it convenient to build a general purpose grid walker for this task:
+
+```ts
+const buildWalker =
+	<Cell>(grid: Array<Array<Cell>>) =>
+	(start: Position) =>
+	(step: (position: Position) => Position): Array<Cell> => {
+		let position: Position = [...start];
+		const walk: Array<Cell> = [];
+
+		while (
+			// Left bound
+			position[0] >= 0 &&
+			// Top bound
+			position[1] >= 0 &&
+			// Right bound
+			position[0] < grid.length &&
+			// Bottom bound
+			position[1] < grid[0].length
+		) {
+			walk.push(grid[position[0]][position[1]]);
+			position = step(position);
+		}
+		return walk;
+	};
+```
+
+We can plug into this utility any position, and any direction, which means we can express the heart of part 2 as:
+
+```ts
+for (let row = 0; row < treeGrid.length; row++) {
+	for (let col = 0; col < treeGrid[row].length; col++) {
+		const walkWithDir = treeWalker([row, col]);
+		const scoreHere = [ltr, rtl, ttb, btt]
+			.map(walkWithDir)
+			.map(countVisibility)
+			.reduce((a, b) => a * b);
+		bestScore = Math.max(scoreHere, bestScore);
+	}
+}
+```
+
+[Full Day 08 Source Code](https://github.com/fildon/AdventOfCode2022/blob/main/src/08-treetop-tree-house/solutions.ts)
+
+</details>
