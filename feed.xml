@@ -4,12 +4,176 @@
   <subtitle>Assorted projects and blog posts.</subtitle>
   <link href="https://fildon.me/feed.xml" rel="self"/>
   <link href="https://fildon.me/"/>
-  <updated>2022-12-01T00:00:00Z</updated>
+  <updated>2022-12-28T00:00:00Z</updated>
   <id>https://fildon.me/</id>
   <author>
     <name>Rupert &#39;fildon&#39; McKay</name>
     <email>maxfmckay@gmail.com</email>
   </author>
+    <entry>
+      <title>Rupert Representations</title>
+      <link href="https://fildon.me/blog/rupert-representations/"/>
+      <updated>2022-12-28T00:00:00Z</updated>
+      <id>https://fildon.me/blog/rupert-representations/</id>
+      <content xml:lang="en" type="html">&lt;p&gt;This post is a collection of symbols for myself. It&#39;s exactly as self-centered as it sounds.&lt;/p&gt;
+&lt;h2 id=&quot;images&quot; tabindex=&quot;-1&quot;&gt;&lt;a class=&quot;direct-link&quot; href=&quot;https://fildon.me/blog/rupert-representations/#images&quot; aria-hidden=&quot;true&quot;&gt;#&lt;/a&gt; Images&lt;/h2&gt;
+&lt;p&gt;Here&#39;s a headshot of me. It was taken some time around 2018 or 2019.&lt;/p&gt;
+&lt;img src=&quot;https://fildon.me/static/headshot.jpeg&quot; alt=&quot;A headshot of Rupert Foggo McKay&quot; /&gt;
+&lt;p&gt;And here&#39;s another which has been roughly cropped. I upload this as a custom emoji everywhere I can 😄&lt;/p&gt;
+&lt;img src=&quot;https://fildon.me/static/rupertemoji.png&quot; alt=&quot;A headshot of Rupert Foggo McKay&quot; /&gt;
+&lt;h2 id=&quot;morse&quot; tabindex=&quot;-1&quot;&gt;&lt;a class=&quot;direct-link&quot; href=&quot;https://fildon.me/blog/rupert-representations/#morse&quot; aria-hidden=&quot;true&quot;&gt;#&lt;/a&gt; Morse&lt;/h2&gt;
+&lt;p&gt;The following glyph is a representation of &amp;quot;RM&amp;quot; using &lt;a href=&quot;https://en.wikipedia.org/wiki/Morse_code&quot;&gt;Morse code&lt;/a&gt;. I use it in a couple places as a little visual break throughout this website.&lt;/p&gt;
+&lt;pre&gt;
+█ ███ █
+███ ███
+&lt;/pre&gt;
+&lt;p&gt;The first row is the letter &amp;quot;R&amp;quot; and the second row is letter &amp;quot;M&amp;quot;. Not all letters of the Morse alphabet are symmetric or of equal length, so it was especially lucky how &amp;quot;RM&amp;quot; lined up so neatly like this. I would have preferred to use &amp;quot;RFM&amp;quot; but the letter &amp;quot;F&amp;quot; is not symmetric, nor of equal length to the others. If I included the &amp;quot;F&amp;quot; then the &amp;quot;RFM&amp;quot; glyph would look like this.&lt;/p&gt;
+&lt;pre&gt;
+█ ███ █
+█ █ ███ █
+███ ███
+&lt;/pre&gt;
+&lt;h2 id=&quot;braille&quot; tabindex=&quot;-1&quot;&gt;&lt;a class=&quot;direct-link&quot; href=&quot;https://fildon.me/blog/rupert-representations/#braille&quot; aria-hidden=&quot;true&quot;&gt;#&lt;/a&gt; Braille&lt;/h2&gt;
+&lt;p&gt;I&#39;m as fond of Braille as I am of Morse code, and yet I haven&#39;t found any way to render my name that look particularly interesting with it.&lt;/p&gt;
+&lt;p&gt;Here for example is &amp;quot;rfm&amp;quot;:&lt;/p&gt;
+&lt;p&gt;⠗⠋⠍&lt;/p&gt;
+&lt;p&gt;Or &amp;quot;Rupert Foggo McKay&amp;quot;:&lt;/p&gt;
+&lt;p&gt;⠠⠗⠥⠏⠑⠗⠞⠀⠠⠋⠕⠛⠛⠕⠀⠠⠍⠉⠠⠅⠁⠽&lt;/p&gt;
+&lt;p&gt;There&#39;s a nice little encoder for Braille at &lt;a href=&quot;https://cable.ayra.ch/braille/&quot;&gt;cable.ayra.ch/braille&lt;/a&gt;. Or you might like to try learning braille yourself at &lt;a href=&quot;https://fildon.me/learn-braille&quot;&gt;learn-braille&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&quot;schlaefli-symbols&quot; tabindex=&quot;-1&quot;&gt;&lt;a class=&quot;direct-link&quot; href=&quot;https://fildon.me/blog/rupert-representations/#schlaefli-symbols&quot; aria-hidden=&quot;true&quot;&gt;#&lt;/a&gt; Schläfli Symbols&lt;/h2&gt;
+&lt;p&gt;The numbers of letters in each part of my name are as follows:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&amp;quot;Rupert&amp;quot; has length 6&lt;/li&gt;
+&lt;li&gt;&amp;quot;Foggo&amp;quot; has length 5&lt;/li&gt;
+&lt;li&gt;&amp;quot;McKay&amp;quot; has length 5&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;We can use these numbers in &lt;a href=&quot;https://en.wikipedia.org/wiki/Schl%C3%A4fli_symbol&quot;&gt;Schläfli symbols&lt;/a&gt; to generate various polytopes.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;{6/5}&lt;/code&gt; = &lt;code&gt;{6/1}&lt;/code&gt; = &lt;code&gt;{6}&lt;/code&gt; is just a hexagon 😄.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;6{5}&lt;/code&gt; is six interleaved pentagons, forming a &lt;a href=&quot;https://en.wikipedia.org/wiki/List_of_regular_polytopes_and_compounds#Two_dimensional_compounds&quot;&gt;Compound polytope&lt;/a&gt;. It looks like this:&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; version=&quot;1.1&quot; height=&quot;200px&quot; viewBox=&quot;0 0 1000 1000&quot;&gt;
+  &lt;g style=&quot;stroke:#ff0000;stroke-width:5.0;stroke-opacity:1.00;fill-opacity:00&quot;&gt;
+  &lt;/g&gt;
+  &lt;g style=&quot;stroke:#ff7f00;stroke-width:5.0;stroke-opacity:1.00;fill-opacity:00&quot;&gt;
+  &lt;path d=&quot;M 954.545,497.261 640.462,64.963&quot;&gt;&lt;/path&gt;
+  &lt;path d=&quot;M 640.462,64.963 132.265,230.086&quot;&gt;&lt;/path&gt;
+  &lt;path d=&quot;M 132.265,230.086 132.265,764.436&quot;&gt;&lt;/path&gt;
+  &lt;path d=&quot;M 640.462,929.559 132.265,764.436&quot;&gt;&lt;/path&gt;
+  &lt;path d=&quot;M 954.545,497.261 640.462,929.559&quot;&gt;&lt;/path&gt;
+  &lt;/g&gt;
+  &lt;g style=&quot;stroke:#ffff00;stroke-width:5.0;stroke-opacity:1.00;fill-opacity:00&quot;&gt;
+  &lt;path d=&quot;M 547.513,45.206 944.613,402.756&quot;&gt;&lt;/path&gt;
+  &lt;path d=&quot;M 547.513,45.206 84.752,312.381&quot;&gt;&lt;/path&gt;
+  &lt;path d=&quot;M 84.752,312.381 195.85,835.054&quot;&gt;&lt;/path&gt;
+  &lt;path d=&quot;M 727.273,890.909 195.85,835.054&quot;&gt;&lt;/path&gt;
+  &lt;path d=&quot;M 944.613,402.756 727.273,890.909&quot;&gt;&lt;/path&gt;
+  &lt;/g&gt;
+  &lt;g style=&quot;stroke:#00ff00;stroke-width:5.0;stroke-opacity:1.00;fill-opacity:00&quot;&gt;
+  &lt;path d=&quot;M 452.487,45.206 915.248,312.381&quot;&gt;&lt;/path&gt;
+  &lt;path d=&quot;M 452.487,45.206 55.387,402.756&quot;&gt;&lt;/path&gt;
+  &lt;path d=&quot;M 55.387,402.756 272.727,890.909&quot;&gt;&lt;/path&gt;
+  &lt;path d=&quot;M 272.727,890.909 804.15,835.054&quot;&gt;&lt;/path&gt;
+  &lt;path d=&quot;M 915.248,312.381 804.15,835.054&quot;&gt;&lt;/path&gt;
+  &lt;/g&gt;
+  &lt;g style=&quot;stroke:#00ffff;stroke-width:5.0;stroke-opacity:1.00;fill-opacity:00&quot;&gt;
+  &lt;path d=&quot;M 359.538,64.963 867.735,230.086&quot;&gt;&lt;/path&gt;
+  &lt;path d=&quot;M 45.455,497.261 359.538,64.963&quot;&gt;&lt;/path&gt;
+  &lt;path d=&quot;M 45.455,497.261 359.538,929.559&quot;&gt;&lt;/path&gt;
+  &lt;path d=&quot;M 359.538,929.559 867.735,764.436&quot;&gt;&lt;/path&gt;
+  &lt;path d=&quot;M 867.735,764.436 867.735,230.086&quot;&gt;&lt;/path&gt;
+  &lt;/g&gt;
+  &lt;g style=&quot;stroke:#0000ff;stroke-width:5.0;stroke-opacity:1.00;fill-opacity:00&quot;&gt;
+  &lt;path d=&quot;M 272.727,103.613 804.15,159.468&quot;&gt;&lt;/path&gt;
+  &lt;path d=&quot;M 55.387,591.766 272.727,103.613&quot;&gt;&lt;/path&gt;
+  &lt;path d=&quot;M 452.487,949.316 55.387,591.766&quot;&gt;&lt;/path&gt;
+  &lt;path d=&quot;M 452.487,949.316 915.248,682.141&quot;&gt;&lt;/path&gt;
+  &lt;path d=&quot;M 915.248,682.141 804.15,159.468&quot;&gt;&lt;/path&gt;
+  &lt;/g&gt;
+  &lt;g style=&quot;stroke:#7f00ff;stroke-width:5.0;stroke-opacity:1.00;fill-opacity:00&quot;&gt;
+  &lt;path d=&quot;M 727.273,103.613 195.85,159.468&quot;&gt;&lt;/path&gt;
+  &lt;path d=&quot;M 84.752,682.141 195.85,159.468&quot;&gt;&lt;/path&gt;
+  &lt;path d=&quot;M 547.513,949.316 84.752,682.141&quot;&gt;&lt;/path&gt;
+  &lt;path d=&quot;M 547.513,949.316 944.613,591.766&quot;&gt;&lt;/path&gt;
+  &lt;path d=&quot;M 944.613,591.766 727.273,103.613&quot;&gt;&lt;/path&gt;
+  &lt;/g&gt;
+  &lt;g style=&quot;stroke:#000000;stroke-width:0.6666667;fill:#000000&quot;&gt;
+  &lt;circle cx=&quot;954.545&quot; cy=&quot;497.261&quot; r=&quot;8.0&quot;&gt;&lt;/circle&gt;
+  &lt;circle cx=&quot;640.462&quot; cy=&quot;64.963&quot; r=&quot;8.0&quot;&gt;&lt;/circle&gt;
+  &lt;circle cx=&quot;640.462&quot; cy=&quot;64.963&quot; r=&quot;8.0&quot;&gt;&lt;/circle&gt;
+  &lt;circle cx=&quot;132.265&quot; cy=&quot;230.086&quot; r=&quot;8.0&quot;&gt;&lt;/circle&gt;
+  &lt;circle cx=&quot;132.265&quot; cy=&quot;230.086&quot; r=&quot;8.0&quot;&gt;&lt;/circle&gt;
+  &lt;circle cx=&quot;132.265&quot; cy=&quot;764.436&quot; r=&quot;8.0&quot;&gt;&lt;/circle&gt;
+  &lt;circle cx=&quot;132.265&quot; cy=&quot;764.436&quot; r=&quot;8.0&quot;&gt;&lt;/circle&gt;
+  &lt;circle cx=&quot;640.462&quot; cy=&quot;929.559&quot; r=&quot;8.0&quot;&gt;&lt;/circle&gt;
+  &lt;circle cx=&quot;640.462&quot; cy=&quot;929.559&quot; r=&quot;8.0&quot;&gt;&lt;/circle&gt;
+  &lt;circle cx=&quot;954.545&quot; cy=&quot;497.261&quot; r=&quot;8.0&quot;&gt;&lt;/circle&gt;
+  &lt;circle cx=&quot;944.613&quot; cy=&quot;402.756&quot; r=&quot;8.0&quot;&gt;&lt;/circle&gt;
+  &lt;circle cx=&quot;547.513&quot; cy=&quot;45.206&quot; r=&quot;8.0&quot;&gt;&lt;/circle&gt;
+  &lt;circle cx=&quot;547.513&quot; cy=&quot;45.206&quot; r=&quot;8.0&quot;&gt;&lt;/circle&gt;
+  &lt;circle cx=&quot;84.752&quot; cy=&quot;312.381&quot; r=&quot;8.0&quot;&gt;&lt;/circle&gt;
+  &lt;circle cx=&quot;84.752&quot; cy=&quot;312.381&quot; r=&quot;8.0&quot;&gt;&lt;/circle&gt;
+  &lt;circle cx=&quot;195.85&quot; cy=&quot;835.054&quot; r=&quot;8.0&quot;&gt;&lt;/circle&gt;
+  &lt;circle cx=&quot;195.85&quot; cy=&quot;835.054&quot; r=&quot;8.0&quot;&gt;&lt;/circle&gt;
+  &lt;circle cx=&quot;727.273&quot; cy=&quot;890.909&quot; r=&quot;8.0&quot;&gt;&lt;/circle&gt;
+  &lt;circle cx=&quot;727.273&quot; cy=&quot;890.909&quot; r=&quot;8.0&quot;&gt;&lt;/circle&gt;
+  &lt;circle cx=&quot;944.613&quot; cy=&quot;402.756&quot; r=&quot;8.0&quot;&gt;&lt;/circle&gt;
+  &lt;circle cx=&quot;915.248&quot; cy=&quot;312.381&quot; r=&quot;8.0&quot;&gt;&lt;/circle&gt;
+  &lt;circle cx=&quot;452.487&quot; cy=&quot;45.206&quot; r=&quot;8.0&quot;&gt;&lt;/circle&gt;
+  &lt;circle cx=&quot;452.487&quot; cy=&quot;45.206&quot; r=&quot;8.0&quot;&gt;&lt;/circle&gt;
+  &lt;circle cx=&quot;55.387&quot; cy=&quot;402.756&quot; r=&quot;8.0&quot;&gt;&lt;/circle&gt;
+  &lt;circle cx=&quot;55.387&quot; cy=&quot;402.756&quot; r=&quot;8.0&quot;&gt;&lt;/circle&gt;
+  &lt;circle cx=&quot;272.727&quot; cy=&quot;890.909&quot; r=&quot;8.0&quot;&gt;&lt;/circle&gt;
+  &lt;circle cx=&quot;272.727&quot; cy=&quot;890.909&quot; r=&quot;8.0&quot;&gt;&lt;/circle&gt;
+  &lt;circle cx=&quot;804.15&quot; cy=&quot;835.054&quot; r=&quot;8.0&quot;&gt;&lt;/circle&gt;
+  &lt;circle cx=&quot;804.15&quot; cy=&quot;835.054&quot; r=&quot;8.0&quot;&gt;&lt;/circle&gt;
+  &lt;circle cx=&quot;915.248&quot; cy=&quot;312.381&quot; r=&quot;8.0&quot;&gt;&lt;/circle&gt;
+  &lt;circle cx=&quot;867.735&quot; cy=&quot;230.086&quot; r=&quot;8.0&quot;&gt;&lt;/circle&gt;
+  &lt;circle cx=&quot;359.538&quot; cy=&quot;64.963&quot; r=&quot;8.0&quot;&gt;&lt;/circle&gt;
+  &lt;circle cx=&quot;359.538&quot; cy=&quot;64.963&quot; r=&quot;8.0&quot;&gt;&lt;/circle&gt;
+  &lt;circle cx=&quot;45.455&quot; cy=&quot;497.261&quot; r=&quot;8.0&quot;&gt;&lt;/circle&gt;
+  &lt;circle cx=&quot;45.455&quot; cy=&quot;497.261&quot; r=&quot;8.0&quot;&gt;&lt;/circle&gt;
+  &lt;circle cx=&quot;359.538&quot; cy=&quot;929.559&quot; r=&quot;8.0&quot;&gt;&lt;/circle&gt;
+  &lt;circle cx=&quot;359.538&quot; cy=&quot;929.559&quot; r=&quot;8.0&quot;&gt;&lt;/circle&gt;
+  &lt;circle cx=&quot;867.735&quot; cy=&quot;764.436&quot; r=&quot;8.0&quot;&gt;&lt;/circle&gt;
+  &lt;circle cx=&quot;867.735&quot; cy=&quot;764.436&quot; r=&quot;8.0&quot;&gt;&lt;/circle&gt;
+  &lt;circle cx=&quot;867.735&quot; cy=&quot;230.086&quot; r=&quot;8.0&quot;&gt;&lt;/circle&gt;
+  &lt;circle cx=&quot;804.15&quot; cy=&quot;159.468&quot; r=&quot;8.0&quot;&gt;&lt;/circle&gt;
+  &lt;circle cx=&quot;272.727&quot; cy=&quot;103.613&quot; r=&quot;8.0&quot;&gt;&lt;/circle&gt;
+  &lt;circle cx=&quot;272.727&quot; cy=&quot;103.613&quot; r=&quot;8.0&quot;&gt;&lt;/circle&gt;
+  &lt;circle cx=&quot;55.387&quot; cy=&quot;591.766&quot; r=&quot;8.0&quot;&gt;&lt;/circle&gt;
+  &lt;circle cx=&quot;55.387&quot; cy=&quot;591.766&quot; r=&quot;8.0&quot;&gt;&lt;/circle&gt;
+  &lt;circle cx=&quot;452.487&quot; cy=&quot;949.316&quot; r=&quot;8.0&quot;&gt;&lt;/circle&gt;
+  &lt;circle cx=&quot;452.487&quot; cy=&quot;949.316&quot; r=&quot;8.0&quot;&gt;&lt;/circle&gt;
+  &lt;circle cx=&quot;915.248&quot; cy=&quot;682.141&quot; r=&quot;8.0&quot;&gt;&lt;/circle&gt;
+  &lt;circle cx=&quot;915.248&quot; cy=&quot;682.141&quot; r=&quot;8.0&quot;&gt;&lt;/circle&gt;
+  &lt;circle cx=&quot;804.15&quot; cy=&quot;159.468&quot; r=&quot;8.0&quot;&gt;&lt;/circle&gt;
+  &lt;circle cx=&quot;727.273&quot; cy=&quot;103.613&quot; r=&quot;8.0&quot;&gt;&lt;/circle&gt;
+  &lt;circle cx=&quot;195.85&quot; cy=&quot;159.468&quot; r=&quot;8.0&quot;&gt;&lt;/circle&gt;
+  &lt;circle cx=&quot;195.85&quot; cy=&quot;159.468&quot; r=&quot;8.0&quot;&gt;&lt;/circle&gt;
+  &lt;circle cx=&quot;84.752&quot; cy=&quot;682.141&quot; r=&quot;8.0&quot;&gt;&lt;/circle&gt;
+  &lt;circle cx=&quot;84.752&quot; cy=&quot;682.141&quot; r=&quot;8.0&quot;&gt;&lt;/circle&gt;
+  &lt;circle cx=&quot;547.513&quot; cy=&quot;949.316&quot; r=&quot;8.0&quot;&gt;&lt;/circle&gt;
+  &lt;circle cx=&quot;547.513&quot; cy=&quot;949.316&quot; r=&quot;8.0&quot;&gt;&lt;/circle&gt;
+  &lt;circle cx=&quot;944.613&quot; cy=&quot;591.766&quot; r=&quot;8.0&quot;&gt;&lt;/circle&gt;
+  &lt;circle cx=&quot;944.613&quot; cy=&quot;591.766&quot; r=&quot;8.0&quot;&gt;&lt;/circle&gt;
+  &lt;circle cx=&quot;727.273&quot; cy=&quot;103.613&quot; r=&quot;8.0&quot;&gt;&lt;/circle&gt;
+  &lt;/g&gt;
+&lt;/svg&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;{6,5}&lt;/code&gt; is an infinite tiling of hexagons, with five arranged around each vertex. This is not possible in Euclidean 2D space, but is possible on a hyperbolic plane. &lt;a href=&quot;https://en.wikipedia.org/wiki/Order-5_hexagonal_tiling&quot;&gt;Order-5 Hexagonal Tiling&lt;/a&gt;. It looks like this:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;img height=&quot;200px&quot; src=&quot;https://fildon.me/static/order-5-hex-tiles.png&quot; alt=&quot;Order-5 Hexagonal Tiling&quot; /&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;{6,5,5}&lt;/code&gt; is hard to explain. By construction: take five copies of the previous polytope (&lt;code&gt;{6,5}&lt;/code&gt;) and arrange them around a common point. But since the previous polytope was already an infinite tiling of a hyperbolic plane, the result for this one is a hyperbolic honeycomb. It looks like this:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;img height=&quot;200px&quot; src=&quot;https://fildon.me/static/6-5-5-schlafli.png&quot; alt=&quot;Order-5-5 Hexagonal Honeycomb&quot; /&gt;
+</content>
+    </entry>
     <entry>
       <title>Advent of Code 2022</title>
       <link href="https://fildon.me/blog/advent-of-code-2022/"/>
