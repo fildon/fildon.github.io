@@ -40,7 +40,7 @@ The first row is the letter "R" and the second row is letter "M". Not all letter
 
 ## Braille
 
-I'm as fond of Braille as I am of Morse code, and yet I haven't found any way to render my name that look particularly interesting with it.
+I'm as fond of Braille as I am of Morse code, and yet I haven't found any way to render my name that looks particularly interesting with it.
 
 Here for example is "rfm":
 
