@@ -7,6 +7,10 @@ layout: layouts/post.njk
 
 This post is a collection of symbols for myself. It's exactly as self-centered as it sounds.
 
+## Pronounciation
+
+Using [IPA](https://en.wikipedia.org/wiki/International_Phonetic_Alphabet) my name is pronounced: [rʉ́wpət məˈkaɪ](http://ipa-reader.xyz/?text=r%CA%89%CC%81wp%C9%99t%20m%C9%99%CB%88ka%C9%AA)
+
 ## Images
 
 Here's a headshot of me. It was taken some time around 2018 or 2019.
