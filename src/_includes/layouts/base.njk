@@ -15,10 +15,10 @@
         <a href="{{ '/' | url }}">{{ metadata.title }}</a>
       </h1>
     </header>
+    {{ content | safe }}
     <pre aria-hidden="true">
 █ ███ █
 ███ ███
     </pre>
-    {{ content | safe }}
   </body>
 </html>
