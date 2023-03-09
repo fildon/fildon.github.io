@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loose Equality violates Transitivity</title>
+    <meta name="description" content="Why does JavaScript get equality wrong and how could it be different?">
+    <link rel="shortcut icon" type="image/x-icon" href="/static/favicon.ico">
+    <link rel="stylesheet" href="/static/styles.css">
+    <link rel="stylesheet" href="/static/prism.css">
+  </head>
+  <body>
+    <header>
+      <h1 class="home">
+        <a href="/">Rupert &#39;fildon&#39; McKay</a>
+      </h1>
+    </header>
+    <article>
+  <h2>Loose Equality violates Transitivity</h2>
+  <p>In JavaScript:</p>
+<pre class="language-js"><code class="language-js"><span class="token string">"0"</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">;</span> <span class="token comment">// true</span><br><span class="token number">0</span> <span class="token operator">==</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment">// true</span><br><span class="token string">"0"</span> <span class="token operator">==</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment">// false</span></code></pre>
+<p>These three statements demonstrate that loose equality in JavaScript is not <em>transitive</em> and therefore is not a valid <em>equivalence relation</em>.</p>
+<p>Despite this, the above is not a bug. It conforms exactly to <a href="https://262.ecma-international.org/#sec-islooselyequal">ECMAScript: IsLooselyEqual</a>.</p>
+<h2 id="equivalence-relations" tabindex="-1"><a class="direct-link" href="#equivalence-relations" aria-hidden="true">#</a> Equivalence Relations</h2>
+<p>An <a href="https://en.wikipedia.org/wiki/Equivalence_relation">Equivalence Relation</a> is the mathematically formal term for what we intuitively understand as &quot;equals&quot;. In order for a relation to be a valid <code>Equivalence Relation</code>, it must satisfy the following three properties:</p>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Reflexive_relation">Reflexivity</a>: <code>a == a</code>.</li>
+<li><a href="https://en.wikipedia.org/wiki/Symmetric_relation">Symmetry</a>: &quot;If <code>a == b</code> then <code>b == a</code>&quot;.</li>
+<li><a href="https://en.wikipedia.org/wiki/Transitive_relation">Transitivity</a>: &quot;If <code>a == b</code> and <code>b == c</code>, then <code>a == c</code>.</li>
+</ul>
+<p>By the way, <code>NaN == NaN; // false</code> violates reflexivity. But there are reasons for that decision, which I will not get into in this post. If you are especially interested, I recommend: <a href="https://en.wikipedia.org/wiki/NaN#Comparison_with_NaN">Wikipedia | Comparison with NaN</a></p>
+<h2 id="the-easy-fix" tabindex="-1"><a class="direct-link" href="#the-easy-fix" aria-hidden="true">#</a> The Easy Fix</h2>
+<p>The easiest way to alter loose equality (<code>==</code>) to fix transitivity would be to treat all cross-type comparisons as false. This is exactly what the strict equality (<code>===</code>) operator in JavaScript does. Reference: <a href="https://262.ecma-international.org/#sec-isstrictlyequal">ECMAScript: IsStrictlyEqual</a></p>
+<p>But that's boring. Let's entertain the question: are there ways we can preserve at least cross-type equalities, while also preserving transitivity?</p>
+<h2 id="the-pitfalls" tabindex="-1"><a class="direct-link" href="#the-pitfalls" aria-hidden="true">#</a> The Pitfalls</h2>
+<p>As soon as we allow even one equality across types we create a cross-type equivalence class.</p>
+<p>An <code>Equivalence Class</code> is the set of all elements which are equivalent to one another.</p>
+<p>Once you have a cross-type equivalence class, you have to be very careful when considering new members of that class. It is not sufficient to check our intuition against just one member of the equivalence class, since equivalence with any member, implies equivalence to all members (via transitivity).</p>
+<p>The above implies two statements:</p>
+<ul>
+<li>Distinct values of the same type <em>must never be members of the same equivalence class</em>.</li>
+<li>A maximal equivalence class has exactly one value from each type.</li>
+</ul>
+<h2 id="a-silly-proposal" tabindex="-1"><a class="direct-link" href="#a-silly-proposal" aria-hidden="true">#</a> A Silly Proposal</h2>
+<p>Given the boolean type has only two values, there can exist only two distinct equivalence classes including booleans. We can use this as the basis for a set of maximal equivalence classes.</p>
+<p>The <code>false</code> equivalence class:</p>
+<ul>
+<li>String: <code>''</code></li>
+<li>Number: <code>0</code></li>
+<li>BigInt: <code>BigInt(0)</code></li>
+<li>Boolean: <code>false</code></li>
+<li>Undefined: <code>undefined</code></li>
+<li>Symbol: <code>Symbol.for('')</code></li>
+<li>Null: <code>null</code></li>
+</ul>
+<p>The <code>true</code> equivalence class:</p>
+<ul>
+<li>String: <code>'true'</code></li>
+<li>Number: <code>1</code></li>
+<li>BigInt: <code>BigInt(1)</code></li>
+<li>Boolean: <code>true</code></li>
+<li>Symbol: <code>Symbol.for('true')</code></li>
+</ul>
+<p>The <code>false</code> class includes seven values, exactly one value from each primitive type.</p>
+<p>The <code>true</code> class has five values. The only missing types are <code>undefined</code> and <code>null</code>, which cannot be included without merging the two equivalence classes. I <em>really</em> don't like the use of <code>'true'</code> as the canonically true string, but this is what we get for pushing an idea to its limit.</p>
+<p>In reality prohibiting cross-type equality is a perfectly sensible decision and very easy to reason about. It's no wonder that <code>===</code> is greatly preferred to <code>==</code>.</p>
+<p>Take care,</p>
+<p>Rupert</p>
+
+</article>
+    <pre aria-hidden="true">
+█ ███ █
+███ ███
+    </pre>
+  </body>
+</html>

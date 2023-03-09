@@ -4,12 +4,68 @@
   <subtitle>Assorted projects and blog posts.</subtitle>
   <link href="https://fildon.me/feed.xml" rel="self"/>
   <link href="https://fildon.me/"/>
-  <updated>2022-12-28T00:00:00Z</updated>
+  <updated>2023-03-09T00:00:00Z</updated>
   <id>https://fildon.me/</id>
   <author>
     <name>Rupert &#39;fildon&#39; McKay</name>
     <email>maxfmckay@gmail.com</email>
   </author>
+    <entry>
+      <title>Loose Equality violates Transitivity</title>
+      <link href="https://fildon.me/blog/equivalence/"/>
+      <updated>2023-03-09T00:00:00Z</updated>
+      <id>https://fildon.me/blog/equivalence/</id>
+      <content xml:lang="en" type="html">&lt;p&gt;In JavaScript:&lt;/p&gt;
+&lt;pre class=&quot;language-js&quot;&gt;&lt;code class=&quot;language-js&quot;&gt;&lt;span class=&quot;token string&quot;&gt;&quot;0&quot;&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;token comment&quot;&gt;// true&lt;/span&gt;&lt;br /&gt;&lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;token comment&quot;&gt;// true&lt;/span&gt;&lt;br /&gt;&lt;span class=&quot;token string&quot;&gt;&quot;0&quot;&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;token comment&quot;&gt;// false&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;These three statements demonstrate that loose equality in JavaScript is not &lt;em&gt;transitive&lt;/em&gt; and therefore is not a valid &lt;em&gt;equivalence relation&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;Despite this, the above is not a bug. It conforms exactly to &lt;a href=&quot;https://262.ecma-international.org/#sec-islooselyequal&quot;&gt;ECMAScript: IsLooselyEqual&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&quot;equivalence-relations&quot; tabindex=&quot;-1&quot;&gt;&lt;a class=&quot;direct-link&quot; href=&quot;https://fildon.me/blog/equivalence/#equivalence-relations&quot; aria-hidden=&quot;true&quot;&gt;#&lt;/a&gt; Equivalence Relations&lt;/h2&gt;
+&lt;p&gt;An &lt;a href=&quot;https://en.wikipedia.org/wiki/Equivalence_relation&quot;&gt;Equivalence Relation&lt;/a&gt; is the mathematically formal term for what we intuitively understand as &amp;quot;equals&amp;quot;. In order for a relation to be a valid &lt;code&gt;Equivalence Relation&lt;/code&gt;, it must satisfy the following three properties:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Reflexive_relation&quot;&gt;Reflexivity&lt;/a&gt;: &lt;code&gt;a == a&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Symmetric_relation&quot;&gt;Symmetry&lt;/a&gt;: &amp;quot;If &lt;code&gt;a == b&lt;/code&gt; then &lt;code&gt;b == a&lt;/code&gt;&amp;quot;.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Transitive_relation&quot;&gt;Transitivity&lt;/a&gt;: &amp;quot;If &lt;code&gt;a == b&lt;/code&gt; and &lt;code&gt;b == c&lt;/code&gt;, then &lt;code&gt;a == c&lt;/code&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;By the way, &lt;code&gt;NaN == NaN; // false&lt;/code&gt; violates reflexivity. But there are reasons for that decision, which I will not get into in this post. If you are especially interested, I recommend: &lt;a href=&quot;https://en.wikipedia.org/wiki/NaN#Comparison_with_NaN&quot;&gt;Wikipedia | Comparison with NaN&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;the-easy-fix&quot; tabindex=&quot;-1&quot;&gt;&lt;a class=&quot;direct-link&quot; href=&quot;https://fildon.me/blog/equivalence/#the-easy-fix&quot; aria-hidden=&quot;true&quot;&gt;#&lt;/a&gt; The Easy Fix&lt;/h2&gt;
+&lt;p&gt;The easiest way to alter loose equality (&lt;code&gt;==&lt;/code&gt;) to fix transitivity would be to treat all cross-type comparisons as false. This is exactly what the strict equality (&lt;code&gt;===&lt;/code&gt;) operator in JavaScript does. Reference: &lt;a href=&quot;https://262.ecma-international.org/#sec-isstrictlyequal&quot;&gt;ECMAScript: IsStrictlyEqual&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;But that&#39;s boring. Let&#39;s entertain the question: are there ways we can preserve at least cross-type equalities, while also preserving transitivity?&lt;/p&gt;
+&lt;h2 id=&quot;the-pitfalls&quot; tabindex=&quot;-1&quot;&gt;&lt;a class=&quot;direct-link&quot; href=&quot;https://fildon.me/blog/equivalence/#the-pitfalls&quot; aria-hidden=&quot;true&quot;&gt;#&lt;/a&gt; The Pitfalls&lt;/h2&gt;
+&lt;p&gt;As soon as we allow even one equality across types we create a cross-type equivalence class.&lt;/p&gt;
+&lt;p&gt;An &lt;code&gt;Equivalence Class&lt;/code&gt; is the set of all elements which are equivalent to one another.&lt;/p&gt;
+&lt;p&gt;Once you have a cross-type equivalence class, you have to be very careful when considering new members of that class. It is not sufficient to check our intuition against just one member of the equivalence class, since equivalence with any member, implies equivalence to all members (via transitivity).&lt;/p&gt;
+&lt;p&gt;The above implies two statements:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Distinct values of the same type &lt;em&gt;must never be members of the same equivalence class&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;A maximal equivalence class has exactly one value from each type.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;a-silly-proposal&quot; tabindex=&quot;-1&quot;&gt;&lt;a class=&quot;direct-link&quot; href=&quot;https://fildon.me/blog/equivalence/#a-silly-proposal&quot; aria-hidden=&quot;true&quot;&gt;#&lt;/a&gt; A Silly Proposal&lt;/h2&gt;
+&lt;p&gt;Given the boolean type has only two values, there can exist only two distinct equivalence classes including booleans. We can use this as the basis for a set of maximal equivalence classes.&lt;/p&gt;
+&lt;p&gt;The &lt;code&gt;false&lt;/code&gt; equivalence class:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;String: &lt;code&gt;&#39;&#39;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Number: &lt;code&gt;0&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;BigInt: &lt;code&gt;BigInt(0)&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Boolean: &lt;code&gt;false&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Undefined: &lt;code&gt;undefined&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Symbol: &lt;code&gt;Symbol.for(&#39;&#39;)&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Null: &lt;code&gt;null&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The &lt;code&gt;true&lt;/code&gt; equivalence class:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;String: &lt;code&gt;&#39;true&#39;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Number: &lt;code&gt;1&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;BigInt: &lt;code&gt;BigInt(1)&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Boolean: &lt;code&gt;true&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Symbol: &lt;code&gt;Symbol.for(&#39;true&#39;)&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The &lt;code&gt;false&lt;/code&gt; class includes seven values, exactly one value from each primitive type.&lt;/p&gt;
+&lt;p&gt;The &lt;code&gt;true&lt;/code&gt; class has five values. The only missing types are &lt;code&gt;undefined&lt;/code&gt; and &lt;code&gt;null&lt;/code&gt;, which cannot be included without merging the two equivalence classes. I &lt;em&gt;really&lt;/em&gt; don&#39;t like the use of &lt;code&gt;&#39;true&#39;&lt;/code&gt; as the canonically true string, but this is what we get for pushing an idea to its limit.&lt;/p&gt;
+&lt;p&gt;In reality prohibiting cross-type equality is a perfectly sensible decision and very easy to reason about. It&#39;s no wonder that &lt;code&gt;===&lt;/code&gt; is greatly preferred to &lt;code&gt;==&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Take care,&lt;/p&gt;
+&lt;p&gt;Rupert&lt;/p&gt;
+</content>
+    </entry>
     <entry>
       <title>Rupert Representations</title>
       <link href="https://fildon.me/blog/rupert-representations/"/>
