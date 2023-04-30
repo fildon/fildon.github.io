@@ -1,23 +1,33 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Loose Equality violates Transitivity</title>
-    <meta name="description" content="Why does JavaScript get equality wrong and how could it be different?">
-    <link rel="shortcut icon" type="image/x-icon" href="/static/favicon.ico">
-    <link rel="stylesheet" href="/static/styles.css">
-    <link rel="stylesheet" href="/static/prism.css">
-  </head>
-  <body>
-    <header>
-      <h1 class="home">
-        <a href="/">Rupert &#39;fildon&#39; McKay</a>
-      </h1>
-    </header>
-    <article>
-  <h2>Loose Equality violates Transitivity</h2>
-  <p>In JavaScript:</p>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Loose Equality violates Transitivity</title>
+		<meta name="description" content="Why does JavaScript get equality wrong and how could it be different?">
+		<link rel="shortcut icon" type="image/x-icon" href="/static/favicon.ico">
+		<link rel="stylesheet" href="/static/styles.css">
+		<link rel="stylesheet" href="/static/prism.css">
+	</head>
+	<body>
+		<header class="horizontal-spread">
+			<img
+				src="../../static/headshot.jpeg"
+				alt="Headshot of Rupert"
+				class="rounded wonky"
+				height="64"
+				width="64"
+			/>
+			<h1><a href="../../.">Rupert 'fildon' McKay</a></h1>
+		</header>
+		<pre aria-hidden="true" class="morse">
+█ ███ █
+███ ███
+</pre>
+		<article>
+	<h1>Loose Equality violates Transitivity</h1>
+	<span>Posted: <date datetime="Thu Mar 09 2023 00:00:00 GMT+0000 (Coordinated Universal Time)">09 Mar 2023</date></span>
+	<p>In JavaScript:</p>
 <pre class="language-js"><code class="language-js"><span class="token string">"0"</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">;</span> <span class="token comment">// true</span><br><span class="token number">0</span> <span class="token operator">==</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment">// true</span><br><span class="token string">"0"</span> <span class="token operator">==</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment">// false</span></code></pre>
 <p>These three statements demonstrate that loose equality in JavaScript is not <em>transitive</em> and therefore is not a valid <em>equivalence relation</em>.</p>
 <p>Despite this, the above is not a bug. It conforms exactly to <a href="https://262.ecma-international.org/#sec-islooselyequal">ECMAScript: IsLooselyEqual</a>.</p>
@@ -68,9 +78,9 @@
 <p>Rupert</p>
 
 </article>
-    <pre aria-hidden="true" class="morse">
+		<pre aria-hidden="true" class="morse">
 █ ███ █
 ███ ███
-    </pre>
-  </body>
+		</pre>
+	</body>
 </html>

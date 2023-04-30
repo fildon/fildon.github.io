@@ -1,23 +1,33 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Accessing Unknown Objects in TypeScript</title>
-    <meta name="description" content="How to solve `Object is of type &#39;unknown&#39;` errors.">
-    <link rel="shortcut icon" type="image/x-icon" href="/static/favicon.ico">
-    <link rel="stylesheet" href="/static/styles.css">
-    <link rel="stylesheet" href="/static/prism.css">
-  </head>
-  <body>
-    <header>
-      <h1 class="home">
-        <a href="/">Rupert &#39;fildon&#39; McKay</a>
-      </h1>
-    </header>
-    <article>
-  <h2>Accessing Unknown Objects in TypeScript</h2>
-  <p>There's a utility function I find myself adding to almost every TypeScript repo I work on.</p>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Accessing Unknown Objects in TypeScript</title>
+		<meta name="description" content="How to solve `Object is of type &#39;unknown&#39;` errors.">
+		<link rel="shortcut icon" type="image/x-icon" href="/static/favicon.ico">
+		<link rel="stylesheet" href="/static/styles.css">
+		<link rel="stylesheet" href="/static/prism.css">
+	</head>
+	<body>
+		<header class="horizontal-spread">
+			<img
+				src="../../static/headshot.jpeg"
+				alt="Headshot of Rupert"
+				class="rounded wonky"
+				height="64"
+				width="64"
+			/>
+			<h1><a href="../../.">Rupert 'fildon' McKay</a></h1>
+		</header>
+		<pre aria-hidden="true" class="morse">
+█ ███ █
+███ ███
+</pre>
+		<article>
+	<h1>Accessing Unknown Objects in TypeScript</h1>
+	<span>Posted: <date datetime="Sun Sep 11 2022 00:00:00 GMT+0000 (Coordinated Universal Time)">11 Sep 2022</date></span>
+	<p>There's a utility function I find myself adding to almost every TypeScript repo I work on.</p>
 <p>It goes like this:</p>
 <pre class="language-ts"><code class="language-ts"><span class="token keyword">const</span> isObject <span class="token operator">=</span> <span class="token punctuation">(</span><br>  <span class="token builtin">unknown</span><span class="token operator">:</span> <span class="token builtin">unknown</span><br><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token builtin">unknown</span> <span class="token keyword">is</span> Record<span class="token operator">&lt;</span>PropertyKey<span class="token punctuation">,</span> <span class="token builtin">unknown</span><span class="token operator">></span> <span class="token operator">=></span><br>  <span class="token keyword">typeof</span> <span class="token builtin">unknown</span> <span class="token operator">===</span> <span class="token string">'object'</span> <span class="token operator">&amp;&amp;</span> <span class="token builtin">unknown</span> <span class="token operator">!==</span> <span class="token keyword">null</span></code></pre>
 <h2 id="usecase-in-error-handling" tabindex="-1"><a class="direct-link" href="#usecase-in-error-handling" aria-hidden="true">#</a> Usecase in Error Handling</h2>
@@ -40,9 +50,9 @@
 <p>Rupert</p>
 
 </article>
-    <pre aria-hidden="true" class="morse">
+		<pre aria-hidden="true" class="morse">
 █ ███ █
 ███ ███
-    </pre>
-  </body>
+		</pre>
+	</body>
 </html>

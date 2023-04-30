@@ -1,23 +1,33 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simulating Dice</title>
-    <meta name="description" content="Mapping from one die size to another.">
-    <link rel="shortcut icon" type="image/x-icon" href="/static/favicon.ico">
-    <link rel="stylesheet" href="/static/styles.css">
-    <link rel="stylesheet" href="/static/prism.css">
-  </head>
-  <body>
-    <header>
-      <h1 class="home">
-        <a href="/">Rupert &#39;fildon&#39; McKay</a>
-      </h1>
-    </header>
-    <article>
-  <h2>Simulating Dice</h2>
-  <p>In this post I will demonstrate two approaches for simulating rolls of a die of a given size, using only rolls of a die of a different size.</p>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Simulating Dice</title>
+		<meta name="description" content="Mapping from one die size to another.">
+		<link rel="shortcut icon" type="image/x-icon" href="/static/favicon.ico">
+		<link rel="stylesheet" href="/static/styles.css">
+		<link rel="stylesheet" href="/static/prism.css">
+	</head>
+	<body>
+		<header class="horizontal-spread">
+			<img
+				src="../../static/headshot.jpeg"
+				alt="Headshot of Rupert"
+				class="rounded wonky"
+				height="64"
+				width="64"
+			/>
+			<h1><a href="../../.">Rupert 'fildon' McKay</a></h1>
+		</header>
+		<pre aria-hidden="true" class="morse">
+█ ███ █
+███ ███
+</pre>
+		<article>
+	<h1>Simulating Dice</h1>
+	<span>Posted: <date datetime="Sat Aug 13 2022 00:00:00 GMT+0000 (Coordinated Universal Time)">13 Aug 2022</date></span>
+	<p>In this post I will demonstrate two approaches for simulating rolls of a die of a given size, using only rolls of a die of a different size.</p>
 <p>Throughout this post I will use <code>dn</code> terminology to refer to a die of size <code>n</code>. For example a <code>d6</code> refers to the classic six-sided die.</p>
 <h2 id="using-base-number-conversion" tabindex="-1"><a class="direct-link" href="#using-base-number-conversion" aria-hidden="true">#</a> Using base number conversion</h2>
 <p>Given an input die of size <code>n</code> and a target die of size <code>m</code>, this approach works by expanding the output space of the <code>dn</code> by rolling it repeated times, and interpreting the rolls in base <code>n</code> mod <code>m</code>. Some rolls however must be discarded to prevent bias in the outcomes.</p>
@@ -223,9 +233,9 @@
 <p>Rupert</p>
 
 </article>
-    <pre aria-hidden="true" class="morse">
+		<pre aria-hidden="true" class="morse">
 █ ███ █
 ███ ███
-    </pre>
-  </body>
+		</pre>
+	</body>
 </html>

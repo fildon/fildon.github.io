@@ -1,23 +1,33 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sorting in JavaScript.</title>
-    <meta name="description" content="Typical use-cases and rare edge-cases.">
-    <link rel="shortcut icon" type="image/x-icon" href="/static/favicon.ico">
-    <link rel="stylesheet" href="/static/styles.css">
-    <link rel="stylesheet" href="/static/prism.css">
-  </head>
-  <body>
-    <header>
-      <h1 class="home">
-        <a href="/">Rupert &#39;fildon&#39; McKay</a>
-      </h1>
-    </header>
-    <article>
-  <h2>Sorting in JavaScript.</h2>
-  <p>JavaScript arrays have a builtin <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort">sort</a> method, which mostly does what you expect:</p>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Sorting in JavaScript.</title>
+		<meta name="description" content="Typical use-cases and rare edge-cases.">
+		<link rel="shortcut icon" type="image/x-icon" href="/static/favicon.ico">
+		<link rel="stylesheet" href="/static/styles.css">
+		<link rel="stylesheet" href="/static/prism.css">
+	</head>
+	<body>
+		<header class="horizontal-spread">
+			<img
+				src="../../static/headshot.jpeg"
+				alt="Headshot of Rupert"
+				class="rounded wonky"
+				height="64"
+				width="64"
+			/>
+			<h1><a href="../../.">Rupert 'fildon' McKay</a></h1>
+		</header>
+		<pre aria-hidden="true" class="morse">
+█ ███ █
+███ ███
+</pre>
+		<article>
+	<h1>Sorting in JavaScript.</h1>
+	<span>Posted: <date datetime="Mon Jan 17 2022 00:00:00 GMT+0000 (Coordinated Universal Time)">17 Jan 2022</date></span>
+	<p>JavaScript arrays have a builtin <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort">sort</a> method, which mostly does what you expect:</p>
 <pre class="language-javascript"><code class="language-javascript"><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">sort</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// [1, 2, 3, 4]</span><br><span class="token punctuation">[</span><span class="token string">"d"</span><span class="token punctuation">,</span> <span class="token string">"a"</span><span class="token punctuation">,</span> <span class="token string">"b"</span><span class="token punctuation">,</span> <span class="token string">"c"</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">sort</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// ['a', 'b', 'c', 'd']</span></code></pre>
 <p>But it has some quirks. For example: numbers are sorted <em>as though they were strings</em>, which is fine as long as all your numbers are the same length, but leads to unexpected behavior for numbers of different lengths:</p>
 <pre class="language-javascript"><code class="language-javascript"><span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">sort</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// [1, 10, 2] Not what we wanted!</span></code></pre>
@@ -92,9 +102,9 @@
 <p>Rupert</p>
 
 </article>
-    <pre aria-hidden="true" class="morse">
+		<pre aria-hidden="true" class="morse">
 █ ███ █
 ███ ███
-    </pre>
-  </body>
+		</pre>
+	</body>
 </html>

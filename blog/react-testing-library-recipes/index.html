@@ -1,23 +1,33 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>React Testing Library Recipes.</title>
-    <meta name="description" content="Common testing patterns for creating confidence in your UI tests.">
-    <link rel="shortcut icon" type="image/x-icon" href="/static/favicon.ico">
-    <link rel="stylesheet" href="/static/styles.css">
-    <link rel="stylesheet" href="/static/prism.css">
-  </head>
-  <body>
-    <header>
-      <h1 class="home">
-        <a href="/">Rupert &#39;fildon&#39; McKay</a>
-      </h1>
-    </header>
-    <article>
-  <h2>React Testing Library Recipes.</h2>
-  <p>As long as I've been working in frontend development, the tools available for testing UIs have felt clunky, hard to use, and not filled me with confidence that they reflect real end-user experiences.</p>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>React Testing Library Recipes.</title>
+		<meta name="description" content="Common testing patterns for creating confidence in your UI tests.">
+		<link rel="shortcut icon" type="image/x-icon" href="/static/favicon.ico">
+		<link rel="stylesheet" href="/static/styles.css">
+		<link rel="stylesheet" href="/static/prism.css">
+	</head>
+	<body>
+		<header class="horizontal-spread">
+			<img
+				src="../../static/headshot.jpeg"
+				alt="Headshot of Rupert"
+				class="rounded wonky"
+				height="64"
+				width="64"
+			/>
+			<h1><a href="../../.">Rupert 'fildon' McKay</a></h1>
+		</header>
+		<pre aria-hidden="true" class="morse">
+█ ███ █
+███ ███
+</pre>
+		<article>
+	<h1>React Testing Library Recipes.</h1>
+	<span>Posted: <date datetime="Sat Dec 04 2021 00:00:00 GMT+0000 (Coordinated Universal Time)">04 Dec 2021</date></span>
+	<p>As long as I've been working in frontend development, the tools available for testing UIs have felt clunky, hard to use, and not filled me with confidence that they reflect real end-user experiences.</p>
 <p>I was especially tired of libraries that directly leaned on DOM queries or imperatively fired DOM events. This felt much too much like testing implementation details to me. But when I first saw Testing Library I knew it was different. Its documentation starts with this fantastic sentiment:</p>
 <blockquote>
 <p><a href="https://testing-library.com/docs/guiding-principles">The more your tests resemble the way your software is used, the more confidence they can give you.</a></p>
@@ -63,9 +73,9 @@
 Rupert</p>
 
 </article>
-    <pre aria-hidden="true" class="morse">
+		<pre aria-hidden="true" class="morse">
 █ ███ █
 ███ ███
-    </pre>
-  </body>
+		</pre>
+	</body>
 </html>

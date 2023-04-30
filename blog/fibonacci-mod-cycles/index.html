@@ -1,23 +1,33 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fibonacci Mod Cycles.</title>
-    <meta name="description" content="Representing Fibonacci sequences as Directed Graphs.">
-    <link rel="shortcut icon" type="image/x-icon" href="/static/favicon.ico">
-    <link rel="stylesheet" href="/static/styles.css">
-    <link rel="stylesheet" href="/static/prism.css">
-  </head>
-  <body>
-    <header>
-      <h1 class="home">
-        <a href="/">Rupert &#39;fildon&#39; McKay</a>
-      </h1>
-    </header>
-    <article>
-  <h2>Fibonacci Mod Cycles.</h2>
-  <p>The <a href="https://en.wikipedia.org/wiki/Fibonacci_number">Fibonacci Numbers</a> are a sequence starting, <code>0, 1, 1,...</code>, and each subsequent number being computed as the sum of the previous two.</p>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Fibonacci Mod Cycles.</title>
+		<meta name="description" content="Representing Fibonacci sequences as Directed Graphs.">
+		<link rel="shortcut icon" type="image/x-icon" href="/static/favicon.ico">
+		<link rel="stylesheet" href="/static/styles.css">
+		<link rel="stylesheet" href="/static/prism.css">
+	</head>
+	<body>
+		<header class="horizontal-spread">
+			<img
+				src="../../static/headshot.jpeg"
+				alt="Headshot of Rupert"
+				class="rounded wonky"
+				height="64"
+				width="64"
+			/>
+			<h1><a href="../../.">Rupert 'fildon' McKay</a></h1>
+		</header>
+		<pre aria-hidden="true" class="morse">
+█ ███ █
+███ ███
+</pre>
+		<article>
+	<h1>Fibonacci Mod Cycles.</h1>
+	<span>Posted: <date datetime="Sat Jul 30 2022 00:00:00 GMT+0000 (Coordinated Universal Time)">30 Jul 2022</date></span>
+	<p>The <a href="https://en.wikipedia.org/wiki/Fibonacci_number">Fibonacci Numbers</a> are a sequence starting, <code>0, 1, 1,...</code>, and each subsequent number being computed as the sum of the previous two.</p>
 <p>We could define this in pseudocode:</p>
 <pre class="language-ts"><code class="language-ts"><span class="token function">getNthFibonacci</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span> <span class="token punctuation">{</span><br>  <span class="token keyword">if</span> <span class="token punctuation">(</span>n <span class="token keyword">is</span> <span class="token number">0</span> or <span class="token number">1</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token number">1</span><span class="token punctuation">;</span><br>  <span class="token keyword">return</span> <span class="token function">getNthFibonacci</span><span class="token punctuation">(</span>n <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><br>    <span class="token operator">+</span> <span class="token function">getNthFibonacci</span><span class="token punctuation">(</span>n <span class="token operator">-</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><span class="token punctuation">}</span></code></pre>
 <p>When inspecting the sequence of numbers this outputs <em>and in particular</em> the digits of these numbers, we can observe some repeating cycles. However the choice of base number system affects the digits we will see. In order to generalize this independent of base number system, we can inspect the sequence under some modulo. The digits we see in base ten correspond to the sequence under a modulo of power ten.</p>
@@ -123,9 +133,9 @@
 <p>Honestly don't know. It seems that with the examples provided of Fibonacci numbers and primary numbers, we see very different outcomes. It remains unclear to me whether these outcomes are unique to these two sequences, or whether there might exist families of sequences with common properties.</p>
 
 </article>
-    <pre aria-hidden="true" class="morse">
+		<pre aria-hidden="true" class="morse">
 █ ███ █
 ███ ███
-    </pre>
-  </body>
+		</pre>
+	</body>
 </html>

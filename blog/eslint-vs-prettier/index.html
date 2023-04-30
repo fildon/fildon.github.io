@@ -1,23 +1,33 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ESLint vs Prettier.</title>
-    <meta name="description" content="Why I don&#39;t use the &#39;fix&#39; option.">
-    <link rel="shortcut icon" type="image/x-icon" href="/static/favicon.ico">
-    <link rel="stylesheet" href="/static/styles.css">
-    <link rel="stylesheet" href="/static/prism.css">
-  </head>
-  <body>
-    <header>
-      <h1 class="home">
-        <a href="/">Rupert &#39;fildon&#39; McKay</a>
-      </h1>
-    </header>
-    <article>
-  <h2>ESLint vs Prettier.</h2>
-  <p>TL;DR: <code>ESLint</code> should identify <em>semantic</em> errors <em>which require programmer intervention to fix</em>, while <code>prettier</code> should identify <em>text formatting errors</em> which do not require programmer intervention to fix.</p>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>ESLint vs Prettier.</title>
+		<meta name="description" content="Why I don&#39;t use the &#39;fix&#39; option.">
+		<link rel="shortcut icon" type="image/x-icon" href="/static/favicon.ico">
+		<link rel="stylesheet" href="/static/styles.css">
+		<link rel="stylesheet" href="/static/prism.css">
+	</head>
+	<body>
+		<header class="horizontal-spread">
+			<img
+				src="../../static/headshot.jpeg"
+				alt="Headshot of Rupert"
+				class="rounded wonky"
+				height="64"
+				width="64"
+			/>
+			<h1><a href="../../.">Rupert 'fildon' McKay</a></h1>
+		</header>
+		<pre aria-hidden="true" class="morse">
+█ ███ █
+███ ███
+</pre>
+		<article>
+	<h1>ESLint vs Prettier.</h1>
+	<span>Posted: <date datetime="Sat Oct 09 2021 00:00:00 GMT+0000 (Coordinated Universal Time)">09 Oct 2021</date></span>
+	<p>TL;DR: <code>ESLint</code> should identify <em>semantic</em> errors <em>which require programmer intervention to fix</em>, while <code>prettier</code> should identify <em>text formatting errors</em> which do not require programmer intervention to fix.</p>
 <h2 id="the-problem-with-static-analysis" tabindex="-1"><a class="direct-link" href="#the-problem-with-static-analysis" aria-hidden="true">#</a> The problem with Static Analysis</h2>
 <p>So there's this guy &quot;Rice&quot; and he said, &quot;We literally can't know anything interesting about any program&quot; <a href="https://en.wikipedia.org/wiki/Rice%27s_theorem">Rice's theorem</a>. Well dang.</p>
 <p>That's a really big problem since we really want to know <em>is this code any good?</em></p>
@@ -44,9 +54,9 @@
 <p>In any case, I am confident that if I persuade only some small percentage of programmers I ever meet of this way of thinking, it will have more impact than any line of code I ever write.</p>
 
 </article>
-    <pre aria-hidden="true" class="morse">
+		<pre aria-hidden="true" class="morse">
 █ ███ █
 ███ ███
-    </pre>
-  </body>
+		</pre>
+	</body>
 </html>
