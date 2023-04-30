@@ -25,14 +25,14 @@ And here's another which has been roughly cropped. I upload this as a custom emo
 
 The following glyph is a representation of "RM" using [Morse code](https://en.wikipedia.org/wiki/Morse_code). I use it in a couple places as a little visual break throughout this website.
 
-<pre>
+<pre class="morse">
 █ ███ █
 ███ ███
 </pre>
 
 The first row is the letter "R" and the second row is letter "M". Not all letters of the Morse alphabet are symmetric or of equal length, so it was especially lucky how "RM" lined up so neatly like this. I would have preferred to use "RFM" but the letter "F" is not symmetric, nor of equal length to the others. If I included the "F" then the "RFM" glyph would look like this.
 
-<pre>
+<pre class="morse">
 █ ███ █
 █ █ ███ █
 ███ ███
