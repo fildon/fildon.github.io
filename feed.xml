@@ -81,12 +81,12 @@
 &lt;img src=&quot;https://fildon.me/static/rupertemoji.png&quot; alt=&quot;A headshot of Rupert Foggo McKay&quot; /&gt;
 &lt;h2 id=&quot;morse&quot; tabindex=&quot;-1&quot;&gt;&lt;a class=&quot;direct-link&quot; href=&quot;https://fildon.me/blog/rupert-representations/#morse&quot; aria-hidden=&quot;true&quot;&gt;#&lt;/a&gt; Morse&lt;/h2&gt;
 &lt;p&gt;The following glyph is a representation of &amp;quot;RM&amp;quot; using &lt;a href=&quot;https://en.wikipedia.org/wiki/Morse_code&quot;&gt;Morse code&lt;/a&gt;. I use it in a couple places as a little visual break throughout this website.&lt;/p&gt;
-&lt;pre&gt;
+&lt;pre class=&quot;morse&quot;&gt;
 █ ███ █
 ███ ███
 &lt;/pre&gt;
 &lt;p&gt;The first row is the letter &amp;quot;R&amp;quot; and the second row is letter &amp;quot;M&amp;quot;. Not all letters of the Morse alphabet are symmetric or of equal length, so it was especially lucky how &amp;quot;RM&amp;quot; lined up so neatly like this. I would have preferred to use &amp;quot;RFM&amp;quot; but the letter &amp;quot;F&amp;quot; is not symmetric, nor of equal length to the others. If I included the &amp;quot;F&amp;quot; then the &amp;quot;RFM&amp;quot; glyph would look like this.&lt;/p&gt;
-&lt;pre&gt;
+&lt;pre class=&quot;morse&quot;&gt;
 █ ███ █
 █ █ ███ █
 ███ ███

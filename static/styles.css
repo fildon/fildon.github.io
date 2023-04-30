@@ -195,6 +195,10 @@ ol {
 	opacity: 1;
 }
 
+.morse {
+	font-family: monospace;
+}
+
 /* Block */
 body {
 	display: flex;
