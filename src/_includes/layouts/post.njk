@@ -2,6 +2,7 @@
 layout: layouts/base.njk
 ---
 <article>
-  <h2>{{ title }}</h2>
-  {{ content | safe }}
+	<h1>{{ title }}</h1>
+	<span>Posted: <date datetime="{{ date }}">{{ date | readableDate }}</date></span>
+	{{ content | safe }}
 </article>

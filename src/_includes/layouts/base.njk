@@ -1,24 +1,33 @@
 <!doctype html>
 <html lang="{{ metadata.language }}">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ title or metadata.title }}</title>
-    <meta name="description" content="{{ description or metadata.description }}">
-    <link rel="shortcut icon" type="image/x-icon" href="{{ '/static/favicon.ico' | url }}">
-    <link rel="stylesheet" href="{{ '/static/styles.css' | url }}">
-    <link rel="stylesheet" href="{{ '/static/prism.css' | url }}">
-  </head>
-  <body>
-    <header>
-      <h1 class="home">
-        <a href="{{ '/' | url }}">{{ metadata.title }}</a>
-      </h1>
-    </header>
-    {{ content | safe }}
-    <pre aria-hidden="true" class="morse">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>{{ title or metadata.title }}</title>
+		<meta name="description" content="{{ description or metadata.description }}">
+		<link rel="shortcut icon" type="image/x-icon" href="{{ '/static/favicon.ico' | url }}">
+		<link rel="stylesheet" href="{{ '/static/styles.css' | url }}">
+		<link rel="stylesheet" href="{{ '/static/prism.css' | url }}">
+	</head>
+	<body>
+		<header class="horizontal-spread">
+			<img
+				src="../../static/headshot.jpeg"
+				alt="Headshot of Rupert"
+				class="rounded wonky"
+				height="64"
+				width="64"
+			/>
+			<h1><a href="../../.">Rupert 'fildon' McKay</a></h1>
+		</header>
+		<pre aria-hidden="true" class="morse">
 █ ███ █
 ███ ███
-    </pre>
-  </body>
+</pre>
+		{{ content | safe }}
+		<pre aria-hidden="true" class="morse">
+█ ███ █
+███ ███
+		</pre>
+	</body>
 </html>
