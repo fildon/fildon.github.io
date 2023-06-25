@@ -4,12 +4,124 @@
   <subtitle>Assorted projects and blog posts.</subtitle>
   <link href="https://fildon.me/feed.xml" rel="self"/>
   <link href="https://fildon.me/"/>
-  <updated>2023-03-09T00:00:00Z</updated>
+  <updated>2023-06-25T00:00:00Z</updated>
   <id>https://fildon.me/</id>
   <author>
     <name>Rupert &#39;fildon&#39; McKay</name>
     <email>maxfmckay@gmail.com</email>
   </author>
+    <entry>
+      <title>Counting the Hard Way</title>
+      <link href="https://fildon.me/blog/counting-to-ten/"/>
+      <updated>2023-06-25T00:00:00Z</updated>
+      <id>https://fildon.me/blog/counting-to-ten/</id>
+      <content xml:lang="en" type="html">&lt;p&gt;In this post we&#39;ll explore the weird world of alternative base number systems.&lt;/p&gt;
+&lt;p&gt;Let&#39;s start by counting to ten:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, ...&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Congratulations.&lt;/p&gt;
+&lt;p&gt;But let&#39;s look at that sequence of symbols above. Isn&#39;t it weird that for most of the numbers I used just a single symbol, but for the last one I used two symbols (&lt;code&gt;1&lt;/code&gt; and &lt;code&gt;0&lt;/code&gt;)?&lt;/p&gt;
+&lt;p&gt;In base 10 we have 10 distinct symbols from 0-9, but we have to break out into multiple symbols for numeric values larger than 9. Let&#39;s hold that thought and move onto a different base number system.&lt;/p&gt;
+&lt;h2 id=&quot;binary-base-2&quot; tabindex=&quot;-1&quot;&gt;&lt;a class=&quot;direct-link&quot; href=&quot;https://fildon.me/blog/counting-to-ten/#binary-base-2&quot; aria-hidden=&quot;true&quot;&gt;#&lt;/a&gt; Binary Base 2&lt;/h2&gt;
+&lt;p&gt;Binary is a numeral system using just the digits &lt;code&gt;0&lt;/code&gt; and &lt;code&gt;1&lt;/code&gt;. It is used extensively in computing and digital technology.&lt;/p&gt;
+&lt;p&gt;In binary, counting to ten looks like this:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;0, 1, 10, 11, 100, 101, 110, 111, 1000, 1001, 1010, ...&lt;/code&gt;&lt;/p&gt;
+&lt;h2 id=&quot;general-rules-of-positional-notation-systems&quot; tabindex=&quot;-1&quot;&gt;&lt;a class=&quot;direct-link&quot; href=&quot;https://fildon.me/blog/counting-to-ten/#general-rules-of-positional-notation-systems&quot; aria-hidden=&quot;true&quot;&gt;#&lt;/a&gt; General Rules of Positional Notation Systems&lt;/h2&gt;
+&lt;p&gt;Now that we&#39;ve seen two examples, lets consider the general properties of Positional Notation Systems.&lt;/p&gt;
+&lt;p&gt;When we read a number like &lt;code&gt;423&lt;/code&gt;. We interpret this as three separate values added together:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;4 * 100&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;2 * 10&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;3 * 1&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;We could also write this as:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;4 * 10^2&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;2 * 10^1&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;3 * 10^0&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;We do almost exactly the same in binary. Consider &lt;code&gt;1011&lt;/code&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;1 * 8 = 1 * 2^3&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;0 * 4 = 0 * 2^2&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;1 * 2 = 1 * 2^1&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;1 * 1 = 1 * 2^0&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;In both cases the individual digit values are multiplied by some power of the base value.&lt;/p&gt;
+&lt;p&gt;With this understanding it should be possible to understand how any &lt;em&gt;integer greater than 1&lt;/em&gt; can be used as a base, and what counting in such a system would look like.&lt;/p&gt;
+&lt;p&gt;But now that we know the rules... what if we start to break them?&lt;/p&gt;
+&lt;p&gt;First up: what if the base was negative?&lt;/p&gt;
+&lt;h2 id=&quot;negabinary-base-2&quot; tabindex=&quot;-1&quot;&gt;&lt;a class=&quot;direct-link&quot; href=&quot;https://fildon.me/blog/counting-to-ten/#negabinary-base-2&quot; aria-hidden=&quot;true&quot;&gt;#&lt;/a&gt; Negabinary Base -2&lt;/h2&gt;
+&lt;p&gt;Suppose we have a base of -2. The powers of -2 are:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;-2^5 = -32&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-2^4 = 16&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-2^3 = -8&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-2^2 = 4&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-2^1 = -2&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-2^0 = 1&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;So how can we use this to count to ten?&lt;/p&gt;
+&lt;p&gt;The first two numbers are easy: &lt;code&gt;0, 1&lt;/code&gt;. But already the next number presents a problem. Using just the powers available to us above how can we represent two?&lt;/p&gt;
+&lt;p&gt;The trick here is to notice that we can use:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;-2^2 = 4&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-2^1 = -2&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;i.e. &lt;code&gt;110&lt;/code&gt; is two in Negabinary.&lt;/p&gt;
+&lt;p&gt;We make three by simply adding one to two.&lt;/p&gt;
+&lt;p&gt;i.e. &lt;code&gt;111&lt;/code&gt; is three in Negabinary.&lt;/p&gt;
+&lt;p&gt;Then the whole sequence to ten is:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;0, 1, 110, 111, 100, 101, 11010, 11011, 11000, 11001, 11110, ...&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;But what if we now also decide to count down?&lt;/p&gt;
+&lt;p&gt;Counting negatively:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;0, 11, 10, 1101, 1100, 1111, 1110, 1001, 1000, 1011, 1010, ...&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Notice an interesting property here:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;All the positive values have an odd number of digits&lt;/li&gt;
+&lt;li&gt;All the negative values have an even number of digits&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;At no point did we need a minus sign to represent negative values!&lt;/p&gt;
+&lt;p&gt;We can intuitively understand this interesting property by recognising that the minus symbol has become redundant since it is &amp;quot;prebaked&amp;quot; into the base itself. Our &amp;quot;menu&amp;quot; of powers of -2 offers us both negative and positive values to choose from.&lt;/p&gt;
+&lt;p&gt;But we aren&#39;t done yet! What if our base was a complex number?&lt;/p&gt;
+&lt;h2 id=&quot;quarter-imaginary-base-2i&quot; tabindex=&quot;-1&quot;&gt;&lt;a class=&quot;direct-link&quot; href=&quot;https://fildon.me/blog/counting-to-ten/#quarter-imaginary-base-2i&quot; aria-hidden=&quot;true&quot;&gt;#&lt;/a&gt; Quarter-Imaginary Base 2i&lt;/h2&gt;
+&lt;p&gt;The Quarter-Imaginary numeral system was first proposed by Donald Knuth in 1960. The trick with this base is recognising that powers of &lt;code&gt;2i&lt;/code&gt; &amp;quot;rotate&amp;quot; through the Gaussian plane.&lt;/p&gt;
+&lt;p&gt;Powers:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;-1: -(1/2)i&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;0: 1&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;1: 2i&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;2: -4&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;3: -8i&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;4: 16&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;5: 32i&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;6: -64&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;7: -128i&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;8: 256&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;9: 512i&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;With this base we need four symbols: &lt;code&gt;0&lt;/code&gt;, &lt;code&gt;1&lt;/code&gt;, &lt;code&gt;2&lt;/code&gt; and &lt;code&gt;3&lt;/code&gt; to represent all values.&lt;/p&gt;
+&lt;p&gt;Positive real integers:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;0, 1, 2, 3, 10300, 10301, 10302, 10303, 10200, 10201, 10202, ...&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Negative real integers:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;0, 103, 102, 101, 100, 203, 202, 201, 200, 303, 302, ...&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Positive imaginaries:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;0, 10.2, 10, 20.2, 20, 30.2, 30, 103000.2, 103000, 103010.2, 103010, ...&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Negative imaginaries:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;0, 0.2, 1030, 1030.2, 1020, 1020.2, 1010, 1010.2, 1000, 1000.2, 2030, ...&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Some other examples:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;1+i = 11.2&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-1+i = 113.2&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-1-i = 103.2&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;1-i = 1.2&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;In this way we can represent all complex numbers without needing a minus sign, nor a sign for &lt;code&gt;i&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;As before you&#39;ll notice that the modulo of the length of a number tells us something about where on the Gaussian plane our value is. Another interesting feature is the use of &lt;code&gt;0.2&lt;/code&gt; to give us &lt;code&gt;-i&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;That&#39;s all for today.&lt;/p&gt;
+&lt;p&gt;Take care,&lt;/p&gt;
+&lt;p&gt;Rupert&lt;/p&gt;
+</content>
+    </entry>
     <entry>
       <title>Loose Equality violates Transitivity</title>
       <link href="https://fildon.me/blog/equivalence/"/>
