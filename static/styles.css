@@ -59,6 +59,7 @@ h2 {
 h3 {
 	font-size: var(--s1);
 	margin: var(--s0) auto var(--s0);
+	text-decoration: underline;
 }
 
 a {
@@ -96,17 +97,9 @@ code[class*="language-"] {
 	padding: 0;
 }
 
-blockquote > p {
+blockquote {
 	position: relative;
-}
-
-blockquote > p:before {
-	background: var(--hard);
-	left: calc(-1 * var(--s0));
-	width: var(--s-3);
-	height: 100%;
-	position: absolute;
-	content: "";
+	font-style: italic;
 }
 
 /* Composition */
@@ -155,6 +148,7 @@ td {
 
 article > pre {
 	width: 100%;
+	overflow: scroll;
 }
 
 p > img {
@@ -162,7 +156,7 @@ p > img {
 }
 
 body > article {
-	max-width: var(--measure);
+	width: clamp(0, var(--measure), 90vw);
 }
 
 ul,
