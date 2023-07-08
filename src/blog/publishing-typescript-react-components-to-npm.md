@@ -59,17 +59,17 @@ And now let's write some React! For this guide, I'm going to stick to something 
 import * as React from "react";
 
 export function Counter() {
-  const [count, setCount] = React.useState(0);
-  return (
-    <>
-      <p>You clicked {count} times</p>
-      <button onClick={() => setCount(count + 1)}>Click me</button>
-    </>
-  );
+	const [count, setCount] = React.useState(0);
+	return (
+		<>
+			<p>You clicked {count} times</p>
+			<button onClick={() => setCount(count + 1)}>Click me</button>
+		</>
+	);
 }
 ```
 
-> If you would like more guidance on writing React components in TypeScript you can see my post: [Seeing through JSX to understand React component Types](https://fildon.me/blog/seeing-through-jsx-to-understand-react-component-types/)
+> If you would like more guidance on writing React components in TypeScript you can see my post: [Seeing through JSX to understand React component Types](https://rupertmckay.com/blog/seeing-through-jsx-to-understand-react-component-types/)
 
 Lets also create an `index.ts`:
 
@@ -87,8 +87,8 @@ At this point your file structure should look like this:
 typescript-components-by-rupert/
 ├─ node_modules/
 ├─ src/
-│  ├─ counter.tsx
-│  └─ index.ts
+│ ├─ counter.tsx
+│ └─ index.ts
 ├─ .gitignore
 ├─ package-lock.json
 ├─ package.json
@@ -99,17 +99,17 @@ Since we are working with TypeScript we need to use `tsc` to compile our code. T
 
 ```json
 {
-  "compilerOptions": {
-    "strict": true,
-    "jsx": "react",
-    "declaration": true,
-    "esModuleInterop": true,
-    "outDir": "dist",
-    "target": "es6",
-    "module": "es6",
-    "moduleResolution": "node"
-  },
-  "include": ["src"]
+	"compilerOptions": {
+		"strict": true,
+		"jsx": "react",
+		"declaration": true,
+		"esModuleInterop": true,
+		"outDir": "dist",
+		"target": "es6",
+		"module": "es6",
+		"moduleResolution": "node"
+	},
+	"include": ["src"]
 }
 ```
 
@@ -159,16 +159,16 @@ At this point your file structure should look like this:
 ```md
 typescript-components-by-rupert/
 ├─ dist/
-│  ├─ counter.d.ts
-│  ├─ counter.js
-│  ├─ index.d.ts
-│  ├─ index.js
-│  ├─ package.json
-│  └─ README.md
+│ ├─ counter.d.ts
+│ ├─ counter.js
+│ ├─ index.d.ts
+│ ├─ index.js
+│ ├─ package.json
+│ └─ README.md
 ├─ node_modules/
 ├─ src/
-│  ├─ counter.tsx
-│  └─ index.ts
+│ ├─ counter.tsx
+│ └─ index.ts
 ├─ .gitignore
 ├─ tsconfig.json
 ├─ package-lock.json

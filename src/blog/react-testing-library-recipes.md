@@ -27,11 +27,11 @@ Let's start with something very basic. The classic counter component:
 import * as React from "react";
 
 export const Counter = () => {
-  const [count, setCount] = React.useState(0);
+	const [count, setCount] = React.useState(0);
 
-  const incrementCount = () => setCount((c) => c + 1);
+	const incrementCount = () => setCount((c) => c + 1);
 
-  return <button onClick={incrementCount}>{count}</button>;
+	return <button onClick={incrementCount}>{count}</button>;
 };
 ```
 
@@ -46,13 +46,13 @@ import { render, screen } from "@testing-library/react";
 import { Counter } from "./counter";
 
 it("displays initial count and increments when clicked", () => {
-  render(<Counter />);
+	render(<Counter />);
 
-  expect(screen.getByRole("button", { name: "0" })).toBeInTheDocument();
+	expect(screen.getByRole("button", { name: "0" })).toBeInTheDocument();
 
-  userEvent.click(screen.getByText("0"));
+	userEvent.click(screen.getByText("0"));
 
-  expect(screen.getByRole("button", { name: "1" })).toBeInTheDocument();
+	expect(screen.getByRole("button", { name: "1" })).toBeInTheDocument();
 });
 ```
 
@@ -69,12 +69,12 @@ Sometimes we want to confirm that something _was not rendered_. Suppose we have 
 ```ts
 // user is null if not currently logged in
 export const WelcomeHeading = ({ user }: { user: User | null }) => {
-  const message =
-    user === null
-      ? "Welcome Guest, would you like to log in?"
-      : `Welcome ${user.name}, good to have you back!`;
+	const message =
+		user === null
+			? "Welcome Guest, would you like to log in?"
+			: `Welcome ${user.name}, good to have you back!`;
 
-  return <h2>{message}</h2>;
+	return <h2>{message}</h2>;
 };
 ```
 
@@ -82,19 +82,19 @@ Then we can test that we get the message that we expected and also that the othe
 
 ```ts
 it("displays personalized message if the user is logged in", () => {
-  const mockUser = { name: "Rupert" };
-  render(<WelcomeHeading user={mockUser} />);
+	const mockUser = { name: "Rupert" };
+	render(<WelcomeHeading user={mockUser} />);
 
-  expect(
-    screen.queryByRole("heading", {
-      name: "Welcome Guest, would you like to login?",
-    })
-  ).not.toBeInTheDocument();
-  expect(
-    screen.getByRole("heading", {
-      name: "Welcome Rupert, good to have you back!",
-    })
-  ).toBeInTheDocument();
+	expect(
+		screen.queryByRole("heading", {
+			name: "Welcome Guest, would you like to login?",
+		})
+	).not.toBeInTheDocument();
+	expect(
+		screen.getByRole("heading", {
+			name: "Welcome Rupert, good to have you back!",
+		})
+	).toBeInTheDocument();
 });
 ```
 
@@ -118,28 +118,28 @@ type SuccessState = { type: "success"; temperature: number };
 type ComponentState = LoadingState | ErrorState | SuccessState;
 
 export const CurrentTemperature = () => {
-  const [state, setState] = React.useState<ComponentState>({
-    type: "loading",
-  });
+	const [state, setState] = React.useState<ComponentState>({
+		type: "loading",
+	});
 
-  React.useEffect(() => {
-    fetchTemperatureFromApi()
-      .then((temperature) => setState({ type: "success", temperature }))
-      .catch((error) =>
-        setState({ type: "error", errorMessage: JSON.stringify(error) })
-      );
-  }, []);
+	React.useEffect(() => {
+		fetchTemperatureFromApi()
+			.then((temperature) => setState({ type: "success", temperature }))
+			.catch((error) =>
+				setState({ type: "error", errorMessage: JSON.stringify(error) })
+			);
+	}, []);
 
-  if (state.type === "error") return <span>{state.errorMessage}</span>;
-  if (state.type === "loading") return <span>LOADING...</span>;
+	if (state.type === "error") return <span>{state.errorMessage}</span>;
+	if (state.type === "loading") return <span>LOADING...</span>;
 
-  return <span>{`Today's temperature is ${state.temperature}`}</span>;
+	return <span>{`Today's temperature is ${state.temperature}`}</span>;
 };
 ```
 
 For this test suite, we first want to mock out the API dependency so that we can simulate different situations.
 
-> I've written about mocking in Jest before, so if you'd like a little refresher you can read [Mocking in Jest with TypeScript and React](https://fildon.me/blog/mocking-in-jest-with-typescript-and-react). I'll be following the mocking strategy described in that post.
+> I've written about mocking in Jest before, so if you'd like a little refresher you can read [Mocking in Jest with TypeScript and React](https://rupertmckay.com/blog/mocking-in-jest-with-typescript-and-react). I'll be following the mocking strategy described in that post.
 
 ```ts
 import * as React from "react";
@@ -149,42 +149,42 @@ import { CurrentTemperature } from "./temperature";
 import { fetchTemperatureFromApi } from "./temperatureApi";
 
 jest.mock("./temperatureApi", () => ({
-  fetchTemperatureFromApi: jest.fn(),
+	fetchTemperatureFromApi: jest.fn(),
 }));
 
 const mockFetchTemperatureFromApi =
-  fetchTemperatureFromApi as jest.MockedFunction<
-    typeof fetchTemperatureFromApi
-  >;
+	fetchTemperatureFromApi as jest.MockedFunction<
+		typeof fetchTemperatureFromApi
+	>;
 
 beforeEach(() => {
-  jest.clearAllMocks();
+	jest.clearAllMocks();
 });
 
 it("displays current temperature when API resolves", async () => {
-  // Simulate an API call taking half a second to resolve
-  mockFetchTemperatureFromApi.mockImplementation(
-    () => new Promise((res) => setTimeout(() => res(20), 500))
-  );
+	// Simulate an API call taking half a second to resolve
+	mockFetchTemperatureFromApi.mockImplementation(
+		() => new Promise((res) => setTimeout(() => res(20), 500))
+	);
 
-  render(<CurrentTemperature />);
+	render(<CurrentTemperature />);
 
-  expect(screen.getByText("LOADING...")).toBeInTheDocument();
+	expect(screen.getByText("LOADING...")).toBeInTheDocument();
 
-  expect(
-    await screen.findByText("Today's temperature is 20")
-  ).toBeInTheDocument();
+	expect(
+		await screen.findByText("Today's temperature is 20")
+	).toBeInTheDocument();
 });
 
 it("displays error message in case of API failure", async () => {
-  // Simulate an API call failing
-  mockFetchTemperatureFromApi.mockRejectedValue("mock error");
+	// Simulate an API call failing
+	mockFetchTemperatureFromApi.mockRejectedValue("mock error");
 
-  render(<CurrentTemperature />);
+	render(<CurrentTemperature />);
 
-  expect(screen.getByText("LOADING...")).toBeInTheDocument();
+	expect(screen.getByText("LOADING...")).toBeInTheDocument();
 
-  expect(await screen.findByText(/mock error/)).toBeInTheDocument();
+	expect(await screen.findByText(/mock error/)).toBeInTheDocument();
 });
 ```
 

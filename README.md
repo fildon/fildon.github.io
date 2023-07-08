@@ -2,7 +2,7 @@
 
 A simple directory page for my other projects.
 
-Hosted at [fildon.me](https://fildon.me/)
+Hosted at [rupertmckay.com](https://rupertmckay.com/)
 
 ## Build process
 

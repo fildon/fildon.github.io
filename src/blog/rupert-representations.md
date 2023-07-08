@@ -50,7 +50,7 @@ Or "Rupert Foggo McKay":
 
 ⠠⠗⠥⠏⠑⠗⠞⠀⠠⠋⠕⠛⠛⠕⠀⠠⠍⠉⠠⠅⠁⠽
 
-There's a nice little encoder for Braille at [cable.ayra.ch/braille](https://cable.ayra.ch/braille/). Or you might like to try learning braille yourself at [learn-braille](https://fildon.me/learn-braille).
+There's a nice little encoder for Braille at [cable.ayra.ch/braille](https://cable.ayra.ch/braille/). Or you might like to try learning braille yourself at [learn-braille](https://rupertmckay.com/learn-braille).
 
 ## Schläfli Symbols
 

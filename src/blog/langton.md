@@ -19,21 +19,21 @@ If we allow the ant to run for some time, it initially produces some very beauti
 
 Generation 96 displays an "S"-like pattern:
 
-<a href="https://fildon.me/langton/?generation=96"><img src="../../static/langton96.png" alt="Langton's Ant at generation 96" /></a>
+<a href="https://rupertmckay.com/langton/?generation=96"><img src="../../static/langton96.png" alt="Langton's Ant at generation 96" /></a>
 
 Generation 184 looks like a pokeball about to open:
 
-<a href="https://fildon.me/langton/?generation=184"><img src="../../static/langton184.png" alt="Langton's Ant at generation 184" /></a>
+<a href="https://rupertmckay.com/langton/?generation=184"><img src="../../static/langton184.png" alt="Langton's Ant at generation 184" /></a>
 
 Generation 368 is like a four tentacled monster:
 
-<a href="https://fildon.me/langton/?generation=368"><img src="../../static/langton368.png" alt="Langton's Ant at generation 368" /></a>
+<a href="https://rupertmckay.com/langton/?generation=368"><img src="../../static/langton368.png" alt="Langton's Ant at generation 368" /></a>
 
 But then it produces chaotic patterns for many thousands of steps.
 
 We might have guessed that this chaos would proceed forever. But then at around 10,000 steps, something magical emerges:
 
-<a href="https://fildon.me/langton/?generation=10500"><img src="../../static/langton10500.png" alt="Langton's Ant at generation 10500" /></a>
+<a href="https://rupertmckay.com/langton/?generation=10500"><img src="../../static/langton10500.png" alt="Langton's Ant at generation 10500" /></a>
 
 The Ant has begun to build a structure known as the highway. The highway is an infinitely repeating pattern. It takes the ant 104 steps for each iteration of the highway, and each iteration extends the pattern along a diagonal trajectory.
 
