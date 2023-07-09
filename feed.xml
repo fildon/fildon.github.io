@@ -4,12 +4,289 @@
   <subtitle>Assorted projects and blog posts.</subtitle>
   <link href="https://rupertmckay.com/feed.xml" rel="self"/>
   <link href="https://rupertmckay.com/"/>
-  <updated>2023-06-25T00:00:00Z</updated>
+  <updated>2023-07-09T00:00:00Z</updated>
   <id>https://rupertmckay.com/</id>
   <author>
     <name>Rupert &#39;fildon&#39; McKay</name>
     <email>maxfmckay@gmail.com</email>
   </author>
+    <entry>
+      <title>How Phi and Fibonacci are connected.</title>
+      <link href="https://rupertmckay.com/blog/fibonacci-phi/"/>
+      <updated>2023-07-09T00:00:00Z</updated>
+      <id>https://rupertmckay.com/blog/fibonacci-phi/</id>
+      <content xml:lang="en" type="html">&lt;h2 id=&quot;definition-fibonacci-sequence&quot; tabindex=&quot;-1&quot;&gt;&lt;a class=&quot;direct-link&quot; href=&quot;https://rupertmckay.com/blog/fibonacci-phi/#definition-fibonacci-sequence&quot; aria-hidden=&quot;true&quot;&gt;#&lt;/a&gt; Definition: Fibonacci Sequence&lt;/h2&gt;
+&lt;p&gt;The &lt;a href=&quot;https://en.wikipedia.org/wiki/Fibonacci_number&quot;&gt;Fibonacci Sequence&lt;/a&gt; is a sequence starting, &lt;code&gt;0, 1, 1, 2, 3, 5, 8, 13...&lt;/code&gt;, and each subsequent number is the sum of the previous two.&lt;/p&gt;
+&lt;p&gt;We can define the Fibonacci numbers recursively as:&lt;/p&gt;
+&lt;math display=&quot;block&quot;&gt;
+  &lt;msub&gt;
+    &lt;mi&gt;F&lt;/mi&gt;
+    &lt;mn&gt;0&lt;/mn&gt;
+  &lt;/msub&gt;
+  &lt;mo&gt;=&lt;/mo&gt;
+  &lt;mn&gt;0&lt;/mn&gt;
+&lt;/math&gt;
+&lt;math display=&quot;block&quot;&gt;
+  &lt;msub&gt;
+    &lt;mi&gt;F&lt;/mi&gt;
+    &lt;mn&gt;1&lt;/mn&gt;
+  &lt;/msub&gt;
+  &lt;mo&gt;=&lt;/mo&gt;
+  &lt;mn&gt;1&lt;/mn&gt;
+&lt;/math&gt;
+&lt;math display=&quot;block&quot;&gt;
+  &lt;msub&gt;
+    &lt;mi&gt;F&lt;/mi&gt;
+    &lt;mi&gt;n&lt;/mi&gt;
+  &lt;/msub&gt;
+  &lt;mo&gt;=&lt;/mo&gt;
+  &lt;msub&gt;
+    &lt;mi&gt;F&lt;/mi&gt;
+    &lt;mrow&gt;
+      &lt;mi&gt;n&lt;/mi&gt;
+      &lt;mo&gt;-&lt;/mo&gt;
+      &lt;mn&gt;1&lt;/mn&gt;
+    &lt;/mrow&gt;
+  &lt;/msub&gt;
+  &lt;mo&gt;+&lt;/mo&gt;
+    &lt;msub&gt;
+    &lt;mi&gt;F&lt;/mi&gt;
+    &lt;mrow&gt;
+      &lt;mi&gt;n&lt;/mi&gt;
+      &lt;mo&gt;-&lt;/mo&gt;
+      &lt;mn&gt;2&lt;/mn&gt;
+    &lt;/mrow&gt;
+  &lt;/msub&gt;
+&lt;/math&gt;
+&lt;h2 id=&quot;definition-phi&quot; tabindex=&quot;-1&quot;&gt;&lt;a class=&quot;direct-link&quot; href=&quot;https://rupertmckay.com/blog/fibonacci-phi/#definition-phi&quot; aria-hidden=&quot;true&quot;&gt;#&lt;/a&gt; Definition: Phi&lt;/h2&gt;
+&lt;p&gt;Phi is the &amp;quot;Golden Ratio&amp;quot;. Two quantities
+&lt;math&gt;&lt;mi&gt;a&lt;/mi&gt;&lt;/math&gt;
+and
+&lt;math&gt;&lt;mi&gt;b&lt;/mi&gt;&lt;/math&gt;
+are in the &lt;em&gt;golden ratio&lt;/em&gt;
+&lt;math&gt;&lt;mi&gt;φ&lt;/mi&gt;&lt;/math&gt;
+if:&lt;/p&gt;
+&lt;math display=&quot;block&quot;&gt;
+  &lt;mfrac&gt;
+    &lt;mrow&gt;
+      &lt;mi&gt;a&lt;/mi&gt;
+      &lt;mo&gt;+&lt;/mo&gt;
+      &lt;mi&gt;b&lt;/mi&gt;
+    &lt;/mrow&gt;
+    &lt;mi&gt;a&lt;/mi&gt;
+  &lt;/mfrac&gt;
+  &lt;mo&gt;=&lt;/mo&gt;
+  &lt;mfrac&gt;
+    &lt;mi&gt;a&lt;/mi&gt;
+    &lt;mi&gt;b&lt;/mi&gt;
+  &lt;/mfrac&gt;
+  &lt;mo&gt;=&lt;/mo&gt;
+  &lt;mi&gt;φ&lt;/mi&gt;
+&lt;/math&gt;
+&lt;p&gt;Given this definition, we can derive the following additional relationships:&lt;/p&gt;
+&lt;math display=&quot;block&quot;&gt;
+  &lt;mn&gt;1&lt;/mn&gt;
+  &lt;mo&gt;+&lt;/mo&gt;
+  &lt;mfrac&gt;
+    &lt;mn&gt;1&lt;/mn&gt;
+    &lt;mi&gt;φ&lt;/mi&gt;
+  &lt;/mfrac&gt;
+  &lt;mo&gt;=&lt;/mo&gt;
+  &lt;mi&gt;φ&lt;/mi&gt;
+&lt;/math&gt;
+&lt;math display=&quot;block&quot;&gt;
+  &lt;msup&gt;
+    &lt;mi&gt;φ&lt;/mi&gt;
+    &lt;mn&gt;2&lt;/mn&gt;
+  &lt;/msup&gt;
+  &lt;mo&gt;=&lt;/mo&gt;
+  &lt;mi&gt;φ&lt;/mi&gt;
+  &lt;mo&gt;+&lt;/mo&gt;
+  &lt;mn&gt;1&lt;/mn&gt;
+&lt;/math&gt;
+&lt;h2 id=&quot;connecting-the-two-together&quot; tabindex=&quot;-1&quot;&gt;&lt;a class=&quot;direct-link&quot; href=&quot;https://rupertmckay.com/blog/fibonacci-phi/#connecting-the-two-together&quot; aria-hidden=&quot;true&quot;&gt;#&lt;/a&gt; Connecting the two together&lt;/h2&gt;
+&lt;p&gt;The values of the Fibonacci sequence increase in size very quickly. But how fast exactly?&lt;/p&gt;
+&lt;p&gt;Lets assume it can be approximated by some exponential curve of the form:&lt;/p&gt;
+&lt;math display=&quot;block&quot;&gt;
+  &lt;msub&gt;
+    &lt;mi&gt;F&lt;/mi&gt;
+    &lt;mi&gt;n
+  &lt;/mi&gt;&lt;/msub&gt;
+  &lt;mo&gt;=&lt;/mo&gt;
+  &lt;msup&gt;
+    &lt;mi&gt;x&lt;/mi&gt;
+    &lt;mi&gt;n&lt;/mi&gt;
+  &lt;/msup&gt;
+&lt;/math&gt;
+&lt;p&gt;Where &lt;math&gt;&lt;mi&gt;x&lt;/mi&gt;&lt;/math&gt; is some constant.&lt;/p&gt;
+&lt;p&gt;If so, then from the recursive definition of the Fibonacci numbers:&lt;/p&gt;
+&lt;math display=&quot;block&quot;&gt;
+  &lt;msub&gt;
+    &lt;mi&gt;F&lt;/mi&gt;
+    &lt;mi&gt;n
+  &lt;/mi&gt;&lt;/msub&gt;
+  &lt;mo&gt;=&lt;/mo&gt;
+  &lt;msup&gt;
+    &lt;mi&gt;x&lt;/mi&gt;
+    &lt;mi&gt;n&lt;/mi&gt;
+  &lt;/msup&gt;
+  &lt;mo&gt;=&lt;/mo&gt;
+  &lt;msub&gt;
+    &lt;mi&gt;F&lt;/mi&gt;
+    &lt;mrow&gt;
+      &lt;mi&gt;n&lt;/mi&gt;
+      &lt;mo&gt;-&lt;/mo&gt;
+      &lt;mn&gt;1&lt;/mn&gt;
+    &lt;/mrow&gt;
+  &lt;/msub&gt;
+  &lt;mo&gt;+&lt;/mo&gt;
+    &lt;msub&gt;
+    &lt;mi&gt;F&lt;/mi&gt;
+    &lt;mrow&gt;
+      &lt;mi&gt;n
+      &lt;mo&gt;-&lt;/mo&gt;
+      &lt;mn&gt;2&lt;/mn&gt;
+    &lt;/mi&gt;&lt;/mrow&gt;
+  &lt;/msub&gt;
+  &lt;mo&gt;=&lt;/mo&gt;
+  &lt;msup&gt;
+    &lt;mi&gt;x&lt;/mi&gt;
+    &lt;mrow&gt;
+      &lt;mi&gt;n&lt;/mi&gt;
+      &lt;mo&gt;-&lt;/mo&gt;
+      &lt;mn&gt;1&lt;/mn&gt;
+    &lt;/mrow&gt;
+  &lt;/msup&gt;
+  &lt;mo&gt;+&lt;/mo&gt;
+  &lt;msup&gt;
+    &lt;mi&gt;x&lt;/mi&gt;
+    &lt;mrow&gt;
+      &lt;mi&gt;n&lt;/mi&gt;
+      &lt;mo&gt;-&lt;/mo&gt;
+      &lt;mn&gt;2&lt;/mn&gt;
+    &lt;/mrow&gt;
+  &lt;/msup&gt;
+&lt;/math&gt;
+&lt;math display=&quot;block&quot;&gt;
+  &lt;msup&gt;
+    &lt;mi&gt;x&lt;/mi&gt;
+    &lt;mi&gt;n&lt;/mi&gt;
+  &lt;/msup&gt;
+  &lt;mo&gt;=&lt;/mo&gt;
+  &lt;msup&gt;
+    &lt;mi&gt;x&lt;/mi&gt;
+    &lt;mrow&gt;
+      &lt;mi&gt;n&lt;/mi&gt;
+      &lt;mo&gt;-&lt;/mo&gt;
+      &lt;mn&gt;1&lt;/mn&gt;
+    &lt;/mrow&gt;
+  &lt;/msup&gt;
+  &lt;mo&gt;+&lt;/mo&gt;
+  &lt;msup&gt;
+    &lt;mi&gt;x&lt;/mi&gt;
+    &lt;mrow&gt;
+      &lt;mi&gt;n&lt;/mi&gt;
+      &lt;mo&gt;-&lt;/mo&gt;
+      &lt;mn&gt;2&lt;/mn&gt;
+    &lt;/mrow&gt;
+  &lt;/msup&gt;
+&lt;/math&gt;
+&lt;p&gt;And if we divide through by:
+&lt;math display=&quot;block&quot;&gt;
+&lt;msup&gt;
+&lt;mi&gt;x&lt;/mi&gt;
+&lt;mrow&gt;
+&lt;mi&gt;n&lt;/mi&gt;
+&lt;mo&gt;-&lt;/mo&gt;
+&lt;mn&gt;2&lt;/mn&gt;
+&lt;/mrow&gt;
+&lt;/msup&gt;
+&lt;/math&gt;&lt;/p&gt;
+&lt;p&gt;Then we get:&lt;/p&gt;
+&lt;math display=&quot;block&quot;&gt;
+  &lt;msup&gt;
+    &lt;mi&gt;x&lt;/mi&gt;
+    &lt;mn&gt;2&lt;/mn&gt;
+  &lt;/msup&gt;
+  &lt;mo&gt;=&lt;/mo&gt;
+  &lt;mi&gt;x&lt;/mi&gt;
+  &lt;mo&gt;+&lt;/mo&gt;
+  &lt;mn&gt;1&lt;/mn&gt;
+&lt;/math&gt;
+&lt;p&gt;This last relationship is &lt;em&gt;exactly&lt;/em&gt; the relationship we identified earlier in the definition of φ. And so we can conclude:
+&lt;math display=&quot;block&quot;&gt;
+&lt;mi&gt;x&lt;/mi&gt;
+&lt;mo&gt;=&lt;/mo&gt;
+&lt;mi&gt;φ&lt;/mi&gt;
+&lt;/math&gt;&lt;/p&gt;
+&lt;p&gt;But wait! We aren&#39;t done. This conclusion was predicated on a very shaky assumption &amp;quot;lets assume the Fibonacci sequence can be approximated by some exponential curve&amp;quot;.&lt;/p&gt;
+&lt;p&gt;Despite this assumption we can conclude rigorously that &lt;em&gt;if&lt;/em&gt; any consecutive pair of Fibonacci numbers were exactly in the Golden Ratio, then all subsequent pairs would also be.&lt;/p&gt;
+&lt;p&gt;So we&#39;ve identified that the Golden Ratio is &amp;quot;stable&amp;quot; with respect to the recursive property of Fibonacci numbers.&lt;/p&gt;
+&lt;p&gt;But that&#39;s not useful if we never happen to hit the Golden Ratio in the course of the Fibonacci pairs.&lt;/p&gt;
+&lt;p&gt;Lets consider what happens when the current ratio is not &lt;math&gt;&lt;mi&gt;φ&lt;/mi&gt;&lt;/math&gt;.
+Lets model it as having a ratio of
+&lt;math&gt;
+&lt;mi&gt;φ&lt;/mi&gt;
+&lt;mo&gt;+&lt;/mo&gt;
+&lt;mi&gt;δ&lt;/mi&gt;
+&lt;/math&gt;, for some non-zero &lt;math&gt;&lt;mi&gt;δ&lt;/mi&gt;&lt;/math&gt;.&lt;/p&gt;
+&lt;p&gt;Then the next ratio will be:&lt;/p&gt;
+&lt;math display=&quot;block&quot;&gt;
+  &lt;mfrac&gt;
+    &lt;mrow&gt;
+      &lt;mn&gt;1&lt;/mn&gt;
+      &lt;mo&gt;+&lt;/mo&gt;
+      &lt;mi&gt;φ&lt;/mi&gt;
+      &lt;mo&gt;+&lt;/mo&gt;
+      &lt;mi&gt;δ&lt;/mi&gt;
+    &lt;/mrow&gt;
+    &lt;mrow&gt;
+      &lt;mi&gt;φ&lt;/mi&gt;
+      &lt;mo&gt;+&lt;/mo&gt;
+      &lt;mi&gt;δ&lt;/mi&gt;
+    &lt;/mrow&gt;
+  &lt;/mfrac&gt;
+  &lt;mo&gt;=&lt;/mo&gt;
+  &lt;mfrac&gt;
+    &lt;mn&gt;1&lt;/mn&gt;
+    &lt;mrow&gt;
+      &lt;mi&gt;φ&lt;/mi&gt;
+      &lt;mo&gt;+&lt;/mo&gt;
+      &lt;mi&gt;δ&lt;/mi&gt;
+    &lt;/mrow&gt;
+  &lt;/mfrac&gt;
+  &lt;mo&gt;+&lt;/mo&gt;
+  &lt;mn&gt;1&lt;/mn&gt;
+&lt;/math&gt;
+&lt;p&gt;This last term is similar to
+&lt;math&gt;
+&lt;mn&gt;1&lt;/mn&gt;
+&lt;mo&gt;+&lt;/mo&gt;
+&lt;mfrac&gt;
+&lt;mn&gt;1&lt;/mn&gt;
+&lt;mi&gt;φ&lt;/mi&gt;
+&lt;/mfrac&gt;
+&lt;mo&gt;=&lt;/mo&gt;
+&lt;mi&gt;φ&lt;/mi&gt;
+&lt;/math&gt;
+but with the added &lt;math&gt;&lt;mi&gt;δ&lt;/mi&gt;&lt;/math&gt; term.
+As such if &lt;math&gt;&lt;mi&gt;δ&lt;/mi&gt;&lt;mo&gt;&amp;gt;&lt;/mo&gt;&lt;mn&gt;0&lt;/mn&gt;&lt;/math&gt;,
+then our first ratio was greater than &lt;math&gt;&lt;mi&gt;φ&lt;/mi&gt;&lt;/math&gt;,
+but our second ratio will be less than &lt;math&gt;&lt;mi&gt;φ&lt;/mi&gt;&lt;/math&gt;.&lt;/p&gt;
+&lt;p&gt;On the other hand if &lt;math&gt;&lt;mi&gt;δ&lt;/mi&gt;&lt;mo&gt;&amp;lt;&lt;/mo&gt;&lt;mn&gt;0&lt;/mn&gt;&lt;/math&gt;,
+then our first ratio was less than &lt;math&gt;&lt;mi&gt;φ&lt;/mi&gt;&lt;/math&gt;,
+but our second ratio will be greater than &lt;math&gt;&lt;mi&gt;φ&lt;/mi&gt;&lt;/math&gt;.&lt;/p&gt;
+&lt;p&gt;From this we can conclude that ratios of Fibonacci pairs will &amp;quot;oscillate&amp;quot; either side of &lt;math&gt;&lt;mi&gt;φ&lt;/mi&gt;&lt;/math&gt;. But you may also note that because of the position of the &lt;math&gt;&lt;mi&gt;δ&lt;/mi&gt;&lt;/math&gt; term in the denominator the absolute distance from &lt;math&gt;&lt;mi&gt;φ&lt;/mi&gt;&lt;/math&gt; reduces from every ratio to the next.&lt;/p&gt;
+&lt;p&gt;We have therefore concluded two things:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Fibonacci pair ratios will &amp;quot;oscillate&amp;quot; either side of &lt;math&gt;&lt;mi&gt;φ&lt;/mi&gt;&lt;/math&gt;.&lt;/li&gt;
+&lt;li&gt;Fibonacci pair ratios will converge on &lt;math&gt;&lt;mi&gt;φ&lt;/mi&gt;&lt;/math&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Notice also that these two conclusions did not depend on the starting values chosen for the Fibonacci sequence. They follow solely from the recursive property of the Fibonacci numbers and the definition of &lt;math&gt;&lt;mi&gt;φ&lt;/mi&gt;&lt;/math&gt;. As such these conclusions would still hold no matter what starting values are chosen.&lt;/p&gt;
+&lt;p&gt;Take care,&lt;/p&gt;
+&lt;p&gt;Rupert&lt;/p&gt;
+</content>
+    </entry>
     <entry>
       <title>Counting the Hard Way</title>
       <link href="https://rupertmckay.com/blog/counting-to-ten/"/>
