@@ -216,6 +216,9 @@ article {
 	position: relative;
 	max-width: 100%;
 }
+article > * + * {
+	margin-block-start: var(--s1);
+}
 article:after {
 	background: var(--hard);
 	bottom: 0;
