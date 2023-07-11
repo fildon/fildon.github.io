@@ -116,7 +116,7 @@ const getOrderSummary = (orderId: string) => {
 But this is very unusual and I find very difficult to read and maintain. If however we use `async/await` instead, there is no problem at all:
 
 ```ts
-const getOrderSummary = (orderId: string) => {
+const getOrderSummary = async (orderId: string) => {
   const order = await fetchOrder(orderId);
   const user = await fetchUser(order.userId);
   return `${user.name} | ${order.productId}`;
@@ -132,7 +132,7 @@ So we've seen at least one example where a `Promise` is best, and another where 
 Since Async/Await is just syntactic sugar for promises, we can mix and match the two syntaxes together. This unlocks the power of parallel promises with `Promise.all` while also getting the shared variable scoping of `await` like so:
 
 ```ts
-const getOrderDetails = (orderId: string) => {
+const getOrderDetails = async (orderId: string) => {
   const order = await fetchOrder(orderId);
 
   const [user, product] = await Promise.all([
