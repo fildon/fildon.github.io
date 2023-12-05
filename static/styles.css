@@ -143,7 +143,7 @@ blockquote {
 
 td {
 	border-top: 1px solid var(--hard);
-	margin: var(--s-1);
+	padding: var(--s-1);
 }
 
 article > pre {
