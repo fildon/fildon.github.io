@@ -55,16 +55,14 @@
 			<address>
 				<a href="/blog/">Blog</a>
 				<a href="https://github.com/fildon/">GitHub</a>
-				<a rel="me" href="https://strangeobject.space/@fildon">Masto</a>
 				<a href="mailto:rupert@rupertmckay.com">Email</a>
-				<a href="https://rupertmckay.com/feed.xml">RSS</a>
 			</address>
 		</section>
 		<article>
 	<h1>Langton&#39;s Ant and Unanswerable Questions</h1>
 	<span>Posted: <date datetime="Mon Nov 21 2022 00:00:00 GMT+0000 (Coordinated Universal Time)">21 Nov 2022</date></span>
 	<p><a href="https://en.wikipedia.org/wiki/Langton%27s_ant">Langton's Ant</a> is a <a href="https://en.wikipedia.org/wiki/Cellular_automaton">cellular automaton</a> first described by <a href="https://en.wikipedia.org/wiki/Christopher_Langton">Christopher Gale Langton</a> in 1986. It looks like this:</p>
-<img src="../../static/LangtonsAntAnimated.gif" alt="Animation of first 200 steps of Langton's ant" />
+<img src="./LangtonsAntAnimated.gif" alt="Animation of first 200 steps of Langton's ant" />
 <p>The &quot;Ant&quot; exists on an infinite grid. Each cell of the grid can be either white or black, but initially all are white. Each &quot;generation&quot; the Ant moves according to the following rules:</p>
 <ul>
 <li>Turn left if the current cell is white, else turn right</li>
@@ -73,14 +71,14 @@
 </ul>
 <p>If we allow the ant to run for some time, it initially produces some very beautiful symmetries. For example:</p>
 <p>Generation 96 displays an &quot;S&quot;-like pattern:</p>
-<p><a href="https://rupertmckay.com/langton/?generation=96"><img src="../../static/langton96.png" alt="Langton's Ant at generation 96" /></a></p>
+<p><a href="https://rupertmckay.com/langton/?generation=96"><img src="./langton96.png" alt="Langton's Ant at generation 96" /></a></p>
 <p>Generation 184 looks like a pokeball about to open:</p>
-<p><a href="https://rupertmckay.com/langton/?generation=184"><img src="../../static/langton184.png" alt="Langton's Ant at generation 184" /></a></p>
+<p><a href="https://rupertmckay.com/langton/?generation=184"><img src="./langton184.png" alt="Langton's Ant at generation 184" /></a></p>
 <p>Generation 368 is like a four tentacled monster:</p>
-<p><a href="https://rupertmckay.com/langton/?generation=368"><img src="../../static/langton368.png" alt="Langton's Ant at generation 368" /></a></p>
+<p><a href="https://rupertmckay.com/langton/?generation=368"><img src="./langton368.png" alt="Langton's Ant at generation 368" /></a></p>
 <p>But then it produces chaotic patterns for many thousands of steps.</p>
 <p>We might have guessed that this chaos would proceed forever. But then at around 10,000 steps, something magical emerges:</p>
-<p><a href="https://rupertmckay.com/langton/?generation=10500"><img src="../../static/langton10500.png" alt="Langton's Ant at generation 10500" /></a></p>
+<p><a href="https://rupertmckay.com/langton/?generation=10500"><img src="./langton10500.png" alt="Langton's Ant at generation 10500" /></a></p>
 <p>The Ant has begun to build a structure known as the highway. The highway is an infinitely repeating pattern. It takes the ant 104 steps for each iteration of the highway, and each iteration extends the pattern along a diagonal trajectory.</p>
 <p>But we can change things. Instead of starting with a blank grid, we could set some cells to black at the begginning. If we then run the Ant it will generate different patterns. When people try this, they find that the highway <em>always seems to emerge sooner or later</em>. It is widely believed that the highway is inevitable, and yet this conjecture has never been proven nor disproven, despite many years of effort.</p>
 <p>Such a simple system to define, and yet we are unable to answer the question &quot;Does the highway always appear, no matter the starting state?&quot;</p>
@@ -107,9 +105,5 @@
 <p>Rupert</p>
 
 </article>
-		<pre aria-hidden="true" class="morse">
-█ ███ █
-███ ███
-</pre>
 	</body>
 </html>

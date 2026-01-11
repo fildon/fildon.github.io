@@ -193,10 +193,6 @@ li + li {
 	opacity: 1;
 }
 
-.morse {
-	font-family: monospace;
-}
-
 /* Block */
 html {
 	overflow-x: hidden;
