@@ -1,16 +1,15 @@
 const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 const eleventyNavigationPlugin = require("@11ty/eleventy-navigation");
-const pluginRss = require("@11ty/eleventy-plugin-rss");
 const { DateTime } = require("luxon");
 const markdownIt = require("markdown-it");
 const markdownItAnchor = require("markdown-it-anchor");
 
 module.exports = function (eleventyConfig) {
 	eleventyConfig.addPassthroughCopy("static");
+	eleventyConfig.addPassthroughCopy("src/blog/**/*.{gif,png,jpg,jpeg,svg}");
 	eleventyConfig.addPassthroughCopy({ "./CNAME": "./CNAME" });
 	eleventyConfig.addPlugin(syntaxHighlight);
 	eleventyConfig.addPlugin(eleventyNavigationPlugin);
-	eleventyConfig.addPlugin(pluginRss);
 
 	let markdownLibrary = markdownIt({
 		html: true,

@@ -39,7 +39,6 @@
 		/>
 		<link href="./static/styles.css" rel="stylesheet" />
 	</head>
-
 	<body>
 		<header class="horizontal-spread">
 			<img
@@ -65,14 +64,8 @@
 				<a href="./blog/">Blog</a>
 				<a href="https://github.com/fildon/">GitHub</a>
 				<a href="mailto:rupert@rupertmckay.com">Email</a>
-				<a href="./feed.xml">RSS</a>
 			</address>
 		</section>
-		<pre aria-hidden="true" class="morse">
-█ ███ █
-███ ███
-</pre
-		>
 		<section class="stack">
 			<h2 id="side-projects">Side projects</h2>
 			<article>
@@ -87,20 +80,6 @@
 					the 1980s. In brief, just three simple rules lead to intelligent
 					flocking behaviour. Implemented all my own tooling from the groundup,
 					including vector algebra and dynamic frame loop adjustments.
-				</p>
-			</article>
-			<article>
-				<header>
-					<h3>
-						<a id="boid-flock" href="https://www.npmjs.com/package/boid-flock"
-							>Boid Flock</a
-						>
-						<a class="hash-link" href="#boid-flock">#</a>
-					</h3>
-				</header>
-				<p>
-					A re-implementation of Boids, but mounted inside a React component,
-					ready to be imported into your own React app.
 				</p>
 			</article>
 			<article>
@@ -124,7 +103,7 @@
 				</header>
 				<p>
 					A simple flashcard app for learning Morse Code. Uses a custom spaced
-					repetition method (although not strictly the Leitner method).
+					repetition method.
 				</p>
 			</article>
 			<article>
@@ -163,8 +142,7 @@
 				<p>
 					A Lindenmayer fractal generator. Creates a random branch structure and
 					recursively reapplies it to itself. Written solely in Vanilla JS and
-					HTML5 Canvas. Dynamically computes ideal depth generation based on
-					browser performance.
+					HTML5 Canvas.
 				</p>
 			</article>
 			<article>
@@ -240,13 +218,7 @@
 						<a class="hash-link" href="#dvd-bounce">#</a>
 					</h3>
 				</header>
-				<p>
-					The famous bouncing DVD logo animation. The only twist I've added is
-					that it will never hit a corner exactly. I do this by initiallizing
-					the position with irrational numbers, but only ever advancing position
-					by integers. In this way we know we'll never hit a corner since they
-					are positioned at integer x-y-coordinates.
-				</p>
+				<p>The famous bouncing DVD logo animation.</p>
 			</article>
 			<article>
 				<header>
@@ -274,31 +246,6 @@
 					rendered twice, once for each eye. If you cross your eyes to each fix
 					on a different half of the screen, your perception will be tricked
 					into perceiving depth.
-				</p>
-			</article>
-			<article>
-				<header>
-					<h3>
-						<a id="moire" href="./moire">Moiré</a>
-						<a class="hash-link" href="#moire">#</a>
-					</h3>
-				</header>
-				<p>
-					Initially intended to play around with Moiré effects, I ended up
-					dialling everything up to 11 and making this eyeball torturer.
-				</p>
-			</article>
-			<article>
-				<header>
-					<h3>
-						<a id="wordle-hint" href="./wordle-hint">Wordle Hint</a>
-						<a class="hash-link" href="#wordle-hint">#</a>
-					</h3>
-				</header>
-				<p>
-					A browser bookmarklet for providing hints while playing Wordle. The
-					provided hint is chosen at random without prior knowledge of the
-					actual answer.
 				</p>
 			</article>
 			<article>
@@ -374,19 +321,6 @@
 			<article>
 				<header>
 					<h3>
-						<a id="webgltest" href="./webgltest">WebGLTest</a>
-						<a class="hash-link" href="#webgltest">#</a>
-					</h3>
-				</header>
-				<p>
-					A little test of three.js, which itself uses WebGL. Renders a rotating
-					cube and some point lights in real time. A great example of how
-					JavaScript can be used to leverage graphics hardware.
-				</p>
-			</article>
-			<article>
-				<header>
-					<h3>
 						<a id="phong" href="./phong">Phong</a>
 						<a class="hash-link" href="#phong">#</a>
 					</h3>
@@ -398,39 +332,6 @@
 					frames.
 				</p>
 			</article>
-			<article>
-				<header>
-					<h3>
-						<a id="got-tables" href="./GoT-Tables/">GoT Tables?</a>
-						<a class="hash-link" href="#got-tables">#</a>
-					</h3>
-				</header>
-				<p>
-					A minimal frontend to the brilliant
-					<a href="https://anapioficeandfire.com/">An API of Ice and Fire</a>.
-					Featuring pagination, filtering and a little memoization.
-				</p>
-			</article>
-			<article>
-				<header>
-					<h3>
-						<a id="ceramic" href="./ceramic">Ceramic</a>
-						<a class="hash-link" href="#ceramic">#</a>
-					</h3>
-				</header>
-				<p>
-					A reusable React component and hook library. Complete with test
-					coverage, extensive documentation and publically available Storybook.
-					Living documentation is generated dynamically by JSDocs coming
-					directly from the source code itself. Primarily an exercise in
-					perfecting project processes, rather than creating a lot of content.
-				</p>
-			</article>
 		</section>
-		<pre aria-hidden="true" class="morse">
-█ ███ █
-███ ███
-</pre
-		>
 	</body>
 </html>
