@@ -6,10 +6,13 @@ const markdownItAnchor = require("markdown-it-anchor");
 
 module.exports = function (eleventyConfig) {
 	eleventyConfig.addPassthroughCopy("static");
-	eleventyConfig.addPassthroughCopy("src/blog/**/*.{gif,png,jpg,jpeg,svg}", {
-		mode: "html-relative",
-		failOnError: true,
-	});
+	eleventyConfig.addPassthroughCopy(
+		"src/{blog,landingpage}/**/*.{gif,png,jpg,jpeg,svg}",
+		{
+			mode: "html-relative",
+			failOnError: true,
+		}
+	);
 	eleventyConfig.addPassthroughCopy({ "./CNAME": "./CNAME" });
 	eleventyConfig.addPlugin(syntaxHighlight);
 	eleventyConfig.addPlugin(eleventyNavigationPlugin);
