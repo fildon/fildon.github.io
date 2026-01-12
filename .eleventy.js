@@ -6,7 +6,10 @@ const markdownItAnchor = require("markdown-it-anchor");
 
 module.exports = function (eleventyConfig) {
 	eleventyConfig.addPassthroughCopy("static");
-	eleventyConfig.addPassthroughCopy("src/blog/**/*.{gif,png,jpg,jpeg,svg}");
+	eleventyConfig.addPassthroughCopy("src/blog/**/*.{gif,png,jpg,jpeg,svg}", {
+		mode: "html-relative",
+		failOnError: true,
+	});
 	eleventyConfig.addPassthroughCopy({ "./CNAME": "./CNAME" });
 	eleventyConfig.addPlugin(syntaxHighlight);
 	eleventyConfig.addPlugin(eleventyNavigationPlugin);
@@ -32,5 +35,16 @@ module.exports = function (eleventyConfig) {
 	});
 	eleventyConfig.addFilter("htmlDateString", (dateObj) => {
 		return DateTime.fromJSDate(dateObj, { zone: "utc" }).toFormat("yyyy-LL-dd");
+	});
+
+	/**
+	 * This filter enables me to have directories sorted by date prefixes,
+	 * but exclude those date prefixes from the final URLs.
+	 */
+	eleventyConfig.addFilter("stripDatePrefix", (path) => {
+		// Extract directory name from path and remove date prefix (YYYY-MM-DD-)
+		const parts = path.split("/");
+		const dirName = parts[parts.length - 2] || parts[parts.length - 1];
+		return dirName.replace(/^\d{4}-\d{2}-\d{2}-/, "");
 	});
 };

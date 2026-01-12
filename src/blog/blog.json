@@ -1,3 +1,4 @@
 {
-	"tags": ["blog"]
+	"tags": ["blog"],
+	"permalink": "/blog/{{ page.filePathStem | stripDatePrefix }}/index.html"
 }

@@ -7,7 +7,7 @@ layout: layouts/post.njk
 
 [Langton's Ant](https://en.wikipedia.org/wiki/Langton%27s_ant) is a [cellular automaton](https://en.wikipedia.org/wiki/Cellular_automaton) first described by [Christopher Gale Langton](https://en.wikipedia.org/wiki/Christopher_Langton) in 1986. It looks like this:
 
-<img src="./LangtonsAntAnimated.gif" alt="Animation of first 200 steps of Langton's ant" />
+![Animation of first 200 steps of Langton's ant](./LangtonsAntAnimated.gif)
 
 The "Ant" exists on an infinite grid. Each cell of the grid can be either white or black, but initially all are white. Each "generation" the Ant moves according to the following rules:
 
@@ -19,21 +19,21 @@ If we allow the ant to run for some time, it initially produces some very beauti
 
 Generation 96 displays an "S"-like pattern:
 
-<a href="https://rupertmckay.com/langton/?generation=96"><img src="./langton96.png" alt="Langton's Ant at generation 96" /></a>
+[![Langton's Ant at generation 96](./langton96.png)](https://rupertmckay.com/langton/?generation=96)
 
 Generation 184 looks like a pokeball about to open:
 
-<a href="https://rupertmckay.com/langton/?generation=184"><img src="./langton184.png" alt="Langton's Ant at generation 184" /></a>
+[![Langton's Ant at generation 184](./langton184.png)](https://rupertmckay.com/langton/?generation=184)
 
 Generation 368 is like a four tentacled monster:
 
-<a href="https://rupertmckay.com/langton/?generation=368"><img src="./langton368.png" alt="Langton's Ant at generation 368" /></a>
+[![Langton's Ant at generation 368](./langton368.png)](https://rupertmckay.com/langton/?generation=368)
 
 But then it produces chaotic patterns for many thousands of steps.
 
 We might have guessed that this chaos would proceed forever. But then at around 10,000 steps, something magical emerges:
 
-<a href="https://rupertmckay.com/langton/?generation=10500"><img src="./langton10500.png" alt="Langton's Ant at generation 10500" /></a>
+[![Langton's Ant at generation 10500](./langton10500.png)](https://rupertmckay.com/langton/?generation=10500)
 
 The Ant has begun to build a structure known as the highway. The highway is an infinitely repeating pattern. It takes the ant 104 steps for each iteration of the highway, and each iteration extends the pattern along a diagonal trajectory.
 
