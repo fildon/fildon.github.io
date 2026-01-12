@@ -2,22 +2,31 @@
 layout: layouts/base.njk
 permalink: /blog/
 ---
+
 <section class="col-stack">
-  {%- for blogpost in collections.blog | reverse -%}
-    <article class="full-width">
-      <header>
-        <h3>
-          <a href="{{ blogpost.url | url }}">
-            {% if blogpost.data.title %}{{ blogpost.data.title }}
-            {% else %}
-              <code>{{ blogpost.url }}</code>
-            {% endif %}
-          </a>
-        </h3>
-      </header>
-      <p>
-        <time class="postlist-date" datetime="{{ blogpost.date | htmlDateString }}">{{ blogpost.date | readableDate }}</time>
-      </p>
-    </article>
-  {%- endfor -%}
+	{%- for blogpost in collections.blog | reverse -%}
+	<article class="full-width">
+		<header>
+			<h3>
+				<a href="{{ blogpost.url | url }}">
+					{% if blogpost.data.title %}{{ blogpost.data.title }}
+					{% else %}
+					<code>{{ blogpost.url }}</code>
+					{% endif %}
+				</a>
+			</h3>
+		</header>
+		<p>
+			<date datetime="{{ blogpost.date }}">{{
+				blogpost.date | readableDate
+			}}</date>
+		</p>
+		{% if blogpost.data.description %}
+		<p>
+			{{ blogpost.data.description }}
+		</p>
+		{% endif %}
+	</article>
+
+	{%- endfor -%}
 </section>
