@@ -5,12 +5,12 @@
 		"serve": "npx @11ty/eleventy --input=./src --serve"
 	},
 	"devDependencies": {
-		"@11ty/eleventy": "^1.0.1",
-		"@11ty/eleventy-navigation": "^0.3.3",
-		"@11ty/eleventy-plugin-syntaxhighlight": "^4.1.0",
-		"luxon": "^2.4.0",
-		"markdown-it": "^13.0.1",
-		"markdown-it-anchor": "^8.6.5",
-		"shx": "^0.3.4"
+		"@11ty/eleventy": "^3.1.2",
+		"@11ty/eleventy-navigation": "^1.0.5",
+		"@11ty/eleventy-plugin-syntaxhighlight": "^5.0.2",
+		"luxon": "^3.7.2",
+		"markdown-it": "^14.1.0",
+		"markdown-it-anchor": "^9.2.0",
+		"shx": "^0.4.0"
 	}
 }
