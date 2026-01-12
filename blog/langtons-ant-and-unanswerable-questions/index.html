@@ -8,39 +8,21 @@
 		<link rel="shortcut icon" type="image/x-icon" href="/static/favicon.ico">
 		<link rel="stylesheet" href="/static/styles.css">
 		<link rel="stylesheet" href="/static/prism.css">
-		<meta
-			property="og:description"
-			content="How even the simplest systems present impossible questions"
-		/>
-		<meta
-			property="og:image"
-			content="https://raw.githubusercontent.com/fildon/train-ride/main/train-ride.png"
-		/>
-		<meta property="og:image:type" content="image/png" />
-		<meta property="og:image:width" content="1280" />
-		<meta property="og:image:height" content="640" />
-		<meta name="twitter:card" content="summary_large_image" />
-		<meta property="twitter:domain" content="rupertmckay.com" />
-		<meta property="twitter:url" content="https://rupertmckay.com" />
-		<meta name="twitter:title" content="Langton&#39;s Ant and Unanswerable Questions" />
-		<meta
-			name="twitter:description"
-			content="How even the simplest systems present impossible questions"
-		/>
-		<meta
-			name="twitter:image"
-			content="https://raw.githubusercontent.com/fildon/train-ride/main/train-ride.png"
-		/>
+		<meta property="og:description" content="How even the simplest systems present impossible questions">
+		<meta property="og:image" content="https://raw.githubusercontent.com/fildon/train-ride/main/train-ride.png">
+		<meta property="og:image:type" content="image/png">
+		<meta property="og:image:width" content="1280">
+		<meta property="og:image:height" content="640">
+		<meta name="twitter:card" content="summary_large_image">
+		<meta property="twitter:domain" content="rupertmckay.com">
+		<meta property="twitter:url" content="https://rupertmckay.com">
+		<meta name="twitter:title" content="Langton&#39;s Ant and Unanswerable Questions">
+		<meta name="twitter:description" content="How even the simplest systems present impossible questions">
+		<meta name="twitter:image" content="https://raw.githubusercontent.com/fildon/train-ride/main/train-ride.png">
 	</head>
 	<body>
 		<header class="horizontal-spread">
-			<img
-				src="../../static/headshot.jpeg"
-				alt="Headshot of Rupert"
-				class="rounded wonky"
-				height="64"
-				width="64"
-			/>
+			<img src="../../static/headshot.jpeg" alt="Headshot of Rupert" class="rounded wonky" height="64" width="64">
 			<h1><a href="/">Rupert McKay</a></h1>
 		</header>
 		<section class="full-width banner">
@@ -60,7 +42,7 @@
 		</section>
 		<article>
 	<h1>Langton&#39;s Ant and Unanswerable Questions</h1>
-	<span>Posted: <date datetime="Mon Nov 21 2022 00:00:00 GMT+0000 (Coordinated Universal Time)">21 Nov 2022</date></span>
+	<date datetime="Mon Nov 21 2022 00:00:00 GMT+0000 (Coordinated Universal Time)">21 Nov 2022</date>
 	<p><a href="https://en.wikipedia.org/wiki/Langton%27s_ant">Langton's Ant</a> is a <a href="https://en.wikipedia.org/wiki/Cellular_automaton">cellular automaton</a> first described by <a href="https://en.wikipedia.org/wiki/Christopher_Langton">Christopher Gale Langton</a> in 1986. It looks like this:</p>
 <p><img src="./LangtonsAntAnimated.gif" alt="Animation of first 200 steps of Langton's ant"></p>
 <p>The &quot;Ant&quot; exists on an infinite grid. Each cell of the grid can be either white or black, but initially all are white. Each &quot;generation&quot; the Ant moves according to the following rules:</p>
@@ -82,7 +64,7 @@
 <p>The Ant has begun to build a structure known as the highway. The highway is an infinitely repeating pattern. It takes the ant 104 steps for each iteration of the highway, and each iteration extends the pattern along a diagonal trajectory.</p>
 <p>But we can change things. Instead of starting with a blank grid, we could set some cells to black at the begginning. If we then run the Ant it will generate different patterns. When people try this, they find that the highway <em>always seems to emerge sooner or later</em>. It is widely believed that the highway is inevitable, and yet this conjecture has never been proven nor disproven, despite many years of effort.</p>
 <p>Such a simple system to define, and yet we are unable to answer the question &quot;Does the highway always appear, no matter the starting state?&quot;</p>
-<h2 id="rice-s-theorem" tabindex="-1"><a class="direct-link" href="#rice-s-theorem" aria-hidden="true">#</a> Rice's Theorem</h2>
+<h2 id="rices-theorem" tabindex="-1"><a class="direct-link" href="#rices-theorem" aria-hidden="true">#</a> Rice's Theorem</h2>
 <p><a href="https://en.wikipedia.org/wiki/Henry_Gordon_Rice">Henry Gordon Rice</a> proved the following theorem in 1951:</p>
 <blockquote>
 <p>All non-trivial semantic properties of programs are undecidable.</p>

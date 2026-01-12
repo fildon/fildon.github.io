@@ -8,39 +8,21 @@
 		<link rel="shortcut icon" type="image/x-icon" href="/static/favicon.ico">
 		<link rel="stylesheet" href="/static/styles.css">
 		<link rel="stylesheet" href="/static/prism.css">
-		<meta
-			property="og:description"
-			content="any vs unknown in catch blocks."
-		/>
-		<meta
-			property="og:image"
-			content="https://raw.githubusercontent.com/fildon/train-ride/main/train-ride.png"
-		/>
-		<meta property="og:image:type" content="image/png" />
-		<meta property="og:image:width" content="1280" />
-		<meta property="og:image:height" content="640" />
-		<meta name="twitter:card" content="summary_large_image" />
-		<meta property="twitter:domain" content="rupertmckay.com" />
-		<meta property="twitter:url" content="https://rupertmckay.com" />
-		<meta name="twitter:title" content="TypeScript 4.4 - useUnknownInCatchVariables" />
-		<meta
-			name="twitter:description"
-			content="any vs unknown in catch blocks."
-		/>
-		<meta
-			name="twitter:image"
-			content="https://raw.githubusercontent.com/fildon/train-ride/main/train-ride.png"
-		/>
+		<meta property="og:description" content="any vs unknown in catch blocks.">
+		<meta property="og:image" content="https://raw.githubusercontent.com/fildon/train-ride/main/train-ride.png">
+		<meta property="og:image:type" content="image/png">
+		<meta property="og:image:width" content="1280">
+		<meta property="og:image:height" content="640">
+		<meta name="twitter:card" content="summary_large_image">
+		<meta property="twitter:domain" content="rupertmckay.com">
+		<meta property="twitter:url" content="https://rupertmckay.com">
+		<meta name="twitter:title" content="TypeScript 4.4 - useUnknownInCatchVariables">
+		<meta name="twitter:description" content="any vs unknown in catch blocks.">
+		<meta name="twitter:image" content="https://raw.githubusercontent.com/fildon/train-ride/main/train-ride.png">
 	</head>
 	<body>
 		<header class="horizontal-spread">
-			<img
-				src="../../static/headshot.jpeg"
-				alt="Headshot of Rupert"
-				class="rounded wonky"
-				height="64"
-				width="64"
-			/>
+			<img src="../../static/headshot.jpeg" alt="Headshot of Rupert" class="rounded wonky" height="64" width="64">
 			<h1><a href="/">Rupert McKay</a></h1>
 		</header>
 		<section class="full-width banner">
@@ -60,7 +42,7 @@
 		</section>
 		<article>
 	<h1>TypeScript 4.4 - useUnknownInCatchVariables</h1>
-	<span>Posted: <date datetime="Mon Aug 30 2021 00:00:00 GMT+0000 (Coordinated Universal Time)">30 Aug 2021</date></span>
+	<date datetime="Mon Aug 30 2021 00:00:00 GMT+0000 (Coordinated Universal Time)">30 Aug 2021</date>
 	<p>Key takeaways:</p>
 <ul>
 <li>The <code>unknown</code> type allows nothing. The <code>any</code> type allows everything</li>
@@ -81,21 +63,59 @@
 <p><code>unknown</code> forbids <em>every</em> operation on it.</p>
 </blockquote>
 <p>When trying to rebuild our repository with v4.4 and no other changes, there were many compilation errors due to code like:</p>
-<pre class="language-ts"><code class="language-ts"><span class="token keyword">catch</span> <span class="token punctuation">(</span>error<span class="token punctuation">)</span> <span class="token punctuation">{</span><br>  <span class="token comment">// O no! Not allowed to access "statusCode" on unknown</span><br>  <span class="token keyword">if</span> <span class="token punctuation">(</span>error<span class="token punctuation">.</span>statusCode <span class="token operator">===</span> <span class="token number">404</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>    <span class="token comment">// redirect to 404 page</span></code></pre>
+<pre class="language-ts"><code class="language-ts"><span class="token keyword">catch</span> <span class="token punctuation">(</span>error<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">// O no! Not allowed to access "statusCode" on unknown</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>error<span class="token punctuation">.</span>statusCode <span class="token operator">===</span> <span class="token number">404</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// redirect to 404 page</span></code></pre>
 <p>This works fine when <code>error</code> is <code>any</code> but with <code>unknown</code> we are not allowed to assume any keys exist, without first having a type check. So how hard would it be to add a type guard here? Maybe something like this would do the job:</p>
-<pre class="language-ts"><code class="language-ts"><span class="token comment">// Define a custom typeguard:</span><br><span class="token keyword">const</span> isErrorWithStatusCode <span class="token operator">=</span> <span class="token punctuation">(</span>error<span class="token operator">:</span> <span class="token builtin">any</span><span class="token punctuation">)</span><span class="token operator">:</span> error <span class="token keyword">is</span> <span class="token punctuation">{</span> statusCode<span class="token operator">:</span> <span class="token builtin">number</span> <span class="token punctuation">}</span> <span class="token operator">=></span> <span class="token punctuation">{</span><br>  <span class="token keyword">return</span> <span class="token punctuation">(</span><br>    <span class="token keyword">typeof</span> error <span class="token operator">===</span> <span class="token string">"object"</span> <span class="token operator">&amp;&amp;</span><br>    error <span class="token operator">!==</span> <span class="token keyword">null</span> <span class="token operator">&amp;&amp;</span><br>    <span class="token keyword">typeof</span> error<span class="token punctuation">.</span>statusCode <span class="token operator">===</span> <span class="token string">"number"</span><br>  <span class="token punctuation">)</span><span class="token punctuation">;</span><br><span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
-<pre class="language-ts"><code class="language-ts"><span class="token keyword">catch</span> <span class="token punctuation">(</span>error<span class="token punctuation">)</span> <span class="token punctuation">{</span><br>  <span class="token comment">// Use the type guard</span><br>  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">isErrorWithStatusCode</span><span class="token punctuation">(</span>error<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>    <span class="token comment">// error is now narrowed to definitely have a statusCode</span><br>    <span class="token keyword">if</span> <span class="token punctuation">(</span>error<span class="token punctuation">.</span>statusCode <span class="token operator">===</span> <span class="token number">404</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>      <span class="token comment">// redirect to 404 page</span><br>    <span class="token punctuation">}</span><br>    <span class="token comment">// Handle other status codes</span><br>  <span class="token punctuation">}</span><br>  <span class="token comment">// Handle errors that don't even have a status code</span><br><span class="token punctuation">}</span></code></pre>
+<pre class="language-ts"><code class="language-ts"><span class="token comment">// Define a custom typeguard:</span>
+<span class="token keyword">const</span> isErrorWithStatusCode <span class="token operator">=</span> <span class="token punctuation">(</span>error<span class="token operator">:</span> <span class="token builtin">any</span><span class="token punctuation">)</span><span class="token operator">:</span> error <span class="token keyword">is</span> <span class="token punctuation">{</span> statusCode<span class="token operator">:</span> <span class="token builtin">number</span> <span class="token punctuation">}</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token punctuation">(</span>
+    <span class="token keyword">typeof</span> error <span class="token operator">===</span> <span class="token string">"object"</span> <span class="token operator">&amp;&amp;</span>
+    error <span class="token operator">!==</span> <span class="token keyword">null</span> <span class="token operator">&amp;&amp;</span>
+    <span class="token keyword">typeof</span> error<span class="token punctuation">.</span>statusCode <span class="token operator">===</span> <span class="token string">"number"</span>
+  <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+<pre class="language-ts"><code class="language-ts"><span class="token keyword">catch</span> <span class="token punctuation">(</span>error<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">// Use the type guard</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">isErrorWithStatusCode</span><span class="token punctuation">(</span>error<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// error is now narrowed to definitely have a statusCode</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>error<span class="token punctuation">.</span>statusCode <span class="token operator">===</span> <span class="token number">404</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token comment">// redirect to 404 page</span>
+    <span class="token punctuation">}</span>
+    <span class="token comment">// Handle other status codes</span>
+  <span class="token punctuation">}</span>
+  <span class="token comment">// Handle errors that don't even have a status code</span>
+<span class="token punctuation">}</span></code></pre>
 <p>This works! Hooray. But this took a little while to implement and a little thought process to confirm it's all good to go. Unfortunately, when I was doing this I was staring at literally hundreds of these build failures, each one making different unconfirmed assumptions about what properties are available on the <code>error</code> value.</p>
 <p>I could have gone through every instance of these issues and stopped and thought about sensible type guards, and how to handle guard failures... but then I would be doing nothing but that for the next 6 months.</p>
 <p>Alternatively, I could have explicitly set the new flag to false... but then we would never benefit from this new feature (which I think is generally a good idea to have on!)</p>
 <p>So instead in all cases where the build failed, I added a type annotation to <code>any</code> in the head of the catch block.</p>
-<pre class="language-ts"><code class="language-ts"><span class="token comment">// Assume error is 'any' just like in TypeScript 4.3</span><br><span class="token keyword">catch</span> <span class="token punctuation">(</span>error<span class="token operator">:</span> <span class="token builtin">any</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>  <span class="token keyword">if</span> <span class="token punctuation">(</span>error<span class="token punctuation">.</span>statusCode <span class="token operator">===</span> <span class="token number">404</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>    <span class="token comment">// redirect to 404 page</span></code></pre>
+<pre class="language-ts"><code class="language-ts"><span class="token comment">// Assume error is 'any' just like in TypeScript 4.3</span>
+<span class="token keyword">catch</span> <span class="token punctuation">(</span>error<span class="token operator">:</span> <span class="token builtin">any</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>error<span class="token punctuation">.</span>statusCode <span class="token operator">===</span> <span class="token number">404</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// redirect to 404 page</span></code></pre>
 <p>This is the same behavior as previously but just made explicit, rather than implicit. This way any new catch blocks added will have an inferred <code>unknown</code> type. We can still annotate this as <code>any</code> explicitly if we like, but the default will now be <code>unknown</code>.</p>
 <p>If all this seems inconvenient... consider the fact that throwing a null ref from a catch block is very undesirable! And making as few assumptions as possible about our errors is key to avoiding that. <code>unknown</code> is by definition the type that assumes the least about the underlying value.</p>
 <p>And finally just to really drive home how important this is... you might right now be thinking &quot;but isn't an error always at least of type Error?&quot;. O, you poor lost soul. No, you have mistaken JavaScript for a sensible language.</p>
 <p>No, in JavaScript throw expressions are allowed to throw literally any expression.</p>
 <p>For example the following is valid:</p>
-<pre class="language-ts"><code class="language-ts"><span class="token keyword">const</span> <span class="token function-variable function">myThrowFunction</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span><br>  <span class="token keyword">try</span> <span class="token punctuation">{</span><br>    <span class="token keyword">throw</span> <span class="token keyword">undefined</span><span class="token punctuation">;</span><br>  <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span>error<span class="token punctuation">)</span> <span class="token punctuation">{</span><br>    <span class="token comment">// "error" is literally the primitive value undefined</span><br><br>    <span class="token comment">// error.message here will throw a null ref</span><br>    <span class="token comment">// which will jump outside this catch block</span><br>    <span class="token comment">// rendering the try/catch here useless!</span><br>    <span class="token comment">// uncaught errors here we come!</span><br>    <span class="token comment">// not even try/catch can save you now!</span><br>    <span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>error<span class="token punctuation">.</span>message<span class="token punctuation">)</span><span class="token punctuation">;</span><br><br>    <span class="token comment">// see also error.stackTrace, error.name ... etc etc.</span><br>  <span class="token punctuation">}</span><br><span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+<pre class="language-ts"><code class="language-ts"><span class="token keyword">const</span> <span class="token function-variable function">myThrowFunction</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token keyword">try</span> <span class="token punctuation">{</span>
+    <span class="token keyword">throw</span> <span class="token keyword">undefined</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span>error<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// "error" is literally the primitive value undefined</span>
+
+    <span class="token comment">// error.message here will throw a null ref</span>
+    <span class="token comment">// which will jump outside this catch block</span>
+    <span class="token comment">// rendering the try/catch here useless!</span>
+    <span class="token comment">// uncaught errors here we come!</span>
+    <span class="token comment">// not even try/catch can save you now!</span>
+    <span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>error<span class="token punctuation">.</span>message<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// see also error.stackTrace, error.name ... etc etc.</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
 <p>So TypeScript should have always treated it as <code>unknown</code> because it really is! Literally, any expression can be thrown by JavaScript, so TypeScript ought to be very defensive. It's surprising this only got introduced in v4.4 and not earlier. But hey ho, here we are.</p>
 <p>Reminder: Whenever TypeScript feels inconvenient, it's just because it's trying to stop you from shooting yourself in the foot. JavaScript is full of foot guns, but when you stop shooting yourself in the foot, TypeScript will be easy 😀</p>
 

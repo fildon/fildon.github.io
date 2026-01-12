@@ -6,7 +6,7 @@
 /* Global */
 :root {
 	/* spacing */
-	--measure: 100ch;
+	--measure: 60ch;
 	--ratio: 1.5;
 	--s-3: calc(var(--s-2) / var(--ratio));
 	--s-2: calc(var(--s-1) / var(--ratio));
@@ -108,7 +108,6 @@ blockquote {
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: flex-start;
-	transform: rotate(-5deg);
 }
 .horizontal-spread > * {
 	margin: 0 auto 0;
@@ -153,6 +152,14 @@ article > pre {
 
 p > img {
 	max-width: 100%;
+}
+
+article > a > img {
+	width: 100%;
+	height: auto;
+	display: block;
+	object-fit: cover;
+	aspect-ratio: 16 / 9;
 }
 
 body > article {
@@ -250,7 +257,6 @@ a.direct-link:hover {
 	margin-top: var(--s1);
 	padding: var(--s0);
 	position: relative;
-	transform: rotate(-5deg);
 	max-width: var(--measure);
 }
 .banner > * {

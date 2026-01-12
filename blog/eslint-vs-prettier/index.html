@@ -8,39 +8,21 @@
 		<link rel="shortcut icon" type="image/x-icon" href="/static/favicon.ico">
 		<link rel="stylesheet" href="/static/styles.css">
 		<link rel="stylesheet" href="/static/prism.css">
-		<meta
-			property="og:description"
-			content="Why I don&#39;t use the &#39;fix&#39; option."
-		/>
-		<meta
-			property="og:image"
-			content="https://raw.githubusercontent.com/fildon/train-ride/main/train-ride.png"
-		/>
-		<meta property="og:image:type" content="image/png" />
-		<meta property="og:image:width" content="1280" />
-		<meta property="og:image:height" content="640" />
-		<meta name="twitter:card" content="summary_large_image" />
-		<meta property="twitter:domain" content="rupertmckay.com" />
-		<meta property="twitter:url" content="https://rupertmckay.com" />
-		<meta name="twitter:title" content="ESLint vs Prettier" />
-		<meta
-			name="twitter:description"
-			content="Why I don&#39;t use the &#39;fix&#39; option."
-		/>
-		<meta
-			name="twitter:image"
-			content="https://raw.githubusercontent.com/fildon/train-ride/main/train-ride.png"
-		/>
+		<meta property="og:description" content="Why I don&#39;t use the &#39;fix&#39; option.">
+		<meta property="og:image" content="https://raw.githubusercontent.com/fildon/train-ride/main/train-ride.png">
+		<meta property="og:image:type" content="image/png">
+		<meta property="og:image:width" content="1280">
+		<meta property="og:image:height" content="640">
+		<meta name="twitter:card" content="summary_large_image">
+		<meta property="twitter:domain" content="rupertmckay.com">
+		<meta property="twitter:url" content="https://rupertmckay.com">
+		<meta name="twitter:title" content="ESLint vs Prettier">
+		<meta name="twitter:description" content="Why I don&#39;t use the &#39;fix&#39; option.">
+		<meta name="twitter:image" content="https://raw.githubusercontent.com/fildon/train-ride/main/train-ride.png">
 	</head>
 	<body>
 		<header class="horizontal-spread">
-			<img
-				src="../../static/headshot.jpeg"
-				alt="Headshot of Rupert"
-				class="rounded wonky"
-				height="64"
-				width="64"
-			/>
+			<img src="../../static/headshot.jpeg" alt="Headshot of Rupert" class="rounded wonky" height="64" width="64">
 			<h1><a href="/">Rupert McKay</a></h1>
 		</header>
 		<section class="full-width banner">
@@ -60,7 +42,7 @@
 		</section>
 		<article>
 	<h1>ESLint vs Prettier</h1>
-	<span>Posted: <date datetime="Sat Oct 09 2021 00:00:00 GMT+0000 (Coordinated Universal Time)">09 Oct 2021</date></span>
+	<date datetime="Sat Oct 09 2021 00:00:00 GMT+0000 (Coordinated Universal Time)">09 Oct 2021</date>
 	<p>TL;DR: <code>ESLint</code> should identify <em>semantic</em> errors <em>which require programmer intervention to fix</em>, while <code>prettier</code> should identify <em>text formatting errors</em> which do not require programmer intervention to fix.</p>
 <h2 id="the-problem-with-static-analysis" tabindex="-1"><a class="direct-link" href="#the-problem-with-static-analysis" aria-hidden="true">#</a> The problem with Static Analysis</h2>
 <p>So there's this guy &quot;Rice&quot; and he said, &quot;We literally can't know anything interesting about any program&quot; <a href="https://en.wikipedia.org/wiki/Rice%27s_theorem">Rice's theorem</a>. Well dang.</p>

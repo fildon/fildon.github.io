@@ -8,39 +8,21 @@
 		<link rel="shortcut icon" type="image/x-icon" href="/static/favicon.ico">
 		<link rel="stylesheet" href="/static/styles.css">
 		<link rel="stylesheet" href="/static/prism.css">
-		<meta
-			property="og:description"
-			content="Publishing to NPM can be daunting at first. In this guide we&#39;ll make it quick and easy."
-		/>
-		<meta
-			property="og:image"
-			content="https://raw.githubusercontent.com/fildon/train-ride/main/train-ride.png"
-		/>
-		<meta property="og:image:type" content="image/png" />
-		<meta property="og:image:width" content="1280" />
-		<meta property="og:image:height" content="640" />
-		<meta name="twitter:card" content="summary_large_image" />
-		<meta property="twitter:domain" content="rupertmckay.com" />
-		<meta property="twitter:url" content="https://rupertmckay.com" />
-		<meta name="twitter:title" content="Publishing TypeScript React components to NPM" />
-		<meta
-			name="twitter:description"
-			content="Publishing to NPM can be daunting at first. In this guide we&#39;ll make it quick and easy."
-		/>
-		<meta
-			name="twitter:image"
-			content="https://raw.githubusercontent.com/fildon/train-ride/main/train-ride.png"
-		/>
+		<meta property="og:description" content="Publishing to NPM can be daunting at first. In this guide we&#39;ll make it quick and easy.">
+		<meta property="og:image" content="https://raw.githubusercontent.com/fildon/train-ride/main/train-ride.png">
+		<meta property="og:image:type" content="image/png">
+		<meta property="og:image:width" content="1280">
+		<meta property="og:image:height" content="640">
+		<meta name="twitter:card" content="summary_large_image">
+		<meta property="twitter:domain" content="rupertmckay.com">
+		<meta property="twitter:url" content="https://rupertmckay.com">
+		<meta name="twitter:title" content="Publishing TypeScript React components to NPM">
+		<meta name="twitter:description" content="Publishing to NPM can be daunting at first. In this guide we&#39;ll make it quick and easy.">
+		<meta name="twitter:image" content="https://raw.githubusercontent.com/fildon/train-ride/main/train-ride.png">
 	</head>
 	<body>
 		<header class="horizontal-spread">
-			<img
-				src="../../static/headshot.jpeg"
-				alt="Headshot of Rupert"
-				class="rounded wonky"
-				height="64"
-				width="64"
-			/>
+			<img src="../../static/headshot.jpeg" alt="Headshot of Rupert" class="rounded wonky" height="64" width="64">
 			<h1><a href="/">Rupert McKay</a></h1>
 		</header>
 		<section class="full-width banner">
@@ -60,7 +42,7 @@
 		</section>
 		<article>
 	<h1>Publishing TypeScript React components to NPM</h1>
-	<span>Posted: <date datetime="Sat Jul 17 2021 00:00:00 GMT+0000 (Coordinated Universal Time)">17 Jul 2021</date></span>
+	<date datetime="Sat Jul 17 2021 00:00:00 GMT+0000 (Coordinated Universal Time)">17 Jul 2021</date>
 	<p>Key takeaways:</p>
 <ul>
 <li>compile to a <code>dist</code> directory</li>
@@ -79,19 +61,29 @@
 </blockquote>
 <p>Now go to GitHub and <a href="https://github.com/new">create a new repo</a>. Skip any options that add files for you. For this guide, I'll assume you are starting with an empty repository. Then clone it to your machine.</p>
 <p>Inside the repo, run the following command to have npm create a <code>package.json</code> for you:</p>
-<pre class="language-shell"><code class="language-shell"><span class="token function">npm</span> init -y</code></pre>
+<pre class="language-shell"><code class="language-shell"><span class="token function">npm</span> init <span class="token parameter variable">-y</span></code></pre>
 <blockquote>
 <p>You'll need to have npm installed globally for this work. If that's not already the case you can find instructions in <a href="https://docs.npmjs.com/cli/v7/configuring-npm/install">the npm docs</a>. For this guide, I am using npm version <code>7.10.0</code>.</p>
 </blockquote>
 <p>Go ahead and take a look at the <code>package.json</code> it has created. There is a lot to talk about in here, but I'll save that for another post. The only thing you need to confirm right now is that the &quot;name&quot; entry has the name you chose for this project. If it doesn't match for any reason, go ahead and change it now. For example, mine says:</p>
 <pre class="language-json"><code class="language-json"><span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"typescript-components-by-rupert"</span><span class="token punctuation">,</span></code></pre>
 <p>Next, add <code>TypeScript</code> and <code>React</code> to your project by running:</p>
-<pre class="language-shell"><code class="language-shell"><span class="token function">npm</span> <span class="token function">add</span> -D typescript react react-dom @types/react</code></pre>
+<pre class="language-shell"><code class="language-shell"><span class="token function">npm</span> <span class="token function">add</span> <span class="token parameter variable">-D</span> typescript react react-dom @types/react</code></pre>
 <p>Now that you've added dependencies, you'll see a new <code>node_modules</code> directory has been added. We want <code>git</code> to ignore this directory, so add a <code>.gitignore</code> file with one line inside:</p>
 <pre class="language-shell"><code class="language-shell">node_modules</code></pre>
 <p>Let's also add a <code>README.md</code>. For now, we can keep this light, but both <code>GitHub</code> and <code>npm</code> recognize this file as special and will render it to HTML as a kind of landing page for our project. It is important to maintain a guide in this file so that people who discover our project can get up to speed quickly.</p>
 <p>And now let's write some React! For this guide, I'm going to stick to something very simple, a counter component. I'll create a new directory called <code>src</code> and add the following <code>counter.tsx</code> file:</p>
-<pre class="language-ts"><code class="language-ts"><span class="token keyword">import</span> <span class="token operator">*</span> <span class="token keyword">as</span> React <span class="token keyword">from</span> <span class="token string">"react"</span><span class="token punctuation">;</span><br><br><span class="token keyword">export</span> <span class="token keyword">function</span> <span class="token function">Counter</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>	<span class="token keyword">const</span> <span class="token punctuation">[</span>count<span class="token punctuation">,</span> setCount<span class="token punctuation">]</span> <span class="token operator">=</span> React<span class="token punctuation">.</span><span class="token function">useState</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>	<span class="token keyword">return</span> <span class="token punctuation">(</span><br>		<span class="token operator">&lt;</span><span class="token operator">></span><br>			<span class="token operator">&lt;</span>p<span class="token operator">></span>You clicked <span class="token punctuation">{</span>count<span class="token punctuation">}</span> times<span class="token operator">&lt;</span><span class="token operator">/</span>p<span class="token operator">></span><br>			<span class="token operator">&lt;</span>button onClick<span class="token operator">=</span><span class="token punctuation">{</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token function">setCount</span><span class="token punctuation">(</span>count <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">}</span><span class="token operator">></span>Click me<span class="token operator">&lt;</span><span class="token operator">/</span>button<span class="token operator">></span><br>		<span class="token operator">&lt;</span><span class="token operator">/</span><span class="token operator">></span><br>	<span class="token punctuation">)</span><span class="token punctuation">;</span><br><span class="token punctuation">}</span></code></pre>
+<pre class="language-ts"><code class="language-ts"><span class="token keyword">import</span> <span class="token operator">*</span> <span class="token keyword">as</span> React <span class="token keyword">from</span> <span class="token string">"react"</span><span class="token punctuation">;</span>
+
+<span class="token keyword">export</span> <span class="token keyword">function</span> <span class="token function">Counter</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	<span class="token keyword">const</span> <span class="token punctuation">[</span>count<span class="token punctuation">,</span> setCount<span class="token punctuation">]</span> <span class="token operator">=</span> React<span class="token punctuation">.</span><span class="token function">useState</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token keyword">return</span> <span class="token punctuation">(</span>
+		<span class="token operator">&lt;</span><span class="token operator">></span>
+			<span class="token operator">&lt;</span>p<span class="token operator">></span>You clicked <span class="token punctuation">{</span>count<span class="token punctuation">}</span> times<span class="token operator">&lt;</span><span class="token operator">/</span>p<span class="token operator">></span>
+			<span class="token operator">&lt;</span>button onClick<span class="token operator">=</span><span class="token punctuation">{</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token function">setCount</span><span class="token punctuation">(</span>count <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">}</span><span class="token operator">></span>Click me<span class="token operator">&lt;</span><span class="token operator">/</span>button<span class="token operator">></span>
+		<span class="token operator">&lt;</span><span class="token operator">/</span><span class="token operator">></span>
+	<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
 <blockquote>
 <p>If you would like more guidance on writing React components in TypeScript you can see my post: <a href="https://rupertmckay.com/blog/seeing-through-jsx-to-understand-react-component-types/">Seeing through JSX to understand React component Types</a></p>
 </blockquote>
@@ -100,9 +92,29 @@
 <p>This might not seem important right now when we only have one component, but if we want this repo to grow, having an index file acts as a kind of point of entry for all our exported components. It also streamlines how our components are imported by projects that depend on this repo, but we'll see that later.</p>
 <h2 id="build-process" tabindex="-1"><a class="direct-link" href="#build-process" aria-hidden="true">#</a> Build process</h2>
 <p>At this point your file structure should look like this:</p>
-<pre class="language-md"><code class="language-md">typescript-components-by-rupert/<br>├─ node_modules/<br>├─ src/<br>│ ├─ counter.tsx<br>│ └─ index.ts<br>├─ .gitignore<br>├─ package-lock.json<br>├─ package.json<br>└─ README.md</code></pre>
+<pre class="language-md"><code class="language-md">typescript-components-by-rupert/
+├─ node_modules/
+├─ src/
+│ ├─ counter.tsx
+│ └─ index.ts
+├─ .gitignore
+├─ package-lock.json
+├─ package.json
+└─ README.md</code></pre>
 <p>Since we are working with TypeScript we need to use <code>tsc</code> to compile our code. To do that we'll create a <code>tsconfig.json</code> at the root of the project:</p>
-<pre class="language-json"><code class="language-json"><span class="token punctuation">{</span><br>	<span class="token property">"compilerOptions"</span><span class="token operator">:</span> <span class="token punctuation">{</span><br>		<span class="token property">"strict"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span><br>		<span class="token property">"jsx"</span><span class="token operator">:</span> <span class="token string">"react"</span><span class="token punctuation">,</span><br>		<span class="token property">"declaration"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span><br>		<span class="token property">"esModuleInterop"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span><br>		<span class="token property">"outDir"</span><span class="token operator">:</span> <span class="token string">"dist"</span><span class="token punctuation">,</span><br>		<span class="token property">"target"</span><span class="token operator">:</span> <span class="token string">"es6"</span><span class="token punctuation">,</span><br>		<span class="token property">"module"</span><span class="token operator">:</span> <span class="token string">"es6"</span><span class="token punctuation">,</span><br>		<span class="token property">"moduleResolution"</span><span class="token operator">:</span> <span class="token string">"node"</span><br>	<span class="token punctuation">}</span><span class="token punctuation">,</span><br>	<span class="token property">"include"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"src"</span><span class="token punctuation">]</span><br><span class="token punctuation">}</span></code></pre>
+<pre class="language-json"><code class="language-json"><span class="token punctuation">{</span>
+	<span class="token property">"compilerOptions"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+		<span class="token property">"strict"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+		<span class="token property">"jsx"</span><span class="token operator">:</span> <span class="token string">"react"</span><span class="token punctuation">,</span>
+		<span class="token property">"declaration"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+		<span class="token property">"esModuleInterop"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+		<span class="token property">"outDir"</span><span class="token operator">:</span> <span class="token string">"dist"</span><span class="token punctuation">,</span>
+		<span class="token property">"target"</span><span class="token operator">:</span> <span class="token string">"es6"</span><span class="token punctuation">,</span>
+		<span class="token property">"module"</span><span class="token operator">:</span> <span class="token string">"es6"</span><span class="token punctuation">,</span>
+		<span class="token property">"moduleResolution"</span><span class="token operator">:</span> <span class="token string">"node"</span>
+	<span class="token punctuation">}</span><span class="token punctuation">,</span>
+	<span class="token property">"include"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"src"</span><span class="token punctuation">]</span>
+<span class="token punctuation">}</span></code></pre>
 <p>I won't dive into what each of these things means, but there are two that I ought to point out right now:</p>
 <ul>
 <li><code>&quot;declaration&quot;: true</code></li>
@@ -113,17 +125,35 @@
 <p>If you want to read up on the other options and tsconfig in general <a href="https://www.typescriptlang.org/tsconfig">here are the tsconfig docs</a></p>
 <p>Now that we have a <code>tsconfig.json</code> we can write a build script.</p>
 <p>Add this to the <code>scripts</code> section of the <code>package.json</code>:</p>
-<pre class="language-json"><code class="language-json"><span class="token property">"clean"</span><span class="token operator">:</span> <span class="token string">"rm -rf dist"</span><span class="token punctuation">,</span><br><span class="token property">"build"</span><span class="token operator">:</span> <span class="token string">"npm run clean &amp;&amp; tsc &amp;&amp; cp package.json README.md ./dist"</span><span class="token punctuation">,</span></code></pre>
+<pre class="language-json"><code class="language-json"><span class="token property">"clean"</span><span class="token operator">:</span> <span class="token string">"rm -rf dist"</span><span class="token punctuation">,</span>
+<span class="token property">"build"</span><span class="token operator">:</span> <span class="token string">"npm run clean &amp;&amp; tsc &amp;&amp; cp package.json README.md ./dist"</span><span class="token punctuation">,</span></code></pre>
 <p>The <code>clean</code> command will fully delete the <code>dist</code> directory, which is useful for getting a completely new build each time.</p>
 <p>The <code>build</code> command, begins by cleaning up any previous build output, then runs <code>tsc</code> (which will automatically use the <code>tsconfig.json</code> we just made), and then finally we copy the <code>package.json</code> and <code>README.md</code> files to the dist directory.</p>
 <p>The reason we copy the <code>package.json</code> and <code>README.md</code> files into the dist directory, is that when we get to publishing this project, we want to publish the built files so that people can import and use our code immediately, but the npm CLI only allows publishing a directory that has a <code>package.json</code> in it. This is a common pain point, and I've seen many different approaches to dealing with this, but I think copying over just two files is the smoothest way I've seen to do it. With this approach, we maintain a clear separation between the source code we use for development vs the built code we publish for others to use.</p>
 <p>We can now run this command on the terminal with just:</p>
 <pre class="language-shell"><code class="language-shell"><span class="token function">npm</span> run build</code></pre>
 <p>This will create a 'dist' directory, with all the build output in it. This is another thing we'll want git to ignore. So go ahead and add another line to the <code>.gitignore</code> file, so that it now contains:</p>
-<pre class="language-shell"><code class="language-shell">node_modules<br>dist</code></pre>
+<pre class="language-shell"><code class="language-shell">node_modules
+dist</code></pre>
 <h2 id="publishing" tabindex="-1"><a class="direct-link" href="#publishing" aria-hidden="true">#</a> Publishing</h2>
 <p>At this point your file structure should look like this:</p>
-<pre class="language-md"><code class="language-md">typescript-components-by-rupert/<br>├─ dist/<br>│ ├─ counter.d.ts<br>│ ├─ counter.js<br>│ ├─ index.d.ts<br>│ ├─ index.js<br>│ ├─ package.json<br>│ └─ README.md<br>├─ node_modules/<br>├─ src/<br>│ ├─ counter.tsx<br>│ └─ index.ts<br>├─ .gitignore<br>├─ tsconfig.json<br>├─ package-lock.json<br>├─ package.json<br>└─ README.md</code></pre>
+<pre class="language-md"><code class="language-md">typescript-components-by-rupert/
+├─ dist/
+│ ├─ counter.d.ts
+│ ├─ counter.js
+│ ├─ index.d.ts
+│ ├─ index.js
+│ ├─ package.json
+│ └─ README.md
+├─ node_modules/
+├─ src/
+│ ├─ counter.tsx
+│ └─ index.ts
+├─ .gitignore
+├─ tsconfig.json
+├─ package-lock.json
+├─ package.json
+└─ README.md</code></pre>
 <p>We now have some lovely source code and a painless build process. But we haven't published anything yet!</p>
 <blockquote>
 <p>You'll need an npm account for the next part, so if you don't already have one, head over here: <a href="https://docs.npmjs.com/creating-a-new-npm-user-account">Creating a new npm user account</a></p>
