@@ -1,9 +1,10 @@
 ---
 title: What is a number?
-description: Rounding errors are inevitable.
+description: Explore why JavaScript's 0.1 * 0.2 doesn't equal 0.02, understanding floating-point arithmetic and the fundamental limits of numeric representation.
 date: 2022-01-03
 layout: layouts/post.njk
 ---
+
 TL;DR:
 
 - No datatype will ever be able to represent all numeric values perfectly
@@ -129,16 +130,19 @@ We call the leading bits the "Mantissa" and the power of 2 the "Exponent".
 To demonstrate this, consider the following numbers:
 
 5 in binary is 101:
+
 - Mantissa: 1.01
 - Exponent: 10
 
 > Note that the exponent is _also_ in binary so "10" here is not "ten" but rather "two".
 
 9 in binary is 1001:
+
 - Mantissa: 1.001
 - Exponent: 11
 
 7/32 in binary is 0.00111:
+
 - Mantissa: 1.11
 - Exponent: -11
 
@@ -149,10 +153,12 @@ This format has the advantage of being very flexible in accomodating both very l
 First, we convert the numbers to their floating-point representations:
 
 0.1 in binary is 0.00011001100...:
+
 - Mantissa: 1.1001100...
 - Exponent: -100
 
-0.2 in binary is 0.0011001100...:
+  0.2 in binary is 0.0011001100...:
+
 - Mantissa: 1.1001100...
 - Exponent: -11
 
@@ -161,6 +167,7 @@ You might already see a problem, that our numeric representations have become an
 Then to complete our computation, we multiply the mantissas together and combine the exponents, which leaves us with:
 
 0.0000010100011110101...
+
 - Mantissa: 1.0100011110101...
 - Exponent: -110
 

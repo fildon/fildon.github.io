@@ -1,6 +1,6 @@
 ---
 title: What is memoization?
-description: An introduction to Memoization and how to use it.
+description: Learn when and how to use memoization to optimize performance by caching expensive computation results for reuse.
 date: 2022-02-28
 layout: layouts/post.njk
 ---
@@ -62,22 +62,22 @@ Once you've ruled out all of those, you are left with _pure functions_. By defin
 
 ```ts
 const memoize = <Input extends PropertyKey, Result>(
-  callback: (input: Input) => Result
+	callback: (input: Input) => Result,
 ) => {
-  // 'memory' will store previous results
-  const memory: Map<Input, Result> = new Map();
+	// 'memory' will store previous results
+	const memory: Map<Input, Result> = new Map();
 
-  // Return the newly memoized function
-  return (input: Input) => {
-    // If we haven't already seen this 'input'
-    if (!memory.has(input)) {
-      // Then call the "real" function and store the result in memory
-      memory.set(input, callback(input));
-    }
+	// Return the newly memoized function
+	return (input: Input) => {
+		// If we haven't already seen this 'input'
+		if (!memory.has(input)) {
+			// Then call the "real" function and store the result in memory
+			memory.set(input, callback(input));
+		}
 
-    // Return the result from memory
-    return memory.get(input)!;
-  };
+		// Return the result from memory
+		return memory.get(input)!;
+	};
 };
 ```
 
@@ -91,23 +91,23 @@ If instead, we want to be able to support all kinds of functions, then our memoi
 
 ```ts
 const memoize = <Args extends any[], Result>(
-  callback: (...args: Args) => Result,
-  resolver: (...args: Args) => PropertyKey
+	callback: (...args: Args) => Result,
+	resolver: (...args: Args) => PropertyKey,
 ) => {
-  const memory: Map<PropertyKey, Result> = new Map();
+	const memory: Map<PropertyKey, Result> = new Map();
 
-  // Everything here is the same as above, except...
-  return (...args: Args) => {
-    // ... we invoke the resolver here to get the key we will use for this input
-    const key = resolver(...args);
+	// Everything here is the same as above, except...
+	return (...args: Args) => {
+		// ... we invoke the resolver here to get the key we will use for this input
+		const key = resolver(...args);
 
-    if (!memory.has(key)) {
-      memory.set(key, callback(...args));
-    }
+		if (!memory.has(key)) {
+			memory.set(key, callback(...args));
+		}
 
-    // Return result from memory
-    return memory.get(key)!;
-  };
+		// Return result from memory
+		return memory.get(key)!;
+	};
 };
 ```
 
@@ -130,9 +130,9 @@ let invocationCounter = 0;
  * Compute the nth fibonacci number
  */
 const fibonacci = (n: number): number => {
-  invocationCounter++;
-  if (n <= 1) return 1;
-  return fibonacci(n - 1) + fibonacci(n - 2);
+	invocationCounter++;
+	if (n <= 1) return 1;
+	return fibonacci(n - 1) + fibonacci(n - 2);
 };
 
 fibonacci(20);
@@ -165,12 +165,12 @@ To more fully memoize `fibonacci` we have to insert the memoization inside the i
 let invocationCounter = 0;
 const memory = new Map<number, number>();
 const memoFibonacci = (n: number): number => {
-  invocationCounter++;
-  if (memory.has(n)) return memory.get(n)!;
-  if (n <= 1) return 1;
-  const result = memoFibonacci(n - 1) + memoFibonacci(n - 2);
-  memory.set(n, result);
-  return result;
+	invocationCounter++;
+	if (memory.has(n)) return memory.get(n)!;
+	if (n <= 1) return 1;
+	const result = memoFibonacci(n - 1) + memoFibonacci(n - 2);
+	memory.set(n, result);
+	return result;
 };
 
 memoFibonacci(20);

@@ -1,9 +1,10 @@
 ---
 title: Generics aren't as scary as you think
-description: You already understand generics... you just don't know you do.
+description: Learn TypeScript generics through familiar examples like Arrays and Promises. Discover how you're already using generics without realizing it.
 date: 2021-05-23
 layout: layouts/post.njk
 ---
+
 I'll be demonstrating generics using TypeScript, but the core principles of generics are the same in any programming language.
 
 ## First things first
@@ -39,16 +40,16 @@ Now let's pretend `filter` didn't already exist, and we wanted to make our own f
 
 ```ts
 function numberFilter(
-  array: Array<number>,
-  callback: (num: number) => boolean
+	array: Array<number>,
+	callback: (num: number) => boolean,
 ) {
-  const result: Array<number> = [];
-  for (const num of array) {
-    if (callback(num)) {
-      result.push(num);
-    }
-  }
-  return result;
+	const result: Array<number> = [];
+	for (const num of array) {
+		if (callback(num)) {
+			result.push(num);
+		}
+	}
+	return result;
 }
 
 const numbers = [1, 31, 12, 40];
@@ -64,16 +65,16 @@ To really prove this point, lets show what a custom string filter function might
 
 ```ts
 function stringFilter(
-  array: Array<string>,
-  callback: (num: string) => boolean
+	array: Array<string>,
+	callback: (num: string) => boolean,
 ) {
-  const result: Array<string> = [];
-  for (const str of array) {
-    if (callback(str)) {
-      result.push(str);
-    }
-  }
-  return result;
+	const result: Array<string> = [];
+	for (const str of array) {
+		if (callback(str)) {
+			result.push(str);
+		}
+	}
+	return result;
 }
 
 const strings = ["cat", "horse", "dog", "dinosaur"];
@@ -87,16 +88,16 @@ What if we could abstract the implementation from the specific type of element t
 
 ```ts
 function genericFilter<Element>(
-  array: Array<Element>,
-  callback: (element: Element) => boolean
+	array: Array<Element>,
+	callback: (element: Element) => boolean,
 ) {
-  const result: Array<T> = [];
-  for (const element of array) {
-    if (callback(element)) {
-      result.push(element);
-    }
-  }
-  return result;
+	const result: Array<T> = [];
+	for (const element of array) {
+		if (callback(element)) {
+			result.push(element);
+		}
+	}
+	return result;
 }
 
 // Works with numbers!

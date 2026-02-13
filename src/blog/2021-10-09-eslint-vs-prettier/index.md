@@ -1,6 +1,6 @@
 ---
 title: ESLint vs Prettier
-description: Why I don't use the 'fix' option.
+description: Understanding the distinction between ESLint's semantic error detection and Prettier's syntactic formatting. Why automated tools can't fix everything.
 date: 2021-10-09
 layout: layouts/post.njk
 ---

@@ -1,9 +1,10 @@
 ---
 title: Mocking in Jest with TypeScript and React
-description: It is functions all the way down.
+description: Practical guide to mocking in Jest with TypeScript. Learn type-safe mock functions and how to mock React components effectively.
 date: 2021-07-03
 layout: layouts/post.njk
 ---
+
 Key takeaways:
 
 - `jest.mock` covers many use cases
@@ -109,8 +110,8 @@ import { getUserDetails } from "./user-storage";
 
 // Declare that our mock implementation must return a valid "getUserDetails" implementation
 jest.mock("./user-storage", (): { getUserDetails: typeof getUserDetails } => ({
-  // TypeScript will now correctly tell us this doesn't match the expected type
-  getUserDetails: () => ({ naaaaaaaame: "rupert" }),
+	// TypeScript will now correctly tell us this doesn't match the expected type
+	getUserDetails: () => ({ naaaaaaaame: "rupert" }),
 }));
 ```
 
@@ -122,8 +123,8 @@ import * as UserStorage from "./user-storage";
 
 // And use the 'typeof' that namespace to enforce our mock matches
 jest.mock("./user-storage", (): typeof UserStorage => ({
-  // Correctly tells us this doesn't match the expected type
-  getUserDetails: () => ({ naaaaaaaame: "rupert" }),
+	// Correctly tells us this doesn't match the expected type
+	getUserDetails: () => ({ naaaaaaaame: "rupert" }),
 }));
 ```
 
@@ -239,7 +240,7 @@ One other thing we really need to watch out for here though is making sure we cl
 
 ```ts
 it("something is fishy here", () => {
-  expect(mockGetUserDetails).toHaveBeenCalledWith("1234");
+	expect(mockGetUserDetails).toHaveBeenCalledWith("1234");
 });
 ```
 
@@ -247,7 +248,7 @@ That test will pass! But how? It doesn't do anything, yet somehow it is still tr
 
 ```ts
 beforeEach(() => {
-  jest.clearAllMocks();
+	jest.clearAllMocks();
 });
 ```
 
@@ -356,8 +357,8 @@ But when we inevitably do want to test a component rendered within a context, I 
 
 ```ts
 expect(mockThirdPartyWidget).toHaveBeenCalledWith(
-  { userId: "1234" },
-  expect.any({}) // Ignore React contexts
+	{ userId: "1234" },
+	expect.any({}), // Ignore React contexts
 );
 ```
 
@@ -430,8 +431,8 @@ Rupert
 
 Library versions used when writing this post:
 
-| Dependency             | Version |
-| ---------------------- | ------- |
+| Dependency               | Version |
+| ------------------------ | ------- |
 | `jest`                   | 27.0.6  |
 | `react`                  | 17.0.2  |
 | `typescript`             | 4.3.5   |

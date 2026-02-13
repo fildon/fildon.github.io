@@ -1,9 +1,10 @@
 ---
 title: How to Create Custom Hooks
-description: DRY component logic and separation of rendering from state management.
+description: Master React custom hooks to encapsulate reusable functionality, keep components clean, and separate rendering from state management.
 date: 2021-06-09
 layout: layouts/post.njk
 ---
+
 React hooks are a powerful tool for managing state in your React components. In this post I'll be demonstrating how we can compose existing React hooks to make custom hooks that encapsulate reusable functionality.
 
 React's built-in hooks provide a great deal of power and flexibility, between `useState`, `useEffect` and `useCallback` we can cover very many use cases. But often times we'll find ourselves repeating a pattern of hooks over and over again, or maybe we'd simply prefer to pull out a custom hook to keep our component definitions short and expressive.
@@ -28,7 +29,7 @@ Here we have a `WelcomePage` component which makes a call to some utility method
 
 ```ts
 const useOnMount = (callback: () => void) => {
-  React.useEffect(callback, []);
+	React.useEffect(callback, []);
 };
 ```
 
@@ -50,10 +51,10 @@ For simple pieces of boolean state we typically only want a way to read the curr
 
 ```ts
 const useToggle = (initialValue: boolean) => {
-  const [value, setValue] = React.useState(initialValue);
-  const toggle = () => setValue(!value);
+	const [value, setValue] = React.useState(initialValue);
+	const toggle = () => setValue(!value);
 
-  return { value, toggle };
+	return { value, toggle };
 };
 ```
 
@@ -75,11 +76,11 @@ This next example is a little more complex. Perhaps you have a list of images in
 
 ```ts
 const useCircularIndex = (length: number) => {
-  const [index, setIndex] = React.useState(0);
-  const next = () => setIndex(index === length - 1 ? 0 : index + 1);
-  const prev = () => setIndex(index === 0 ? length - 1 : index - 1);
+	const [index, setIndex] = React.useState(0);
+	const next = () => setIndex(index === length - 1 ? 0 : index + 1);
+	const prev = () => setIndex(index === 0 ? length - 1 : index - 1);
 
-  return { index, next, prev };
+	return { index, next, prev };
 };
 ```
 
@@ -189,19 +190,19 @@ type ReadyState = { state: "ready"; userDetails: UserDetails };
 type UserDetailsResponse = LoadingState | ErrorState | ReadyState;
 
 const useGetUserDetails = (userId: string) => {
-  const [response, setResponse] = React.useState<UserDetailsResponse>({
-    state: "loading",
-  });
+	const [response, setResponse] = React.useState<UserDetailsResponse>({
+		state: "loading",
+	});
 
-  React.useEffect(() => {
-    getUserDetails(userId)
-      .then((response) =>
-        setResponse({ state: "ready", userDetails: response })
-      )
-      .catch((error) => setResponse({ state: "error", error }));
-  }, [userId, getUserDetails]);
+	React.useEffect(() => {
+		getUserDetails(userId)
+			.then((response) =>
+				setResponse({ state: "ready", userDetails: response }),
+			)
+			.catch((error) => setResponse({ state: "error", error }));
+	}, [userId, getUserDetails]);
 
-  return { response };
+	return { response };
 };
 ```
 
