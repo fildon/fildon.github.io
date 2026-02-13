@@ -194,7 +194,7 @@ In this test suite, we simulate two different cases, one in which the API reject
 
 - `getBy*` verifies that something is rendered.
 - `queryBy*` can be used to verify that something is _not_ rendered.
-- `findyBy*` verifies that something is _eventually_ rendered.
+- `findBy*` verifies that something is _eventually_ rendered.
 - Prefer `*ByRole` wherever possible to encourage the use of semantic HTML and better accessibility.
 - Use the companion library [testing-library/user-event](https://github.com/testing-library/user-event) to simulate realistic user actions.
 

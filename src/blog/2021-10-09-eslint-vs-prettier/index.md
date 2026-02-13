@@ -21,7 +21,7 @@ But automated tools do still provide value.
 
 ## The Good News
 
-Rice's Theorem makes a distinction between _syntatic_ and _semantic_ properties of programs. Roughly speaking _syntactic_ is "how it is written", whereas _semantic_ is "how it behaves".
+Rice's Theorem makes a distinction between _syntactic_ and _semantic_ properties of programs. Roughly speaking _syntactic_ is "how it is written", whereas _semantic_ is "how it behaves".
 
 Most syntactic problems can be trivially identified and fixed. The most well-known of these are things like indentation and linebreaks. These things do not affect the _behavior_ of the program, but do create a consistent _syntactic_ standard for programmers.
 

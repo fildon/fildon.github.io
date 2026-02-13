@@ -110,36 +110,36 @@ See below for an implementation of this process in TypeScript.
 const d = (n: number) => Math.floor(n * Math.random()) + 1;
 
 const produceOneResult = (n: number, repeatCount: number) => {
-  const rollResults = new Array(repeatCount).fill(0).map(() => d(n));
+	const rollResults = new Array(repeatCount).fill(0).map(() => d(n));
 
-  // This reads the results as a single number in base `n`
-  const result = rollResults
-    .map((roll, i) => (roll - 1) * n ** (repeatCount - i - 1))
-    .reduce((a, b) => a + b, 0);
+	// This reads the results as a single number in base `n`
+	const result = rollResults
+		.map((roll, i) => (roll - 1) * n ** (repeatCount - i - 1))
+		.reduce((a, b) => a + b, 0);
 
-  return result;
+	return result;
 };
 
 /**
  * Given a `dn`, simulate the outcomes of a `dm`
  */
 const simulateMwithN = (m: number, n: number) => {
-  /**
-   * `repeatCount` is the number of times we will need to roll the smaller die.
-   */
-  const repeatCount = Math.ceil(Math.log(m) / Math.log(n));
-  /**
-   * The maximum valid result is the largest multiple of n that is
-   * less than or equal to the size of our target space
-   */
-  const maxValidResult = Math.floor(n ** repeatCount / m) * m - 1;
+	/**
+	 * `repeatCount` is the number of times we will need to roll the smaller die.
+	 */
+	const repeatCount = Math.ceil(Math.log(m) / Math.log(n));
+	/**
+	 * The maximum valid result is the largest multiple of n that is
+	 * less than or equal to the size of our target space
+	 */
+	const maxValidResult = Math.floor(n ** repeatCount / m) * m - 1;
 
-  let result: number;
-  do {
-    result = produceOneResult(n, repeatCount);
-  } while (result > maxValidResult);
+	let result: number;
+	do {
+		result = produceOneResult(n, repeatCount);
+	} while (result > maxValidResult);
 
-  return (result % m) + 1;
+	return (result % m) + 1;
 };
 
 simulateMwithN(6, 4);
@@ -192,20 +192,20 @@ const d = (n: number) => Math.floor(n * Math.random()) + 1;
  * Then given some `n` on the unit interval, output which segment of `m` it belongs to.
  */
 const fromUnitNtoSegmentsM = (m: number) => (n: number) => {
-  if (n === 0) return 1;
-  return Math.ceil(n * m);
+	if (n === 0) return 1;
+	return Math.ceil(n * m);
 };
 
 /**
  * Given a die, map a single result to the unit interval
  */
 const fromDNtoInterval = (n: number) => {
-  const dieResult = d(n);
+	const dieResult = d(n);
 
-  const lowerBound = (dieResult - 1) * (1 / n);
-  const upperBound = lowerBound + 1 / n;
+	const lowerBound = (dieResult - 1) * (1 / n);
+	const upperBound = lowerBound + 1 / n;
 
-  return [lowerBound, upperBound];
+	return [lowerBound, upperBound];
 };
 
 /**
@@ -213,51 +213,51 @@ const fromDNtoInterval = (n: number) => {
  * narrow the interval using a single role of the die
  */
 const narrowIntervalWithDN =
-  (n: number) =>
-  (interval: Interval): Interval => {
-    // This generates a new unit interval
-    const [innerLower, innerUpper] = fromDNtoInterval(n);
+	(n: number) =>
+	(interval: Interval): Interval => {
+		// This generates a new unit interval
+		const [innerLower, innerUpper] = fromDNtoInterval(n);
 
-    // But we need to map it into our existing interval
-    const currentIntervalSize = interval[1] - interval[0];
-    const newLowerBound = interval[0] + innerLower * currentIntervalSize;
-    const newUpperBound = interval[0] + innerUpper * currentIntervalSize;
+		// But we need to map it into our existing interval
+		const currentIntervalSize = interval[1] - interval[0];
+		const newLowerBound = interval[0] + innerLower * currentIntervalSize;
+		const newUpperBound = interval[0] + innerUpper * currentIntervalSize;
 
-    return [newLowerBound, newUpperBound];
-  };
+		return [newLowerBound, newUpperBound];
+	};
 
 /**
  * Given a `dn`, simulate the outcomes of a `dm`
  */
 const simulateMwithN = (m: number, n: number) => {
-  // We'll use a tuple to track a range on the unit interval
-  let interval: Interval = [0, 1];
+	// We'll use a tuple to track a range on the unit interval
+	let interval: Interval = [0, 1];
 
-  const mapToDM = fromUnitNtoSegmentsM(m);
-  const mapFromDN = narrowIntervalWithDN(n);
+	const mapToDM = fromUnitNtoSegmentsM(m);
+	const mapFromDN = narrowIntervalWithDN(n);
 
-  // In this loop we repeatedly narrow our output interval
-  // Until its lower and upper bounds fit within the same segment of `dm`
-  while (mapToDM(interval[0]) !== mapToDM(interval[1])) {
-    interval = mapFromDN(interval);
-  }
+	// In this loop we repeatedly narrow our output interval
+	// Until its lower and upper bounds fit within the same segment of `dm`
+	while (mapToDM(interval[0]) !== mapToDM(interval[1])) {
+		interval = mapFromDN(interval);
+	}
 
-  return mapToDM(interval[0]);
+	return mapToDM(interval[0]);
 };
 
 /**
  * A test of the distribution of a simulated dice
  *
  * Outputs a record where each key is a die result,
- * and each value is how often that result occured
+ * and each value is how often that result occurred
  */
 const test = new Array(10000)
-  .fill(0)
-  .map(() => simulateMwithN(6, 4))
-  .reduce<Record<number, number>>(
-    (acc, curr) => ({ ...acc, [curr]: (acc[curr] ?? 0) + 1 }),
-    {}
-  );
+	.fill(0)
+	.map(() => simulateMwithN(6, 4))
+	.reduce<Record<number, number>>(
+		(acc, curr) => ({ ...acc, [curr]: (acc[curr] ?? 0) + 1 }),
+		{},
+	);
 
 /**
  * If the test is successful, each value should be roughly equal

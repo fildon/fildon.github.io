@@ -37,7 +37,7 @@ We might have guessed that this chaos would proceed forever. But then at around 
 
 The Ant has begun to build a structure known as the highway. The highway is an infinitely repeating pattern. It takes the ant 104 steps for each iteration of the highway, and each iteration extends the pattern along a diagonal trajectory.
 
-But we can change things. Instead of starting with a blank grid, we could set some cells to black at the begginning. If we then run the Ant it will generate different patterns. When people try this, they find that the highway _always seems to emerge sooner or later_. It is widely believed that the highway is inevitable, and yet this conjecture has never been proven nor disproven, despite many years of effort.
+But we can change things. Instead of starting with a blank grid, we could set some cells to black at the beginning. If we then run the Ant it will generate different patterns. When people try this, they find that the highway _always seems to emerge sooner or later_. It is widely believed that the highway is inevitable, and yet this conjecture has never been proven nor disproven, despite many years of effort.
 
 Such a simple system to define, and yet we are unable to answer the question "Does the highway always appear, no matter the starting state?"
 

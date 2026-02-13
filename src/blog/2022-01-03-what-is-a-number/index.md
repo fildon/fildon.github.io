@@ -146,7 +146,7 @@ To demonstrate this, consider the following numbers:
 - Mantissa: 1.11
 - Exponent: -11
 
-This format has the advantage of being very flexible in accomodating both very large and very small numbers. It is called `Floating Point` because the _point_ in the number can _float_ up or down to wherever the first leading bit will be, e.g. in the last example we _float_ the point down by three places by using a -3 exponent. Now let's consider what happens when we try to evaluate the expression:
+This format has the advantage of being very flexible in accommodating both very large and very small numbers. It is called `Floating Point` because the _point_ in the number can _float_ up or down to wherever the first leading bit will be, e.g. in the last example we _float_ the point down by three places by using a -3 exponent. Now let's consider what happens when we try to evaluate the expression:
 
 `0.1 * 0.2`
 

@@ -21,6 +21,6 @@ So there it was. A skull.
 
 No one else wanted it. They ummed and ahhed. It couldn't possibly be thrown away, but no one had the stomach to keep it. I had been respectfully silent all day. I'm not a blood relative after all, and was only there as a spare pair of hands. But finally I suggested that I could take it. To my surprise no one disagreed.
 
-Since then the skull has stayed with me. First I had I took it in hand luggage to England, and then it travelled with me again when I moved to the Netherlands permanantly. On both occasions I did not declare it and security never seemed to notice it.
+Since then the skull has stayed with me. First I had I took it in hand luggage to England, and then it travelled with me again when I moved to the Netherlands permanently. On both occasions I did not declare it and security never seemed to notice it.
 
 The skull still sits on my shelf. Some nights before I go to bed, I'll rest my hand on the crown. I'm not sure what I intend by this. But I have this almost desperate sense of wanting to understand what it means for this artefact to represent the remains of a human story. I know nothing about this story. I do not know the skull's age, gender or origin. But as I rest my hand on the crown, I will sometimes rest my other hand on my own head. In that moment I try to capture the feeling that I'm just a big bag of bones. That my two hands contain only superficially different contents. Somehow this calms me. I sleep easier when I can clear my mind of the day to day.

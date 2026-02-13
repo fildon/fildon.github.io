@@ -324,7 +324,7 @@ import { ThirdPartyWidget } from "third-party-library";
 
 jest.mock("third-party-library");
 
-describe("User copmonent", () => {
+describe("User component", () => {
   const mockThirdPartyWidget = ThirdPartyWidget as jest.MockedFunction<
     typeof ThirdPartyWidget
   >;
