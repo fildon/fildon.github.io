@@ -4,8 +4,8 @@
 # Maximum number of concurrent network requests
 max_concurrency = 8
 
-# Check links in HTML
-include = ["./**/*.html"]
+# Check that fragment identifiers (hash links) exist on the target page
+include_fragments = true
 
 # Exclude patterns (regex)
 exclude = [
@@ -20,6 +20,9 @@ exclude = [
   
   # Exclude mailto links (they often fail checks)
   "mailto:",
+  
+  # Exclude npmjs.com (blocks automated requests with 403)
+  "https://www.npmjs.com",
 ]
 
 # Accepted status codes for valid links

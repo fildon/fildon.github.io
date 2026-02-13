@@ -4,6 +4,7 @@ description: What are all these question marks in my code?
 date: 2021-07-10
 layout: layouts/post.njk
 ---
+
 Key takeaways:
 
 - Prefer `??` to `||`
@@ -24,14 +25,14 @@ TypeScript supports optional properties via the following syntax:
 ```ts
 // Works with 'interface'
 interface User {
-  name: string;
-  age?: number;
+	name: string;
+	age?: number;
 }
 
 // and also with 'type'
 type User = {
-  name: string;
-  age?: number;
+	name: string;
+	age?: number;
 };
 ```
 
@@ -49,14 +50,14 @@ When defining a function that accepts the `User` type, the `age` type will be `n
 ```ts
 // Lets find out if this user is old enough to drive
 function isOldEnoughToDrive(user: User) {
-  // initially user.age is number | undefined
-  if (user.age === undefined) {
-    // But after an if check the type will be narrowed
-    // In this example we return 'false' if 'age' isn't available.
-    return false;
-  }
-  // But if age is available, then it is narrowed to a 'number' type.
-  return user.age >= DRIVING_AGE;
+	// initially user.age is number | undefined
+	if (user.age === undefined) {
+		// But after an if check the type will be narrowed
+		// In this example we return 'false' if 'age' isn't available.
+		return false;
+	}
+	// But if age is available, then it is narrowed to a 'number' type.
+	return user.age >= DRIVING_AGE;
 }
 
 isOldEnoughToDrive({ name: "Ash Ketchum", age: 10 }); // returns false
@@ -68,8 +69,8 @@ This behavior is _nearly_ equivalent to if we had:
 
 ```ts
 interface User {
-  name: string;
-  age: number | undefined;
+	name: string;
+	age: number | undefined;
 }
 ```
 
@@ -77,8 +78,8 @@ The difference is whether the key must be explicitly provided by objects wanting
 
 ```ts
 interface User {
-  name: string;
-  age: number | undefined;
+	name: string;
+	age: number | undefined;
 }
 
 // Type error! "age" is a required property of "User"
@@ -106,7 +107,7 @@ The only difference is that `||` will fall back if the lefthand value is _anythi
 
 I highly recommend forgetting about `||` for default fallbacks and using `??` instead.
 
-You can enforce this with [typescript-eslint](https://github.com/typescript-eslint/typescript-eslint)'s own [prefer-nullish-coalescing](https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/prefer-nullish-coalescing.md) rule
+You can enforce this with [typescript-eslint](https://github.com/typescript-eslint/typescript-eslint)'s own [prefer-nullish-coalescing](https://github.com/typescript-eslint/typescript-eslint/blob/main/packages/eslint-plugin/docs/rules/prefer-nullish-coalescing.mdx) rule
 
 ## Optional Chaining (?.)
 
@@ -116,15 +117,15 @@ What if this time we have a `Session` object, which has a `User` only if the cur
 
 ```ts
 interface Session {
-  user?: User;
+	user?: User;
 }
 
 function getWelcomeMessage(session: Session) {
-  const userName = session.user?.name;
-  if (userName === undefined) {
-    return "Hello Guest!";
-  }
-  return `Hello ${userName}!`;
+	const userName = session.user?.name;
+	if (userName === undefined) {
+		return "Hello Guest!";
+	}
+	return `Hello ${userName}!`;
 }
 ```
 
@@ -142,12 +143,12 @@ We can use all these concepts together:
 
 ```ts
 interface Session {
-  user?: User;
+	user?: User;
 }
 
 function getWelcomeMessage(session: Session) {
-  const userName = session.user?.name ?? "GUEST";
-  return `Hello ${userName}!`;
+	const userName = session.user?.name ?? "GUEST";
+	return `Hello ${userName}!`;
 }
 ```
 

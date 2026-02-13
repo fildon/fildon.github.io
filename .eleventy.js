@@ -59,6 +59,45 @@ module.exports = function (eleventyConfig) {
 		return dirName.replace(/^\d{4}-\d{2}-\d{2}-/, "");
 	});
 
+	// Transform relative image paths to root-absolute paths
+	eleventyConfig.addTransform("absoluteImagePaths", function (content, outputPath) {
+		if (outputPath && outputPath.endsWith(".html")) {
+			// Get the directory of the output file relative to _site
+			// e.g., "_site/blog/my-post/index.html" -> "blog/my-post"
+			// or "/full/path/_site/blog/my-post/index.html" -> "blog/my-post"
+			let outputDir = outputPath;
+			
+			// Handle both absolute and relative paths
+			const siteIndex = outputDir.indexOf("_site/");
+			if (siteIndex !== -1) {
+				outputDir = outputDir.substring(siteIndex + 6); // Remove everything up to and including "_site/"
+			}
+			
+			// Remove the filename (e.g., "index.html")
+			// If there's a slash, extract directory path. If no slash (root level), use empty string
+			if (outputDir.includes("/")) {
+				outputDir = outputDir.replace(/\/[^\/]*$/, "");
+			} else {
+				outputDir = ""; // Root level file
+			}
+			
+			// Replace relative image paths with absolute paths
+			// Match src="./filename.ext"
+			content = content.replace(/(<img[^>]+src=["'])\.\/([^"']+)(["'])/g, (match, prefix, path, suffix) => {
+				// Convert ./file.png to /blog/my-post/file.png or /file.png (for root)
+				const absolutePath = outputDir ? `/${outputDir}/${path}` : `/${path}`;
+				return `${prefix}${absolutePath}${suffix}`;
+			});
+			
+			// Also handle relative paths in link hrefs for images
+			content = content.replace(/(<a[^>]+href=["'])\.\/([^"']+\.(gif|png|jpg|jpeg|svg))(["'])/gi, (match, prefix, path, ext, suffix) => {
+				const absolutePath = outputDir ? `/${outputDir}/${path}` : `/${path}`;
+				return `${prefix}${absolutePath}${suffix}`;
+			});
+		}
+		return content;
+	});
+
 	// Watch for changes in CSS files for hot reload during development
 	eleventyConfig.addWatchTarget("./static/**/*.css");
 

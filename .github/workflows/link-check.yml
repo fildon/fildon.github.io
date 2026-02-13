@@ -34,7 +34,7 @@ jobs:
         uses: lycheeverse/lychee-action@v1
         with:
           # Check all HTML files in the built site
-          args: --verbose --no-progress './_site/**/*.html'
+          args: --verbose --no-progress --include-fragments --base 'https://rupertmckay.com' './_site/**/*.html'
           # Fail the workflow if broken links are found
           fail: true
         env:
