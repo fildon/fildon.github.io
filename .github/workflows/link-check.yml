@@ -31,6 +31,7 @@ jobs:
         run: npm run build
 
       - name: Check links
+        id: lychee
         uses: lycheeverse/lychee-action@v1
         with:
           # Check all HTML files in the built site
@@ -40,13 +41,45 @@ jobs:
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
 
-      - name: Create Issue on failure
+      - name: Close issue if links are fixed
+        if: success()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            // Find any open issues with the broken-links label
+            const issues = await github.rest.issues.listForRepo({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: 'open',
+              labels: ['broken-links']
+            });
+            
+            // Close all open broken-links issues
+            for (const issue of issues.data) {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: issue.number,
+                body: `✅ All links are now working! Closing this issue.\n\nFixed in [workflow run](${context.payload.repository.html_url}/actions/runs/${context.runId}).`
+              });
+              
+              await github.rest.issues.update({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: issue.number,
+                state: 'closed'
+              });
+              
+              console.log(`Closed issue #${issue.number}`);
+            }
+
+      - name: Create or update issue on failure
         if: failure()
         uses: actions/github-script@v7
         with:
           script: |
             const title = '🔗 Broken links detected';
-            const body = `The scheduled link check found broken links.\n\nCheck the [workflow run](${context.payload.repository.html_url}/actions/runs/${context.runId}) for details.`;
+            const body = `The link checker found broken links.\n\n**Workflow run:** ${context.payload.repository.html_url}/actions/runs/${context.runId}\n\n**Date:** ${new Date().toISOString()}\n\nPlease check the workflow run for details on which links are broken.`;
             
             // Check if an issue already exists
             const issues = await github.rest.issues.listForRepo({
@@ -56,7 +89,18 @@ jobs:
               labels: ['broken-links']
             });
             
-            if (issues.data.length === 0) {
+            if (issues.data.length > 0) {
+              // Update existing issue
+              const issue = issues.data[0];
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: issue.number,
+                body: `🔗 Broken links still detected (or new ones found).\n\n**Latest workflow run:** ${context.payload.repository.html_url}/actions/runs/${context.runId}\n**Date:** ${new Date().toISOString()}`
+              });
+              console.log(`Updated existing issue #${issue.number}`);
+            } else {
+              // Create new issue
               await github.rest.issues.create({
                 owner: context.repo.owner,
                 repo: context.repo.repo,
@@ -64,4 +108,5 @@ jobs:
                 body: body,
                 labels: ['broken-links']
               });
+              console.log('Created new issue');
             }
