@@ -10,6 +10,21 @@ I use [11ty](https://www.11ty.dev/). This allows the use of markdown files which
 
 By default everything in `./src` will get compiled by `11ty`. For any files which must be deployed but not built, they can be added to `./static`. Everything in `./static` will be copied as-is to the build output directory `./_site`. See `./.eleventy.js` for configuration.
 
+## Development
+
+Available npm scripts:
+
+- `npm run build` - Build the site to `_site` directory
+- `npm run serve` - Start development server with live reload
+- `npm run clean` - Remove the `_site` directory
+- `npm run debug` - Build with debug output for troubleshooting
+
+The development server includes:
+
+- **Live reload**: Changes to CSS files trigger automatic browser refresh
+- **Hot reload**: Changes to content trigger automatic rebuild
+- **BrowserSync disabled notifications**: Cleaner development experience
+
 ## Deployment
 
 Having produced a build in `_site`, the entire directory is pushed up on a `gh-pages` branch to GitHub, and hosted exactly as-is.
@@ -35,6 +50,15 @@ socialImage: https://example.com/custom-image.png # Optional: custom social medi
 ```
 
 The `socialImage` field is optional. If not provided, a default image will be used for social media sharing (Open Graph and Twitter cards).
+
+### Computed Data
+
+Blog posts automatically have access to computed data:
+
+- `absoluteUrl` - The full URL of the post (e.g., `https://rupertmckay.com/blog/my-post/`)
+- `socialImage` - Defaults to a standard image if not specified in front matter
+
+These values are automatically computed and don't need to be manually added to each post.
 
 ## SEO Features
 

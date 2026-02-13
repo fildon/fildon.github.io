@@ -58,4 +58,28 @@ module.exports = function (eleventyConfig) {
 		const dirName = parts[parts.length - 2] || parts[parts.length - 1];
 		return dirName.replace(/^\d{4}-\d{2}-\d{2}-/, "");
 	});
+
+	// Watch for changes in CSS files for hot reload during development
+	eleventyConfig.addWatchTarget("./static/**/*.css");
+
+	// Set browser sync options for better dev experience
+	eleventyConfig.setBrowserSyncConfig({
+		files: ["_site/**/*"],
+		open: false, // Don't automatically open browser
+		notify: false, // Disable browser sync notifications
+	});
+
+	// Return explicit configuration
+	return {
+		dir: {
+			input: "src",
+			output: "_site",
+			includes: "_includes",
+			data: "_data",
+		},
+		// Use Liquid for HTML and Markdown, Nunjucks for .njk files
+		markdownTemplateEngine: "liquid",
+		htmlTemplateEngine: "njk",
+		templateFormats: ["html", "njk", "md", "liquid"],
+	};
 };
