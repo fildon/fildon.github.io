@@ -32,7 +32,8 @@
 
 * {
 	box-sizing: border-box;
-	max-width: var(--measure);
+	/* Prevent content from overflowing on mobile by accounting for article padding (--s0 on each side) */
+	max-width: min(var(--measure), calc(100vw - 2 * var(--s0)));
 	padding: 0;
 }
 
@@ -57,26 +58,37 @@ h1 {
 	font-size: var(--s3);
 	line-height: var(--s3);
 	text-align: center;
+	overflow-wrap: break-word;
+	word-wrap: break-word;
+	hyphens: auto;
 }
 
 h2 {
 	font-size: var(--s2);
 	line-height: var(--s2);
 	text-decoration: underline;
+	overflow-wrap: break-word;
+	word-wrap: break-word;
 }
 
 h3 {
 	font-size: var(--s1);
 	margin: var(--s0) auto var(--s0);
 	text-decoration: underline;
+	overflow-wrap: break-word;
+	word-wrap: break-word;
 }
 
 a {
 	color: var(--accent);
+	overflow-wrap: break-word;
+	word-wrap: break-word;
 }
 
 p {
 	text-align: justify;
+	overflow-wrap: break-word;
+	word-wrap: break-word;
 }
 
 table {
