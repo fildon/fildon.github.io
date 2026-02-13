@@ -17,7 +17,12 @@
 		<meta property="og:site_name" content="Rupert Foggo McKay">
 		<meta property="og:title" content="The Skull">
 		<meta property="og:description" content="An artefact of a human life. What remains, and who will keep it?">
-		<meta property="og:image" content="https://raw.githubusercontent.com/fildon/train-ride/main/train-ride.png">
+		<meta property="og:image" content="(data) =&gt; {
+		return (
+			data.socialImage ||
+			&quot;https://raw.githubusercontent.com/fildon/train-ride/main/train-ride.png&quot;
+		);
+	}">
 		<meta property="og:image:type" content="image/png">
 		<meta property="og:image:width" content="1280">
 		<meta property="og:image:height" content="640">
@@ -32,7 +37,12 @@
 		<meta property="twitter:url" content="https://rupertmckay.com/blog/the-skull/">
 		<meta name="twitter:title" content="The Skull">
 		<meta name="twitter:description" content="An artefact of a human life. What remains, and who will keep it?">
-		<meta name="twitter:image" content="https://raw.githubusercontent.com/fildon/train-ride/main/train-ride.png">
+		<meta name="twitter:image" content="(data) =&gt; {
+		return (
+			data.socialImage ||
+			&quot;https://raw.githubusercontent.com/fildon/train-ride/main/train-ride.png&quot;
+		);
+	}">
 		
 		<!-- JSON-LD Structured Data -->
 		
@@ -50,7 +60,12 @@
 			"datePublished": "2023-09-23",
 			"dateModified": "2023-09-23",
 			"url": "https://rupertmckay.com/blog/the-skull/",
-			"image": "https://raw.githubusercontent.com/fildon/train-ride/main/train-ride.png",
+			"image": "(data) =&gt; {
+		return (
+			data.socialImage ||
+			&quot;https://raw.githubusercontent.com/fildon/train-ride/main/train-ride.png&quot;
+		);
+	}",
 			"publisher": {
 				"@type": "Person",
 				"name": "Rupert Foggo McKay",
