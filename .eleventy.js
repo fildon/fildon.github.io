@@ -1,5 +1,7 @@
 const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 const eleventyNavigationPlugin = require("@11ty/eleventy-navigation");
+const pluginRss = require("@11ty/eleventy-plugin-rss");
+const sitemap = require("@quasibit/eleventy-plugin-sitemap");
 const { DateTime } = require("luxon");
 const markdownIt = require("markdown-it");
 const markdownItAnchor = require("markdown-it-anchor");
@@ -16,6 +18,12 @@ module.exports = function (eleventyConfig) {
 	eleventyConfig.addPassthroughCopy({ "./CNAME": "./CNAME" });
 	eleventyConfig.addPlugin(syntaxHighlight);
 	eleventyConfig.addPlugin(eleventyNavigationPlugin);
+	eleventyConfig.addPlugin(pluginRss);
+	eleventyConfig.addPlugin(sitemap, {
+		sitemap: {
+			hostname: "https://rupertmckay.com",
+		},
+	});
 
 	let markdownLibrary = markdownIt({
 		html: true,

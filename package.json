@@ -1,4 +1,7 @@
 {
+	"engines": {
+		"node": ">=20.0.0"
+	},
 	"scripts": {
 		"clean": "shx rm -rf _site",
 		"build": "npx @11ty/eleventy --input=./src",
@@ -7,9 +10,11 @@
 	"devDependencies": {
 		"@11ty/eleventy": "^3.1.2",
 		"@11ty/eleventy-navigation": "^1.0.5",
+		"@11ty/eleventy-plugin-rss": "^2.0.2",
 		"@11ty/eleventy-plugin-syntaxhighlight": "^5.0.2",
+		"@quasibit/eleventy-plugin-sitemap": "^2.2.0",
 		"luxon": "^3.7.2",
-		"markdown-it": "^14.1.0",
+		"markdown-it": "^14.1.1",
 		"markdown-it-anchor": "^9.2.0",
 		"shx": "^0.4.0"
 	}

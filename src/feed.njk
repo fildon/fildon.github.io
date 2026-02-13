@@ -1,0 +1,29 @@
+---
+permalink: /feed.xml
+eleventyExcludeFromCollections: true
+---
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>{{ metadata.title }}</title>
+  <subtitle>{{ metadata.description }}</subtitle>
+  <link href="https://rupertmckay.com/feed.xml" rel="self"/>
+  <link href="https://rupertmckay.com/"/>
+  <updated>{{ collections.blog | getNewestCollectionItemDate | dateToRfc3339 }}</updated>
+  <id>https://rupertmckay.com/</id>
+  <author>
+    <name>{{ metadata.title }}</name>
+    <email>rupert@rupertmckay.com</email>
+  </author>
+  {%- for post in collections.blog | reverse %}
+  {%- if loop.index <= 10 %}
+  {% set absolutePostUrl %}https://rupertmckay.com{{ post.url }}{% endset %}
+  <entry>
+    <title>{{ post.data.title }}</title>
+    <link href="{{ absolutePostUrl }}"/>
+    <updated>{{ post.date | dateToRfc3339 }}</updated>
+    <id>{{ absolutePostUrl }}</id>
+    <content type="html">{{ post.templateContent | htmlToAbsoluteUrls(absolutePostUrl) }}</content>
+  </entry>
+  {%- endif %}
+  {%- endfor %}
+</feed>
