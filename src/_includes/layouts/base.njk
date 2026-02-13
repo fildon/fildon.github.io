@@ -5,38 +5,84 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>{{ title or metadata.title }}</title>
 		<meta name="description" content="{{ description or metadata.description }}">
+		<link rel="canonical" href="https://rupertmckay.com{{ page.url }}">
 		<link rel="shortcut icon" type="image/x-icon" href="{{ '/static/favicon.ico' | url }}">
 		<link rel="stylesheet" href="{{ '/static/styles.css' | url }}">
 		<link rel="stylesheet" href="{{ '/static/prism.css' | url }}">
 		<link rel="alternate" type="application/atom+xml" title="{{ metadata.title }}" href="/feed.xml">
-		<meta
-			property="og:description"
-			content="{{ description or metadata.description }}"
-		/>
-		<meta
-			property="og:image"
-			content="https://raw.githubusercontent.com/fildon/train-ride/main/train-ride.png"
-		/>
+		
+		<!-- Open Graph / Facebook -->
+		<meta property="og:type" content="{% if layout == 'layouts/post.njk' %}article{% else %}website{% endif %}" />
+		<meta property="og:url" content="https://rupertmckay.com{{ page.url }}" />
+		<meta property="og:site_name" content="{{ metadata.title }}" />
+		<meta property="og:title" content="{{ title or metadata.title }}" />
+		<meta property="og:description" content="{{ description or metadata.description }}" />
+		<meta property="og:image" content="{{ socialImage or 'https://raw.githubusercontent.com/fildon/train-ride/main/train-ride.png' }}" />
 		<meta property="og:image:type" content="image/png" />
 		<meta property="og:image:width" content="1280" />
 		<meta property="og:image:height" content="640" />
+		{% if layout == 'layouts/post.njk' %}
+		<meta property="article:published_time" content="{{ date | htmlDateString }}" />
+		<meta property="article:author" content="{{ metadata.title }}" />
+		{% endif %}
+		
+		<!-- Twitter -->
 		<meta name="twitter:card" content="summary_large_image" />
 		<meta property="twitter:domain" content="rupertmckay.com" />
-		<meta property="twitter:url" content="https://rupertmckay.com" />
+		<meta property="twitter:url" content="https://rupertmckay.com{{ page.url }}" />
 		<meta name="twitter:title" content="{{ title or metadata.title }}" />
-		<meta
-			name="twitter:description"
-			content="{{ description or metadata.description }}"
-		/>
-		<meta
-			name="twitter:image"
-			content="https://raw.githubusercontent.com/fildon/train-ride/main/train-ride.png"
-		/>
+		<meta name="twitter:description" content="{{ description or metadata.description }}" />
+		<meta name="twitter:image" content="{{ socialImage or 'https://raw.githubusercontent.com/fildon/train-ride/main/train-ride.png' }}" />
+		
+		<!-- JSON-LD Structured Data -->
+		{% if layout == 'layouts/post.njk' %}
+		<script type="application/ld+json">
+		{
+			"@context": "https://schema.org",
+			"@type": "BlogPosting",
+			"headline": "{{ title }}",
+			"description": "{{ description or metadata.description }}",
+			"author": {
+				"@type": "Person",
+				"name": "{{ metadata.title }}",
+				"url": "https://rupertmckay.com"
+			},
+			"datePublished": "{{ date | htmlDateString }}",
+			"dateModified": "{{ date | htmlDateString }}",
+			"url": "https://rupertmckay.com{{ page.url }}",
+			"image": "{{ socialImage or 'https://raw.githubusercontent.com/fildon/train-ride/main/train-ride.png' }}",
+			"publisher": {
+				"@type": "Person",
+				"name": "{{ metadata.title }}",
+				"url": "https://rupertmckay.com"
+			},
+			"mainEntityOfPage": {
+				"@type": "WebPage",
+				"@id": "https://rupertmckay.com{{ page.url }}"
+			}
+		}
+		</script>
+		{% else %}
+		<script type="application/ld+json">
+		{
+			"@context": "https://schema.org",
+			"@type": "WebSite",
+			"name": "{{ metadata.title }}",
+			"description": "{{ metadata.description }}",
+			"url": "https://rupertmckay.com",
+			"author": {
+				"@type": "Person",
+				"name": "{{ metadata.title }}",
+				"url": "https://rupertmckay.com"
+			}
+		}
+		</script>
+		{% endif %}
 	</head>
 	<body>
 		<header class="horizontal-spread">
 			<img
-				src="../../static/headshot.jpeg"
+				src="/static/headshot.jpeg"
 				alt="Headshot of Rupert"
 				class="rounded wonky"
 				height="64"
