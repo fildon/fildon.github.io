@@ -118,14 +118,14 @@
 <p>TypeScript supports optional properties via the following syntax:</p>
 <pre class="language-ts"><code class="language-ts"><span class="token comment">// Works with 'interface'</span>
 <span class="token keyword">interface</span> <span class="token class-name">User</span> <span class="token punctuation">{</span>
-  name<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">;</span>
-  age<span class="token operator">?</span><span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">;</span>
+	name<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">;</span>
+	age<span class="token operator">?</span><span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 
 <span class="token comment">// and also with 'type'</span>
 <span class="token keyword">type</span> <span class="token class-name">User</span> <span class="token operator">=</span> <span class="token punctuation">{</span>
-  name<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">;</span>
-  age<span class="token operator">?</span><span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">;</span>
+	name<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">;</span>
+	age<span class="token operator">?</span><span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
 <p>This defines a <code>User</code>, having a <code>name</code> and <code>age</code>. But whereas <code>name</code> is required, <code>age</code> is optional:</p>
 <pre class="language-ts"><code class="language-ts"><span class="token comment">// Ash Ketchum is ten years old</span>
@@ -135,14 +135,14 @@
 <p>When defining a function that accepts the <code>User</code> type, the <code>age</code> type will be <code>number | undefined</code>:</p>
 <pre class="language-ts"><code class="language-ts"><span class="token comment">// Lets find out if this user is old enough to drive</span>
 <span class="token keyword">function</span> <span class="token function">isOldEnoughToDrive</span><span class="token punctuation">(</span>user<span class="token operator">:</span> User<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token comment">// initially user.age is number | undefined</span>
-  <span class="token keyword">if</span> <span class="token punctuation">(</span>user<span class="token punctuation">.</span>age <span class="token operator">===</span> <span class="token keyword">undefined</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token comment">// But after an if check the type will be narrowed</span>
-    <span class="token comment">// In this example we return 'false' if 'age' isn't available.</span>
-    <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
-  <span class="token comment">// But if age is available, then it is narrowed to a 'number' type.</span>
-  <span class="token keyword">return</span> user<span class="token punctuation">.</span>age <span class="token operator">>=</span> <span class="token constant">DRIVING_AGE</span><span class="token punctuation">;</span>
+	<span class="token comment">// initially user.age is number | undefined</span>
+	<span class="token keyword">if</span> <span class="token punctuation">(</span>user<span class="token punctuation">.</span>age <span class="token operator">===</span> <span class="token keyword">undefined</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token comment">// But after an if check the type will be narrowed</span>
+		<span class="token comment">// In this example we return 'false' if 'age' isn't available.</span>
+		<span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+	<span class="token comment">// But if age is available, then it is narrowed to a 'number' type.</span>
+	<span class="token keyword">return</span> user<span class="token punctuation">.</span>age <span class="token operator">>=</span> <span class="token constant">DRIVING_AGE</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 
 <span class="token function">isOldEnoughToDrive</span><span class="token punctuation">(</span><span class="token punctuation">{</span> name<span class="token operator">:</span> <span class="token string">"Ash Ketchum"</span><span class="token punctuation">,</span> age<span class="token operator">:</span> <span class="token number">10</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// returns false</span>
@@ -150,13 +150,13 @@
 <span class="token function">isOldEnoughToDrive</span><span class="token punctuation">(</span><span class="token punctuation">{</span> name<span class="token operator">:</span> <span class="token string">"Bilbo Baggins"</span><span class="token punctuation">,</span> age<span class="token operator">:</span> <span class="token number">111</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// returns true</span></code></pre>
 <p>This behavior is <em>nearly</em> equivalent to if we had:</p>
 <pre class="language-ts"><code class="language-ts"><span class="token keyword">interface</span> <span class="token class-name">User</span> <span class="token punctuation">{</span>
-  name<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">;</span>
-  age<span class="token operator">:</span> <span class="token builtin">number</span> <span class="token operator">|</span> <span class="token keyword">undefined</span><span class="token punctuation">;</span>
+	name<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">;</span>
+	age<span class="token operator">:</span> <span class="token builtin">number</span> <span class="token operator">|</span> <span class="token keyword">undefined</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span></code></pre>
 <p>The difference is whether the key must be explicitly provided by objects wanting to satisfy this interface:</p>
 <pre class="language-ts"><code class="language-ts"><span class="token keyword">interface</span> <span class="token class-name">User</span> <span class="token punctuation">{</span>
-  name<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">;</span>
-  age<span class="token operator">:</span> <span class="token builtin">number</span> <span class="token operator">|</span> <span class="token keyword">undefined</span><span class="token punctuation">;</span>
+	name<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">;</span>
+	age<span class="token operator">:</span> <span class="token builtin">number</span> <span class="token operator">|</span> <span class="token keyword">undefined</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 
 <span class="token comment">// Type error! "age" is a required property of "User"</span>
@@ -172,20 +172,20 @@
 <p>This will look familiar to JavaScript programmers who are used to using the OR operator (<code>||</code>) to provide default values. And most of the time it works the same.</p>
 <p>The only difference is that <code>||</code> will fall back if the lefthand value is <em>anything</em> falsey. Whereas <code>??</code> will only fall back if the lefthand value is <code>null</code> or <code>undefined</code>. <em>Often</em> this works out the same, but there are some common gotchas, for example, what if our lefthand value is zero or the empty string? Perhaps I wanted to post a blog that has an intentionally blank title? If I were using <code>||</code> this would be impossible. Whereas with <code>??</code>, we can still provide an empty string value, while correctly using a default value in case of <code>undefined</code>.</p>
 <p>I highly recommend forgetting about <code>||</code> for default fallbacks and using <code>??</code> instead.</p>
-<p>You can enforce this with <a href="https://github.com/typescript-eslint/typescript-eslint">typescript-eslint</a>'s own <a href="https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/prefer-nullish-coalescing.md">prefer-nullish-coalescing</a> rule</p>
+<p>You can enforce this with <a href="https://github.com/typescript-eslint/typescript-eslint">typescript-eslint</a>'s own <a href="https://github.com/typescript-eslint/typescript-eslint/blob/main/packages/eslint-plugin/docs/rules/prefer-nullish-coalescing.mdx">prefer-nullish-coalescing</a> rule</p>
 <h2 id="optional-chaining" tabindex="-1"><a class="direct-link" href="#optional-chaining" aria-hidden="true">#</a> Optional Chaining (?.)</h2>
 <p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Optional_chaining">MDN: Optional Chaining</a></p>
 <p>What if this time we have a <code>Session</code> object, which has a <code>User</code> only if the current visitor is logged in:</p>
 <pre class="language-ts"><code class="language-ts"><span class="token keyword">interface</span> <span class="token class-name">Session</span> <span class="token punctuation">{</span>
-  user<span class="token operator">?</span><span class="token operator">:</span> User<span class="token punctuation">;</span>
+	user<span class="token operator">?</span><span class="token operator">:</span> User<span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 
 <span class="token keyword">function</span> <span class="token function">getWelcomeMessage</span><span class="token punctuation">(</span>session<span class="token operator">:</span> Session<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token keyword">const</span> userName <span class="token operator">=</span> session<span class="token punctuation">.</span>user<span class="token operator">?.</span>name<span class="token punctuation">;</span>
-  <span class="token keyword">if</span> <span class="token punctuation">(</span>userName <span class="token operator">===</span> <span class="token keyword">undefined</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">return</span> <span class="token string">"Hello Guest!"</span><span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
-  <span class="token keyword">return</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">Hello </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>userName<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">!</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">;</span>
+	<span class="token keyword">const</span> userName <span class="token operator">=</span> session<span class="token punctuation">.</span>user<span class="token operator">?.</span>name<span class="token punctuation">;</span>
+	<span class="token keyword">if</span> <span class="token punctuation">(</span>userName <span class="token operator">===</span> <span class="token keyword">undefined</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token keyword">return</span> <span class="token string">"Hello Guest!"</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+	<span class="token keyword">return</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">Hello </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>userName<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">!</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span></code></pre>
 <p>This is effectively a shorthand for:</p>
 <pre class="language-ts"><code class="language-ts"><span class="token keyword">const</span> userName <span class="token operator">=</span> user <span class="token operator">&amp;&amp;</span> user<span class="token punctuation">.</span>name<span class="token punctuation">;</span></code></pre>
@@ -193,12 +193,12 @@
 <h2 id="all-together" tabindex="-1"><a class="direct-link" href="#all-together" aria-hidden="true">#</a> All together</h2>
 <p>We can use all these concepts together:</p>
 <pre class="language-ts"><code class="language-ts"><span class="token keyword">interface</span> <span class="token class-name">Session</span> <span class="token punctuation">{</span>
-  user<span class="token operator">?</span><span class="token operator">:</span> User<span class="token punctuation">;</span>
+	user<span class="token operator">?</span><span class="token operator">:</span> User<span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 
 <span class="token keyword">function</span> <span class="token function">getWelcomeMessage</span><span class="token punctuation">(</span>session<span class="token operator">:</span> Session<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token keyword">const</span> userName <span class="token operator">=</span> session<span class="token punctuation">.</span>user<span class="token operator">?.</span>name <span class="token operator">??</span> <span class="token string">"GUEST"</span><span class="token punctuation">;</span>
-  <span class="token keyword">return</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">Hello </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>userName<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">!</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">;</span>
+	<span class="token keyword">const</span> userName <span class="token operator">=</span> session<span class="token punctuation">.</span>user<span class="token operator">?.</span>name <span class="token operator">??</span> <span class="token string">"GUEST"</span><span class="token punctuation">;</span>
+	<span class="token keyword">return</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">Hello </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>userName<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">!</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span></code></pre>
 <p>This is the same as the previous <code>getWelcomeMessage</code> but even more concise.</p>
 <h2 id="summary" tabindex="-1"><a class="direct-link" href="#summary" aria-hidden="true">#</a> Summary</h2>
