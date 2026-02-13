@@ -27,6 +27,16 @@ The development server includes:
 - **Hot reload**: Changes to content trigger automatic rebuild
 - **BrowserSync disabled notifications**: Cleaner development experience
 
+## Features
+
+### Dark Mode
+
+The site automatically respects user system preferences for dark mode using CSS `prefers-color-scheme` media queries. No JavaScript required.
+
+- **Light mode**: Soft beige background (#f8efde) with dark text
+- **Dark mode**: Dark background with light text, automatically enabled for users with dark mode system preferences
+- **Enhanced contrast**: Accent colors are adjusted for better visibility in each mode
+
 ## Deployment
 
 Having produced a build in `_site`, the entire directory is pushed up on a `gh-pages` branch to GitHub, and hosted exactly as-is.

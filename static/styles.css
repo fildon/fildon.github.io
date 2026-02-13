@@ -22,6 +22,14 @@
 	--hard: #231f1e;
 }
 
+@media (prefers-color-scheme: dark) {
+	:root {
+		--accent: #ff5470;
+		--soft: #231f1e;
+		--hard: #f8efde;
+	}
+}
+
 * {
 	box-sizing: border-box;
 	max-width: var(--measure);
