@@ -26,6 +26,9 @@ jobs:
       - name: 🏗 npm build
         run: npm run build
 
+      - name: ✅ Validate build output
+        run: bash scripts/validate-build.sh --skip-build
+
       - name: 🚀 Deploy to gh-pages
         uses: JamesIves/github-pages-deploy-action@v4.6.8
         with:

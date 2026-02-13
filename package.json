@@ -6,7 +6,9 @@
 		"clean": "shx rm -rf _site",
 		"build": "npx @11ty/eleventy",
 		"serve": "npx @11ty/eleventy --serve",
-		"debug": "DEBUG=Eleventy* npx @11ty/eleventy"
+		"debug": "DEBUG=Eleventy* npx @11ty/eleventy",
+		"validate": "bash scripts/validate-build.sh",
+		"validate:only": "bash scripts/validate-build.sh --skip-build"
 	},
 	"devDependencies": {
 		"@11ty/eleventy": "^3.1.2",

@@ -18,6 +18,8 @@ Available npm scripts:
 - `npm run serve` - Start development server with live reload
 - `npm run clean` - Remove the `_site` directory
 - `npm run debug` - Build with debug output for troubleshooting
+- `npm run validate` - Build and validate output
+- `npm run validate:only` - Validate existing build (skip build step)
 
 The development server includes:
 
@@ -30,6 +32,24 @@ The development server includes:
 Having produced a build in `_site`, the entire directory is pushed up on a `gh-pages` branch to GitHub, and hosted exactly as-is.
 
 ## Quality Assurance
+
+### Build Validation
+
+Automated checks ensure the build produces valid output:
+
+- **Critical files**: Validates that index.html, sitemap.xml, feed.xml, and robots.txt exist
+- **Content verification**: Ensures expected number of blog posts are generated
+- **Structure checks**: Validates HTML structure and feed/sitemap content
+- **CI integration**: Runs automatically on every push before deployment
+
+Run validation locally:
+
+```bash
+npm run validate         # Build and validate
+npm run validate:only    # Validate existing build only
+```
+
+The validation logic is defined in [scripts/validate-build.sh](scripts/validate-build.sh) and used by both local development and CI.
 
 ### Link Checking
 
