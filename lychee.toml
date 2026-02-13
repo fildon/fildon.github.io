@@ -1,0 +1,41 @@
+# Lychee link checker configuration
+# https://github.com/lycheeverse/lychee
+
+# Maximum number of concurrent network requests
+max_concurrency = 8
+
+# Check links in HTML
+include = ["./**/*.html"]
+
+# Exclude patterns (regex)
+exclude = [
+  # Exclude localhost and local IPs
+  "http://localhost",
+  "http://127.0.0.1",
+  "http://0.0.0.0",
+  
+  # Exclude common patterns that might be examples
+  "http://example.com",
+  "https://example.com",
+  
+  # Exclude mailto links (they often fail checks)
+  "mailto:",
+]
+
+# Accepted status codes for valid links
+accept = [200, 201, 202, 203, 204, 206, 300, 301, 302, 303, 304, 307, 308, "999"]
+
+# Follow redirects
+max_redirects = 10
+
+# Timeout in seconds for network requests
+timeout = 20
+
+# User agent
+user_agent = "Mozilla/5.0 (compatible; LinkChecker/1.0)"
+
+# Exclude private network addresses
+exclude_private = true
+
+# Don't check links that are already cached (speeds up repeat checks)
+cache = true

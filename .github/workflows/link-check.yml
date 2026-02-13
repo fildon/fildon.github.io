@@ -1,0 +1,67 @@
+name: Link Check
+
+on:
+  # Run monthly to catch link rot
+  schedule:
+    - cron: '0 0 1 * *' # First day of each month at midnight
+  # Also run on workflow_dispatch so you can trigger manually
+  workflow_dispatch:
+  # Run on PRs to catch broken links before merging
+  pull_request:
+    paths:
+      - 'src/**/*.md'
+      - 'src/**/*.njk'
+
+jobs:
+  link-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20.x'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build site
+        run: npm run build
+
+      - name: Check links
+        uses: lycheeverse/lychee-action@v1
+        with:
+          # Check all HTML files in the built site
+          args: --verbose --no-progress './_site/**/*.html'
+          # Fail the workflow if broken links are found
+          fail: true
+        env:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+
+      - name: Create Issue on failure
+        if: failure()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const title = '🔗 Broken links detected';
+            const body = `The scheduled link check found broken links.\n\nCheck the [workflow run](${context.payload.repository.html_url}/actions/runs/${context.runId}) for details.`;
+            
+            // Check if an issue already exists
+            const issues = await github.rest.issues.listForRepo({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: 'open',
+              labels: ['broken-links']
+            });
+            
+            if (issues.data.length === 0) {
+              await github.rest.issues.create({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                title: title,
+                body: body,
+                labels: ['broken-links']
+              });
+            }

@@ -4,3 +4,6 @@ _site
 node_modules
 
 .DS_Store
+
+# Link checker cache
+.lycheecache
