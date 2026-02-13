@@ -4,7 +4,7 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>Default Options Pattern in TypeScript</title>
-		<meta name="description" content="A simple approach to default options">
+		<meta name="description" content="Implement flexible function APIs with default options using TypeScript&#39;s Partial type and destructuring patterns.">
 		<link rel="canonical" href="https://rupertmckay.com/blog/default-options-pattern-in-typescript/">
 		<link rel="shortcut icon" type="image/x-icon" href="/static/favicon.ico">
 		<link rel="stylesheet" href="/static/styles.css">
@@ -16,7 +16,7 @@
 		<meta property="og:url" content="https://rupertmckay.com/blog/default-options-pattern-in-typescript/">
 		<meta property="og:site_name" content="Rupert Foggo McKay">
 		<meta property="og:title" content="Default Options Pattern in TypeScript">
-		<meta property="og:description" content="A simple approach to default options">
+		<meta property="og:description" content="Implement flexible function APIs with default options using TypeScript&#39;s Partial type and destructuring patterns.">
 		<meta property="og:image" content="(data) =&gt; {
 		return (
 			data.socialImage ||
@@ -36,7 +36,7 @@
 		<meta property="twitter:domain" content="rupertmckay.com">
 		<meta property="twitter:url" content="https://rupertmckay.com/blog/default-options-pattern-in-typescript/">
 		<meta name="twitter:title" content="Default Options Pattern in TypeScript">
-		<meta name="twitter:description" content="A simple approach to default options">
+		<meta name="twitter:description" content="Implement flexible function APIs with default options using TypeScript&#39;s Partial type and destructuring patterns.">
 		<meta name="twitter:image" content="(data) =&gt; {
 		return (
 			data.socialImage ||
@@ -51,7 +51,7 @@
 			"@context": "https://schema.org",
 			"@type": "BlogPosting",
 			"headline": "Default Options Pattern in TypeScript",
-			"description": "A simple approach to default options",
+			"description": "Implement flexible function APIs with default options using TypeScript&#39;s Partial type and destructuring patterns.",
 			"author": {
 				"@type": "Person",
 				"name": "Rupert Foggo McKay",
@@ -104,133 +104,101 @@
 	<date datetime="Mon Oct 24 2022 00:00:00 GMT+0000 (Coordinated Universal Time)">24 Oct 2022</date>
 	<p>Here's a pattern I find myself reusing in a lot of projects:</p>
 <pre class="language-ts"><code class="language-ts"><span class="token keyword">type</span> <span class="token class-name">FormatOptions</span> <span class="token operator">=</span> <span class="token punctuation">{</span>
-  color<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">;</span>
-  fontWeight<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">;</span>
+	color<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">;</span>
+	fontWeight<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span class="token punctuation">;</span>
 
 <span class="token keyword">const</span> format <span class="token operator">=</span> <span class="token punctuation">(</span>
-  message<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">,</span>
-  <span class="token punctuation">{</span>
-    color <span class="token operator">=</span> <span class="token string">"black"</span><span class="token punctuation">,</span>
-    fontWeight <span class="token operator">=</span> <span class="token string">"medium"</span><span class="token punctuation">,</span>
-  <span class="token punctuation">}</span><span class="token operator">:</span> Partial<span class="token operator">&lt;</span>FormatOptions<span class="token operator">></span> <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+	message<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">,</span>
+	<span class="token punctuation">{</span> color <span class="token operator">=</span> <span class="token string">"black"</span><span class="token punctuation">,</span> fontWeight <span class="token operator">=</span> <span class="token string">"medium"</span> <span class="token punctuation">}</span><span class="token operator">:</span> Partial<span class="token operator">&lt;</span>FormatOptions<span class="token operator">></span> <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
 <span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
-  <span class="token comment">// Implementation not important</span>
-  <span class="token comment">// for this blog post</span>
+	<span class="token comment">// Implementation not important</span>
+	<span class="token comment">// for this blog post</span>
 <span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
 <h2 id="explanation" tabindex="-1"><a class="direct-link" href="#explanation" aria-hidden="true">#</a> Explanation</h2>
 <p>Imagine you have a function which can display some text formatted in a particular colour:</p>
-<pre class="language-ts"><code class="language-ts"><span class="token keyword">const</span> <span class="token function-variable function">format</span> <span class="token operator">=</span> <span class="token punctuation">(</span>
-  message<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">,</span>
-  color<span class="token operator">:</span> <span class="token builtin">string</span>
-<span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
-  <span class="token comment">//</span>
+<pre class="language-ts"><code class="language-ts"><span class="token keyword">const</span> <span class="token function-variable function">format</span> <span class="token operator">=</span> <span class="token punctuation">(</span>message<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">,</span> color<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+	<span class="token comment">//</span>
 <span class="token punctuation">}</span><span class="token punctuation">;</span>
 
 <span class="token comment">// Format the text red</span>
 <span class="token function">format</span><span class="token punctuation">(</span><span class="token string">"My message"</span><span class="token punctuation">,</span> <span class="token string">"red"</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <p>But most of the time you don't want to have to specify a color, so it would be nice if the color argument were optional:</p>
-<pre class="language-ts"><code class="language-ts"><span class="token keyword">const</span> format <span class="token operator">=</span> <span class="token punctuation">(</span>
-  message<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">,</span>
-  color <span class="token operator">=</span> <span class="token string">"black"</span>
-<span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
-  <span class="token comment">//</span>
+<pre class="language-ts"><code class="language-ts"><span class="token keyword">const</span> format <span class="token operator">=</span> <span class="token punctuation">(</span>message<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">,</span> color <span class="token operator">=</span> <span class="token string">"black"</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+	<span class="token comment">//</span>
 <span class="token punctuation">}</span><span class="token punctuation">;</span>
 
 <span class="token comment">// A red message</span>
-<span class="token function">format</span><span class="token punctuation">(</span>
-  <span class="token string">"My red message"</span><span class="token punctuation">,</span>
-  <span class="token string">"red"</span>
-<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">format</span><span class="token punctuation">(</span><span class="token string">"My red message"</span><span class="token punctuation">,</span> <span class="token string">"red"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token comment">// A message using default color</span>
 <span class="token function">format</span><span class="token punctuation">(</span><span class="token string">"My black message"</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <p>But now suppose I also want to support a font-weight option. We could provide two optional arguments, one after the other:</p>
-<pre class="language-ts"><code class="language-ts"><span class="token keyword">const</span> format <span class="token operator">=</span> <span class="token punctuation">(</span>
-  message<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">,</span>
-  color <span class="token operator">=</span> <span class="token string">"black"</span><span class="token punctuation">,</span>
-  fontWeight <span class="token operator">=</span> <span class="token string">"medium"</span>
-<span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
-  <span class="token comment">//</span>
+<pre class="language-ts"><code class="language-ts"><span class="token keyword">const</span> format <span class="token operator">=</span> <span class="token punctuation">(</span>message<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">,</span> color <span class="token operator">=</span> <span class="token string">"black"</span><span class="token punctuation">,</span> fontWeight <span class="token operator">=</span> <span class="token string">"medium"</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+	<span class="token comment">//</span>
 <span class="token punctuation">}</span><span class="token punctuation">;</span>
 
-<span class="token function">format</span><span class="token punctuation">(</span>
-  <span class="token string">"My medium black message"</span>
-<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// This works nicely!</span>
+<span class="token function">format</span><span class="token punctuation">(</span><span class="token string">"My medium black message"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// This works nicely!</span>
 
 <span class="token comment">// 🚨 I wanted bold fontWeight...</span>
 <span class="token comment">// 🚨 but this is read as a color</span>
-<span class="token function">format</span><span class="token punctuation">(</span>
-  <span class="token string">"O no this won't work"</span><span class="token punctuation">,</span>
-  <span class="token string">"bold"</span>
-<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<span class="token function">format</span><span class="token punctuation">(</span><span class="token string">"O no this won't work"</span><span class="token punctuation">,</span> <span class="token string">"bold"</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <p>The problem is that we want a way to make <code>color</code> and <code>fontWeight</code> both optional, but if they are just optional parameters, then order matters. So we have to pick one to go before the other, and then we lose the ability to specify a later optional argument without also specifying an earlier one.</p>
 <p>Instead we should wrap them up in an options object:</p>
 <pre class="language-ts"><code class="language-ts"><span class="token keyword">const</span> format <span class="token operator">=</span> <span class="token punctuation">(</span>
-  message<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">,</span>
-  <span class="token punctuation">{</span>
-    color <span class="token operator">=</span> <span class="token string">"black"</span><span class="token punctuation">,</span>
-    fontWeight <span class="token operator">=</span> <span class="token string">"medium"</span><span class="token punctuation">,</span>
-  <span class="token punctuation">}</span><span class="token operator">:</span> <span class="token punctuation">{</span>
-    color<span class="token operator">?</span><span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">;</span>
-    fontWeight<span class="token operator">?</span><span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
+	message<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">,</span>
+	<span class="token punctuation">{</span>
+		color <span class="token operator">=</span> <span class="token string">"black"</span><span class="token punctuation">,</span>
+		fontWeight <span class="token operator">=</span> <span class="token string">"medium"</span><span class="token punctuation">,</span>
+	<span class="token punctuation">}</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+		color<span class="token operator">?</span><span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">;</span>
+		fontWeight<span class="token operator">?</span><span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span><span class="token punctuation">,</span>
 <span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
-  <span class="token comment">//</span>
+	<span class="token comment">//</span>
 <span class="token punctuation">}</span><span class="token punctuation">;</span>
 
 <span class="token comment">// This works!</span>
-<span class="token function">format</span><span class="token punctuation">(</span>
-  <span class="token string">"default formatted message"</span><span class="token punctuation">,</span>
-  <span class="token punctuation">{</span><span class="token punctuation">}</span>
-<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">format</span><span class="token punctuation">(</span><span class="token string">"default formatted message"</span><span class="token punctuation">,</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token comment">// Also works!</span>
 <span class="token function">format</span><span class="token punctuation">(</span><span class="token string">"A red message"</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
-  color<span class="token operator">:</span> <span class="token string">"red"</span><span class="token punctuation">,</span>
+	color<span class="token operator">:</span> <span class="token string">"red"</span><span class="token punctuation">,</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token comment">// This works too!</span>
 <span class="token function">format</span><span class="token punctuation">(</span><span class="token string">"A bold message"</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
-  fontWeight<span class="token operator">:</span> <span class="token string">"bold"</span><span class="token punctuation">,</span>
+	fontWeight<span class="token operator">:</span> <span class="token string">"bold"</span><span class="token punctuation">,</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <p>This is a perfectly good point to stop... however I don't entirely love having to pass an empty object in the case where we want all the defaults. What if instead the whole options object were itself optional?</p>
 <pre class="language-ts"><code class="language-ts"><span class="token keyword">const</span> format <span class="token operator">=</span> <span class="token punctuation">(</span>
-  message<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">,</span>
-  <span class="token punctuation">{</span>
-    color <span class="token operator">=</span> <span class="token string">"black"</span><span class="token punctuation">,</span>
-    fontWeight <span class="token operator">=</span> <span class="token string">"medium"</span><span class="token punctuation">,</span>
-  <span class="token punctuation">}</span><span class="token operator">:</span> <span class="token punctuation">{</span>
-    color<span class="token operator">?</span><span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">;</span>
-    fontWeight<span class="token operator">?</span><span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">;</span>
-  <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+	message<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">,</span>
+	<span class="token punctuation">{</span>
+		color <span class="token operator">=</span> <span class="token string">"black"</span><span class="token punctuation">,</span>
+		fontWeight <span class="token operator">=</span> <span class="token string">"medium"</span><span class="token punctuation">,</span>
+	<span class="token punctuation">}</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+		color<span class="token operator">?</span><span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">;</span>
+		fontWeight<span class="token operator">?</span><span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
 <span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
-  <span class="token comment">//</span>
+	<span class="token comment">//</span>
 <span class="token punctuation">}</span><span class="token punctuation">;</span>
 
 <span class="token comment">// Now this is fine too!</span>
-<span class="token function">format</span><span class="token punctuation">(</span>
-  <span class="token string">"A plain default message"</span>
-<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token function">format</span><span class="token punctuation">(</span>
-  <span class="token string">"Formatting still works too"</span><span class="token punctuation">,</span>
-  <span class="token punctuation">{</span>
-    color<span class="token operator">:</span> <span class="token string">"blue"</span><span class="token punctuation">,</span>
-    fontWeight<span class="token operator">:</span> <span class="token string">"light"</span><span class="token punctuation">,</span>
-  <span class="token punctuation">}</span>
-<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<span class="token function">format</span><span class="token punctuation">(</span><span class="token string">"A plain default message"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">format</span><span class="token punctuation">(</span><span class="token string">"Formatting still works too"</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+	color<span class="token operator">:</span> <span class="token string">"blue"</span><span class="token punctuation">,</span>
+	fontWeight<span class="token operator">:</span> <span class="token string">"light"</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <p>Perfect! We get support for sensible defaults, while also allowing users to provide specific options only for the bits they care about.</p>
 <p>The only thing I might do in this position is pull out the type of the options object for clarity:</p>
 <pre class="language-ts"><code class="language-ts"><span class="token keyword">type</span> <span class="token class-name">FormatOptions</span> <span class="token operator">=</span> <span class="token punctuation">{</span>
-  color<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">;</span>
-  fontWeight<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">;</span>
+	color<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">;</span>
+	fontWeight<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span class="token punctuation">;</span>
 
 <span class="token keyword">const</span> format <span class="token operator">=</span> <span class="token punctuation">(</span>
-  message<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">,</span>
-  <span class="token punctuation">{</span>
-    color <span class="token operator">=</span> <span class="token string">"black"</span><span class="token punctuation">,</span>
-    fontWeight <span class="token operator">=</span> <span class="token string">"medium"</span><span class="token punctuation">,</span>
-  <span class="token punctuation">}</span><span class="token operator">:</span> Partial<span class="token operator">&lt;</span>FormatOptions<span class="token operator">></span> <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+	message<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">,</span>
+	<span class="token punctuation">{</span> color <span class="token operator">=</span> <span class="token string">"black"</span><span class="token punctuation">,</span> fontWeight <span class="token operator">=</span> <span class="token string">"medium"</span> <span class="token punctuation">}</span><span class="token operator">:</span> Partial<span class="token operator">&lt;</span>FormatOptions<span class="token operator">></span> <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
 <span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
-  <span class="token comment">//</span>
+	<span class="token comment">//</span>
 <span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
 <p>Which brings us to where we started 😀</p>
 <p>That's all for today</p>

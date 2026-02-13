@@ -4,7 +4,7 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>What is a number?</title>
-		<meta name="description" content="Rounding errors are inevitable.">
+		<meta name="description" content="Explore why JavaScript&#39;s 0.1 * 0.2 doesn&#39;t equal 0.02, understanding floating-point arithmetic and the fundamental limits of numeric representation.">
 		<link rel="canonical" href="https://rupertmckay.com/blog/what-is-a-number/">
 		<link rel="shortcut icon" type="image/x-icon" href="/static/favicon.ico">
 		<link rel="stylesheet" href="/static/styles.css">
@@ -16,7 +16,7 @@
 		<meta property="og:url" content="https://rupertmckay.com/blog/what-is-a-number/">
 		<meta property="og:site_name" content="Rupert Foggo McKay">
 		<meta property="og:title" content="What is a number?">
-		<meta property="og:description" content="Rounding errors are inevitable.">
+		<meta property="og:description" content="Explore why JavaScript&#39;s 0.1 * 0.2 doesn&#39;t equal 0.02, understanding floating-point arithmetic and the fundamental limits of numeric representation.">
 		<meta property="og:image" content="(data) =&gt; {
 		return (
 			data.socialImage ||
@@ -36,7 +36,7 @@
 		<meta property="twitter:domain" content="rupertmckay.com">
 		<meta property="twitter:url" content="https://rupertmckay.com/blog/what-is-a-number/">
 		<meta name="twitter:title" content="What is a number?">
-		<meta name="twitter:description" content="Rounding errors are inevitable.">
+		<meta name="twitter:description" content="Explore why JavaScript&#39;s 0.1 * 0.2 doesn&#39;t equal 0.02, understanding floating-point arithmetic and the fundamental limits of numeric representation.">
 		<meta name="twitter:image" content="(data) =&gt; {
 		return (
 			data.socialImage ||
@@ -51,7 +51,7 @@
 			"@context": "https://schema.org",
 			"@type": "BlogPosting",
 			"headline": "What is a number?",
-			"description": "Rounding errors are inevitable.",
+			"description": "Explore why JavaScript&#39;s 0.1 * 0.2 doesn&#39;t equal 0.02, understanding floating-point arithmetic and the fundamental limits of numeric representation.",
 			"author": {
 				"@type": "Person",
 				"name": "Rupert Foggo McKay",
@@ -208,13 +208,19 @@
 <p>First, we convert the numbers to their floating-point representations:</p>
 <p>0.1 in binary is 0.00011001100...:</p>
 <ul>
-<li>Mantissa: 1.1001100...</li>
-<li>Exponent: -100</li>
-</ul>
+<li>
+<p>Mantissa: 1.1001100...</p>
+</li>
+<li>
+<p>Exponent: -100</p>
 <p>0.2 in binary is 0.0011001100...:</p>
-<ul>
-<li>Mantissa: 1.1001100...</li>
-<li>Exponent: -11</li>
+</li>
+<li>
+<p>Mantissa: 1.1001100...</p>
+</li>
+<li>
+<p>Exponent: -11</p>
+</li>
 </ul>
 <p>You might already see a problem, that our numeric representations have become an infinite sequence of symbols. In general for any base number system, a <code>Rational</code> will expand to an infinite sequence if the denominator is not a divisor of any power of that base. In this case, 0.1 &quot;one-tenth&quot; is not a divisor of any power of 2, so in binary it expands to an infinite sequence. If you are interested in this little bit of number theory, you'll notice bases with more factors require infinite expansions less often. <a href="https://youtu.be/qID2B4MK7Y0">Six is especially good</a>.</p>
 <p>Then to complete our computation, we multiply the mantissas together and combine the exponents, which leaves us with:</p>

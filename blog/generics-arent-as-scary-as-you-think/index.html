@@ -4,7 +4,7 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>Generics aren&#39;t as scary as you think</title>
-		<meta name="description" content="You already understand generics... you just don&#39;t know you do.">
+		<meta name="description" content="Learn TypeScript generics through familiar examples like Arrays and Promises. Discover how you&#39;re already using generics without realizing it.">
 		<link rel="canonical" href="https://rupertmckay.com/blog/generics-arent-as-scary-as-you-think/">
 		<link rel="shortcut icon" type="image/x-icon" href="/static/favicon.ico">
 		<link rel="stylesheet" href="/static/styles.css">
@@ -16,7 +16,7 @@
 		<meta property="og:url" content="https://rupertmckay.com/blog/generics-arent-as-scary-as-you-think/">
 		<meta property="og:site_name" content="Rupert Foggo McKay">
 		<meta property="og:title" content="Generics aren&#39;t as scary as you think">
-		<meta property="og:description" content="You already understand generics... you just don&#39;t know you do.">
+		<meta property="og:description" content="Learn TypeScript generics through familiar examples like Arrays and Promises. Discover how you&#39;re already using generics without realizing it.">
 		<meta property="og:image" content="(data) =&gt; {
 		return (
 			data.socialImage ||
@@ -36,7 +36,7 @@
 		<meta property="twitter:domain" content="rupertmckay.com">
 		<meta property="twitter:url" content="https://rupertmckay.com/blog/generics-arent-as-scary-as-you-think/">
 		<meta name="twitter:title" content="Generics aren&#39;t as scary as you think">
-		<meta name="twitter:description" content="You already understand generics... you just don&#39;t know you do.">
+		<meta name="twitter:description" content="Learn TypeScript generics through familiar examples like Arrays and Promises. Discover how you&#39;re already using generics without realizing it.">
 		<meta name="twitter:image" content="(data) =&gt; {
 		return (
 			data.socialImage ||
@@ -51,7 +51,7 @@
 			"@context": "https://schema.org",
 			"@type": "BlogPosting",
 			"headline": "Generics aren&#39;t as scary as you think",
-			"description": "You already understand generics... you just don&#39;t know you do.",
+			"description": "Learn TypeScript generics through familiar examples like Arrays and Promises. Discover how you&#39;re already using generics without realizing it.",
 			"author": {
 				"@type": "Person",
 				"name": "Rupert Foggo McKay",
@@ -122,16 +122,16 @@
 <span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>bigNumbers<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// prints [31, 40]</span></code></pre>
 <p>Now let's pretend <code>filter</code> didn't already exist, and we wanted to make our own function from scratch. What type should our new filter function be? It will need to take an array to work on, and some sort of callback to use on each element in the array. Let's make a simplifying assumption here and say we only want this new filter to work on arrays of numbers. Then the array we take is of type <code>Array&lt;number&gt;</code> and the callback is of type <code>(num: number) =&gt; boolean</code>. That should be enough to get us started:</p>
 <pre class="language-ts"><code class="language-ts"><span class="token keyword">function</span> <span class="token function">numberFilter</span><span class="token punctuation">(</span>
-  array<span class="token operator">:</span> <span class="token builtin">Array</span><span class="token operator">&lt;</span><span class="token builtin">number</span><span class="token operator">></span><span class="token punctuation">,</span>
-  <span class="token function-variable function">callback</span><span class="token operator">:</span> <span class="token punctuation">(</span>num<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token builtin">boolean</span>
+	array<span class="token operator">:</span> <span class="token builtin">Array</span><span class="token operator">&lt;</span><span class="token builtin">number</span><span class="token operator">></span><span class="token punctuation">,</span>
+	<span class="token function-variable function">callback</span><span class="token operator">:</span> <span class="token punctuation">(</span>num<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token builtin">boolean</span><span class="token punctuation">,</span>
 <span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token keyword">const</span> result<span class="token operator">:</span> <span class="token builtin">Array</span><span class="token operator">&lt;</span><span class="token builtin">number</span><span class="token operator">></span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-  <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">const</span> num <span class="token keyword">of</span> array<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">callback</span><span class="token punctuation">(</span>num<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-      result<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>num<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-  <span class="token punctuation">}</span>
-  <span class="token keyword">return</span> result<span class="token punctuation">;</span>
+	<span class="token keyword">const</span> result<span class="token operator">:</span> <span class="token builtin">Array</span><span class="token operator">&lt;</span><span class="token builtin">number</span><span class="token operator">></span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+	<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">const</span> num <span class="token keyword">of</span> array<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">callback</span><span class="token punctuation">(</span>num<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			result<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>num<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	<span class="token punctuation">}</span>
+	<span class="token keyword">return</span> result<span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 
 <span class="token keyword">const</span> numbers <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">31</span><span class="token punctuation">,</span> <span class="token number">12</span><span class="token punctuation">,</span> <span class="token number">40</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
@@ -141,16 +141,16 @@
 <p>But notice how at no point in our filter function do we really care that <code>num</code> is a number. We don't do any sort of addition or subtraction, or use that number in any way that is specific to a number. In fact <code>num</code> in the above example could be any type and our filter would work exactly the same.</p>
 <p>To really prove this point, lets show what a custom string filter function might look like:</p>
 <pre class="language-ts"><code class="language-ts"><span class="token keyword">function</span> <span class="token function">stringFilter</span><span class="token punctuation">(</span>
-  array<span class="token operator">:</span> <span class="token builtin">Array</span><span class="token operator">&lt;</span><span class="token builtin">string</span><span class="token operator">></span><span class="token punctuation">,</span>
-  <span class="token function-variable function">callback</span><span class="token operator">:</span> <span class="token punctuation">(</span>num<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token builtin">boolean</span>
+	array<span class="token operator">:</span> <span class="token builtin">Array</span><span class="token operator">&lt;</span><span class="token builtin">string</span><span class="token operator">></span><span class="token punctuation">,</span>
+	<span class="token function-variable function">callback</span><span class="token operator">:</span> <span class="token punctuation">(</span>num<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token builtin">boolean</span><span class="token punctuation">,</span>
 <span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token keyword">const</span> result<span class="token operator">:</span> <span class="token builtin">Array</span><span class="token operator">&lt;</span><span class="token builtin">string</span><span class="token operator">></span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-  <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">const</span> str <span class="token keyword">of</span> array<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">callback</span><span class="token punctuation">(</span>str<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-      result<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>str<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-  <span class="token punctuation">}</span>
-  <span class="token keyword">return</span> result<span class="token punctuation">;</span>
+	<span class="token keyword">const</span> result<span class="token operator">:</span> <span class="token builtin">Array</span><span class="token operator">&lt;</span><span class="token builtin">string</span><span class="token operator">></span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+	<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">const</span> str <span class="token keyword">of</span> array<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">callback</span><span class="token punctuation">(</span>str<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			result<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>str<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	<span class="token punctuation">}</span>
+	<span class="token keyword">return</span> result<span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 
 <span class="token keyword">const</span> strings <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">"cat"</span><span class="token punctuation">,</span> <span class="token string">"horse"</span><span class="token punctuation">,</span> <span class="token string">"dog"</span><span class="token punctuation">,</span> <span class="token string">"dinosaur"</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
@@ -159,16 +159,16 @@
 <p>Aside from renaming 'num' to 'str' <em>this is exactly the same implementation.</em></p>
 <p>What if we could abstract the implementation from the specific type of element that gets filtered? We still have to specify a type for the array, and a type for the argument that our callback will use... but we don't care <em>specifically</em> what type, only that the type must match. Let's just call this type we don't care about &quot;T&quot; (for &quot;type&quot;).</p>
 <pre class="language-ts"><code class="language-ts"><span class="token keyword">function</span> <span class="token generic-function"><span class="token function">genericFilter</span><span class="token generic class-name"><span class="token operator">&lt;</span>Element<span class="token operator">></span></span></span><span class="token punctuation">(</span>
-  array<span class="token operator">:</span> <span class="token builtin">Array</span><span class="token operator">&lt;</span>Element<span class="token operator">></span><span class="token punctuation">,</span>
-  <span class="token function-variable function">callback</span><span class="token operator">:</span> <span class="token punctuation">(</span>element<span class="token operator">:</span> Element<span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token builtin">boolean</span>
+	array<span class="token operator">:</span> <span class="token builtin">Array</span><span class="token operator">&lt;</span>Element<span class="token operator">></span><span class="token punctuation">,</span>
+	<span class="token function-variable function">callback</span><span class="token operator">:</span> <span class="token punctuation">(</span>element<span class="token operator">:</span> Element<span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token builtin">boolean</span><span class="token punctuation">,</span>
 <span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token keyword">const</span> result<span class="token operator">:</span> <span class="token builtin">Array</span><span class="token operator">&lt;</span><span class="token constant">T</span><span class="token operator">></span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-  <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">const</span> element <span class="token keyword">of</span> array<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">callback</span><span class="token punctuation">(</span>element<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-      result<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>element<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-  <span class="token punctuation">}</span>
-  <span class="token keyword">return</span> result<span class="token punctuation">;</span>
+	<span class="token keyword">const</span> result<span class="token operator">:</span> <span class="token builtin">Array</span><span class="token operator">&lt;</span><span class="token constant">T</span><span class="token operator">></span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+	<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">const</span> element <span class="token keyword">of</span> array<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">callback</span><span class="token punctuation">(</span>element<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			result<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>element<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	<span class="token punctuation">}</span>
+	<span class="token keyword">return</span> result<span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 
 <span class="token comment">// Works with numbers!</span>

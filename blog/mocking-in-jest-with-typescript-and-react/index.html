@@ -4,7 +4,7 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>Mocking in Jest with TypeScript and React</title>
-		<meta name="description" content="It is functions all the way down.">
+		<meta name="description" content="Practical guide to mocking in Jest with TypeScript. Learn type-safe mock functions and how to mock React components effectively.">
 		<link rel="canonical" href="https://rupertmckay.com/blog/mocking-in-jest-with-typescript-and-react/">
 		<link rel="shortcut icon" type="image/x-icon" href="/static/favicon.ico">
 		<link rel="stylesheet" href="/static/styles.css">
@@ -16,7 +16,7 @@
 		<meta property="og:url" content="https://rupertmckay.com/blog/mocking-in-jest-with-typescript-and-react/">
 		<meta property="og:site_name" content="Rupert Foggo McKay">
 		<meta property="og:title" content="Mocking in Jest with TypeScript and React">
-		<meta property="og:description" content="It is functions all the way down.">
+		<meta property="og:description" content="Practical guide to mocking in Jest with TypeScript. Learn type-safe mock functions and how to mock React components effectively.">
 		<meta property="og:image" content="(data) =&gt; {
 		return (
 			data.socialImage ||
@@ -36,7 +36,7 @@
 		<meta property="twitter:domain" content="rupertmckay.com">
 		<meta property="twitter:url" content="https://rupertmckay.com/blog/mocking-in-jest-with-typescript-and-react/">
 		<meta name="twitter:title" content="Mocking in Jest with TypeScript and React">
-		<meta name="twitter:description" content="It is functions all the way down.">
+		<meta name="twitter:description" content="Practical guide to mocking in Jest with TypeScript. Learn type-safe mock functions and how to mock React components effectively.">
 		<meta name="twitter:image" content="(data) =&gt; {
 		return (
 			data.socialImage ||
@@ -51,7 +51,7 @@
 			"@context": "https://schema.org",
 			"@type": "BlogPosting",
 			"headline": "Mocking in Jest with TypeScript and React",
-			"description": "It is functions all the way down.",
+			"description": "Practical guide to mocking in Jest with TypeScript. Learn type-safe mock functions and how to mock React components effectively.",
 			"author": {
 				"@type": "Person",
 				"name": "Rupert Foggo McKay",
@@ -181,8 +181,8 @@ jest<span class="token punctuation">.</span><span class="token function">mock</s
 
 <span class="token comment">// Declare that our mock implementation must return a valid "getUserDetails" implementation</span>
 jest<span class="token punctuation">.</span><span class="token function">mock</span><span class="token punctuation">(</span><span class="token string">"./user-storage"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token punctuation">{</span> getUserDetails<span class="token operator">:</span> <span class="token keyword">typeof</span> getUserDetails <span class="token punctuation">}</span> <span class="token operator">=></span> <span class="token punctuation">(</span><span class="token punctuation">{</span>
-  <span class="token comment">// TypeScript will now correctly tell us this doesn't match the expected type</span>
-  <span class="token class-name">getUserDetails</span><span class="token operator">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">(</span><span class="token punctuation">{</span> naaaaaaaame<span class="token operator">:</span> <span class="token string">"rupert"</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+	<span class="token comment">// TypeScript will now correctly tell us this doesn't match the expected type</span>
+	<span class="token class-name">getUserDetails</span><span class="token operator">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">(</span><span class="token punctuation">{</span> naaaaaaaame<span class="token operator">:</span> <span class="token string">"rupert"</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <p>But I really don't like that, the syntax is clunky and for larger modules, gets unwieldy very quickly. We can streamline it a bit like so:</p>
 <pre class="language-ts"><code class="language-ts"><span class="token comment">// This time we import the whole module namespace</span>
@@ -190,8 +190,8 @@ jest<span class="token punctuation">.</span><span class="token function">mock</s
 
 <span class="token comment">// And use the 'typeof' that namespace to enforce our mock matches</span>
 jest<span class="token punctuation">.</span><span class="token function">mock</span><span class="token punctuation">(</span><span class="token string">"./user-storage"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token keyword">typeof</span> UserStorage <span class="token operator">=></span> <span class="token punctuation">(</span><span class="token punctuation">{</span>
-  <span class="token comment">// Correctly tells us this doesn't match the expected type</span>
-  <span class="token class-name">getUserDetails</span><span class="token operator">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">(</span><span class="token punctuation">{</span> naaaaaaaame<span class="token operator">:</span> <span class="token string">"rupert"</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+	<span class="token comment">// Correctly tells us this doesn't match the expected type</span>
+	<span class="token class-name">getUserDetails</span><span class="token operator">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">(</span><span class="token punctuation">{</span> naaaaaaaame<span class="token operator">:</span> <span class="token string">"rupert"</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <p>This also works. But I'm still not in love with it. Having to import the whole namespace just to mock a single function is over the top. I liked it when we could import just the one thing we wanted to mock. But how can we do that while still getting strict type checking on our mock implementations?</p>
 <p>The trick here is actually to take a step back from Jest module factories, and instead, let Jest handle more of the mocking automatically for us:</p>
@@ -276,11 +276,11 @@ jest<span class="token punctuation">.</span><span class="token function">mock</s
 <p>I really like this pattern when many tests can rely on a sensible &quot;happy path&quot; default, while just a few tests can try out specific edge cases, without affecting any other tests.</p>
 <p>One other thing we really need to watch out for here though is making sure we clear our mocks between tests. If in the above example we added a third test:</p>
 <pre class="language-ts"><code class="language-ts"><span class="token function">it</span><span class="token punctuation">(</span><span class="token string">"something is fishy here"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
-  <span class="token function">expect</span><span class="token punctuation">(</span>mockGetUserDetails<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toHaveBeenCalledWith</span><span class="token punctuation">(</span><span class="token string">"1234"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token function">expect</span><span class="token punctuation">(</span>mockGetUserDetails<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toHaveBeenCalledWith</span><span class="token punctuation">(</span><span class="token string">"1234"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <p>That test will pass! But how? It doesn't do anything, yet somehow it is still true that the mock was called with that argument. Well, just like mock implementations persist through the whole test file, so too does the mock's &quot;memory&quot; of when it has been called. To prevent this confusing behavior, we should clear the &quot;memory&quot; of mocks between tests:</p>
 <pre class="language-ts"><code class="language-ts"><span class="token function">beforeEach</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
-  jest<span class="token punctuation">.</span><span class="token function">clearAllMocks</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	jest<span class="token punctuation">.</span><span class="token function">clearAllMocks</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <p>This is such a regular thing to need to do in every test file that Jest provides a config option to just always do it everywhere <a href="https://jestjs.io/docs/configuration#clearmocks-boolean">clearMocks</a>. This option defaults to 'false' but if you find yourself writing <code>jest.clearAllMocks()</code> in a lot of files, you might want to try turning that option on.</p>
 <p>Before moving on to the next section, here is a full copy of our test file so far, featuring a type-safe mock, we can assert against whilst also configuring different behaviors per test:</p>
@@ -358,8 +358,8 @@ jest<span class="token punctuation">.</span><span class="token function">mock</s
 <pre class="language-ts"><code class="language-ts"><span class="token function">expect</span><span class="token punctuation">(</span>mockThirdPartyWidget<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toHaveBeenCalledWith</span><span class="token punctuation">(</span><span class="token punctuation">{</span> userId<span class="token operator">:</span> <span class="token string">"1234"</span> <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <p>But when we inevitably do want to test a component rendered within a context, I find the following compromise acceptable:</p>
 <pre class="language-ts"><code class="language-ts"><span class="token function">expect</span><span class="token punctuation">(</span>mockThirdPartyWidget<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toHaveBeenCalledWith</span><span class="token punctuation">(</span>
-  <span class="token punctuation">{</span> userId<span class="token operator">:</span> <span class="token string">"1234"</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
-  expect<span class="token punctuation">.</span><span class="token function">any</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token comment">// Ignore React contexts</span>
+	<span class="token punctuation">{</span> userId<span class="token operator">:</span> <span class="token string">"1234"</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+	expect<span class="token punctuation">.</span><span class="token function">any</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token comment">// Ignore React contexts</span>
 <span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <p>So finally our test file is now:</p>
 <pre class="language-ts"><code class="language-ts"><span class="token keyword">import</span> <span class="token operator">*</span> <span class="token keyword">as</span> React <span class="token keyword">from</span> <span class="token string">"react"</span><span class="token punctuation">;</span>

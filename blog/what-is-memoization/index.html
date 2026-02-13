@@ -4,7 +4,7 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>What is memoization?</title>
-		<meta name="description" content="An introduction to Memoization and how to use it.">
+		<meta name="description" content="Learn when and how to use memoization to optimize performance by caching expensive computation results for reuse.">
 		<link rel="canonical" href="https://rupertmckay.com/blog/what-is-memoization/">
 		<link rel="shortcut icon" type="image/x-icon" href="/static/favicon.ico">
 		<link rel="stylesheet" href="/static/styles.css">
@@ -16,7 +16,7 @@
 		<meta property="og:url" content="https://rupertmckay.com/blog/what-is-memoization/">
 		<meta property="og:site_name" content="Rupert Foggo McKay">
 		<meta property="og:title" content="What is memoization?">
-		<meta property="og:description" content="An introduction to Memoization and how to use it.">
+		<meta property="og:description" content="Learn when and how to use memoization to optimize performance by caching expensive computation results for reuse.">
 		<meta property="og:image" content="(data) =&gt; {
 		return (
 			data.socialImage ||
@@ -36,7 +36,7 @@
 		<meta property="twitter:domain" content="rupertmckay.com">
 		<meta property="twitter:url" content="https://rupertmckay.com/blog/what-is-memoization/">
 		<meta name="twitter:title" content="What is memoization?">
-		<meta name="twitter:description" content="An introduction to Memoization and how to use it.">
+		<meta name="twitter:description" content="Learn when and how to use memoization to optimize performance by caching expensive computation results for reuse.">
 		<meta name="twitter:image" content="(data) =&gt; {
 		return (
 			data.socialImage ||
@@ -51,7 +51,7 @@
 			"@context": "https://schema.org",
 			"@type": "BlogPosting",
 			"headline": "What is memoization?",
-			"description": "An introduction to Memoization and how to use it.",
+			"description": "Learn when and how to use memoization to optimize performance by caching expensive computation results for reuse.",
 			"author": {
 				"@type": "Person",
 				"name": "Rupert Foggo McKay",
@@ -148,45 +148,45 @@
 </blockquote>
 <h2 id="a-first-attempt" tabindex="-1"><a class="direct-link" href="#a-first-attempt" aria-hidden="true">#</a> A First Attempt</h2>
 <pre class="language-ts"><code class="language-ts"><span class="token keyword">const</span> memoize <span class="token operator">=</span> <span class="token operator">&lt;</span>Input <span class="token keyword">extends</span> <span class="token class-name">PropertyKey</span><span class="token punctuation">,</span> Result<span class="token operator">></span><span class="token punctuation">(</span>
-  <span class="token function-variable function">callback</span><span class="token operator">:</span> <span class="token punctuation">(</span>input<span class="token operator">:</span> Input<span class="token punctuation">)</span> <span class="token operator">=></span> Result
+	<span class="token function-variable function">callback</span><span class="token operator">:</span> <span class="token punctuation">(</span>input<span class="token operator">:</span> Input<span class="token punctuation">)</span> <span class="token operator">=></span> Result<span class="token punctuation">,</span>
 <span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
-  <span class="token comment">// 'memory' will store previous results</span>
-  <span class="token keyword">const</span> memory<span class="token operator">:</span> Map<span class="token operator">&lt;</span>Input<span class="token punctuation">,</span> Result<span class="token operator">></span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Map</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token comment">// 'memory' will store previous results</span>
+	<span class="token keyword">const</span> memory<span class="token operator">:</span> Map<span class="token operator">&lt;</span>Input<span class="token punctuation">,</span> Result<span class="token operator">></span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Map</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-  <span class="token comment">// Return the newly memoized function</span>
-  <span class="token keyword">return</span> <span class="token punctuation">(</span>input<span class="token operator">:</span> Input<span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
-    <span class="token comment">// If we haven't already seen this 'input'</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>memory<span class="token punctuation">.</span><span class="token function">has</span><span class="token punctuation">(</span>input<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-      <span class="token comment">// Then call the "real" function and store the result in memory</span>
-      memory<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span>input<span class="token punctuation">,</span> <span class="token function">callback</span><span class="token punctuation">(</span>input<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
+	<span class="token comment">// Return the newly memoized function</span>
+	<span class="token keyword">return</span> <span class="token punctuation">(</span>input<span class="token operator">:</span> Input<span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+		<span class="token comment">// If we haven't already seen this 'input'</span>
+		<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>memory<span class="token punctuation">.</span><span class="token function">has</span><span class="token punctuation">(</span>input<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			<span class="token comment">// Then call the "real" function and store the result in memory</span>
+			memory<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span>input<span class="token punctuation">,</span> <span class="token function">callback</span><span class="token punctuation">(</span>input<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
 
-    <span class="token comment">// Return the result from memory</span>
-    <span class="token keyword">return</span> memory<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>input<span class="token punctuation">)</span><span class="token operator">!</span><span class="token punctuation">;</span>
-  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+		<span class="token comment">// Return the result from memory</span>
+		<span class="token keyword">return</span> memory<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>input<span class="token punctuation">)</span><span class="token operator">!</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
 <p><a href="https://www.typescriptlang.org/play?#code/MYewdgzgLgBAtgUziAlgLwTAvDAPASTAAcBXWBADygTABMIYAFAJxCIWagE8BpBLgDQwASgggkANlAB8ACgBQMGMACGEiQCMVwANYAuGLJTEyBwqSgBKbNJFjJUeday2A3opgB6TzADkiZGYuXxgAdxR1GGgQZkwiWIA3FBASBljxKQgPUEhYAJiuAwBZFSICEyghUQyZbBgwBFCYEqJZSwBueQ9vOygSZjAYKAALTAbQiS54JFQMWhgAMxIwYChksA9YvoHDYwszCuc3DyUe-AWwzGGVBJpfWDVYlVopiAQaIeGUBl89sl8TjAUBdZABCfJBAB01wgRkO1ncSiRXh8ABVRoNVJERpgAERPCS4xbLVbrGAqOhRKAxTA4mDpBxAwYQriApQsyFvKBwixCLGabQ6HlkSwdQEAXy6yJ6om2gzpDKki1YcGmgVZyK2-WZMyhAHMENy-lZQZ0lOLOhb5EA">Try this code out in TypeScript Playground</a></p>
 <p>The limitation here is that we can only use this on functions that take a single argument (<code>Input</code>) and that single argument must be something we can use as a key (<code>extends PropertyKey</code>).</p>
 <h2 id="a-better-way" tabindex="-1"><a class="direct-link" href="#a-better-way" aria-hidden="true">#</a> A better way</h2>
 <p>If instead, we want to be able to support all kinds of functions, then our memoizer also needs to be provided a way to <em>resolve</em> a given argument list to a property key. We call this a <code>resolver</code>.</p>
 <pre class="language-ts"><code class="language-ts"><span class="token keyword">const</span> memoize <span class="token operator">=</span> <span class="token operator">&lt;</span>Args <span class="token keyword">extends</span> <span class="token class-name"><span class="token builtin">any</span></span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> Result<span class="token operator">></span><span class="token punctuation">(</span>
-  <span class="token function-variable function">callback</span><span class="token operator">:</span> <span class="token punctuation">(</span><span class="token operator">...</span>args<span class="token operator">:</span> Args<span class="token punctuation">)</span> <span class="token operator">=></span> Result<span class="token punctuation">,</span>
-  <span class="token function-variable function">resolver</span><span class="token operator">:</span> <span class="token punctuation">(</span><span class="token operator">...</span>args<span class="token operator">:</span> Args<span class="token punctuation">)</span> <span class="token operator">=></span> PropertyKey
+	<span class="token function-variable function">callback</span><span class="token operator">:</span> <span class="token punctuation">(</span><span class="token operator">...</span>args<span class="token operator">:</span> Args<span class="token punctuation">)</span> <span class="token operator">=></span> Result<span class="token punctuation">,</span>
+	<span class="token function-variable function">resolver</span><span class="token operator">:</span> <span class="token punctuation">(</span><span class="token operator">...</span>args<span class="token operator">:</span> Args<span class="token punctuation">)</span> <span class="token operator">=></span> PropertyKey<span class="token punctuation">,</span>
 <span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
-  <span class="token keyword">const</span> memory<span class="token operator">:</span> Map<span class="token operator">&lt;</span>PropertyKey<span class="token punctuation">,</span> Result<span class="token operator">></span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Map</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token keyword">const</span> memory<span class="token operator">:</span> Map<span class="token operator">&lt;</span>PropertyKey<span class="token punctuation">,</span> Result<span class="token operator">></span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Map</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-  <span class="token comment">// Everything here is the same as above, except...</span>
-  <span class="token keyword">return</span> <span class="token punctuation">(</span><span class="token operator">...</span>args<span class="token operator">:</span> Args<span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
-    <span class="token comment">// ... we invoke the resolver here to get the key we will use for this input</span>
-    <span class="token keyword">const</span> key <span class="token operator">=</span> <span class="token function">resolver</span><span class="token punctuation">(</span><span class="token operator">...</span>args<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token comment">// Everything here is the same as above, except...</span>
+	<span class="token keyword">return</span> <span class="token punctuation">(</span><span class="token operator">...</span>args<span class="token operator">:</span> Args<span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+		<span class="token comment">// ... we invoke the resolver here to get the key we will use for this input</span>
+		<span class="token keyword">const</span> key <span class="token operator">=</span> <span class="token function">resolver</span><span class="token punctuation">(</span><span class="token operator">...</span>args<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>memory<span class="token punctuation">.</span><span class="token function">has</span><span class="token punctuation">(</span>key<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-      memory<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span>key<span class="token punctuation">,</span> <span class="token function">callback</span><span class="token punctuation">(</span><span class="token operator">...</span>args<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
+		<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>memory<span class="token punctuation">.</span><span class="token function">has</span><span class="token punctuation">(</span>key<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			memory<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span>key<span class="token punctuation">,</span> <span class="token function">callback</span><span class="token punctuation">(</span><span class="token operator">...</span>args<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
 
-    <span class="token comment">// Return result from memory</span>
-    <span class="token keyword">return</span> memory<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>key<span class="token punctuation">)</span><span class="token operator">!</span><span class="token punctuation">;</span>
-  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+		<span class="token comment">// Return result from memory</span>
+		<span class="token keyword">return</span> memory<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>key<span class="token punctuation">)</span><span class="token operator">!</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
 <p><a href="https://www.typescriptlang.org/play?#code/MYewdgzgLgBAtgUziAlgLwTAvDAPAQQCcBzCGBADygTABMyBDMATwG0BdAGhgCUEIArgBsoAPgAUAKBgxgDIUIBGDYAGsAXDHEA6XQxIRNRUgEpso3v2FRO0mIX4ghANwSFNOvQaMGzWCwAKhCAADm5QzADSCMySfhYA3nagkLCIyITMmgCyDCG4QaHhUTHcfIIiFjhgCADuMLkh4iYA3JJ2APQdMACirplQABYoYMQwg26YKGRDmBAMiDAMjIogrtyUwAghULradg5QAoRgWnv6pD6m5jBJMjJdMHswtVNgziCqmLP2ji5u40mMCgIBgxAQsB+X2YL0wtRQChgAggmAAZiBCMDhmQRiEBFA7DIUtAYNDsL8IE5+p5tBcIK12vcYChUVoAITpDHMbSDZbiaEmMx3JnwJBc7QoqD80qyeRKFSqGl0wVtJkAX0Z90efCOJwp1hgqOCcFFGViTMOx1OnMy2nBUoFbNVMDVbVdkiAA">Try this code out in TypeScript Playground</a></p>
 <p>We can now apply this as a wrapper to any expensive pure function.</p>
@@ -200,9 +200,9 @@
  * Compute the nth fibonacci number
  */</span>
 <span class="token keyword">const</span> fibonacci <span class="token operator">=</span> <span class="token punctuation">(</span>n<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token builtin">number</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
-  invocationCounter<span class="token operator">++</span><span class="token punctuation">;</span>
-  <span class="token keyword">if</span> <span class="token punctuation">(</span>n <span class="token operator">&lt;=</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token number">1</span><span class="token punctuation">;</span>
-  <span class="token keyword">return</span> <span class="token function">fibonacci</span><span class="token punctuation">(</span>n <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token function">fibonacci</span><span class="token punctuation">(</span>n <span class="token operator">-</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	invocationCounter<span class="token operator">++</span><span class="token punctuation">;</span>
+	<span class="token keyword">if</span> <span class="token punctuation">(</span>n <span class="token operator">&lt;=</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token number">1</span><span class="token punctuation">;</span>
+	<span class="token keyword">return</span> <span class="token function">fibonacci</span><span class="token punctuation">(</span>n <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token function">fibonacci</span><span class="token punctuation">(</span>n <span class="token operator">-</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span class="token punctuation">;</span>
 
 <span class="token function">fibonacci</span><span class="token punctuation">(</span><span class="token number">20</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -221,12 +221,12 @@
 <pre class="language-ts"><code class="language-ts"><span class="token keyword">let</span> invocationCounter <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
 <span class="token keyword">const</span> memory <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Map<span class="token operator">&lt;</span><span class="token builtin">number</span><span class="token punctuation">,</span> <span class="token builtin">number</span><span class="token operator">></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token keyword">const</span> memoFibonacci <span class="token operator">=</span> <span class="token punctuation">(</span>n<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token builtin">number</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
-  invocationCounter<span class="token operator">++</span><span class="token punctuation">;</span>
-  <span class="token keyword">if</span> <span class="token punctuation">(</span>memory<span class="token punctuation">.</span><span class="token function">has</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword">return</span> memory<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token operator">!</span><span class="token punctuation">;</span>
-  <span class="token keyword">if</span> <span class="token punctuation">(</span>n <span class="token operator">&lt;=</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token number">1</span><span class="token punctuation">;</span>
-  <span class="token keyword">const</span> result <span class="token operator">=</span> <span class="token function">memoFibonacci</span><span class="token punctuation">(</span>n <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token function">memoFibonacci</span><span class="token punctuation">(</span>n <span class="token operator">-</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-  memory<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span>n<span class="token punctuation">,</span> result<span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token keyword">return</span> result<span class="token punctuation">;</span>
+	invocationCounter<span class="token operator">++</span><span class="token punctuation">;</span>
+	<span class="token keyword">if</span> <span class="token punctuation">(</span>memory<span class="token punctuation">.</span><span class="token function">has</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword">return</span> memory<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token operator">!</span><span class="token punctuation">;</span>
+	<span class="token keyword">if</span> <span class="token punctuation">(</span>n <span class="token operator">&lt;=</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token number">1</span><span class="token punctuation">;</span>
+	<span class="token keyword">const</span> result <span class="token operator">=</span> <span class="token function">memoFibonacci</span><span class="token punctuation">(</span>n <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token function">memoFibonacci</span><span class="token punctuation">(</span>n <span class="token operator">-</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	memory<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span>n<span class="token punctuation">,</span> result<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token keyword">return</span> result<span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span class="token punctuation">;</span>
 
 <span class="token function">memoFibonacci</span><span class="token punctuation">(</span><span class="token number">20</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
