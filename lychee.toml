@@ -14,7 +14,14 @@ mode = "emoji"
 no_progress = true
 
 # Maximum number of concurrent network requests
-max_concurrency = 8
+# Reduced to avoid rate limiting (especially for GitHub)
+max_concurrency = 4
+
+# Number of retries for failed requests
+max_retries = 3
+
+# Wait time between retries in seconds
+retry_wait_time = 2
 
 # Check that fragment identifiers (hash links) exist on the target page
 include_fragments = true
