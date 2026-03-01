@@ -3,14 +3,14 @@ name: Link Check
 on:
   # Run monthly to catch link rot
   schedule:
-    - cron: '0 0 1 * *' # First day of each month at midnight
+    - cron: "0 0 1 * *" # First day of each month at midnight
   # Also run on workflow_dispatch so you can trigger manually
   workflow_dispatch:
   # Run on PRs to catch broken links before merging
   pull_request:
     paths:
-      - 'src/**/*.md'
-      - 'src/**/*.njk'
+      - "src/**/*.md"
+      - "src/**/*.njk"
 
 jobs:
   link-check:
@@ -22,7 +22,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20.x'
+          node-version: "20.x"
 
       - name: Install dependencies
         run: npm ci
@@ -35,7 +35,7 @@ jobs:
         uses: lycheeverse/lychee-action@v1
         with:
           # Check all HTML files in the built site
-          args: --verbose --no-progress --include-fragments --base 'https://rupertmckay.com' './_site/**/*.html'
+          args: --config lychee.toml "./_site/**/*.html"
           # Fail the workflow if broken links are found
           fail: true
         env:
@@ -53,7 +53,7 @@ jobs:
               state: 'open',
               labels: ['broken-links']
             });
-            
+
             // Close all open broken-links issues
             for (const issue of issues.data) {
               await github.rest.issues.createComment({
@@ -80,7 +80,7 @@ jobs:
           script: |
             const title = '🔗 Broken links detected';
             const body = `The link checker found broken links.\n\n**Workflow run:** ${context.payload.repository.html_url}/actions/runs/${context.runId}\n\n**Date:** ${new Date().toISOString()}\n\nPlease check the workflow run for details on which links are broken.`;
-            
+
             // Check if an issue already exists
             const issues = await github.rest.issues.listForRepo({
               owner: context.repo.owner,
@@ -88,7 +88,7 @@ jobs:
               state: 'open',
               labels: ['broken-links']
             });
-            
+
             if (issues.data.length > 0) {
               // Update existing issue
               const issue = issues.data[0];

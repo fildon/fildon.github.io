@@ -1,6 +1,18 @@
 # Lychee link checker configuration
 # https://github.com/lycheeverse/lychee
 
+base = "https://rupertmckay.com" 
+
+# Verbose program output
+# Accepts log level: "error", "warn", "info", "debug", "trace"
+verbose = "info"
+
+# Output display mode
+mode = "emoji"
+
+# Don't show interactive progress bar while checking links
+no_progress = true
+
 # Maximum number of concurrent network requests
 max_concurrency = 8
 
@@ -23,6 +35,9 @@ exclude = [
   
   # Exclude npmjs.com (blocks automated requests with 403)
   "https://www.npmjs.com",
+  
+  # Exclude odido.nl (blocks automated requests despite browser user agent)
+  "https://odido.nl",
 ]
 
 # Accepted status codes for valid links
