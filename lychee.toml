@@ -15,13 +15,13 @@ no_progress = true
 
 # Maximum number of concurrent network requests
 # Reduced to avoid rate limiting (especially for GitHub)
-max_concurrency = 4
+max_concurrency = 2
 
 # Number of retries for failed requests
 max_retries = 3
 
 # Wait time between retries in seconds
-retry_wait_time = 2
+retry_wait_time = 5
 
 # Check that fragment identifiers (hash links) exist on the target page
 include_fragments = true
