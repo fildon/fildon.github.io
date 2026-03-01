@@ -34,8 +34,8 @@ max_redirects = 10
 # Timeout in seconds for network requests
 timeout = 20
 
-# User agent
-user_agent = "Mozilla/5.0 (compatible; LinkChecker/1.0)"
+# User agent (mimics a real browser to avoid 403 blocks)
+user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
 
 # Exclude private network addresses
 exclude_private = true
