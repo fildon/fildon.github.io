@@ -45,6 +45,12 @@ exclude = [
   
   # Exclude odido.nl (blocks automated requests despite browser user agent)
   "https://odido.nl",
+
+  # Exclude Yad Vashem (blocks automated requests with network error)
+  "https://collections.yadvashem.org",
+
+  # Exclude this specific lodash fragment link (triggers 429 rate limiting on fragment check)
+  "https://github.com/lodash/lodash/blob/4.17.15/lodash.js#L10540",
 ]
 
 # Accepted status codes for valid links

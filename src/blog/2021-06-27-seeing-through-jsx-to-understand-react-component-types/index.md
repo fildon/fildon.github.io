@@ -16,7 +16,7 @@ To justify these claims, we will peek behind the JSX curtain to see what's reall
 
 _It is a lie._
 
-JSX is a special kind of syntax _which JavaScript can't run_. You can see from [the original JSX proposal](https://facebook.github.io/jsx/) that it was never intended to be something that can be run by JavaScript engines directly. Instead, it requires some transpiler to boil it down to a series of `createElement` calls, which _are just plain old JavaScript functions_. Depending on your stack, you probably do this transpilation with either `Babel` or `TypeScript`.
+JSX is a special kind of syntax _which JavaScript can't run_. You can see from [the original JSX proposal](https://github.com/facebook/jsx) that it was never intended to be something that can be run by JavaScript engines directly. Instead, it requires some transpiler to boil it down to a series of `createElement` calls, which _are just plain old JavaScript functions_. Depending on your stack, you probably do this transpilation with either `Babel` or `TypeScript`.
 
 _**Disclaimer**: Neither Babel, TypeScript nor React have a monopoly on JSX_; go take a look at [Preact](https://preactjs.com/) for example, if you haven't already.
 
