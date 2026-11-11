@@ -15,7 +15,7 @@ fi
 
 if [ "$SKIP_BUILD" = false ]; then
   echo "🏗  Building site..."
-  npm run build
+  pnpm run build
 fi
 
 echo ""

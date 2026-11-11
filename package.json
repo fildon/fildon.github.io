@@ -21,5 +21,6 @@
 		"markdown-it": "^14.1.1",
 		"markdown-it-anchor": "^9.2.0",
 		"shx": "^0.4.0"
-	}
+	},
+	"packageManager": "pnpm@10.4.1"
 }

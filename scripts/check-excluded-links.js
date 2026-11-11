@@ -3,7 +3,7 @@
 
 // Checks URLs that lychee.toml excludes from CI (bot-blocked domains).
 // Run locally from the project root: node scripts/check-excluded-links.js
-// Requires a built _site/ directory (run `npm run build` first).
+// Requires a built _site/ directory (run `pnpm run build` first).
 
 const { readFileSync, readdirSync, existsSync } = require("fs");
 const { join } = require("path");
@@ -76,7 +76,7 @@ async function checkUrl(url) {
 
 async function main() {
   if (!existsSync(SITE_DIR)) {
-    console.error("_site/ not found — run `npm run build` first.");
+    console.error("_site/ not found — run `pnpm run build` first.");
     process.exit(1);
   }
 

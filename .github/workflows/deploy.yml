@@ -15,16 +15,20 @@ jobs:
       - name: ⬇️ Checkout repo
         uses: actions/checkout@v4
 
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+
       - name: 🤖 Use Node.js ${{ env.NODE_VERSION }}
         uses: actions/setup-node@v4
         with:
+          cache: pnpm
           node-version: ${{ env.NODE_VERSION }}
 
       - name: 📥 Download deps
-        uses: bahmutov/npm-install@v1
+        run: pnpm install --frozen-lockfile
 
-      - name: 🏗 npm build
-        run: npm run build
+      - name: 🏗 pnpm build
+        run: pnpm run build
 
       - name: ✅ Validate build output
         run: bash scripts/validate-build.sh --skip-build

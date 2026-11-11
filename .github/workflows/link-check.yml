@@ -19,16 +19,20 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
+          cache: pnpm
           node-version: "24.x"
 
       - name: Install dependencies
-        run: npm ci
+        run: pnpm install --frozen-lockfile
 
       - name: Build site
-        run: npm run build
+        run: pnpm run build
 
       - name: Check links
         id: lychee

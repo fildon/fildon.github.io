@@ -14,12 +14,12 @@ By default everything in `./src` will get compiled by `11ty`. For any files whic
 
 Available npm scripts:
 
-- `npm run build` - Build the site to `_site` directory
-- `npm run serve` - Start development server with live reload
-- `npm run clean` - Remove the `_site` directory
-- `npm run debug` - Build with debug output for troubleshooting
-- `npm run validate` - Build and validate output
-- `npm run validate:only` - Validate existing build (skip build step)
+- `pnpm run build` - Build the site to `_site` directory
+- `pnpm run serve` - Start development server with live reload
+- `pnpm run clean` - Remove the `_site` directory
+- `pnpm run debug` - Build with debug output for troubleshooting
+- `pnpm run validate` - Build and validate output
+- `pnpm run validate:only` - Validate existing build (skip build step)
 
 The development server includes:
 
@@ -55,8 +55,8 @@ Automated checks ensure the build produces valid output:
 Run validation locally:
 
 ```bash
-npm run validate         # Build and validate
-npm run validate:only    # Validate existing build only
+pnpm run validate         # Build and validate
+pnpm run validate:only    # Validate existing build only
 ```
 
 The validation logic is defined in [scripts/validate-build.sh](scripts/validate-build.sh) and used by both local development and CI.
