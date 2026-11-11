@@ -54,6 +54,12 @@ exclude = [
 
   # Exclude gs1uk.org (Imperva bot protection returns 403 despite browser user agent)
   "https://www.gs1uk.org",
+
+  # Exclude this specific ramda fragment link (triggers 429 rate limiting on fragment check)
+  "https://github.com/ramda/ramda/blob/v0.28.0/source/memoizeWith.js#L36",
+
+  # Exclude gs1.org (blocks automated requests with 403)
+  "https://www.gs1.org",
 ]
 
 # Accepted status codes for valid links

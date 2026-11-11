@@ -8,7 +8,8 @@
 		"serve": "npx @11ty/eleventy --serve",
 		"debug": "DEBUG=Eleventy* npx @11ty/eleventy",
 		"validate": "bash scripts/validate-build.sh",
-		"validate:only": "bash scripts/validate-build.sh --skip-build"
+		"validate:only": "bash scripts/validate-build.sh --skip-build",
+		"check-excluded-links": "node scripts/check-excluded-links.js"
 	},
 	"devDependencies": {
 		"@11ty/eleventy": "^3.1.2",
